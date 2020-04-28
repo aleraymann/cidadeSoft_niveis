@@ -25,4 +25,18 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
+
+    public function rolesPermissions(){
+        $nameUser =  auth()->user()->name;
+        echo "<h1> {$nameUser}</h1>";
+
+        foreach(auth()->user()->roles as $roles){
+            echo" $roles->name: " ,"<br>";
+
+            $permissions = $roles->permissions;
+            foreach($permissions as $permission){
+                echo " - $permission->name, <br>";
+            }
+        }
+    }
 }

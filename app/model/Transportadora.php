@@ -10,6 +10,7 @@ class Transportadora extends Model
   public $timestamps = false;
   protected $primaryKey = 'Codigo';
   protected $fillable = Array(
+    "user_id",
     "Fis_Jur",
     "Razao_Social",
     "Nome_Fantasia",

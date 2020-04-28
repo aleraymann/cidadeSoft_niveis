@@ -11,6 +11,7 @@ class ContaCadastro extends Model
     public $timestamps = false;
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
+    "user_id",
     'Descricao',
     'Cod_Banco',
     'Dig_Banco',

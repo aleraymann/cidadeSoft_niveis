@@ -19,10 +19,10 @@ class EmpresaController extends Controller
     public function listar( Empresa $empresa, Funcionario $funcionario, Cond_Pag $cond_pag,Form_Pag $form_pag ,
         Transportadora $transportadora,CliFor $clifor)
     {  
-        //$empresas = $empresa->all();
-        $empresas = $empresa->where('user_id', auth()->user()->id)->paginate(20);
+        $empresas = $empresa->all();
+        $empresas = Empresa::paginate(20);
+        //$empresas = $empresa->where('user_id', auth()->user()->id)->paginate(20);
         //dd($empresas);
-        //$empresas = Empresa::paginate(20);
         $funcionario = Funcionario::all();
         $cond_pag = Cond_Pag::all();
         $form_pag = Form_Pag::all();
@@ -38,8 +38,7 @@ class EmpresaController extends Controller
         {
             if($id > 0)
             {   
-                $dados = Empresa::find($id);
-                $this->authorize('update_empresa', $dados);
+                $dados = $empresa->find($id);
                 $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("EmpresaController@listar")
@@ -75,7 +74,7 @@ class EmpresaController extends Controller
         //return 'update';
         $empresa = Empresa::find($id);
         //$empresa = $empresa->find($id);
-        $this->authorize('edita_empresa', $empresa);
+        $this->authorize('update_empresa', $empresa);
 
         $funcionario = Funcionario::all();
         $cond_pag = Cond_Pag::all();
@@ -87,7 +86,9 @@ class EmpresaController extends Controller
 
     public function vizualizar(Empresa $empresa, $id)
     {
-        $empresa = $empresa->find($id);
+        $empresa = Empresa::find($id);
+        //$empresa = $empresa->find($id);
+        $this->authorize('view_empresa', $empresa);
         return view("visual.view_empresas", compact("empresa","id"));
     }
 }

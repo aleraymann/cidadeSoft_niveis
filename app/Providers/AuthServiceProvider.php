@@ -29,21 +29,29 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('update_empresa', function( User $user, Empresa $empresa){
+        Gate::define('update_empresa', function( User $user, Empresa $empresa){//update - delete
             return $user->id == $empresa->user_id;     
         });
-
-        Gate::define('delete_empresa', function( User $user, Empresa $empresa){
+        Gate::define('view_empresa', function( User $user, Empresa $empresa){//apenas visualizar
             return $user->id == $empresa->user_id;     
         });
 
         $permissions = Permission::with('roles')->get(); //recupera tudo das funcoes..
-        //dd($permissions);
+        //dd($permissions); //  puxa todas as permissoes 
+        $contador = 0;
+
         foreach($permissions as $perm){
-            Gate::define($perm->name, function( User $user) use($perm){
-                return $user->hasPermission($perm);     
+            
+            Gate::define($perm->name, function(User $user) use ($perm){ // verifica se o user logado tem a permissao q esta no loop
+                return $user->hasPermission($perm);     //return true
             });
         }
+
+        Gate::before(function (User $user, $ability){
+            if($user->hasAnyRoles('s_adm')){
+                return true;
+            }
+        });
 
     }
 }

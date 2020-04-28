@@ -10,6 +10,7 @@ class Adicional_OSPed extends Model
     public $timestamps = false;
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
+      "user_id",
       "Cod_item",
       "Cod_Ref",
       "Descricao",

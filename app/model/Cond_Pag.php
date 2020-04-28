@@ -10,6 +10,7 @@ class Cond_Pag extends Model
     public $timestamps = false;
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
+        "user_id",
         "Condicao",
         "Tab_Preco",
         "ParcDias",

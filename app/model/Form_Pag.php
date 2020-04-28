@@ -10,6 +10,7 @@ class Form_Pag extends Model
     public $timestamps = false;
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
+        "user_id",
         "Descricao",
         "Comi_Operad",
         "Tx_Antecip",

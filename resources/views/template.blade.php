@@ -190,7 +190,13 @@
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									{{ Auth::user()->name }}
-									<span class="user-level">Administrator</span>
+									@if( Auth::user()->hasAnyRoles('s_adm'))
+										<span class="user-level">Super-Admin</span>
+									@elseif( Auth::user()->hasAnyRoles('adm'))
+										<span class="user-level">Administrador</span>
+									@elseif( Auth::user()->hasAnyRoles('funcionario'))
+										<span class="user-level">Vendedor</span>
+									@endif
 								</span>
 							</a>
 							<div class="clearfix"></div>

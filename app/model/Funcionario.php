@@ -12,6 +12,7 @@ class Funcionario extends Model
     public $timestamps = false;
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
+        "user_id",
         "Nome",
         "CPF",
         "RG",

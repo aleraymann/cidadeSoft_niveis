@@ -180,10 +180,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Empresas
-                    <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
-                        data-target="#myModal">
-                        <i class='fas fa-plus'></i> Empresas
-                    </button>
+                    @can("insere_empresa",$empresas)
+                        <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
+                            data-target="#myModal">
+                            <i class='fas fa-plus'></i> Empresas
+                        </button>
+                    @endcan
                 </h4>
                 @include("modals.modal_empresas")
             </div>
@@ -203,7 +205,7 @@
 
                         <tbody>
                             @foreach($empresas as $emp)
-                                @can('visual_empresa',$emp)
+                                @can("update_empresa",$emp)
                                 <tr>
                                     <td> {{ $emp->Codigo }} </td>
                                     <td> {{ $emp->Nome_Fantasia }} </td>
@@ -213,21 +215,21 @@
                                    
                                     <td>
                                         <div class="btn-group" role="group">
-                                            @can('edita_empresa',$emp)
+                                            @can('edita_empresa') 
                                                 <a href='{{ url("/Empresa/editar/$emp->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
                                             @endcan
-                                            @can('visual_empresa',$emp)
+                                            @can("visual_empresa")
+
                                                 <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}'
                                                     class="btn btn-secondary"><i class='far fa-eye'></i></a>
                                             @endcan
-                                            @can('deleta_empresa',$emp)
+                                            @can('deleta_empresa')
                                                     <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
                                                     class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                             @endcan  
                                         </div>
                                     </td>
-
                                 </tr>
                                 @endcan
                             @endforeach

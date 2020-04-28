@@ -19,6 +19,13 @@
            <form method="post" action="{{url("/Boleto_titulo/salvar/$id")}}" enctype="multipart/form-data">
             @endif
             <div class="form-row">
+            <div class="form-group col-lg-12" hidden>
+              <b class="ls-label-text" for="user_id">User_ID:</b>
+              <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id"
+              readonly value="{{ Auth::user()->id }}" >
+            </div>
+          </div>
+            <div class="form-row">
              
               <div class="form-group col-lg-3">
                 <strong><label class="form-check-label">Baixa / Envio ao Banco:</label></strong>

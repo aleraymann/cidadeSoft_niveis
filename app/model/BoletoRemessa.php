@@ -10,6 +10,7 @@ class BoletoRemessa extends Model
     public $timestamps = false;
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
+      "user_id",
       "Numero_Rem",
       "Data",
       "Hora",

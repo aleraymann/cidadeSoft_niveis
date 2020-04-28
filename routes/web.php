@@ -157,3 +157,6 @@ Route::get('/pdf_empresas', 'PDFController@gerar_empresas')->middleware('auth');
 Route::get('/pdf_funcionarios', 'PDFController@gerar_funcionarios')->middleware('auth');
 Route::get('/pdf_clifor', 'PDFController@gerar_clifor')->middleware('auth');
 Route::get('/pdf_transportadoras', 'PDFController@gerar_transportadoras')->middleware('auth');
+
+Route::get('/roles-permisssion', 'HomeController@rolesPermissions')->middleware('auth');
+

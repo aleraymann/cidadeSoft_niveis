@@ -10,6 +10,7 @@ class CEST extends Model
     public $timestamps = false;
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
+        "user_id",
         "CEST",
         "NCM",
         "Descricao",
