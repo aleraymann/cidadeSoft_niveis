@@ -131,6 +131,7 @@
 										
 											<tbody>
                         @foreach($funcionario as $func)
+                        @can("update_funcionario",$func)
                         <tr>
                           <td class=""> {{ $func->Codigo }}   </td>
                           <td class=""> {{ $func->Nome }}   </td>
@@ -145,6 +146,7 @@
                             </div>
                           </td>
                         </tr>
+                        @endcan
                         @endforeach
 											</tbody>
 										</table>

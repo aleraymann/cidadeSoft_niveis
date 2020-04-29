@@ -9,7 +9,7 @@ class FuncionarioController extends Controller
 {
     public function listar( Funcionario $funcionario)
     {  
-        //$funcionarios = $funcionario->all();
+        $funcionarios = $funcionario->all();
         $funcionario = Funcionario::paginate(20);
         return view("funcionarios", compact("funcionario")); 
     }
@@ -48,7 +48,9 @@ class FuncionarioController extends Controller
 
     public function editar(Funcionario $funcionario, $id)
     {
-        $funcionario = $funcionario->find($id);
+        $funcionario = Funcionario::find($id);
+        //$empresa = $empresa->find($id);
+        $this->authorize('update_funcionario', $funcionario);
         return view("edit.edit_funcionarios", compact("funcionario","id"));
     }
 

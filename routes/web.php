@@ -16,9 +16,17 @@ use Illuminate\Auth\Middleware\Authenticate;
 Route::get("/", function () {
     return view("auth.login");
 });
-Route::get("/Dashboard", function () {
-    return view('dashboard');
-})->middleware('auth');
+Route::get("/Dashboard", 'HomeController@index')->middleware('auth');
+
+Route::get("/Permissions", 'PermissionsController@index')->middleware('auth');
+Route::get("/Permission/vizualizar/{id}", 'PermissionsController@roles')->middleware('auth');
+
+Route::get("/Roles", 'RolesController@index')->middleware('auth');
+Route::get("/Role/vizualizar/{id}", 'RolesController@permissions')->middleware('auth');
+
+Route::get("/Users", 'UsersController@index')->middleware('auth');
+Route::get("/User/vizualizar/{id}", 'UsersController@roles')->middleware('auth');
+
 
 Route::get("/Maps", function () {
     return view('maps');

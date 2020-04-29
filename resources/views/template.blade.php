@@ -203,21 +203,39 @@
 
 							<div class="collapse in" id="collapseExample">
 								<ul class="nav">
+								@if( Auth::user()->hasAnyRoles('s_adm') ||  Auth::user()->hasAnyRoles('adm'))
 									<li>
-										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
+										<a href="{{url("/Permissions")}}">
+											<span class="link-collapse">Permissões</span>
 										</a>
 									</li>
 									<li>
-										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
+										<a href="{{url("/Roles")}}">
+											<span class="link-collapse">Cargos</span>
 										</a>
 									</li>
+									@endif
+									@can('view_users')
 									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
+										<a href="{{url("/Users")}}">
+											<span class="link-collapse">Usuários</span>
 										</a>
 									</li>
+									@endcan
+								<div class="dropdown-divider"></div>
+									<li>
+									<a class="dropdown-item" href="{{ route('logout') }}"
+									onclick="event.preventDefault();
+									document.getElementById('logout-form').submit();">
+									<i class="flaticon-arrow"></i>
+									{{ __('Logout') }}
+								  </a>
+								  
+								  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								  </form>
+									</li>
+									
 								</ul>
 							</div>
 						</div>
@@ -254,11 +272,13 @@
 											<span class="sub-item">Empresas</span>
 										</a>
 									</li>
+								
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/funcionarios')}}">
 											<span class="sub-item">Funcionários</span>
 										</a>
 									</li>
+									
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/transportadoras')}}">
 											<span class="sub-item">Transportadoras</span>

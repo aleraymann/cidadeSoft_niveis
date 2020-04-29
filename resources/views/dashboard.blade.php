@@ -56,8 +56,8 @@
                                 </div>
                                 <div class="col-7 col-stats">
                                     <div class="numbers">
-                                        <p class="card-category">Visitors</p>
-                                        <h4 class="card-title">1,294</h4>
+                                        <p class="card-category">Usuários</p>
+                                        <h4 class="card-title d-flex justify-content-center">{{  $totalUsers }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -75,8 +75,8 @@
                                 </div>
                                 <div class="col-7 col-stats">
                                     <div class="numbers">
-                                        <p class="card-category">Subscribers</p>
-                                        <h4 class="card-title">1303</h4>
+                                        <p class="card-category">Empresas</p>
+                                        <h4 class="card-title d-flex justify-content-center" >{{  $totalEmpresas }}</h4>
                                     </div>
                                 </div>
                             </div>

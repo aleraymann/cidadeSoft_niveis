@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\model\Empresa;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -21,10 +23,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('dashboard');
+    public function index(Empresa $totalEmpresas, User $totalUsers)
+    {   
+        $totalEmpresas = Empresa::count();
+        $totalUsers = User::count();
+        return view('dashboard', compact('totalEmpresas','totalUsers'));
     }
+
+    
 
     public function rolesPermissions(){
         $nameUser =  auth()->user()->name;

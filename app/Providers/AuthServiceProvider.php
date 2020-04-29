@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\User;
 use App\model\Empresa;
+use App\model\Funcionario;
 use App\model\Permission;
 use App\model\Role;
 
@@ -28,12 +29,24 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
+        //empresa
         Gate::define('update_empresa', function( User $user, Empresa $empresa){//update - delete
             return $user->id == $empresa->user_id;     
         });
+        Gate::define('view_users', function( User $user,Funcionario $funcionario){//update - delete
+            return $user->id == $funcionario->user_id;     
+        });
         Gate::define('view_empresa', function( User $user, Empresa $empresa){//apenas visualizar
             return $user->id == $empresa->user_id;     
+        });
+
+
+        //funcionario
+        Gate::define('update_funcionario', function( User $user, Funcionario $funcionario){//update - delete
+            return $user->id == $funcionario->user_id;     
+        });
+        Gate::define('view_emp_func', function( User $user, Empresa $empresa){//update - delete
+            return $user->id == $empresa->Vend_CliForPadrao;     
         });
 
         $permissions = Permission::with('roles')->get(); //recupera tudo das funcoes..

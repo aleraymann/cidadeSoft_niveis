@@ -1541,7 +1541,9 @@
             <label for="Vend_CliForPadrao">Vendedor Padrão </label>
             <select class="form-control input-border-bottom" id="Vend_CliForPadrao" name="Vend_CliForPadrao">
               @foreach($funcionario as $funcionario)
+              @can("update_funcionario",$funcionario)
               <option value="{{$funcionario->idmsgs}}" {{ $empresa->Vend_CliForPadrao == $funcionario->idmsgs ? "selected" : "" }} >{{ $funcionario->Nome}}</option>
+              @endcan
               @endforeach
             </select>
             <div class="invalid-feedback">

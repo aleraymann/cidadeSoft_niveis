@@ -206,6 +206,7 @@
                         <tbody>
                             @foreach($empresas as $emp)
                                 @can("update_empresa",$emp)
+                                
                                 <tr>
                                     <td> {{ $emp->Codigo }} </td>
                                     <td> {{ $emp->Nome_Fantasia }} </td>
