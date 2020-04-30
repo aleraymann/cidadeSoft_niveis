@@ -39,9 +39,23 @@
         <div class="container container-login animated fadeIn">
             <h3 class="text-center">Registro</h3>
             <div class="login-form">
+            <div class="form-group col-lg-12">
+                         <label for="tipo">Tipo:</label>
+                         <select onchange="verifica(this.value)" class="form-control input-border-bottom" id="tipo"
+                             name="tipo">
+                             <option value="A">Administrador</option>
+                             <option value="F">Funcionario</option>
+                         </select>
+                         <div class="invalid-feedback">
+                             Por favor, Campo Obrigatório!
+                         </div>
+                         <div class="valid-feedback">
+                             Tudo certo!
+                         </div>
+                     </div>
             <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                       
                         <div class="form-group form-floating-label col-12">
                             <div>
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} input-border-bottom" name="name" value="{{ old('name') }}" required autofocus>
@@ -84,6 +98,12 @@
                                 <label for="password" class="placeholder">Confirme sua Senha</label>
                             </div>
                         </div>
+                        <div class="form-group form-floating-label col-12">
+                            <div>
+                                <input id="empresa" type="empresa" class="form-control input-border-bottom" name="empresa" placeholder="Cod da empresa a ser vinculado" hidden>
+                                
+                            </div>
+                        </div>
 
                         <div class="form-action">
 					<a href="{{ url("/") }}" id="show-signin" class="btn btn-danger btn-rounded btn-login mr-3">Cancel</a>
@@ -107,4 +127,14 @@
     <script src="{{ url("js/core/bootstrap.min.js") }}"></script>
     <script src="{{ url("js/ready.js") }}"></script>
     @endsection
+    <script>
+     function verifica(value) {
+         var tipo = document.getElementById("tipo");
 
+         if (value == "A") {
+            empresa.hidden = true;
+         } else if (value == "F") {
+            empresa.hidden = false;
+         }
+     };
+</script>

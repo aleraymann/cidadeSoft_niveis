@@ -33,9 +33,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update_empresa', function( User $user, Empresa $empresa){//update - delete
             return $user->id == $empresa->user_id;     
         });
-        Gate::define('view_users', function( User $user,Funcionario $funcionario){//update - delete
-            return $user->id == $funcionario->user_id;     
-        });
+        
+        
         Gate::define('view_empresa', function( User $user, Empresa $empresa){//apenas visualizar
             return $user->id == $empresa->user_id;     
         });
@@ -45,9 +44,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update_funcionario', function( User $user, Funcionario $funcionario){//update - delete
             return $user->id == $funcionario->user_id;     
         });
+        
         Gate::define('view_emp_func', function( User $user, Empresa $empresa){//update - delete
-            return $user->id == $empresa->Vend_CliForPadrao;     
         });
+
+        //Users
+       
 
         $permissions = Permission::with('roles')->get(); //recupera tudo das funcoes..
         //dd($permissions); //  puxa todas as permissoes 

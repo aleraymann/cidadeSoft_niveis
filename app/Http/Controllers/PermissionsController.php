@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\Permission;
+use Gate;
 
 class PermissionsController extends Controller
 {
@@ -11,6 +12,8 @@ class PermissionsController extends Controller
     
     public function __construct(Permission $permission){
         $this->permission = $permission;
+        
+       
     }
 
     public function index(){

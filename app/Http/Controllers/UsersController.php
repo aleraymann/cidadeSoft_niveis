@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\model\Funcionario;
+use Gate;
 
 class UsersController extends Controller
 {
@@ -12,9 +13,16 @@ class UsersController extends Controller
     
     public function __construct(user $user){
         $this->user = $user;
+
+       
     }
 
     public function index(){
+        
+        if(Gate::denies('view_users')){
+            return redirect()->back();
+        }
+        
         $users = $this->user->all();
         return view('users', compact('users'));
      }

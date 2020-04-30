@@ -15,8 +15,6 @@
                 <div class="btn-group" role="group">
         <a href='{{ url("/Empresa/editar/$empresa->Codigo") }}' class="btn btn-success"><i
                 class='far fa-edit'></i></a>
-        <a href='{{ url("/Empresa/excluir/$empresa->Codigo") }}' class="btn btn-danger"
-            onclick="return confirm('Deseja mesmo Excluir?')"><i class='fas fa-trash-alt'></i></a>
     </div>
             </div>
             <div class="card-body">

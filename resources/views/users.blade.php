@@ -33,6 +33,7 @@
                         </thead>
 
                         <tbody>
+                       
                         @foreach($users as $u)
                                 <tr>
                                     <td class=""> {{ $u->name }} </td>
@@ -46,6 +47,7 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
