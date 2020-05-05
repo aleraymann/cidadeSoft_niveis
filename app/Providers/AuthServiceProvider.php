@@ -36,7 +36,12 @@ class AuthServiceProvider extends ServiceProvider
         
         
         Gate::define('view_empresa', function( User $user, Empresa $empresa){//apenas visualizar
-            return $user->id == $empresa->user_id;     
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $empresa->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->empresa == $empresa->Codigo;     
+            }
         });
 
 
@@ -46,8 +51,9 @@ class AuthServiceProvider extends ServiceProvider
         });
         
         Gate::define('view_emp_func', function( User $user, Empresa $empresa){//update - delete
+            return $user->empresa == $empresa->Codigo;
         });
-
+       
         //Users
        
 

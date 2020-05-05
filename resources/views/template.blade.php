@@ -196,6 +196,8 @@
 										<span class="user-level">Administrador</span>
 									@elseif( Auth::user()->hasAnyRoles('funcionario'))
 										<span class="user-level">Vendedor</span>
+										@elseif( Auth::user()->hasAnyRoles('financeiro'))
+										<span class="user-level">Financeiro</span>
 									@endif
 								</span>
 							</a>
@@ -203,7 +205,7 @@
 
 							<div class="collapse in" id="collapseExample">
 								<ul class="nav">
-								@if( Auth::user()->hasAnyRoles('s_adm') ||  Auth::user()->hasAnyRoles('adm'))
+								@can('view_users')
 									<li>
 										<a href="{{url("/Permissions")}}">
 											<span class="link-collapse">Permissões</span>
@@ -214,8 +216,11 @@
 											<span class="link-collapse">Cargos</span>
 										</a>
 									</li>
-									@endif
-									@can('view_users')
+									<li>
+									<a href="{{ url("/Cargos") }}">
+											<span class="link-collapse">Gerenciar Cargos</span>
+										</a>
+									</li>
 									<li>
 										<a href="{{url("/Users")}}">
 											<span class="link-collapse">Usuários</span>
@@ -262,20 +267,21 @@
 							</a>
 							<div class="collapse" id="cadast">
 								<ul class="nav nav-collapse">
-									<li>
-										<a class="collapse-item" href="{{url('/Cadastro/Clifor')}}">
-											<span class="sub-item">Clientes/Fornecedores</span>
-										</a>
-									</li>
-									<li>
+								<li>
 										<a class="collapse-item" href="{{url('/Cadastro/empresas')}}">
 											<span class="sub-item">Empresas</span>
 										</a>
 									</li>
-								
+								@can('insere_func')
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/funcionarios')}}">
 											<span class="sub-item">Funcionários</span>
+										</a>
+									</li>
+								@endcan
+									<li>
+										<a class="collapse-item" href="{{url('/Cadastro/Clifor')}}">
+											<span class="sub-item">Clientes/Fornecedores</span>
 										</a>
 									</li>
 									

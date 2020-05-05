@@ -8,6 +8,10 @@ class Permission extends Model
 {
     protected $table = "permission";
     public $timestamps = false;
+    protected $fillable = Array(
+        "name",
+        "label",
+    );
 
     public function roles()
     {

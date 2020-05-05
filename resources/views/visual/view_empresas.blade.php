@@ -12,10 +12,12 @@
                 <h4 class="card-title">
                     {{ $empresa->Razao_Social }}
                 </h4>
+                @can("update_empresa",$empresa)
                 <div class="btn-group" role="group">
         <a href='{{ url("/Empresa/editar/$empresa->Codigo") }}' class="btn btn-success"><i
                 class='far fa-edit'></i></a>
     </div>
+    @endcan
             </div>
             <div class="card-body">
                 <div class="table-responsive">

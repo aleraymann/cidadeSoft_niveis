@@ -21,39 +21,27 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4 ml-2"></div>
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Cargos
-                <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
-                        data-target="#myModal">
-                        <i class='fas fa-plus'></i> Cargos
-                    </button>
-                    <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
-                        data-target="#ModalPerm">
-                       Atribuir permissões à cargos
-                    </button>
-                </h4>
-                @include("modals.modal_perm_role")
-                @include("modals.modal_roles")
+            <div class="card-header"> 
+            <h4>Gerenciar Cargos</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="multi-filter-select" class="display table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th class="">Cargo</th>
-                                <th class="">Função</th>
+                                <th class="">Cod. Cargo</th>
+                                <th class="">Cod. Usuario</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($roles as $r)
+                        @foreach($role_users as $ru)
                                 <tr>
-                                    <td class=""> {{ $r->name }} </td>
-                                    <td class=""> {{ $r->label }} </td>
+                                    <td class=""> {{ $ru->role_id }} </td>
+                                    <td class=""> {{ $ru->user_id }} </td>
                                     <td class="">
                                         <div class="btn-group" role="group">
-                                            <a href='{{url("/Role/vizualizar/$r->id")}}' class="btn btn-primary"><i class='flaticon-lock-1'></i></a>
-                                            <a href="javascript:deletarRegistro('{{ $r->id }}')"
+                                        <a href="javascript:deletarRegistro('{{ $ru->id }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                         </div>
                                     </td>
@@ -66,7 +54,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 <script src="{{ url("js/core/jquery.3.2.1.min.js") }}"></script>
 <script>
@@ -90,7 +77,7 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{ url("Role/excluir") }}" + '/' + id,
+                    url: "{{ url("Cargos/excluir") }}" + '/' + id,
                     type: 'DELETE',
                     data: {
                         '_method': 'DELETE',

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\Role;
+use App\model\Permission;
+use Gate;
 
 class RolesController extends Controller
 {
@@ -14,8 +16,13 @@ class RolesController extends Controller
     }
 
     public function index(){
+        
+        if(Gate::denies('view_users')){
+            return redirect()->back();
+        }
+        $permissions = Permission::all();
         $roles = $this->role->all();
-        return view('roles', compact('roles'));
+        return view('roles', compact('roles', 'permissions'));
      }
 
      public function permissions($id){
@@ -26,4 +33,39 @@ class RolesController extends Controller
 
         return view('roles_permissions', compact('role', 'permissions'));
      }
+
+     public function salvar(Request $dadosFormulario,Role $role, $id = null)
+     {
+        //dd($dadosFormulario);
+         try
+         {
+             if($id > 0)
+             {
+                 $dados = $role->find($id);
+                 $dados->update($dadosFormulario->all());
+                 return redirect()
+                 ->action("RolesController@index")
+                 ->with("toast_success", "Registro Editado Com Sucesso");
+             }
+             else
+             {
+                 $role->create($dadosFormulario->all());
+             }
+             
+             return redirect()
+             ->action("RolesController@index")
+             ->with("toast_success", "Registro Gravado Com Sucesso");
+         } 
+         catch (\Illuminate\Database\QueryException $e) 
+         {
+             //dd($e);
+             return redirect()
+             ->action("RolesController@index")
+             ->with("toast_error", "Houve um erro ao gravar o registro");
+         }
+     }
+     public function excluir($Codigo,Role $role)
+    {
+            $role->destroy($Codigo);
+    }
 }

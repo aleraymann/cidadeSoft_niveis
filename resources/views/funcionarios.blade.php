@@ -110,12 +110,14 @@
 							<div class="card">
 								<div class="card-header">
 									<h4 class="card-title">Funcionários
+                  @can('insere_func')
                   <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal" data-target="#myModal">
                     <i class='fas fa-plus'></i>  Funcionário
                   </button>
                   </h4>
                   
                   @include("modals.modal_funcionarios")
+                  @endcan
 								</div>
       <div class="card-body">
 									<div class="table-responsive">

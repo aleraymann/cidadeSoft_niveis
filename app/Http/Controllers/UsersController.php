@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\model\Role;
 use App\model\Funcionario;
 use Gate;
 
@@ -22,9 +23,10 @@ class UsersController extends Controller
         if(Gate::denies('view_users')){
             return redirect()->back();
         }
-        
+
+        $role = Role::all();
         $users = $this->user->all();
-        return view('users', compact('users'));
+        return view('users', compact('users','role'));
      }
 
      public function roles($id){

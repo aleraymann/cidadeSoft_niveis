@@ -10,7 +10,10 @@
 @endif
 
 <div class="main-panel">
-    <div style="margin-top:60px">
+<div class="ml-2" style="margin-top:60px">
+        <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
+            Voltar
+        </a>
         <!-- Button to Open the Modal -->
         @include('sweetalert::alert')
         <!--end container-->
@@ -20,7 +23,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Permissões
+                <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
+                        data-target="#myModal">
+                        <i class='fas fa-plus'></i> Permissão
+                    </button>
                 </h4>
+                @include("modals.modal_permissions")
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -39,9 +47,9 @@
                                     <td class=""> {{ $p->label }} </td>
                                     <td class="">
                                         <div class="btn-group" role="group">
-                                            <a href='' class="btn btn-success"><i class='far fa-edit'></i></a>
-                                            <a href='{{url("/Permission/vizualizar/$p->id")}}' class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                            <a href="" class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            <a href='{{url("/Permission/vizualizar/$p->id")}}' class="btn btn-primary"><i class='flaticon-lock-1'></i></a>
+                                            <a href="javascript:deletarRegistro('{{ $p->id }}')"
+                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -54,3 +62,49 @@
     </div>
 </div>
 @endsection
+<script src="{{ url("js/core/jquery.3.2.1.min.js") }}"></script>
+<script>
+    function deletarRegistro(id) {
+        var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        swal({
+            title: "Excluir",
+            text: "Excluir do item selecionado?",
+            icon: "warning",
+            buttons: {
+                confirm: {
+                    text: 'Sim',
+                    className: 'btn btn-success'
+                },
+                cancel: {
+                    text: 'Não',
+                    visible: true,
+                    className: 'btn btn-danger'
+                }
+            }
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{ url("Permission/excluir") }}" + '/' + id,
+                    type: 'DELETE',
+                    data: {
+                        '_method': 'DELETE',
+                        '_token': csrf_token
+                    },
+                    success: function () {
+                        location.reload();
+                        swal({
+                            title: "Registro deletado com sucesso!",
+                            icon: "success",
+                        });
+
+                    },
+                    error: function () {
+                        swal("Erro!", "Algo de errado aconteceu!", );
+                    }
+                });
+
+            }
+        });
+    }
+
+</script>

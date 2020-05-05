@@ -185,8 +185,6 @@ class Empresa extends Model
     }
 
 
-//deixa eu mostrar do boleto.. que deu certo... 
-
     public function clifor() {
         return $this->hasMany('App\model\CliFor');
     }

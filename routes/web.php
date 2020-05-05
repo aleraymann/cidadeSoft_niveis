@@ -16,13 +16,25 @@ use Illuminate\Auth\Middleware\Authenticate;
 Route::get("/", function () {
     return view("auth.login");
 });
+Route::get("/Cargos", 'RoleUserController@index')->middleware('auth');
+Route::delete("/Cargos/excluir/{id}", 'RoleUserController@excluir')->middleware('auth');
+
+
 Route::get("/Dashboard", 'HomeController@index')->middleware('auth');
 
 Route::get("/Permissions", 'PermissionsController@index')->middleware('auth');
 Route::get("/Permission/vizualizar/{id}", 'PermissionsController@roles')->middleware('auth');
+Route::post("/Permission/salvar/{id?}", 'PermissionsController@salvar')->middleware('auth');
+Route::delete("/Permission/excluir/{id}", "PermissionsController@excluir")->middleware('auth');
+
+Route::post("/Permission_role/salvar/{id?}", 'PermissionRoleController@salvar')->middleware('auth');
 
 Route::get("/Roles", 'RolesController@index')->middleware('auth');
 Route::get("/Role/vizualizar/{id}", 'RolesController@permissions')->middleware('auth');
+Route::post("/Role/salvar/{id?}", 'RolesController@salvar')->middleware('auth');
+Route::delete("/Role/excluir/{id}", "RolesController@excluir")->middleware('auth');
+
+Route::post("/Role_user/salvar/{id?}", 'RoleUserController@salvar')->middleware('auth');
 
 Route::get("/Users", 'UsersController@index')->middleware('auth');
 Route::get("/User/vizualizar/{id}", 'UsersController@roles')->middleware('auth');

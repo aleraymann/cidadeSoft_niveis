@@ -19,7 +19,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Usuário: {{ $user->name }}
+                <h4 class="card-title">Permissões de <b>{{ $user->name }}</b>
                 </h4>  
             </div>
             <div class="card-body">
@@ -27,6 +27,7 @@
                     <table id="multi-filter-select" class="display table table-striped table-hover">
                         <thead>
                             <tr>
+                            
                                 <th class="">Nome</th>
                                 <th class="">Label</th>
                             </tr>

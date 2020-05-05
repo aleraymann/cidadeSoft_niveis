@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\Funcionario;
+use Gate;
 
 class FuncionarioController extends Controller
 {
     public function listar( Funcionario $funcionario)
     {  
+       // $this->authorize('insere_func', $funcionario);
+        if(Gate::denies('insere_func')){
+            return redirect()->back();
+        }
         $funcionarios = $funcionario->all();
         $funcionario = Funcionario::paginate(20);
         return view("funcionarios", compact("funcionario")); 
@@ -50,7 +55,10 @@ class FuncionarioController extends Controller
     {
         $funcionario = Funcionario::find($id);
         //$empresa = $empresa->find($id);
-        $this->authorize('update_funcionario', $funcionario);
+        //$this->authorize('update_funcionario', $funcionario);
+        if(Gate::denies('update_funcionario',$funcionario)){
+            return redirect()->back();
+        }
         return view("edit.edit_funcionarios", compact("funcionario","id"));
     }
 
@@ -62,6 +70,9 @@ class FuncionarioController extends Controller
     public function vizualizar(Funcionario $funcionario, $id)
     {
         $funcionario = $funcionario->find($id);
+        if(Gate::denies('update_funcionario',$funcionario)){
+            return redirect()->back();
+        }
         return view("visual.view_funcionarios", compact("funcionario","id"));
     }
 

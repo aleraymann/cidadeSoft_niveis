@@ -13,6 +13,7 @@ use App\model\Transportadora;
 use App\model\CliFor;
 use App\model\ContaCadastro;
 use App\model\ContaSaldo;
+use Gate;
 
 class EmpresaController extends Controller
 {
@@ -74,7 +75,10 @@ class EmpresaController extends Controller
         //return 'update';
         $empresa = Empresa::find($id);
         //$empresa = $empresa->find($id);
-        $this->authorize('update_empresa', $empresa);
+        //$this->authorize('update_empresa', $empresa);
+        if(Gate::denies('update_empresa', $empresa)){
+            return redirect()->back();
+        }
 
         $funcionario = Funcionario::all();
         $cond_pag = Cond_Pag::all();
@@ -88,7 +92,10 @@ class EmpresaController extends Controller
     {
         $empresa = Empresa::find($id);
         //$empresa = $empresa->find($id);
-        $this->authorize('view_empresa', $empresa);
+        //$this->authorize('view_empresa', $empresa);
+        if(Gate::denies('view_empresa', $empresa)){
+            return redirect()->back();
+        }
         return view("visual.view_empresas", compact("empresa","id"));
     }
 }
