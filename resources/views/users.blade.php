@@ -56,10 +56,13 @@
                                     </td>
                                     <td class="">
                                         <div class="btn-group" role="group">
-                                            <a href='' class="btn btn-success"><i class='far fa-edit'></i></a>
+                                        <a href='{{ url("/User/editar/$u->id") }}'
+                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
                                             <a href='{{ url("/User/vizualizar/$u->id") }}'
                                                 class="btn btn-primary"><i class='flaticon-lock-1'></i></a>
-                                            <a href="" class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                <a href="javascript:deletarRegistro('{{ $u->id }}')"
+                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -73,3 +76,49 @@
     </div>
 </div>
 @endsection
+<script src="{{ url("js/core/jquery.3.2.1.min.js") }}"></script>
+<script>
+    function deletarRegistro(id) {
+        var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        swal({
+            title: "Excluir",
+            text: "Excluir do item selecionado?",
+            icon: "warning",
+            buttons: {
+                confirm: {
+                    text: 'Sim',
+                    className: 'btn btn-success'
+                },
+                cancel: {
+                    text: 'Não',
+                    visible: true,
+                    className: 'btn btn-danger'
+                }
+            }
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{ url("User/excluir") }}" + '/' + id,
+                    type: 'DELETE',
+                    data: {
+                        '_method': 'DELETE',
+                        '_token': csrf_token
+                    },
+                    success: function () {
+                        location.reload();
+                        swal({
+                            title: "Registro deletado com sucesso!",
+                            icon: "success",
+                        });
+
+                    },
+                    error: function () {
+                        swal("Erro!", "Algo de errado aconteceu!", );
+                    }
+                });
+
+            }
+        });
+    }
+
+</script>

@@ -10,6 +10,7 @@ class CliForContato extends Model
   protected $primaryKey = 'Codigo';
   protected $fillable = Array(
     "Cod_CliFor",
+    "user_id",
     "Tipo",
     "Setor",
     "Nome",

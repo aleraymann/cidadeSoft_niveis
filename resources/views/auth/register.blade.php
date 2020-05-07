@@ -105,6 +105,12 @@
                                 
                             </div>
                         </div>
+                        <div class="form-group form-floating-label col-12">
+                            <div>
+                                <input id="adm" type="adm" class="form-control input-border-bottom" name="adm" placeholder="Cod do Administrador" hidden>
+                                
+                            </div>
+                        </div>
 
                         <div class="form-action">
 					<a href="{{ url("/") }}" id="show-signin" class="btn btn-danger btn-rounded btn-login mr-3">Cancel</a>
@@ -134,8 +140,10 @@
 
          if (value == "A") {
             empresa.hidden = true;
+            adm.hidden = true;
          } else if (value == "F") {
             empresa.hidden = false;
+            adm.hidden = false;
          }
      };
 </script>

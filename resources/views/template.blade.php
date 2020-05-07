@@ -207,22 +207,22 @@
 								<ul class="nav">
 								@can('view_users')
 									<li>
-										<a href="{{url("/Permissions")}}">
+										<a href="{{url("/Permission")}}">
 											<span class="link-collapse">Permissões</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url("/Roles")}}">
+										<a href="{{url("/Role")}}">
 											<span class="link-collapse">Cargos</span>
 										</a>
 									</li>
 									<li>
-									<a href="{{ url("/Cargos") }}">
+									<a href="{{ url("/Cargo") }}">
 											<span class="link-collapse">Gerenciar Cargos</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url("/Users")}}">
+										<a href="{{url("/User")}}">
 											<span class="link-collapse">Usuários</span>
 										</a>
 									</li>
@@ -279,12 +279,13 @@
 										</a>
 									</li>
 								@endcan
+								
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/Clifor')}}">
 											<span class="sub-item">Clientes/Fornecedores</span>
 										</a>
 									</li>
-									
+								
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/transportadoras')}}">
 											<span class="sub-item">Transportadoras</span>

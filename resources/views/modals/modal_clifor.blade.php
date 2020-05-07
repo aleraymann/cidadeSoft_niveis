@@ -387,8 +387,12 @@
                          <label for="Vendedor">Vendedor:</label>
                          <select class="form-control input-border-bottom" id="Vendedor" name="Vendedor" required>
                              <option value=""></option>
-                             @foreach($vendedor as $vendedor)
-                                 <option value="{{ $vendedor->Codigo }}">{{ $vendedor->Nome }}</option>
+                             @foreach($user as $u)
+                                @if( $u->adm === Auth::user()->id )
+                                     <option value="{{ $u->id }}">
+                                        {{ $u->name }}
+                                     </option>
+                                 @endif
                              @endforeach
                          </select>
                          <div class="invalid-feedback">
@@ -430,8 +434,11 @@
                          <label for="Empresa">Empresa:</label>
                          <select class="form-control input-border-bottom" id="Empresa" name="Empresa">
                              <option value="0">Selecione</option>
+                            
                              @foreach($empresa as $empresa)
+                             @can("update_empresa",$empresa)
                                  <option value="{{ $empresa->Codigo }}">{{ $empresa->Nome_Fantasia }}</option>
+                            @endcan
                              @endforeach
                          </select>
                          <div class="invalid-feedback">

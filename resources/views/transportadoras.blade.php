@@ -131,6 +131,7 @@
 										
 											<tbody>
                         @foreach($transportadora as $trans)
+                        @can('view_trans', $trans)
                         <tr>
                           <td class=""> {{ $trans->Codigo }}   </td>
                           <td class=""> {{ $trans->Nome_Fantasia }}   </td>
@@ -139,12 +140,20 @@
                           <td> {{ $trans->Empresa }}   </td>
                           <td class=""> 
                             <div class="btn-group" role="group">
+                            @can('edita_transp')
                               <a href='{{url("/Transportadora/editar/$trans->Codigo")}}' class="btn btn-success"><i class='far fa-edit'></i></a>
+                              @endcan
+                              @can('visual_transp')
                               <a href='{{url("/Transportadora/vizualizar/$trans->Codigo")}}' class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                              @endcan
+                              @can('deleta_transp')
                               <a href="javascript:deletarRegistro('{{ $trans->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>                            </div>
+                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                              @endcan                          
+                              </div>
                           </td>
                         </tr>
+                        @endcan
                         @endforeach
 											</tbody>
 										</table>

@@ -22,11 +22,15 @@
                     {{ $transportadora->Nome_Fantasia }}
                 </h4>
                 <div class="btn-group" role="group">
+                @can('edita_transp')
         <a href='{{ url("/Transportadora/editar/$transportadora->Codigo") }}'
             class="btn btn-success"><i class='far fa-edit'></i></a>
+            @endcan
+            @can('deleta_transp')
         <a href='{{ url("/Transportadora/excluir/$transportadora->Codigo") }}'
             class="btn btn-danger" onclick="return confirm('Deseja mesmo Excluir?')"><i
                 class='fas fa-trash-alt'></i></a>
+            @endcan  
     </div>
             </div>
             <div class="card-body">

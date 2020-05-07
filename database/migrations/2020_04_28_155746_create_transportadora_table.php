@@ -29,10 +29,10 @@ class CreateTransportadoraTable extends Migration
             $table->string('Celular',14);
             $table->string('Comercial',14);
             $table->string('Email');
-            $table->string('RG',14);
-            $table->string('CPF',14);
+            $table->string('RG',14)->nullable();
+            $table->string('CPF',14)->nullable();
             $table->string('IE',14);
-            $table->string('CNPJ',18);
+            $table->string('CNPJ',18)->nullable();
             $table->string('Tipo_Frete',10);
             $table->decimal('FreteM2',10,2)->default(0.00);
             $table->decimal('FreteM3',10,2)->default(0.00);

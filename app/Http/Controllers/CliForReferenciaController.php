@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\CliForReferencia;
 use App\model\CliFor;
+use Gate;
 class CliForReferenciaController extends Controller
 {
  
@@ -22,6 +23,9 @@ class CliForReferenciaController extends Controller
             {   
              
                 $dados = $clifor_referencia->find($id);
+                if (Gate::denies('view_clifor', $clifor_referencia)) {
+                    return redirect()->back();
+                }
                 $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("CliForController@listar")
@@ -49,12 +53,18 @@ class CliForReferenciaController extends Controller
     public function editar( CliForReferencia $clifor_referencia, $id, CliFor $clifor)
     {
         $clifor_referencia = $clifor_referencia->find($id);
+        if (Gate::denies('view_clifor', $clifor_referencia)) {
+            return redirect()->back();
+        }
         $clifor = clifor::all();
         return view("edit.edit_clifor_referencia", compact("clifor_referencia","id","clifor"));
     }
 
     public function excluir($Codigo, CliForReferencia $clifor_referencia)
     {
+        if (Gate::denies('view_clifor', $clifor_referencia)) {
+            return redirect()->back();
+        }
             $clifor_referencia->destroy($Codigo);
       
     }

@@ -28,11 +28,15 @@
 
                 </h4>
                 <div class="btn-group " role="group">
+                @can('edita_cliente')
                     <a href='{{ url("/Clifor/editar/$clifor->Codigo") }}'
                         class="btn btn-success"><i class='far fa-edit'></i></a>
+                        @endcan
+                        @can('deleta_cliente')
                     <a href='{{ url("/Clifor/excluir/$clifor->Codigo") }}'
                         class="btn btn-danger" onclick="return confirm('Deseja mesmo Excluir?')"><i
                             class='fas fa-trash-alt'></i></a>
+                            @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -162,6 +166,7 @@
     </div>
 
     <h5 class="ml-2">Dados Adicionais</h5>
+    @can('insere_cliente')
     <ul class="nav nav-tabs ml-3" role="tablist">
         <li class="nav-item">
             <a class="nav-link " href="#contato" role="tab" data-toggle="tab"><b> + Contato</b></a>
@@ -192,7 +197,7 @@
             </div>
         </div>
     </div>
-
+    @endcan
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -228,10 +233,14 @@
                                         <td>{{ $clifor_contato->Email }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
+                                            @can('edita_cliente')
                                                 <a href='{{ url("/Clifor/contato/editar/$clifor_contato->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            @endcan
+                                            @can('deleta_cliente')
                                                     <a href="javascript:deletarContato('{{ $clifor_contato->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            @endcan
                                             </div>
                                         </td>
                                     </tr>
@@ -295,10 +304,14 @@
 
                                         <td>
                                             <div class="btn-group" role="group">
+                                            @can('edita_cliente')
                                                 <a href='{{ url("/Clifor/endereco/editar/$clifor_endereco->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            @endcan
+                                            @can('deleta_cliente')
                                                     <a href="javascript:deletarEndereco('{{ $clifor_endereco->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            @endcan
                                             </div>
                                         </td>
                                     </tr>
@@ -342,10 +355,14 @@
                                         <td>{{ $clifor_referencia->Limite }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
+                                            @can('edita_cliente')
                                                 <a href='{{ url("/Clifor/referencia/editar/$clifor_referencia->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            @endcan
+                                            @can('deleta_cliente')
                                                     <a href="javascript:deletarReferencia('{{ $clifor_referencia->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            @endcan
                                             </div>
                                         </td>
                                     </tr>

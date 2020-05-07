@@ -72,7 +72,8 @@
       </div>
       <div class="form-group col-lg-4">
         <label for="Ult_Compra">Valor da última compra</label>
-        <input type="text" class="form-control input-border-bottom" name="Valor_UltCompra" id="Valor_UltCompra" maxlength="10">
+        <input type="text" class="form-control input-border-bottom" name="Valor_UltCompra"
+        require id="Valor_UltCompra" maxlength="10">
         
         <div class="invalid-feedback">
           Campo obrigatório!
@@ -84,7 +85,7 @@
       <div class="form-group col-lg-4">
         <label for="Limite">Limite que tem no Estabelecimento</label>
         <input type="text" class="form-control input-border-bottom" name="Limite" id="Limite"
-        placeholder="" maxlength="10">
+        placeholder="" maxlength="10" require>
         <div class="invalid-feedback">
           Campo obrigatório!
         </div>

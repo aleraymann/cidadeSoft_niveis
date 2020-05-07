@@ -9,8 +9,11 @@
       </div>
       @endif
     
-      <div class="main-panel">
+      <div class="main-panel ml-2">
         <div style="margin-top:60px">
+        <a href="{{ url()->previous() }}" class="btn btn-primary  btn-rounded">
+        Voltar
+    </a>
         <!-- Button to Open the Modal -->
         @include('sweetalert::alert')
         <!--end container-->    

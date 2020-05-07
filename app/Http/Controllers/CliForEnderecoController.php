@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\CliForEndereco;
 use App\model\CliFor;
+use Gate;
 
 class CliForEnderecoController extends Controller
 {
@@ -22,6 +23,9 @@ class CliForEnderecoController extends Controller
             {   
              
                 $dados = $clifor_endereco->find($id);
+                if (Gate::denies('view_clifor', $clifor_endereco)) {
+                    return redirect()->back();
+                }
                 $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("CliForController@listar")
@@ -30,9 +34,6 @@ class CliForEnderecoController extends Controller
             else
             {
                 $clifor_endereco->create($dadosFormulario->all());
-                return redirect()
-                ->action("CliForController@listar")
-                ->with("toast_success", "Registro Editado Com Sucesso");
             }
             
             return redirect()
@@ -50,12 +51,18 @@ class CliForEnderecoController extends Controller
 
     public function excluir($Codigo,  CliForEndereco $clifor_endereco)
     {
+        if (Gate::denies('view_clifor', $clifor_endereco)) {
+            return redirect()->back();
+        }
             $clifor_endereco->destroy($Codigo);
        
     }
     public function editar( CliForEndereco $clifor_endereco, $id, CliFor $clifor)
     {
         $clifor_endereco = $clifor_endereco->find($id);
+        if (Gate::denies('view_clifor', $clifor_endereco)) {
+            return redirect()->back();
+        }
         $clifor = clifor::all();
         return view("edit.edit_clifor_endereco", compact("clifor_endereco","id","clifor"));
     }

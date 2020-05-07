@@ -77,7 +77,7 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{ url("Cargos/excluir") }}" + '/' + id,
+                    url: "{{ url("Cargo/excluir") }}" + '/' + id,
                     type: 'DELETE',
                     data: {
                         '_method': 'DELETE',

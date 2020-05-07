@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\model\CliForContato;
 use App\model\CliFor;
+use Gate;
 
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class CliForContatoController extends Controller
         }
     }
     public function excluir($Codigo,  CliForContato $clifor_contato)
-    {
+    { 
             $clifor_contato->destroy($Codigo);
 
     }
@@ -55,6 +56,9 @@ class CliForContatoController extends Controller
     public function editar( CliForContato $clifor_contato, $id, CliFor $clifor)
     {
         $clifor_contato = $clifor_contato->find($id);
+        if (Gate::denies('view_clifor_contato', $clifor_contato)) {
+            return redirect()->back();
+        }
         $clifor = clifor::all();
         return view("edit.edit_clifor_contato", compact("clifor_contato","id","clifor"));
     }

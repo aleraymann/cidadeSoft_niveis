@@ -20,11 +20,11 @@ class CreateCliforTable extends Migration
             $table->string('Class_ABC',1)->default("A");
             $table->string('Tip',1)->default("C");
             $table->integer('Ativo')->default(1);
-            $table->date('Data_Cadastro');
+            $table->string('Data_Cadastro',10);
             $table->string('Fis_Jur',1)->default("F");
             $table->string('Razao_Social');
             $table->string('Nome_Fantasia')->nullable();
-            $table->date('Data_Nascimento')->nullable();
+            $table->string('Data_Nascimento',10)->nullable();
             $table->string('Estado_Civil',1)->nullable();
             $table->string('Sexo',1)->nullable();
             $table->string('CNPJ',18)->nullable();
@@ -48,7 +48,7 @@ class CreateCliforTable extends Migration
             $table->decimal('LimiCred', 10,2)->default(0.00)->nullable();
             $table->decimal('PercDescAcresc', 3,2)->default(0.00)->nullable();
             $table->unsignedInteger('Vendedor');
-            $table->foreign('Vendedor')->references('Codigo')->on('funcionario')->onDelete('cascade');
+            $table->foreign('Vendedor')->references('id')->on('users')->onDelete('cascade');
             $table->string('Local_UltMov',3)->nullable();
             $table->date('Data_UltMov')->nullable();
             $table->string('Observacoes')->nullable();

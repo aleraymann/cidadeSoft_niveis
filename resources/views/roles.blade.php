@@ -40,6 +40,7 @@
                     <table id="multi-filter-select" class="display table table-striped table-hover">
                         <thead>
                             <tr>
+                            <th class="">Cod.</th>
                                 <th class="">Cargo</th>
                                 <th class="">Função</th>
                             </tr>
@@ -48,6 +49,7 @@
                         <tbody>
                         @foreach($roles as $r)
                                 <tr>
+                                <td class=""> {{ $r->id }} </td>
                                     <td class=""> {{ $r->name }} </td>
                                     <td class=""> {{ $r->label }} </td>
                                     <td class="">

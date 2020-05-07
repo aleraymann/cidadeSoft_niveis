@@ -7,7 +7,7 @@ use App\model\Transportadora;
 use App\model\Transportadora_Destino;
 use App\model\Transportadora_Valor;
 use App\model\Empresa;
-
+use Gate;
 class TransportadoraController extends Controller
 {
     public function listar(Transportadora $transportadora, Empresa $empresa)
@@ -26,6 +26,9 @@ class TransportadoraController extends Controller
             {   
              
                 $dados = $transportadora->find($id);
+                if(Gate::denies('view_trans', $transportadora)){
+                    return redirect()->back();
+                }
                 $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("TransportadoraController@listar")
@@ -56,7 +59,14 @@ class TransportadoraController extends Controller
     }
     public function editar(Transportadora $transportadora, $id, Empresa $empresa)
     {
+        
         $transportadora = $transportadora->find($id);
+        if(Gate::denies('view_trans', $transportadora)){
+            return redirect()->back();
+        }
+        if(Gate::denies('edita_transp', $transportadora)){
+            return redirect()->back();
+        }
         $empresa = Empresa::all();
         return view("edit.edit_transportadora", compact("transportadora","id","empresa"));
     }
@@ -64,6 +74,12 @@ class TransportadoraController extends Controller
         Transportadora_Valor $transportadora_valor)
     {
         $transportadora = $transportadora->find($id);
+        if(Gate::denies('view_trans', $transportadora)){
+            return redirect()->back();
+        }
+        if(Gate::denies('deleta_transp', $transportadora)){
+            return redirect()->back();
+        }
         $transportadora_destino = Transportadora_Destino::all();
         $transportadora_valor = Transportadora_Valor::all();
         return view("visual.view_transportadora", compact("transportadora","id","transportadora_destino","transportadora_valor"));

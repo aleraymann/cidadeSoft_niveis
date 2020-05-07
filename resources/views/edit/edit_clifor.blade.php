@@ -44,7 +44,11 @@
                 <div class="modal-body">
                     @if(!isset($id))
                         <form method="post" class="needs-validation" novalidate
-                            action="{{ url("Clifor/salvar") }}">
+                            action="{{ url("Clifor/salvar") }}"> @foreach($user as $u)
+                                @if( $u->adm == Auth::user()->id )
+                                     <option value="{{ $u->id }}">{{ $u->name }}</option>
+                                 @endif
+                             @endforeach
                         @else
                             <form method="post" action="{{ url("Clifor/salvar/$id") }}"
                                 enctype="multipart/form-data">
@@ -65,7 +69,7 @@
                         <div class="form-group col-lg-6">
                             <label for="Razao_Social">Razão Social:</label>
                             <input type="text" class="form-control input-border-bottom" name="Razao_Social"
-                                id="Razao_Social" placeholder="Razão Social" minlength="4" maxlength="60" required
+                                id="Razao_Social" placeholder="Razão Social" minlength="4" maxlength="60" 
                                 value="{{ isset($clifor->Razao_Social) ? $clifor->Razao_Social : '' }}">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
@@ -464,11 +468,14 @@
                     <div class="form-group col-lg-2">
                         <label for="Vendedor">Vendedor:</label>
                         <select class="form-control input-border-bottom" id="Vendedor" name="Vendedor">
-                            @foreach($vendedor as $vendedor)
-                                <option value="{{ $vendedor->Codigo }}"
-                                    {{ $clifor->Vendedor == $vendedor->Codigo ? "selected" : "" }}>
-                                    {{ $vendedor->Nome }}</option>
-                            @endforeach
+                        @foreach($user as $u)
+                                @if( $u->adm == Auth::user()->id )
+                                     <option value="{{ $u->id }}"
+                                    {{ $clifor->Vendedor == $u->id ? "selected" : "" }}>
+                                    {{ $u->name }}</option>
+                                 @endif
+                             @endforeach
+                          
                         </select>
                         <div class="invalid-feedback">
                             Por favor, Campo Obrigatório!

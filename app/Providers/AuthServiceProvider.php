@@ -9,6 +9,9 @@ use App\model\Empresa;
 use App\model\Funcionario;
 use App\model\Permission;
 use App\model\Role;
+use App\model\CliFor;
+use App\model\Transportadora;
+use App\model\CliForContato;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,11 +32,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        
         //empresa
         Gate::define('update_empresa', function( User $user, Empresa $empresa){//update - delete
             return $user->id == $empresa->user_id;     
         });
-        
         
         Gate::define('view_empresa', function( User $user, Empresa $empresa){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
@@ -43,20 +46,58 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->empresa == $empresa->Codigo;     
             }
         });
+        Gate::define('view_emp_func', function( User $user, Empresa $empresa){//update - delete
+            return $user->empresa == $empresa->Codigo;
+        });
+        
+        
+        //clifor
+        Gate::define('view_clifor', function( User $user, CliFor $clifor){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $clifor->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $clifor->user_id;     
+            }
+        });
+        Gate::define('view_clifor_contato', function( User $user, CliForContato $cliforcontato){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $cliforcontato->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $clifor->user_id;     
+            }
+        });
+        Gate::define('view_cli_func', function( User $user, CliFor $clifor){//update - delete
+            return $user->id == $clifor->Vendedor;
+        });
+        Gate::define('view_cli_adm', function( User $user, CliFor $clifor){//update - delete
+            return $user->id == $clifor->user_id;
+        });
 
 
         //funcionario
         Gate::define('update_funcionario', function( User $user, Funcionario $funcionario){//update - delete
             return $user->id == $funcionario->user_id;     
         });
+        Gate::define('update_vendedor', function( User $user, Funcionario $funcionario){//update - delete
+            return $user->id == $funcionario->user_id;     
+        });
         
-        Gate::define('view_emp_func', function( User $user, Empresa $empresa){//update - delete
-            return $user->empresa == $empresa->Codigo;
+        //transportadoras
+        Gate::define('view_trans', function( User $user, Transportadora $transportadora){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $transportadora->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $transportadora->user_id;     
+            }
         });
        
         //Users
        
 
+        
         $permissions = Permission::with('roles')->get(); //recupera tudo das funcoes..
         //dd($permissions); //  puxa todas as permissoes 
         $contador = 0;

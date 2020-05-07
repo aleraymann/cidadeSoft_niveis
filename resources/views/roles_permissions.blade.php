@@ -11,6 +11,7 @@
     
       <div class="main-panel">
         <div style="margin-top:60px">
+        
         <!-- Button to Open the Modal -->
         @include('sweetalert::alert')
         <!--end container-->    
