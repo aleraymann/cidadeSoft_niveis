@@ -26,6 +26,9 @@ class TransportadoraController extends Controller
             {   
              
                 $dados = $transportadora->find($id);
+                if(Gate::denies('view_trans_func', $transportadora)){
+                    return redirect()->back();
+                }
                 if(Gate::denies('view_trans', $transportadora)){
                     return redirect()->back();
                 }
@@ -61,6 +64,9 @@ class TransportadoraController extends Controller
     {
         
         $transportadora = $transportadora->find($id);
+        if(Gate::denies('view_trans_func', $transportadora)){
+            return redirect()->back();
+        }
         if(Gate::denies('view_trans', $transportadora)){
             return redirect()->back();
         }
@@ -74,10 +80,7 @@ class TransportadoraController extends Controller
         Transportadora_Valor $transportadora_valor)
     {
         $transportadora = $transportadora->find($id);
-        if(Gate::denies('view_trans', $transportadora)){
-            return redirect()->back();
-        }
-        if(Gate::denies('deleta_transp', $transportadora)){
+        if(Gate::denies('view_trans_func', $transportadora)){
             return redirect()->back();
         }
         $transportadora_destino = Transportadora_Destino::all();

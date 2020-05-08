@@ -12,6 +12,8 @@ use App\model\Role;
 use App\model\CliFor;
 use App\model\Transportadora;
 use App\model\CliForContato;
+use App\model\CliForEmdereco;
+use App\model\CliForReferencia;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -33,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         
-        //empresa
+        //empresa------------------------------------------------------------------------------
         Gate::define('update_empresa', function( User $user, Empresa $empresa){//update - delete
             return $user->id == $empresa->user_id;     
         });
@@ -51,7 +53,7 @@ class AuthServiceProvider extends ServiceProvider
         });
         
         
-        //clifor
+        //clifor-------------------------------------------------------------------------------
         Gate::define('view_clifor', function( User $user, CliFor $clifor){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $clifor->user_id;     
@@ -60,9 +62,27 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->adm == $clifor->user_id;     
             }
         });
+
         Gate::define('view_clifor_contato', function( User $user, CliForContato $cliforcontato){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $cliforcontato->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $clifor->user_id;     
+            }
+        });
+
+        Gate::define('view_clifor_endereco', function( User $user, CliForEndereco $cliforendereco){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $cliforendereco->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $clifor->user_id;     
+            }
+        });
+        Gate::define('view_clifor_referencia', function( User $user, CliForReferencia $clifor_referencia){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $clifor_referencia->user_id;     
             }
             if( $user->hasAnyRoles('funcionario')){
                 return $user->adm == $clifor->user_id;     
@@ -76,7 +96,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
 
-        //funcionario
+        //funcionario-------------------------------------------------------------------------------------
         Gate::define('update_funcionario', function( User $user, Funcionario $funcionario){//update - delete
             return $user->id == $funcionario->user_id;     
         });
@@ -84,17 +104,15 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $funcionario->user_id;     
         });
         
-        //transportadoras
-        Gate::define('view_trans', function( User $user, Transportadora $transportadora){//apenas visualizar
-            if( $user->hasAnyRoles('adm')){
-                return $user->id == $transportadora->user_id;     
-            }
-            if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $transportadora->user_id;     
-            }
+        //transportadoras------------------------------------------------------------------------------------
+        Gate::define('view_trans_func', function( User $user, Transportadora $transportadora){//update - delete
+            return $user->adm == $transportadora->user_id;
+        });
+        Gate::define('view_trans_adm', function( User $user, Transportadora $transportadora){//update - delete
+            return $user->id == $transportadora->user_id;
         });
        
-        //Users
+        //Users--------------------------------------------------------------------------------
        
 
         

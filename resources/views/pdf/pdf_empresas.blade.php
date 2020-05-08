@@ -77,6 +77,8 @@
                                 <th>Nome Fantasia</th>
                                 <th>Razão Social</th>
                                 <th>CNPJ</th>
+                                <th>Cod Admin</th>
+
                             </tr>
                         </thead>
 
@@ -87,6 +89,7 @@
                                     <td> {{ $emp->Nome_Fantasia }} </td>
                                     <td> {{ $emp->Razao_Social }} </td>
                                     <td> {{ $emp->CNPJ }} </td>
+                                    <td> {{ $emp->user_id }} </td>
                                 </tr>
                             @endforeach
                         </tbody>

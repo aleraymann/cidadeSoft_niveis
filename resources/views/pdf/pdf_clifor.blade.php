@@ -81,6 +81,7 @@
                                 <th class="">Situação</th>
                                 <th class="">Cadastro</th>
                                 <th class="">Cliente/Fornecedor</th>
+                                <th class="">Cod Admin</th>
                             </tr>
                         </thead>
 
@@ -99,7 +100,7 @@
                                     @else
                                         <td> {{ $cf->Tip = "Ambos" }} </td>
                                     @endif
-
+                                    <td> {{ $cf->user_id }} </td>
                                 </tr>
                             @endforeach
                         </tbody>

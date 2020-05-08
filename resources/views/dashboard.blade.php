@@ -89,13 +89,13 @@
                             <div class="row">
                                 <div class="col-5">
                                     <div class="icon-big text-center">
-                                        <i class="flaticon-graph"></i>
+                                        <i class="flaticon-profile-1"></i>
                                     </div>
                                 </div>
                                 <div class="col-7 col-stats">
                                     <div class="numbers">
-                                        <p class="card-category">Sales</p>
-                                        <h4 class="card-title">$ 1,345</h4>
+                                        <p class="card-category">Clientes</p>
+                                        <h4 class="card-title d-flex justify-content-center" >{{  $totalClifor }}</h4>
                                     </div>
                                 </div>
                             </div>

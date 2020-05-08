@@ -157,23 +157,16 @@
 </script>
 
 @if(session('success_message'))
-       <div class="alert alert-danger">
-        {{session('success_message')}}
-      </div>
-      @endif
-    
-      <div class="main-panel">
-        <div style="margin-top:60px">
+    <div class="alert alert-danger">
+        {{ session('success_message') }}
+    </div>
+@endif
+
+<div class="main-panel">
+    <div style="margin-top:60px">
         <!-- Button to Open the Modal -->
         @include('sweetalert::alert')
-        <!--end container-->    
-      </div>
-    <div class="container">
-        <a class="btn btn-info" href='{{ url("/pdf_empresas") }}' target="blank">
-            <i class='la la-file-pdf-o' style="font-size:15px">
-                Gerar PDF
-            </i>
-        </a>
+        <!--end container-->
     </div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4 ml-2"></div>
     <div class="col-md-12">
@@ -199,70 +192,93 @@
                                 <th class="">Razão Social</th>
                                 <th class="">CNPJ</th>
                                 <th class="">User</th>
-                                
+
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($empresas as $emp)
-                                @can("update_empresa",$emp)
-                                
-                                <tr>
-                                    <td> {{ $emp->Codigo }} </td>
-                                    <td> {{ $emp->Nome_Fantasia }} </td>
-                                    <td> {{ $emp->Razao_Social }} </td>
-                                    <td> {{ $emp->CNPJ }} </td>
-                                    <td> {{$emp->user_id}} </td>
-                                   
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            @can('edita_empresa') 
+                                @if( Auth::user()->hasAnyRoles('s_adm'))
+                                    <tr>
+                                        <td> {{ $emp->Codigo }} </td>
+                                        <td> {{ $emp->Nome_Fantasia }} </td>
+                                        <td> {{ $emp->Razao_Social }} </td>
+                                        <td> {{ $emp->CNPJ }} </td>
+                                        <td> {{ $emp->user_id }} </td>
+
+                                        <td>
+                                            <div class="btn-group" role="group">
+
                                                 <a href='{{ url("/Empresa/editar/$emp->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
-                                            @endcan
-                                            @can("visual_empresa")
 
                                                 <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}'
                                                     class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                            @endcan
-                                            @can('deleta_empresa')
-                                                    <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
+                                                <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
                                                     class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                            @endcan  
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endcan
-                                @can("view_emp_func",$emp)
-                                 
-                                <tr>
-                                    <td> {{ $emp->Codigo }} </td>
-                                    <td> {{ $emp->Nome_Fantasia }} </td>
-                                    <td> {{ $emp->Razao_Social }} </td>
-                                    <td> {{ $emp->CNPJ }} </td>
-                                    <td> {{$emp->user_id}} </td>
-                                   
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            @can('edita_empresa') 
-                                                <a href='{{ url("/Empresa/editar/$emp->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
-                                            @endcan
-                                            @can("visual_empresa")
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @else
+                                    @can("update_empresa",$emp)
 
-                                                <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}'
-                                                    class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                            @endcan
-                                            @can('deleta_empresa')
-                                                    <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
-                                                    class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                            @endcan  
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <tr>
+                                            <td> {{ $emp->Codigo }} </td>
+                                            <td> {{ $emp->Nome_Fantasia }} </td>
+                                            <td> {{ $emp->Razao_Social }} </td>
+                                            <td> {{ $emp->CNPJ }} </td>
+                                            <td> {{ $emp->user_id }} </td>
 
-                                @endcan
-                            @endforeach
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    @can('edita_empresa')
+                                                        <a href='{{ url("/Empresa/editar/$emp->Codigo") }}'
+                                                            class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                    @endcan
+                                                    @can("visual_empresa")
+
+                                                        <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}'
+                                                            class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                                    @endcan
+                                                    @can('deleta_empresa')
+                                                        <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
+                                                            class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    @endcan
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endcan
+                                    @can("view_emp_func",$emp)
+
+                                        <tr>
+                                            <td> {{ $emp->Codigo }} </td>
+                                            <td> {{ $emp->Nome_Fantasia }} </td>
+                                            <td> {{ $emp->Razao_Social }} </td>
+                                            <td> {{ $emp->CNPJ }} </td>
+                                            <td> {{ $emp->user_id }} </td>
+
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    @can('edita_empresa')
+                                                        <a href='{{ url("/Empresa/editar/$emp->Codigo") }}'
+                                                            class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                    @endcan
+                                                    @can("visual_empresa")
+
+                                                        <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}'
+                                                            class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                                    @endcan
+                                                    @can('deleta_empresa')
+                                                        <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
+                                                            class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    @endcan
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    @endcan
+                                    @endif
+                                @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -272,7 +288,7 @@
     <div class="container">
         {{ $empresas->links() }}
     </div>
-    
+
 </div>
 
 @endsection

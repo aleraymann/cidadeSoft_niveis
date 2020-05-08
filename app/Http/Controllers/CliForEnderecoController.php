@@ -23,7 +23,7 @@ class CliForEnderecoController extends Controller
             {   
              
                 $dados = $clifor_endereco->find($id);
-                if (Gate::denies('view_clifor', $clifor_endereco)) {
+                if (Gate::denies('view_clifor_endereco', $clifor_endereco)) {
                     return redirect()->back();
                 }
                 $dados->update($dadosFormulario->all());
@@ -51,7 +51,7 @@ class CliForEnderecoController extends Controller
 
     public function excluir($Codigo,  CliForEndereco $clifor_endereco)
     {
-        if (Gate::denies('view_clifor', $clifor_endereco)) {
+        if (Gate::denies('view_clifor_endereco', $clifor_endereco)) {
             return redirect()->back();
         }
             $clifor_endereco->destroy($Codigo);
@@ -60,7 +60,7 @@ class CliForEnderecoController extends Controller
     public function editar( CliForEndereco $clifor_endereco, $id, CliFor $clifor)
     {
         $clifor_endereco = $clifor_endereco->find($id);
-        if (Gate::denies('view_clifor', $clifor_endereco)) {
+        if (Gate::denies('view_clifor_endereco', $clifor_endereco)) {
             return redirect()->back();
         }
         $clifor = clifor::all();

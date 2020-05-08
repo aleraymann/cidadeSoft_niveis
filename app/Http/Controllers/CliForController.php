@@ -79,6 +79,9 @@ class CliForController extends Controller
         if(Gate::denies('view_clifor', $clifor)){
             return redirect()->back();
         }
+        if(Gate::denies('edita_cliente')){
+            return redirect()->back();
+        }
         $vendedor = Funcionario::all();
         $empresa = Empresa::all();
         $user = User::all();

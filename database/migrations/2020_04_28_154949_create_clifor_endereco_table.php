@@ -16,6 +16,8 @@ class CreateCliforEnderecoTable extends Migration
         Schema::create('clifor_endereco', function (Blueprint $table) {
             $table->increments('Codigo');
             $table->unsignedInteger('Cod_CliFor');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('Cod_CliFor')->references('Codigo')->on('clifor')->onDelete('cascade');
             $table->string('CEP',10)->nullable();
             $table->string('Tipo_Endereco',1)->default("A");

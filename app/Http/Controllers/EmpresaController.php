@@ -79,6 +79,9 @@ class EmpresaController extends Controller
         if(Gate::denies('update_empresa', $empresa)){
             return redirect()->back();
         }
+        if(Gate::denies('edita_empresa')){
+            return redirect()->back();
+        }
 
         $funcionario = Funcionario::all();
         $cond_pag = Cond_Pag::all();

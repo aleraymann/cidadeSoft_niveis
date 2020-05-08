@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\CentroCusto;
+use Gate;
 
 class CentroCustoController extends Controller
 {
     public function listar( CentroCusto $centrocusto)
     {  
+        if(Gate::denies('view_financeiro')){
+            return redirect()->back();
+        }
         $centrocusto = $centrocusto->all();
         $centrocusto = CentroCusto::paginate(20);
         return view("centrocusto", compact("centrocusto")); 

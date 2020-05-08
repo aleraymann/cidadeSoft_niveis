@@ -11,6 +11,7 @@ class CliForEndereco extends Model
   protected $primaryKey = 'Codigo';
   protected $fillable = Array(
     "Cod_CliFor",
+    "user_id",
     "CEP",
     "Tipo_Endereco",
     "Endereco",

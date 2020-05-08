@@ -14,6 +14,13 @@
 <!-- Modal body -->
 <div class="modal-body">
   <form method="post" class="needs-validation" novalidate action="{{url("/Clifor/referencia/salvar")}}">
+  <div class="form-row">
+            <div class="form-group col-lg-12" hidden>
+                <b class="ls-label-text" for="RG">User_ID:</b>
+                <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id" readonly
+                    value="{{ Auth::user()->id }}">
+            </div>
+        </div>
     <div class="form-row">
       <div class="form-group col-lg-1" hidden>
         <label for="Cod_CliFor">Nome do Cliente:</label>

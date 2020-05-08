@@ -98,13 +98,7 @@
         @include('sweetalert::alert')
         <!--end container-->    
       </div>
-        <div class="container">
-        <a class="btn btn-info" href='{{ url("/pdf_funcionarios") }}' target="blank">
-            <i class='la la-file-pdf-o' style="font-size:15px">
-                Gerar PDF
-            </i>
-        </a>
-    </div>
+       
         <div class="d-sm-flex align-items-center justify-content-between mb-4 ml-2"></div>
         <div class="col-md-12">
 							<div class="card">

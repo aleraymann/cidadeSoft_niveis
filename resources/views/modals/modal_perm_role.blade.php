@@ -6,7 +6,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Cadastro de NCM
+                <h4 class="modal-title">Permissões a Cargos
                 </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -27,16 +27,16 @@
                         <select class="form-control input-border-bottom" id="role_id" name="role_id">
                             <option value="0">Selecione</option>
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                <option value="{{ $role->id }}">{{ $role->label }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group col-lg-6">
-                        <b class="ls-label-text" for="permission_id">Descrição:</b>
+                        <b class="ls-label-text" for="permission_id">Permissão:</b>
                         <select class="form-control input-border-bottom" id="permission_id" name="permission_id">
                             <option value="0">Selecione</option>
                             @foreach($permissions as $perm)
-                                <option value="{{ $perm->id }}">{{ $perm->name }}</option>
+                                <option value="{{ $perm->id }}">{{ $perm->label }}</option>
                             @endforeach
                         </select>
                     </div>

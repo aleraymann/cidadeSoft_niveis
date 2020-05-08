@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\Empresa;
+use App\model\CliFor;
 use App\User;
 
 class HomeController extends Controller
@@ -23,11 +24,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Empresa $totalEmpresas, User $totalUsers)
+    public function index(Empresa $totalEmpresas, User $totalUsers, CliFor $totalClifor)
     {   
         $totalEmpresas = Empresa::count();
         $totalUsers = User::count();
-        return view('dashboard', compact('totalEmpresas','totalUsers'));
+        $totalClifor = CLiFor::count();
+        return view('dashboard', compact('totalEmpresas','totalUsers','totalClifor'));
     }
 
     

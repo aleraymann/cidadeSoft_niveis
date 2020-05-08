@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\Cond_Pag;
 use App\model\Empresa;
+use Gate;
 
 class Cond_PagController extends Controller
 {
     public function listar( Cond_Pag $cond_pag)
     {  
+        if(Gate::denies('view_financeiro')){
+            return redirect()->back();
+        }
         $cond_pag = $cond_pag->all();
         $cond_pag = Cond_Pag::paginate(20);
         return view("cond_pag", compact("cond_pag")); 

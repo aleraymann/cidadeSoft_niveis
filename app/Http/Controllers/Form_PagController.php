@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\Form_Pag;
 use App\model\Empresa;
+use Gate;
+
 class Form_PagController extends Controller
 {
     public function listar(Form_Pag $form_pag)
     {
+        if(Gate::denies('view_financeiro')){
+            return redirect()->back();
+        }
         $form_pag = $form_pag->all();
         $form_pag = Form_Pag::paginate(20);
         return view("form_pag", compact("form_pag"));

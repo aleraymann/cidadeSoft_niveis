@@ -77,6 +77,8 @@
                                 <th class="">Nome</th>
                                 <th class="">Celular</th>
                                 <th class="">Email</th>
+                                <th class="">Cod Admin</th>
+                                
                             </tr>
                         </thead>
 
@@ -89,7 +91,8 @@
                                         {{ $trans->Fis_Jur=="F"? "Física":"Jurídica" }}
                                     </td>
                                     <td> {{ $trans->Email }} </td>
-                                    <td>  {{ $trans->transp->Nome_Fantasia }} </td>
+                                    
+                                    <td> {{ $trans->user_id }} </td>
                                 </tr>
                             @endforeach
                         </tbody>

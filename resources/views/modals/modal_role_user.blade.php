@@ -24,7 +24,7 @@
                         <select class="form-control input-border-bottom" id="role_id" name="role_id">
                             <option value="0">Selecione</option>
                             @foreach($role as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                <option value="{{ $role->id }}">{{ $role->label }}</option>
                             @endforeach
                         </select>
                     </div>

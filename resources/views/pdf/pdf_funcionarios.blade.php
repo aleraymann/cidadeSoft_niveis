@@ -77,16 +77,19 @@
                                 <th class="">Nome</th>
                                 <th class="">Celular</th>
                                 <th class="">Email</th>
+                                <th class="">Cod Admin</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($funcionarios as $func)
                                 <tr>
+                                   
                                     <td> {{ $func->Codigo }} </td>
                                     <td> {{ $func->Nome }} </td>
                                     <td> {{ $func->Celular }} </td>
                                     <td> {{ $func->Email }} </td>
+                                    <td> {{ $func->user_id }} </td>
                                 </tr>
                             @endforeach
                         </tbody>
