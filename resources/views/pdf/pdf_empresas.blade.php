@@ -84,6 +84,7 @@
 
                         <tbody>
                             @foreach($empresas as $emp)
+                            @can('view_empresa', $emp)
                                 <tr>
                                     <td> {{ $emp->Codigo }} </td>
                                     <td> {{ $emp->Nome_Fantasia }} </td>
@@ -91,6 +92,7 @@
                                     <td> {{ $emp->CNPJ }} </td>
                                     <td> {{ $emp->user_id }} </td>
                                 </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

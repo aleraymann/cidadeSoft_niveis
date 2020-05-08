@@ -141,24 +141,19 @@
                                         <td> {{ $trans->Empresa }} </td>
                                         <td class="">
                                             <div class="btn-group" role="group">
-                                                @can('edita_transp')
                                                     <a href='{{ url("/Transportadora/editar/$trans->Codigo") }}'
                                                         class="btn btn-success"><i class='far fa-edit'></i></a>
-                                                @endcan
-                                                @can('visual_transp')
                                                     <a href='{{ url("/Transportadora/vizualizar/$trans->Codigo") }}'
                                                         class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                                @endcan
-                                                @can('deleta_transp')
                                                     <a href="javascript:deletarRegistro('{{ $trans->Codigo }}')"
                                                         class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                                 
-                                                @endcan
+                                               
                                             </div>
                                         </td>
                                     </tr>
                                 @else
-                                    @can('view_trans_func', $trans)
+                                    @can('view_transp', $trans)
                                         <tr>
                                             <td class=""> {{ $trans->Codigo }} </td>
                                             <td class=""> {{ $trans->Nome_Fantasia }} </td>
@@ -173,7 +168,7 @@
                                                         <a href='{{ url("/Transportadora/editar/$trans->Codigo") }}'
                                                             class="btn btn-success"><i class='far fa-edit'></i></a>
                                                     @endcan
-                                                    @can('visual_transp')
+                                                    @can('view_transp',$trans)
                                                         <a href='{{ url("/Transportadora/vizualizar/$trans->Codigo") }}'
                                                             class="btn btn-secondary"><i class='far fa-eye'></i></a>
                                                     @endcan
@@ -186,36 +181,7 @@
                                             </td>
                                         </tr>
                                     @endcan
-                                        @can('view_trans_adm', $trans)
-                                            <tr>
-                                                <td class=""> {{ $trans->Codigo }} </td>
-                                                <td class=""> {{ $trans->Nome_Fantasia }} </td>
-                                                <td class="">
-                                                    {{ $trans->Fis_Jur=="F"? "Física":"Jurídica" }}
-                                                </td>
-                                                <td> {{ $trans->Email }} </td>
-                                                <td> {{ $trans->Empresa }} </td>
-                                                <td class="">
-                                                    <div class="btn-group" role="group">
-                                                        @can('edita_transp')
-                                                            <a href='{{ url("/Transportadora/editar/$trans->Codigo") }}'
-                                                                class="btn btn-success"><i class='far fa-edit'></i></a>
-                                                        @endcan
-                                                        @can('visual_transp')
-                                                            <a href='{{ url("/Transportadora/vizualizar/$trans->Codigo") }}'
-                                                                class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                                        @endcan
-                                                        @can('deleta_transp')
-                                                            <a href="javascript:deletarRegistro('{{ $trans->Codigo }}')"
-                                                                class="btn btn-danger "><i
-                                                                    class='fas fa-trash-alt'></i></a>
-                                                        
-                                                        @endcan
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endcan
-                                    @endif
+                                @endif
                                 @endforeach
                         </tbody>
                     </table>

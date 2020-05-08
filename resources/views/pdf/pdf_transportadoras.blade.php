@@ -84,6 +84,7 @@
 
                         <tbody>
                             @foreach($transportadora as $trans)
+                            @can('view_trans_adm', $trans)
                                 <tr>
                                     <td class=""> {{ $trans->Codigo }} </td>
                                     <td class=""> {{ $trans->Nome_Fantasia }} </td>
@@ -94,6 +95,7 @@
                                     
                                     <td> {{ $trans->user_id }} </td>
                                 </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

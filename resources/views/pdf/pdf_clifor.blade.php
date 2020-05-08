@@ -87,6 +87,7 @@
 
                         <tbody>
                             @foreach($clifor as $cf)
+                            @can('view_cli_adm', $cf)
                                 <tr>
                                     <td> {{ $cf->Codigo }} </td>
                                     <td> {{ $cf->Nome_Fantasia }} </td>
@@ -102,6 +103,7 @@
                                     @endif
                                     <td> {{ $cf->user_id }} </td>
                                 </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table><br>

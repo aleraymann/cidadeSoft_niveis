@@ -402,6 +402,7 @@
 								</ul>
 							</div>
 						</li>
+						@can('gerar_relatorio')
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#relatorio">
 								<i class="flaticon-file"></i>
@@ -433,6 +434,7 @@
 								</ul>
 							</div>
 						</li>
+						@endcan
 						<li class="nav-item">
 						<a href="{{url('/Maps')}}">
 								<i class="flaticon-placeholder"></i>

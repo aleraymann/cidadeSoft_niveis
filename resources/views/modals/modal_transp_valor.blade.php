@@ -13,6 +13,13 @@
 <h5>Add Valor</h5>
 <div class="modal-body">
   <form method="post" class="needs-validation" novalidate action="{{url("/Transportadora/valor/salvar")}}">
+  <div class="form-row">
+            <div class="form-group col-lg-12" hidden>
+                <b class="ls-label-text" for="RG">User_ID:</b>
+                <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id" readonly
+                    value="{{ Auth::user()->id }}">
+            </div>
+        </div>
     <div class="form-row">
       <div class="form-group col-lg-1" hidden>
         <label for="Cod_Transp">Transportadora:</label>
@@ -44,7 +51,8 @@
       </div>
       <div class="form-group col-lg-2">
         <label for="Indice_v">Índice para cobrança</label>
-        <input type="text" class="form-control input-border-bottom" name="Indice_v" id="Indice_v" minlength="1" maxlength="3" value="0.00" required>
+        <input type="text" class="form-control input-border-bottom" name="Indice_v" id="Indice_v" 
+        minlength="1" value="0.00" required onblur="indice_v()">
         <div class="invalid-feedback">
           Por favor, Campo Obrigatório!
         </div>
@@ -97,4 +105,10 @@ $('input').on("keypress", function(e) {
                 });
               }, false);
             })();
+
+        function indice_v() {
+          var desc = parseFloat(document.getElementById('Indice_v').value, 2);
+          lim = desc.toFixed(2);
+          document.getElementById('Indice_v').value = lim;
+        }
           </script>

@@ -17,6 +17,8 @@ class CreateTransportadoraDestinoTable extends Migration
             $table->increments('Codigo');
             $table->unsignedInteger('Cod_Transp');
             $table->foreign('Cod_Transp')->references('Codigo')->on('transportadora')->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('Destino_Cidade',50);
             $table->string('Destino_UF',2);
             $table->decimal('Indice',3,2)->default(0.00);

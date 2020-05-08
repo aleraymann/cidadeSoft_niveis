@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\Transportadora_Destino;
 use App\model\Transportadora;
+use Gate;
 
 class Transportadora_DestinoController extends Controller
 {
@@ -24,6 +25,12 @@ class Transportadora_DestinoController extends Controller
             {   
                
                 $dados = $transportadora_destino->find($id);
+                if (Gate::denies('view_transp_destino', $transportadora_destino)) {
+                    return redirect()->back();
+                }
+                if (Gate::denies('edita_transp')) {
+                    return redirect()->back();
+                }
                 $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("TransportadoraController@listar")
@@ -48,11 +55,20 @@ class Transportadora_DestinoController extends Controller
     }
     public function excluir($Codigo,  Transportadora_Destino $transportadora_destino)
     {
+        if (Gate::denies('deleta_transp')) {
+            return redirect()->back();
+        }
         $transportadora_destino->destroy($Codigo);
     }
     public function editar( Transportadora_Destino $transportadora_destino, $id,  Transportadora $transportadora)
     {
         $transportadora_destino = $transportadora_destino->find($id);
+        if (Gate::denies('view_transp_destino', $transportadora_destino)) {
+            return redirect()->back();
+        }
+        if (Gate::denies('edita_transp')) {
+            return redirect()->back();
+        }
         $transportadora = Transportadora::all();
         return view("edit.edit_transp_destino", compact("transportadora_destino","id","transportadora"));
     }

@@ -40,7 +40,7 @@
 
                         @csrf
                         <div class="form-row">
-                            <div class="form-group form-floating-label col-5">
+                            <div class="form-group form-floating-label col-4">
                                 <div>
                                     <input id="name" type="text"
                                         class="form-control input-border-bottom"
@@ -50,7 +50,7 @@
                                 </div>
                              </div>
 
-                            <div class="form-group form-floating-label col-5">
+                            <div class="form-group form-floating-label col-4">
                                     <div>
                                         <input id="email" type="email"
                                             class="form-control input-border-bottom"
@@ -59,11 +59,18 @@
 
                                     </div>
                                 </div>
-                                <div class="form-group form-floating-label col-2">
+                            <div class="form-group form-floating-label col-2">
                             <div>
                                 <input id="empresa" type="empresa" class="form-control input-border-bottom" name="empresa"
                                 value="{{ isset($user->empresa) ? $user->empresa : '' }} ">
                                 <label for="empresa" class="placeholder">Empresa</label>
+                            </div>
+                            </div>
+                            <div class="form-group form-floating-label col-2">
+                            <div>
+                                <input id="adm" type="adm" class="form-control input-border-bottom" name="adm"
+                                value="{{ isset($user->adm) ? $user->adm : '' }} ">
+                                <label for="empresa" class="placeholder">Cod Adm</label>
                             </div>
                             </div>
                            

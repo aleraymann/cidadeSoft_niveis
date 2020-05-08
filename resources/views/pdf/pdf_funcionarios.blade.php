@@ -83,6 +83,7 @@
 
                         <tbody>
                             @foreach($funcionarios as $func)
+                            @can('update_funcionario', $func)
                                 <tr>
                                    
                                     <td> {{ $func->Codigo }} </td>
@@ -91,6 +92,7 @@
                                     <td> {{ $func->Email }} </td>
                                     <td> {{ $func->user_id }} </td>
                                 </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

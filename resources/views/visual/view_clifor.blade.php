@@ -31,12 +31,12 @@
                 @can('edita_cliente')
                     <a href='{{ url("/Clifor/editar/$clifor->Codigo") }}'
                         class="btn btn-success"><i class='far fa-edit'></i></a>
-                        @endcan
-                        @can('deleta_cliente')
+                @endcan
+                @can('deleta_cliente')
                     <a href='{{ url("/Clifor/excluir/$clifor->Codigo") }}'
                         class="btn btn-danger" onclick="return confirm('Deseja mesmo Excluir?')"><i
                             class='fas fa-trash-alt'></i></a>
-                            @endcan
+                @endcan
                 </div>
             </div>
             <div class="card-body">

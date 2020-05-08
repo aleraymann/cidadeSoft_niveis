@@ -22,7 +22,7 @@
                     {{ $transportadora->Nome_Fantasia }}
                 </h4>
                 <div class="btn-group" role="group">
-                @can('edita_transp')
+            @can('edita_transp')
         <a href='{{ url("/Transportadora/editar/$transportadora->Codigo") }}'
             class="btn btn-success"><i class='far fa-edit'></i></a>
             @endcan
@@ -110,12 +110,13 @@
 
     <br>
     <h5 class="ml-2">Dados Adicionais</h5>
+    @can('insere_transp')
     <ul class="nav nav-tabs ml-3" role="tablist">
         <li class="nav-item">
-            <a class="nav-link " href="#destino" role="tab" data-toggle="tab"> + Destino</a>
+            <a class="nav-link " href="#destino" role="tab" data-toggle="tab"><b> + Destino</b></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#valor" role="tab" data-toggle="tab"> + Valor</a>
+            <a class="nav-link" href="#valor" role="tab" data-toggle="tab"> <b>+ Valor</b></a>
         </li>
     </ul>
 
@@ -132,7 +133,7 @@
             </div>
         </div>
     </div>
-
+    @endcan
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -158,10 +159,14 @@
                                         <td>{{ $transportadora_destino->Indice }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
+                                            @can('edita_transp')
                                                 <a href='{{ url("/Transportadora/destino/editar/$transportadora_destino->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            @endcan
+                                            @can('deleta_transp')
                                                     <a href="javascript:deletarDestino('{{ $transportadora_destino->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            @endcan
                                             </div>
                                         </td>
                                     </tr>
@@ -197,13 +202,18 @@
                                         <td>{{ $transportadora_valor->KmIni }}</td>
                                         <td>{{ $transportadora_valor->KmFim }}</td>
                                         <td>{{ $transportadora_valor->Indice_v }}</td>
+                                        
                                         <td>
                                             <div class="btn-group" role="group">
+                                            @can('edita_transp')
                                                 <a href='{{ url("/Transportadora/valor/editar/$transportadora_valor->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            @endcan
+                                            @can('deleta_transp')
                                                     <a href="javascript:deletarValor('{{ $transportadora_valor->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                             </div>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endif

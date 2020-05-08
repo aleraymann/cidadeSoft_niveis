@@ -41,6 +41,7 @@
                                 <th class="">Usuário</th>
                                 <th class="">Email</th>
                                 <th class="">Empresa</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
@@ -54,6 +55,7 @@
                                     <td class="">
                                         {{ $u->empresa !== null?" Funcionario(Empresa:  $u->empresa)": "Adm" }}
                                     </td>
+                                    <td class=""> {{ $u->adm }} </td>
                                     <td class="">
                                         <div class="btn-group" role="group">
                                         <a href='{{ url("/User/editar/$u->id") }}'

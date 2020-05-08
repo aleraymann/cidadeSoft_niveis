@@ -11,6 +11,7 @@ class Transportadora_Valor extends Model
   protected $primaryKey = 'Codigo';
   protected $fillable = Array(
     "Cod_Transp",
+    "user_id",
     "KmIni",
     "KmFim",
     "Indice_v"

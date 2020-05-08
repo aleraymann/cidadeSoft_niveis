@@ -12,6 +12,13 @@
 <h5>Add Destino</h5>
 <div class="modal-body">
   <form method="post" class="needs-validation" novalidate action="{{url("/Transportadora/destino/salvar")}}">
+  <div class="form-row">
+            <div class="form-group col-lg-12" hidden>
+                <b class="ls-label-text" for="RG">User_ID:</b>
+                <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id" readonly
+                    value="{{ Auth::user()->id }}">
+            </div>
+        </div>
     <div class="form-row">
       <div class="form-group col-lg-1" hidden>
         <label for="Cod_Transp">Transportadora:</label>
@@ -72,7 +79,7 @@
       <div class="form-group col-lg-2">
         <label for="Indice">Índice para cobrança</label>
         <input type="text" class="form-control input-border-bottom" name="Indice" id="Indice" maxlength="3"
-        minlength="1" value="0.00" required>
+        minlength="1" value="0.00" required onblur="indice()">
         <div class="invalid-feedback">
           Por favor, Campo Obrigatório!
         </div>
@@ -125,4 +132,11 @@ $('input').on("keypress", function(e) {
                 });
               }, false);
             })();
+
+
+            function indice() {
+        var desc = parseFloat(document.getElementById('Indice').value, 2);
+        lim = desc.toFixed(2);
+        document.getElementById('Indice').value = lim;
+    }
           </script>

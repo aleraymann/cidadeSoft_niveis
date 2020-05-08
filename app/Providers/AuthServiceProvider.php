@@ -14,6 +14,8 @@ use App\model\Transportadora;
 use App\model\CliForContato;
 use App\model\CliForEmdereco;
 use App\model\CliForReferencia;
+use App\model\Transportadora_Destino;
+use App\model\Transportadora_Valor;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -62,6 +64,13 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->adm == $clifor->user_id;     
             }
         });
+        Gate::define('view_cli_func', function( User $user, CliFor $clifor){//update - delete
+            return $user->id == $clifor->Vendedor;
+        });
+        Gate::define('view_cli_adm', function( User $user, CliFor $clifor){//update - delete
+            return $user->id == $clifor->user_id;
+        });
+
 
         Gate::define('view_clifor_contato', function( User $user, CliForContato $cliforcontato){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
@@ -88,13 +97,7 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->adm == $clifor->user_id;     
             }
         });
-        Gate::define('view_cli_func', function( User $user, CliFor $clifor){//update - delete
-            return $user->id == $clifor->Vendedor;
-        });
-        Gate::define('view_cli_adm', function( User $user, CliFor $clifor){//update - delete
-            return $user->id == $clifor->user_id;
-        });
-
+      
 
         //funcionario-------------------------------------------------------------------------------------
         Gate::define('update_funcionario', function( User $user, Funcionario $funcionario){//update - delete
@@ -105,13 +108,31 @@ class AuthServiceProvider extends ServiceProvider
         });
         
         //transportadoras------------------------------------------------------------------------------------
-        Gate::define('view_trans_func', function( User $user, Transportadora $transportadora){//update - delete
-            return $user->adm == $transportadora->user_id;
+        Gate::define('view_transp', function( User $user, Transportadora $transportadora){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $transportadora->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $transportadora->user_id;     
+            }
         });
-        Gate::define('view_trans_adm', function( User $user, Transportadora $transportadora){//update - delete
-            return $user->id == $transportadora->user_id;
+        Gate::define('view_transp_destino', function( User $user, Transportadora_Destino $destino){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $destino->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $destino->user_id;     
+            }
         });
-       
+        Gate::define('view_transp_valor', function( User $user, Transportadora_Valor $valor){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $valor->user_id;     
+            }
+            if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $valor->user_id;     
+            }
+        });
+
         //Users--------------------------------------------------------------------------------
        
 
