@@ -23,9 +23,7 @@ class Transportadora_ValorController extends Controller
             {   
              
                 $dados = $transportadora_valor->find($id);
-                if (Gate::denies('view_transp_valor', $transportadora_valor)) {
-                    return redirect()->back();
-                }
+               
                 if (Gate::denies('edita_transp')) {
                     return redirect()->back();
                 }

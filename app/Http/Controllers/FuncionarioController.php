@@ -15,7 +15,7 @@ class FuncionarioController extends Controller
             return redirect()->back();
         }
         $funcionarios = $funcionario->all();
-        $funcionario = Funcionario::paginate(20);
+        $funcionario = Funcionario::paginate(10);
         return view("funcionarios", compact("funcionario")); 
     }
 

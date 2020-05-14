@@ -25,9 +25,7 @@ class Transportadora_DestinoController extends Controller
             {   
                
                 $dados = $transportadora_destino->find($id);
-                if (Gate::denies('view_transp_destino', $transportadora_destino)) {
-                    return redirect()->back();
-                }
+               
                 if (Gate::denies('edita_transp')) {
                     return redirect()->back();
                 }

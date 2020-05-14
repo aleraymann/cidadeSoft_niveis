@@ -13,7 +13,7 @@ class TransportadoraController extends Controller
     public function listar(Transportadora $transportadora, Empresa $empresa)
     {
         //$transportadora = $transportadora->all();
-        $transportadora = Transportadora::paginate(20);
+        $transportadora = Transportadora::paginate(10);
         $empresa = Empresa::all();
         return view("transportadoras", compact("transportadora","empresa"));
     }

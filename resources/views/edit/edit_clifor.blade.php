@@ -471,7 +471,7 @@
                         @foreach($user as $u)
                                 @if( $u->adm == Auth::user()->id )
                                      <option value="{{ $u->id }}"
-                                    {{ $clifor->Vendedor == $u->id ? "selected" : "" }}>
+                                    {{ $clifor->Vendedor == $u->id ? "selected" : "" }}
                                     {{ $u->name }}</option>
                                  @endif
                              @endforeach
@@ -485,11 +485,10 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-2">
-                        <label for="Local_UltMov">Local do ultimo Movimento:</label>
+                        <label for="Local_UltMov">Local do Últ Mov:</label>
                         <select class="form-control input-border-bottom" id="Local_UltMov" name="Local_UltMov">
-                            <option
-                                value="{{ isset($clifor->Local_UltMov) ? $clifor->Local_UltMov : '' }} ">
-                                {{ $clifor->Local_UltMov=="L"?"Livre":"Bloqueado" }}
+                            <option value="{{ isset($clifor->Local_UltMov) ? $clifor->Local_UltMov : '' }} ">
+                            {{ $clifor->Local_UltMov == 'PED'? 'Pedido': $clifor->Local_UltMov }}
                             </option>
                             <option value="PED">Pedido</option>
                             <option value="OS">OS</option>
@@ -503,7 +502,7 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-2">
-                        <label for="Data_UltMov">Data do Ultimo Movimento:</label>
+                        <label for="Data_UltMov">Data do  Últ Mov:</label>
                         <input type="date" class="form-control input-border-bottom" name="Data_UltMov" id="Data_UltMov"
                             value="{{ isset($clifor->Data_UltMov) ? $clifor->Data_UltMov : '' }}">
                         <div class="invalid-feedback">
@@ -517,9 +516,8 @@
                         <label for="Empresa">Empresa:</label>
                         <select class="form-control input-border-bottom" id="Empresa" name="Empresa">
                             @foreach($empresa as $empresa)
-                                <option value="{{ $empresa->Codigo }}">
-                                    {{ $clifor->Empresa == $empresa->Codigo ? "selected" : "" }}>
-                                    {{ $empresa->Nome_Fantasia }}</option>
+                                <option value="{{ $empresa->Codigo }}" {{ $clifor->Empresa == $empresa->Codigo ? "selected" : "" }}> {{ $empresa->Nome_Fantasia }}</option>
+
                             @endforeach
                         </select>
                         <div class="invalid-feedback">

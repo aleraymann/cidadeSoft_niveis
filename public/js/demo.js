@@ -184,7 +184,7 @@ var usersChart = new Chart(ctx2, {
 	type: 'pie',
 	data: {
 		datasets: [{
-			data: [50, 35, 15],
+			data: [40, 45, 15],
 			"backgroundColor":["rgb(23, 125, 255)","rgb(255, 100, 109)","rgb(253, 190, 70)"],
 			borderWidth: 0
 		}],

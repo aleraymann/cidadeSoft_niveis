@@ -15,7 +15,7 @@
       <div class="modal-body">
         
         @if(!isset($id))
-        <form method="post" class="needs-validation" novalidate action="{{url("/Empresa/salvar")}}">
+        <form method="post" class="needs-validation" novalidate action="{{url("/Empresa/salvar")}}" enctype="multipart/form-data">
          @else
          <form method="post" action="{{url("/Empresa/salvar/$id")}}" enctype="multipart/form-data">
           @endif
@@ -25,6 +25,18 @@
               <b class="ls-label-text" for="RG">User_ID:</b>
               <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id"
               readonly value="{{ Auth::user()->id }}" >
+            </div>
+          </div>
+          <div class="form-row">
+          <div class="form-group col-lg-12">
+              <b class="ls-label-text" for="Logo">Logomarca:</b>
+              <input type="file" class="form-control" name="Logo" id="Logo">
+              <div class="invalid-feedback">
+                Por favor, Campo Obrigatório!
+              </div>
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
             </div>
           </div>
           <div class="form-row">
@@ -225,17 +237,7 @@
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col-lg-6">
-              <b class="ls-label-text" for="Logo">Logomarca:</b>
-              <input type="text" class="form-control input-border-bottom" name="Logo" id="Logo"
-              placeholder="Logomarca da empresa">
-              <div class="invalid-feedback">
-                Por favor, Campo Obrigatório!
-              </div>
-              <div class="valid-feedback">
-                Tudo certo!
-              </div>
-            </div>
+            
             <div class="form-group col-lg-6">
               <b class="ls-label-text" for="Atividade">Ramo da Atividade:</b>
               <select class="form-control input-border-bottom" id="Atividade" name="Atividade">
@@ -1599,7 +1601,9 @@
             <select class="form-control input-border-bottom" id="Vend_TranspPadrao" name="Vend_TranspPadrao">
               <option value="0">Selecione</option>
               @foreach($transportadora as $transportadora)
+              @can("view_transp",$transportadora)
               <option value="{{$transportadora->Codigo}}">{{ $transportadora->Nome_Fantasia }}</option>
+              @endcan
               @endforeach
             </select>
             <div class="invalid-feedback">

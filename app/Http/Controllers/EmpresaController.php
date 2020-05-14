@@ -21,7 +21,7 @@ class EmpresaController extends Controller
         Transportadora $transportadora,CliFor $clifor)
     {  
         $empresas = $empresa->all();
-        $empresas = Empresa::paginate(20);
+        $empresas = Empresa::paginate(10);
         //$empresas = $empresa->where('user_id', auth()->user()->id)->paginate(20);
         //dd($empresas);
         $funcionario = Funcionario::all();
@@ -32,29 +32,31 @@ class EmpresaController extends Controller
         return view("empresas", compact("empresas","funcionario","cond_pag","form_pag","transportadora","clifor")); 
     }
 
-    public function salvar(Request $dadosFormulario, Empresa $empresa, $id = null)
+    public function store(Request $request, Empresa $empresa)
     {
-       //dd($dadosFormulario);
-        try
-        {
-            if($id > 0)
-            {   
-                $dados = $empresa->find($id);
-                $dados->update($dadosFormulario->all());
-                return redirect()
-                ->action("EmpresaController@listar")
-                ->with("toast_success", "Registro Editado Com Sucesso");
-            }
-            else
-            {
-                $empresa->create($dadosFormulario->all());
-               //dd($dadosFormulario);
-            }
+        //dd($request->Logo);
+        try {
+            $data = $request->all();
+                if ($request->hasFile('Logo') && $request->file('Logo')->isValid()) {
+                
+                $name = uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
+                $extension = $request->Logo->extension(); // Recupera a extensão do arquivo
+                $nameFile = "{$name}.{$extension}"; // Define finalmente o nome
+                $upload = $request->Logo->storeAs('empresas', $nameFile); // Faz o upload:
+                $data['Logo'] = $nameFile; // coloca no array q vc vai criar
+
+                    if (!$upload) { // SE NAO FIZER O UPLOAD PARA O STORAGE
+                        return redirect()
+                    ->action("EmpresaController@listar")
+                    ->with("toast_error", "Houve um erro ao gravar o Imagem");
+                    }
+                }
             
-            return redirect()
-            ->action("EmpresaController@listar")
-            ->with("toast_success", "Registro Gravado Com Sucesso");
-        } 
+                 $empresa->create($data);
+                 return redirect()
+                ->action("EmpresaController@listar")
+                ->with("toast_success", "Registro Gravado Com Sucesso");
+        }
         catch (\Illuminate\Database\QueryException $e) 
         {
             dd($e);
@@ -63,6 +65,47 @@ class EmpresaController extends Controller
             ->with("toast_error", "Houve um erro ao gravar o registro");
         }
     }
+
+    public function salvar(Request $request, Empresa $empresa, $id)
+    {
+        //dd($request->Logo);
+        try {
+            $dados = $empresa->find($id);
+            $data = $request->all();
+
+        if ($request->hasFile('Logo') && $request->file('Logo')->isValid()) { // existe imagem nova
+                        
+            $name = uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
+            $extension = $request->Logo->extension(); // Recupera a extensão do arquivo
+            $nameFile = "{$name}.{$extension}"; // Define finalmente o nome
+                 
+            $upload = $request->Logo->storeAs('empresas', $nameFile); // Faz o upload:
+            
+            $data['Logo'] = $nameFile; 
+            if (!$upload) { // SE NAO FIZER O UPLOAD PARA O STORANGE
+              return redirect()
+                ->action("EmpresaController@listar")
+                ->with("toast_error", "Houve um erro ao gravar o Imagem");
+            }
+
+        }else{// se cair aqui, continua a imagem q estava no banco já 
+            $data['Logo'] = $request->LogoBanco;  
+        }
+        //dd($data); // Confere os dados que estaram passando para o update
+         $empresa->find($id)->update($data); // grava todos os conteudos automativo
+
+            return redirect() // SE CHEGOU AQUI, DADOS ATUALIZADOS COM SUCESSO
+            ->action("EmpresaController@listar")
+            ->with("toast_success", "Registro Editado Com Sucesso");
+                
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            dd($e);
+            return redirect()
+            ->action("EmpresaController@listar")
+            ->with("toast_error", "Houve um erro ao gravar o registro");
+        }
+    } 
 
     public function excluir($Codigo, Empresa $empresa)
     {

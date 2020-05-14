@@ -1,44 +1,15 @@
-@extends('layouts.app')
+<!-- The Modal -->
+<div class="modal" id="myModalUser">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
 
-@section('content')
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Login</title>
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="{{ url("img/CSicone.png") }}" type="image/x-icon" />
-
-    <!-- Fonts and icons -->
-    <script src="{{ url("js/plugin/webfont/webfont.min.js") }}"></script>
-    <script>
-        WebFont.load({
-            google: {
-                "families": ["Montserrat:100,200,300,400,500,600,700,800,900"]
-            },
-            custom: {
-                "families": ["Flaticon", "LineAwesome"],
-                urls: ["{{ url('css/fonts.css') }}"]
-            },
-            active: function () {
-                sessionStorage.fonts = true;
-            }
-        });
-
-    </script>
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ url("css/bootstrap.min.css") }}">
-    <link rel="stylesheet" href="{{ url("css/ready.min.css") }}">
-
-</head>
-
-<body class="login mt-0">
-    <div class="wrapper wrapper-login">
-        <div class="container container-login animated fadeIn">
-            <h3 class="text-center">Registro</h3>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Cadastro de Usuários</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
             <div class="login-form">
                 <div class="form-group col-lg-12">
                     <label for="tipo">Tipo:</label>
@@ -130,20 +101,16 @@
                     </div>
                 </form>
             </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar Formulário</button>
+            </div>
         </div>
     </div>
-    <div class="card-footer">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; CidadeSoft 2020</span>
-        </div>
-    </div>
-</body>
-<script src="{{ url("js/core/jquery.3.2.1.min.js") }}"></script>
-<script src="{{ url("js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js") }}"></script>
-<script src="{{ url("js/core/popper.min.js") }}"></script>
-<script src="{{ url("js/core/bootstrap.min.js") }}"></script>
-<script src="{{ url("js/ready.js") }}"></script>
-@endsection
+</div>
 <script>
     function verifica(value) {
         var tipo = document.getElementById("tipo");

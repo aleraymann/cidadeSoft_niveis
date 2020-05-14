@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\Permission;
+use App\model\Role;
 use Gate;
 
 class PermissionsController extends Controller
@@ -20,8 +21,9 @@ class PermissionsController extends Controller
         if(Gate::denies('view_users')){
             return redirect()->back();
         }
-        $permissions = $this->permission->all();
-        return view('permissions', compact('permissions'));
+        $permissions = Permission::paginate(10);
+        $roles = Role::all();
+        return view('permissions', compact('permissions','roles'));
      }
 
      public function roles($id){

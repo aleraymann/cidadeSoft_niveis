@@ -6,7 +6,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Permissões a Cargos
+                <h4 class="modal-title">Atribuir Permissões a Cargos
                 </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>

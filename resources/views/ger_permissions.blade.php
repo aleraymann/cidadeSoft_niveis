@@ -4,58 +4,45 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 @if(session('success_message'))
-       <div class="alert alert-danger">
-        {{session('success_message')}}
-      </div>
-      @endif
-    
-      <div class="main-panel">
-      <div class="ml-2" style="margin-top:60px">
+    <div class="alert alert-danger">
+        {{ session('success_message') }}
+    </div>
+@endif
+
+<div class="main-panel">
+    <div class="ml-2" style="margin-top:60px">
         <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
             Voltar
         </a>
         <!-- Button to Open the Modal -->
         @include('sweetalert::alert')
-        <!--end container-->    
-      </div>
+        <!--end container-->
+    </div>
     <div class="d-sm-flex align-items-center justify-content-between mb-4 ml-2"></div>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Cargos
-                <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
-                        data-target="#myModal">
-                        <i class='fas fa-plus'></i> Cargos
-                    </button>
-                    <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
-                        data-target="#ModalPerm">
-                       Atribuir permissões à cargos
-                    </button>
-                </h4>
-                @include("modals.modal_perm_role")
-                @include("modals.modal_roles")
+                <h4>Gerenciar Permissões</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="multi-filter-select" class="display table table-striped table-hover">
+                    <table id="basic-datatables" class="display table table-striped table-hover">
                         <thead>
                             <tr>
-                            <th class="">Cod.</th>
-                                <th class="">Cargo</th>
-                                <th class="">Função</th>
+                                <th>Cod. Cargo</th>
+                                <th>Cod. Permissão</th>
                             </tr>
                         </thead>
+                       
 
                         <tbody>
-                        @foreach($roles as $r)
+                            @foreach($permission_role as $pr)
                                 <tr>
-                                <td class=""> {{ $r->id }} </td>
-                                    <td class=""> {{ $r->name }} </td>
-                                    <td class=""> {{ $r->label }} </td>
-                                    <td class="">
+                                    <td> {{ $pr->role_id }} </td>
+                                    <td> {{ $pr->permission_id }} </td>
+                                    <td>
                                         <div class="btn-group" role="group">
-                                            <a href='{{url("/Role/vizualizar/$r->id")}}' class="btn btn-primary"><i class='flaticon-lock-1'></i></a>
-                                            <a href="javascript:deletarRegistro('{{ $r->id }}')"
+                                            <a href="javascript:deletarRegistro('{{ $pr->id }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                         </div>
                                     </td>
@@ -68,11 +55,17 @@
         </div>
     </div>
     <div class="container">
-        {{ $roles->links() }}
+        {{ $permission_role->links() }}
     </div>
 </div>
-
 @endsection
+<script src="{{ url("js/plugin/datatables/datatables.min.js") }}"></script>
+<script>
+    $(document).ready(function () {
+        $('#basic-datatables').DataTable({});
+    });
+
+</script>
 <script src="{{ url("js/core/jquery.3.2.1.min.js") }}"></script>
 <script>
     function deletarRegistro(id) {
@@ -95,7 +88,7 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{ url("Role/excluir") }}" + '/' + id,
+                    url: "{{ url("Ger_perm/excluir") }}" + '/' + id,
                     type: 'DELETE',
                     data: {
                         '_method': 'DELETE',

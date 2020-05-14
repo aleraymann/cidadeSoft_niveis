@@ -18,7 +18,7 @@ class User extends Authenticatable
      */
     public $timestamps = false;
     protected $fillable = [
-        'name', 'email', 'empresa','adm','password',
+        'name','image', 'email', 'empresa','adm','password',
     ];
 
     /**
@@ -66,4 +66,10 @@ class User extends Authenticatable
        return $this->roles->contains('name', $roles);
 
     }
+
+    //empresa em user
+  public function empresa()
+  {
+      return $this->belongsTo('App\model\Empresa', 'Codigo');
+  }
 }

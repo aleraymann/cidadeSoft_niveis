@@ -12,7 +12,7 @@ use App\model\Role;
 use App\model\CliFor;
 use App\model\Transportadora;
 use App\model\CliForContato;
-use App\model\CliForEmdereco;
+use App\model\CliForEndereco;
 use App\model\CliForReferencia;
 use App\model\Transportadora_Destino;
 use App\model\Transportadora_Valor;
@@ -77,7 +77,7 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $cliforcontato->user_id;     
             }
             if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $clifor->user_id;     
+                return $user->adm == $cliforcontato->user_id;     
             }
         });
 
@@ -86,7 +86,7 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $cliforendereco->user_id;     
             }
             if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $clifor->user_id;     
+                return $user->adm == $cliforendereco->user_id;     
             }
         });
         Gate::define('view_clifor_referencia', function( User $user, CliForReferencia $clifor_referencia){//apenas visualizar
@@ -94,7 +94,7 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $clifor_referencia->user_id;     
             }
             if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $clifor->user_id;     
+                return $user->adm == $clifor_referencia->user_id;     
             }
         });
       

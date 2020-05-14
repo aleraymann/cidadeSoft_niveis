@@ -27,7 +27,12 @@
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Permissão
                     </button>
+                    <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
+                        data-target="#ModalPerm">
+                       Atribuir permissões à cargos
+                    </button>
                 </h4>
+                @include("modals.modal_perm_role")
                 @include("modals.modal_permissions")
             </div>
             <div class="card-body">
@@ -59,6 +64,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container">
+        {{ $permissions->links() }}
     </div>
 </div>
 @endsection

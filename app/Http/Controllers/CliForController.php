@@ -20,7 +20,7 @@ class CliForController extends Controller
     {  
         //$clifor = $clifor->all();
       
-        $clifor = CliFor::paginate(20);
+        $clifor = CliFor::paginate(10);
         $vendedor = Funcionario::all();
         $empresa = Empresa::all();
         $user = User::all();

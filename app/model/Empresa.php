@@ -147,6 +147,12 @@ class Empresa extends Model
     {
         return $this->belongsTo('App\model\CliFor');
     }
+    
+    //empresa em user
+    public function cod_empresa2()
+    {
+        return $this->belongsTo('App\model\User');
+    }
 
   //transportadora em empresa
   public function transportadora()

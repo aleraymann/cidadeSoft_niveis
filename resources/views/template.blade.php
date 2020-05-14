@@ -131,24 +131,35 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown hidden-caret">
-							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="{{url("img/profile.jpg")}}" alt="image profile" width="36" class="img-circle"></a>
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+							@if(auth()->user()->image != null)
+								<img src="{{ url('storage/users/'.auth()->user()->image) }}" alt="image profile" style="max-width:30px; height:40px" class="img-circle"></a>
+							@else
+								<img src="{{url("img/profile.jpg")}}" alt="Img Profile" width="36" class="img-circle">
+							@endif
+							
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<li>
 									<div class="user-box">
-										<div class="u-img"><img src="{{url("img/profile.jpg")}}" alt="image profile"></div>
+										<div class="u-img">
+										@if(auth()->user()->image != null)
+										<img src="{{ url('storage/users/'.auth()->user()->image) }}"  alt="image profile">
+										@else
+										<img src="{{url("img/profile.jpg")}}" alt="Img Profile">
+										@endif
+										</div>
 										<div class="u-text">
 											<h4>{{ Auth::user()->name }}</h4>
-											<p class="text-muted">{{ Auth::user()->email }}</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+											<p class="text-muted">{{ Auth::user()->email }} </p>
+											
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">My Profile</a>
-									<a class="dropdown-item" href="#">My Balance</a>
-									<a class="dropdown-item" href="#">Inbox</a>
+									<a class="dropdown-item" href='{{ url("/User/profile") }}'>My Profile</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Account Setting</a>
+									<a class="dropdown-item" href='{{ url("/User/edit_profile") }}'>Editar Perfil</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{ route('logout') }}"
 									onclick="event.preventDefault();
@@ -184,7 +195,12 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="photo">
-							<img src="{{url("img/profile.jpg")}}" alt="image profile">
+						@if(auth()->user()->image != null)
+								<img src="{{ url('storage/users/'.auth()->user()->image) }}" alt="image profile"  class="img-circle"></a>
+							@else
+								<img src="{{url("img/profile.jpg")}}" alt="Img Profile" class="img-circle">
+							@endif
+							
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -209,6 +225,11 @@
 									<li>
 										<a href="{{url("/Permission")}}">
 											<span class="link-collapse">Permissões</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{url("/Ger_perm")}}">
+											<span class="link-collapse">Gerenciar Permissões</span>
 										</a>
 									</li>
 									<li>
@@ -245,6 +266,7 @@
 							</div>
 						</div>
 					</div>
+				
 					<ul class="nav">
 						<li class="nav-item active">
 							<a href="{{url("/Dashboard")}}">
@@ -252,6 +274,7 @@
 								<p>Início</p>
 							</a>
 						</li>
+						@can('menu')
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="la la-ellipsis-h"></i>
@@ -279,18 +302,20 @@
 										</a>
 									</li>
 								@endcan
-								
+								@can('insere_cliente')
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/Clifor')}}">
 											<span class="sub-item">Clientes/Fornecedores</span>
 										</a>
 									</li>
-								
+								@endcan
+								@can('insere_transp')
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/transportadoras')}}">
 											<span class="sub-item">Transportadoras</span>
 										</a>
 									</li>
+								@endcan
 								</ul>
 							</div>
 						</li>
@@ -441,7 +466,7 @@
 								<p>Encontre-nos</p>
 							</a>
 						</li>
-						
+					@endcan
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="la la-ellipsis-h"></i>

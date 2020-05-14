@@ -21,7 +21,7 @@ class RolesController extends Controller
             return redirect()->back();
         }
         $permissions = Permission::all();
-        $roles = $this->role->all();
+        $roles = $this->role->paginate(10);
         return view('roles', compact('roles', 'permissions'));
      }
 

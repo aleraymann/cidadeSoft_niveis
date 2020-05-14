@@ -32,7 +32,7 @@
                             <tr>
                             
                                 <th class="">Nome</th>
-                                <th class="">Label</th>
+                                <th class="">Descrição</th>
                             </tr>
                         </thead>
 
@@ -41,11 +41,6 @@
                                 <tr>
                                     <td class=""> {{ $r->name }} </td>
                                     <td class=""> {{ $r->label }} </td>
-                                    <td class="">
-                                        <div class="btn-group" role="group">
-                                            <a href="" class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                        </div>
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

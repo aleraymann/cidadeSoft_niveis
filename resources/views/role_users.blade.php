@@ -53,6 +53,9 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        {{ $role_users->links() }}
+    </div>
 </div>
 @endsection
 <script src="{{ url("js/core/jquery.3.2.1.min.js") }}"></script>

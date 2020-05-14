@@ -19,8 +19,11 @@
     </div>
     @endcan
             </div>
+            <img src="{{ url("storage/empresas/{$empresa->Logo}") }}" style="max-width:150px; height:150px" >
             <div class="card-body">
+           
                 <div class="table-responsive">
+                
                     <table id="multi-filter-select" class="display table table-striped table-hover ">
                         <thead>
                             <tr>
@@ -61,8 +64,6 @@
                                     <label>{{ $empresa->IE }} </label><br>
                                     <b class="ls-label-text">CNPJ:</b>
                                     <label>{{ $empresa->CNPJ }} </label><br>
-                                    <b class="ls-label-text">Logomarca:</b>
-                                    <label>{{ $empresa->Logo }} </label><br>
                                     <b class="ls-label-text">Ramo da Atividade:</b>
                                     <label>{{ $empresa->Atividade }} </label><br>
                                     <b class="ls-label-text">CNAE:</b>

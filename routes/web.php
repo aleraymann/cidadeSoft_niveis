@@ -38,7 +38,9 @@ Route::group(["prefix" => "Permission",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "PermissionsController@excluir");
 });
 
-
+//gerenciar permissoes
+Route::get("/Ger_perm",  'PermissionRoleController@listar')->middleware('auth');
+Route::delete("/Ger_perm/excluir/{id}",  'PermissionRoleController@excluir')->middleware('auth');
 //atribuir permissoes a cargos
 Route::post("/Permission_role/salvar/{id?}", 'PermissionRoleController@salvar')->middleware('auth');
 
@@ -48,19 +50,25 @@ Route::post("/Role_user/salvar/{id?}", 'RoleUserController@salvar')->middleware(
 
 // crud cargos
 Route::group(["prefix" => "Role",'middleware' => 'auth'], function () {
-    Route::get("/", 'RolesController@index')->middleware('auth');
-    Route::get("/vizualizar/{id}", 'RolesController@permissions')->middleware('auth');
-    Route::post("/salvar/{id?}", 'RolesController@salvar')->middleware('auth');
-    Route::delete("/excluir/{id}", "RolesController@excluir")->middleware('auth');
+    Route::get("/", 'RolesController@index');
+    Route::get("/vizualizar/{id}", 'RolesController@permissions');
+    Route::post("/salvar/{id?}", 'RolesController@salvar');
+    Route::delete("/excluir/{id}", "RolesController@excluir");
 });
+Route::get("/User/profile", function () {
+    return view('visual.view_profile');
+})->middleware('auth');
+Route::get("/User/edit_profile", function () {
+    return view('edit.edit_profile');
+})->middleware('auth');
 
 // crud users
 Route::group(["prefix" => "User",'middleware' => 'auth'], function () {
-    Route::get("/", 'UsersController@index')->middleware('auth');
-    Route::get("/vizualizar/{id}", 'UsersController@roles')->middleware('auth');
-    Route::delete("/excluir/{id}", "UsersController@excluir")->middleware('auth');
-    Route::post("/salvar/{id?}", 'UsersController@salvar')->middleware('auth');
-    Route::get("/editar/{id}", "UsersController@editar")->middleware('auth');
+    Route::get("/", 'UsersController@index');
+    Route::get("/vizualizar/{id}", 'UsersController@roles');
+    Route::post("/salvar/{id?}", 'UsersController@salvar');
+    Route::post("/profile_update", 'UsersController@profileUpdate');
+    Route::get("/editar/{id}", "UsersController@editar");
 });
 
 //visualizar mapas
@@ -118,7 +126,8 @@ Route::group(["prefix" => "Funcionario",'middleware' => 'auth'], function () {
 
 //crud empresa
 Route::group(["prefix" => "Empresa", 'middleware' => 'auth'], function () {
-    Route::post("/salvar/{id?}", "EmpresaController@salvar");
+    Route::post("/salvar/{id}", "EmpresaController@salvar");
+    Route::post("/salvar", "EmpresaController@store");
     Route::delete("/excluir/{id}", "EmpresaController@excluir");
     Route::get("/editar/{id}", "EmpresaController@editar");
     Route::get("/vizualizar/{id}", "EmpresaController@vizualizar");

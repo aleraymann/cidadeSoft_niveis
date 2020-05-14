@@ -14,7 +14,7 @@ class RoleUserController extends Controller
         if(Gate::denies('view_users')){
             return redirect()->back();
         }
-        $role_users  = $role_user->all();
+        $role_users  = RoleUser::paginate(10);
         return view("role_users", compact("role_users"));
     }
 

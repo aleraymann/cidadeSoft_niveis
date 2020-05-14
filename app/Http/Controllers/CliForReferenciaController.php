@@ -23,9 +23,7 @@ class CliForReferenciaController extends Controller
             {   
              
                 $dados = $clifor_referencia->find($id);
-                if (Gate::denies('view_clifor_referencia', $clifor_referencia)) {
-                    return redirect()->back();
-                }
+               
                 $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("CliForController@listar")

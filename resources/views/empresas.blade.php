@@ -188,6 +188,7 @@
                         <thead>
                             <tr>
                                 <th class="">Codigo</th>
+                                <th class="">Logo</th>
                                 <th class="">Nome Fantasia</th>
                                 <th class="">Razão Social</th>
                                 <th class="">CNPJ</th>
@@ -201,6 +202,7 @@
                                 @if( Auth::user()->hasAnyRoles('s_adm'))
                                     <tr>
                                         <td> {{ $emp->Codigo }} </td>
+                                        <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:100px; height:50px" ></td>
                                         <td> {{ $emp->Nome_Fantasia }} </td>
                                         <td> {{ $emp->Razao_Social }} </td>
                                         <td> {{ $emp->CNPJ }} </td>
@@ -224,6 +226,7 @@
 
                                         <tr>
                                             <td> {{ $emp->Codigo }} </td>
+                                            <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:100px; height:50px" ></td>
                                             <td> {{ $emp->Nome_Fantasia }} </td>
                                             <td> {{ $emp->Razao_Social }} </td>
                                             <td> {{ $emp->CNPJ }} </td>
@@ -252,6 +255,7 @@
 
                                         <tr>
                                             <td> {{ $emp->Codigo }} </td>
+                                            <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:100px; height:50px" ></td>
                                             <td> {{ $emp->Nome_Fantasia }} </td>
                                             <td> {{ $emp->Razao_Social }} </td>
                                             <td> {{ $emp->CNPJ }} </td>

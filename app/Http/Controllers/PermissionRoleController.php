@@ -16,6 +16,14 @@ class PermissionRoleController extends Controller
         $role = Role::all();
     return view('roles', compact('role','permission'));
      } 
+
+     public function listar(PermissionRole $permission_role){
+        $permission_role = PermissionRole::paginate(10);
+        if(Gate::denies('view_users', $permission_role)){
+            return redirect()->back();
+        }
+        return view('ger_permissions', compact('permission_role'));
+     } 
     public function salvar(Request $dadosFormulario, PermissionRole $permission_role, $id = null)
     {
        //dd($dadosFormulario);
@@ -46,5 +54,10 @@ class PermissionRoleController extends Controller
             ->action("RolesController@listar")
             ->with("toast_error", "Houve um erro ao gravar o registro");
         }
+    }
+
+    public function excluir($Codigo,PermissionRole $permission_role)
+    {
+            $permission_role->destroy($Codigo);
     }
 }

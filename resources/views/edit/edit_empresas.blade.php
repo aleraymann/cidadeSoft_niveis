@@ -132,7 +132,23 @@
          @else
          <form method="post" action="{{url("/Empresa/salvar/$id")}}" enctype="multipart/form-data">
           @endif
-
+          <div class="form-row">
+          <div class="form-group col-lg-4">
+              <b class="ls-label-text" for="Logo">Logo Atual:</b><br>
+              <img src="{{ url("storage/empresas/{$empresa->Logo}") }}"   style="max-width:100px; height:100px" >
+            </div>
+          <div class="form-group col-lg-6">
+              <b class="ls-label-text" for="Logo">Alterar Logo:</b>
+              <input type="file" class="form-control" name="Logo" id="Logo">
+              <div class="invalid-feedback">
+                Por favor, Campo Obrigatório!
+              </div>
+              <div class="valid-feedback">
+                Tudo certo!
+              </div>
+            </div>
+              <input type="hidden" name='LogoBanco' value='{{ $empresa->Logo }}'> 
+          </div>
           <div class="form-row">
             <div class="form-group col-lg-4">
               <label for="Nome_Fantasia">Nome Fantasia:</label>
@@ -332,17 +348,6 @@
               </div>
             </div>
             <div class="form-group col-lg-3">
-              <label for="Logo">Logomarca:</label>
-              <input type="text" class="form-control input-border-bottom" name="Logo" id="Logo"
-              placeholder="Logomarca da empresa"  value="{{isset($empresa->Logo) ? $empresa->Logo : '' }}" >
-              <div class="invalid-feedback">
-                Por favor, Campo Obrigatório!
-              </div>
-              <div class="valid-feedback">
-                Tudo certo!
-              </div>
-            </div>
-            <div class="form-group col-lg-3">
               <label for="Atividade">Ramo da Atividade:</label>
               <select class="form-control input-border-bottom" id="Atividade" name="Atividade">
                 <option value="{{isset($empresa->Atividade) ? $empresa->Atividade : '' }} ">{{ $empresa->Atividade}}</option>
@@ -415,7 +420,7 @@
               </div>
             </div>
             <div class="form-group col-lg-2">
-              <label for="CliFor_Saida">Cliente/Fornecedor Saída</label>
+              <label for="CliFor_Saida">Cli/For Saída</label>
               <input type="text" class="form-control input-border-bottom" name="CliFor_Saida" id="CliFor_Saida"
               value="{{isset($empresa->CliFor_Saida) ? $empresa->CliFor_Saida : '' }}">
               <div class="invalid-feedback">
@@ -426,7 +431,7 @@
               </div>
             </div>
             <div class="form-group col-lg-2">
-              <label for="CliFor_Entrada">Cliente/Fornecedor Entrada</label>
+              <label for="CliFor_Entrada">Cli/For Entrada</label>
               <input type="text" class="form-control input-border-bottom" name="CliFor_Entrada" id="CliFor_Entrada" 
               value="{{isset($empresa->CliFor_Entrada) ? $empresa->CliFor_Entrada : '' }}">
               <div class="invalid-feedback">
@@ -437,7 +442,7 @@
               </div>
             </div>
             <div class="form-group col-lg-2">
-              <label for="`Cfg_DataUltExec">Ultima Execução do Sistema</label>
+              <label for="`Cfg_DataUltExec">Últ Exec do Sistema</label>
               <input type="date" class="form-control input-border-bottom" name="Cfg_DataUltExec" id="Cfg_DataUltExec"  
               value="{{isset($empresa->Cfg_DataUltExec) ? $empresa->Cfg_DataUltExec : '' }}" >
               <div class="invalid-feedback">
@@ -1760,8 +1765,11 @@
             <label for="Vend_TranspPadrao">Transportadora padrão</label>
             <select class="form-control input-border-bottom" id="Vend_TranspPadrao" name="Vend_TranspPadrao">
               @foreach($transportadora as $transportadora)
+              @can("view_transp",$transportadora)
               <option value="{{$transportadora->Codigo}}" {{ $empresa->Vend_TranspPadrao == $transportadora->Codigo ? "selected" : "Selecione" }} >{{$transportadora->Razao_Social}}</option>
-            @endforeach                                </select>
+              @endcan
+              @endforeach
+            </select>
             <div class="invalid-feedback">
               Por favor, Campo Obrigatório!
             </div>

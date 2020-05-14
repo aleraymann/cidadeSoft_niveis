@@ -19,7 +19,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Cargos: {{ $permission->name }}
+                <h4 class="card-title">Cargos autorizados a {{ $permission->label }}
                 </h4>  
             </div>
             <div class="card-body">
@@ -37,11 +37,7 @@
                                 <tr>
                                     <td class=""> {{ $r->name }} </td>
                                     <td class=""> {{ $r->label }} </td>
-                                    <td class="">
-                                        <div class="btn-group" role="group">
-                                            <a href="" class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                        </div>
-                                    </td>
+                                   
                                 </tr>
                             @endforeach
                         </tbody>
