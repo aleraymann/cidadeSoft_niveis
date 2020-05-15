@@ -187,7 +187,7 @@
                     <table id="multi-filter-select" class="display table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th class="">Codigo</th>
+                                <th class="">Cod</th>
                                 <th class="">Logo</th>
                                 <th class="">Nome Fantasia</th>
                                 <th class="">Razão Social</th>

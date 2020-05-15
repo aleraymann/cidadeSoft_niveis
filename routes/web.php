@@ -55,12 +55,8 @@ Route::group(["prefix" => "Role",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", 'RolesController@salvar');
     Route::delete("/excluir/{id}", "RolesController@excluir");
 });
-Route::get("/User/profile", function () {
-    return view('visual.view_profile');
-})->middleware('auth');
-Route::get("/User/edit_profile", function () {
-    return view('edit.edit_profile');
-})->middleware('auth');
+
+
 
 // crud users
 Route::group(["prefix" => "User",'middleware' => 'auth'], function () {
@@ -69,6 +65,13 @@ Route::group(["prefix" => "User",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", 'UsersController@salvar');
     Route::post("/profile_update", 'UsersController@profileUpdate');
     Route::get("/editar/{id}", "UsersController@editar");
+    Route::delete("/excluir/{id}", "UsersController@excluir");
+    Route::get("/edit_profile", function () {
+        return view('edit.edit_profile');
+    });
+    Route::get("/profile", function () {
+        return view('visual.view_profile');
+    });
 });
 
 //visualizar mapas
@@ -98,39 +101,39 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
 
 //crud clifor
 Route::group(["prefix" => "Clifor", 'middleware' => 'auth'], function () {
-    Route::post("/salvar/{id?}", "CliForController@salvar");
-    Route::delete("/excluir/{id}", "CliForController@excluir");
-    Route::get("/editar/{id}", "CliForController@editar");
-    Route::get("/vizualizar/{id}", "CliForController@vizualizar");
+    Route::post("/salvar/{id?}", "CliForController@update");
+    Route::delete("/excluir/{id}", "CliForController@destroy");
+    Route::get("/editar/{id}", "CliForController@edit");
+    Route::get("/vizualizar/{id}", "CliForController@view");
     Route::get("/contato","CliForContatoController@listar");
-    Route::post("/contato/salvar/{id?}","CliForContatoController@salvar");
-    Route::delete("/contato/excluir/{id}", "CliForContatoController@excluir");
-    Route::get("/contato/editar/{id}", "CliForContatoController@editar");
+    Route::post("/contato/salvar/{id?}","CliForContatoController@update");
+    Route::delete("/contato/excluir/{id}", "CliForContatoController@destroy");
+    Route::get("/contato/editar/{id}", "CliForContatoController@edit");
     Route::get("/endereco","CliForEnderecoController@listar");
-    Route::post("/endereco/salvar/{id?}","CliForEnderecoController@salvar");
-    Route::delete("/endereco/excluir/{id}", "CliForEnderecoController@excluir");
-    Route::get("/endereco/editar/{id}", "CliForEnderecoController@editar");
+    Route::post("/endereco/salvar/{id?}","CliForEnderecoController@update");
+    Route::delete("/endereco/excluir/{id}", "CliForEnderecoController@destroy");
+    Route::get("/endereco/editar/{id}", "CliForEnderecoController@edit");
     Route::get("/referencia","CliForReferenciaController@listar");
-    Route::post("/referencia/salvar/{id?}","CliForReferenciaController@salvar");
-    Route::delete("/referencia/excluir/{id}", "CliForReferenciaController@excluir");
-    Route::get("/referencia/editar/{id}", "CliForReferenciaController@editar");
+    Route::post("/referencia/salvar/{id?}","CliForReferenciaController@update");
+    Route::delete("/referencia/excluir/{id}", "CliForReferenciaController@destroy");
+    Route::get("/referencia/editar/{id}", "CliForReferenciaController@edit");
 });
 
 //crud funcionario
 Route::group(["prefix" => "Funcionario",'middleware' => 'auth'], function () {
-    Route::post("/salvar/{id?}", "FuncionarioController@salvar");
-    Route::delete("/excluir/{id}", "FuncionarioController@excluir");
-    Route::get("/editar/{id}", "FuncionarioController@editar");
-    Route::get("/vizualizar/{id}", "FuncionarioController@vizualizar");
+    Route::post("/salvar/{id?}", "FuncionarioController@update");
+    Route::delete("/excluir/{id}", "FuncionarioController@destroy");
+    Route::get("/editar/{id}", "FuncionarioController@edit");
+    Route::get("/vizualizar/{id}", "FuncionarioController@view");
 });
 
 //crud empresa
 Route::group(["prefix" => "Empresa", 'middleware' => 'auth'], function () {
-    Route::post("/salvar/{id}", "EmpresaController@salvar");
+    Route::post("/salvar/{id}", "EmpresaController@update");
     Route::post("/salvar", "EmpresaController@store");
-    Route::delete("/excluir/{id}", "EmpresaController@excluir");
-    Route::get("/editar/{id}", "EmpresaController@editar");
-    Route::get("/vizualizar/{id}", "EmpresaController@vizualizar");
+    Route::delete("/excluir/{id}", "EmpresaController@destroy");
+    Route::get("/editar/{id}", "EmpresaController@edit");
+    Route::get("/vizualizar/{id}", "EmpresaController@view");
 });
 
 //crud consicao de pagamento

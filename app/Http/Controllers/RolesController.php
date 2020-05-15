@@ -20,9 +20,9 @@ class RolesController extends Controller
         if(Gate::denies('view_users')){
             return redirect()->back();
         }
-        $permissions = Permission::all();
+        $totpermissions = Permission::all();
         $roles = $this->role->paginate(10);
-        return view('roles', compact('roles', 'permissions'));
+        return view('roles', compact('roles', 'totpermissions'));
      }
 
      public function permissions($id){

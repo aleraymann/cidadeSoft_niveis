@@ -133,7 +133,7 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 							@if(auth()->user()->image != null)
-								<img src="{{ url('storage/users/'.auth()->user()->image) }}" alt="image profile" style="max-width:30px; height:40px" class="img-circle"></a>
+								<img src="{{ url('storage/users/'.auth()->user()->image) }}" alt="image profile" width="40" height="40" class="img-circle"></a>
 							@else
 								<img src="{{url("img/profile.jpg")}}" alt="Img Profile" width="36" class="img-circle">
 							@endif
@@ -143,7 +143,7 @@
 									<div class="user-box">
 										<div class="u-img">
 										@if(auth()->user()->image != null)
-										<img src="{{ url('storage/users/'.auth()->user()->image) }}"  alt="image profile">
+										<img src="{{ url('storage/users/'.auth()->user()->image) }}"   alt="image profile">
 										@else
 										<img src="{{url("img/profile.jpg")}}" alt="Img Profile">
 										@endif
@@ -157,14 +157,14 @@
 								</li>
 								<li>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href='{{ url("/User/profile") }}'>My Profile</a>
+									<a class="dropdown-item" href='{{ url("/User/profile") }}'>Meu Perfil</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href='{{ url("/User/edit_profile") }}'>Editar Perfil</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{ route('logout') }}"
 									onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">
-									{{ __('Logout') }}
+									{{ __('Sair') }}
 								  </a>
 								  
 								  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -254,7 +254,7 @@
 									onclick="event.preventDefault();
 									document.getElementById('logout-form').submit();">
 									<i class="flaticon-arrow"></i>
-									{{ __('Logout') }}
+									{{ __('Sair') }}
 								  </a>
 								  
 								  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -302,14 +302,14 @@
 										</a>
 									</li>
 								@endcan
-								@can('insere_cliente')
+								@can('visual_cliente')
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/Clifor')}}">
 											<span class="sub-item">Clientes/Fornecedores</span>
 										</a>
 									</li>
 								@endcan
-								@can('insere_transp')
+								@can('visual_transp')
 									<li>
 										<a class="collapse-item" href="{{url('/Cadastro/transportadoras')}}">
 											<span class="sub-item">Transportadoras</span>

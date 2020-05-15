@@ -269,7 +269,7 @@
                                 <th>Numero</th>
                                 <th>Bairro</th>
                                 <th>Complemento</th>
-                                <th>Ponto de Referencia</th>
+                                <th>Ponto de Referência</th>
                                 <th>Cod_IBGE</th>
                                 <th>Cidade</th>
                                 <th>Estado</th>

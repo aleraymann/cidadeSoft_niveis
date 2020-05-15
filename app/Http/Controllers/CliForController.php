@@ -26,7 +26,7 @@ class CliForController extends Controller
         $user = User::all();
         return view("clifor", compact("clifor","vendedor","empresa","user")); 
     }
-    public function salvar(Request $dadosFormulario, CliFor $clifor, $id = null)
+    public function update(Request $dadosFormulario, CliFor $clifor, $id = null)
     {
        //dd($dadosFormulario);
         try
@@ -65,7 +65,7 @@ class CliForController extends Controller
         }
     }
 
-    public function excluir($Codigo, Clifor $clifor)
+    public function destroy($Codigo, Clifor $clifor)
     { 
         if(Gate::denies('view_clifor', $clifor)){
         return redirect()->back();
@@ -73,7 +73,7 @@ class CliForController extends Controller
         $clifor->destroy($Codigo);
     }
 
-    public function editar(CliFor $clifor, $id, Funcionario $vendedor, Empresa $empresa,User $user)
+    public function edit(CliFor $clifor, $id, Funcionario $vendedor, Empresa $empresa,User $user)
     {
         $clifor = $clifor->find($id);
         if(Gate::denies('view_clifor', $clifor)){
@@ -87,7 +87,7 @@ class CliForController extends Controller
         $user = User::all();
         return view("edit.edit_clifor", compact("clifor","id","vendedor","empresa","user"));
     }
-    public function vizualizar(CliFor $clifor, $id, CliForContato $clifor_contato, CliForEndereco $clifor_endereco, CliforReferencia $clifor_referencia)
+    public function view(CliFor $clifor, $id, CliForContato $clifor_contato, CliForEndereco $clifor_endereco, CliforReferencia $clifor_referencia)
     {
         
         $clifor = $clifor->find($id);

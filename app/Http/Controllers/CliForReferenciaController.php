@@ -14,7 +14,7 @@ class CliForReferenciaController extends Controller
         return redirect(url()->previous());
         
     }
-    public function salvar(Request $dadosFormulario, CliForReferencia $clifor_referencia, $id = null)
+    public function update(Request $dadosFormulario, CliForReferencia $clifor_referencia, $id = null)
     {
        //dd($dadosFormulario);
         try
@@ -48,7 +48,7 @@ class CliForReferenciaController extends Controller
         }
     }
 
-    public function editar( CliForReferencia $clifor_referencia, $id, CliFor $clifor)
+    public function edit( CliForReferencia $clifor_referencia, $id, CliFor $clifor)
     {
         $clifor_referencia = $clifor_referencia->find($id);
         if (Gate::denies('view_clifor_referencia', $clifor_referencia)) {
@@ -58,7 +58,7 @@ class CliForReferenciaController extends Controller
         return view("edit.edit_clifor_referencia", compact("clifor_referencia","id","clifor"));
     }
 
-    public function excluir($Codigo, CliForReferencia $clifor_referencia)
+    public function destroy($Codigo, CliForReferencia $clifor_referencia)
     {
         if (Gate::denies('view_clifor_referencia', $clifor_referencia)) {
             return redirect()->back();

@@ -70,6 +70,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view_cli_adm', function( User $user, CliFor $clifor){//update - delete
             return $user->id == $clifor->user_id;
         });
+        Gate::define('view_cli_fin', function( User $user, CliFor $clifor){//update - delete
+            return $user->adm == $clifor->user_id;
+        });
 
 
         Gate::define('view_clifor_contato', function( User $user, CliForContato $cliforcontato){//apenas visualizar
@@ -113,6 +116,9 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $transportadora->user_id;     
             }
             if( $user->hasAnyRoles('funcionario')){
+                return $user->adm == $transportadora->user_id;     
+            }
+            if( $user->hasAnyRoles('financeiro')){
                 return $user->adm == $transportadora->user_id;     
             }
         });

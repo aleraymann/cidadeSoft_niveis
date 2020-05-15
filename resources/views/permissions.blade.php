@@ -40,6 +40,7 @@
                     <table id="multi-filter-select" class="display table table-striped table-hover">
                         <thead>
                             <tr>
+                            <th>Codigo</th>
                                 <th>Permissão</th>
                                 <th>Função</th>
                             </tr>
@@ -48,6 +49,7 @@
                         <tbody>
                             @foreach($permissions as $p)
                                 <tr>
+                                <td class=""> {{ $p->id }} </td>
                                     <td class=""> {{ $p->name }} </td>
                                     <td class=""> {{ $p->label }} </td>
                                     <td class="">

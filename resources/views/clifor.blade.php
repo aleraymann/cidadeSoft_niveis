@@ -162,6 +162,25 @@
                                         </tr>
                                     @endcan
                                 @endif
+                                @if( Auth::user()->hasAnyRoles('financeiro'))
+                                @can("view_cli_fin",$cf)
+                                    <tr>
+                                        <td> {{ $cf->Codigo }} </td>
+                                        <td> {{ $cf->Nome_Fantasia }} </td>
+                                        <td> {{ $cf->Ativo==1? "Ativo":"Inativo" }}
+                                        </td>
+                                        <td> {{ $cf->Data_Cadastro }} </td>
+                                        @if( $cf->Tip=="C")
+                                            <td> {{ $cf->Tip = "Cliente" }} </td>
+                                        @elseif( $cf->Tip=="F")
+                                            <td> {{ $cf->Tip = "Fornecedor" }} </td>
+                                        @else
+                                            <td> {{ $cf->Tip = "Ambos" }} </td>
+                                        @endif
+                                        <td> {{ $cf->user_id }} </td>
+                                    </tr>
+                                    @endcan
+                                    @endif
                             @endforeach
                         </tbody>
                     </table>

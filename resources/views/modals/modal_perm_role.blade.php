@@ -35,7 +35,7 @@
                         <b class="ls-label-text" for="permission_id">Permissão:</b>
                         <select class="form-control input-border-bottom" id="permission_id" name="permission_id">
                             <option value="0">Selecione</option>
-                            @foreach($permissions as $perm)
+                            @foreach($totpermissions as $perm)
                                 <option value="{{ $perm->id }}">{{ $perm->label }}</option>
                             @endforeach
                         </select>

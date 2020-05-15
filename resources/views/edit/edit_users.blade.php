@@ -79,9 +79,9 @@
 
                             <div class="form-action">
                                 <a href="{{ url("/User") }}" id="show-signin"
-                                    class="btn btn-danger btn-rounded btn-login mr-3">Cancel</a>
-                                <button class="btn btn-success btn-rounded btn-login">
-                                    {{ __('Cadastrar') }}
+                                    class="btn btn-danger  btn-login mr-3">Cancel</a>
+                                <button class="btn btn-success  btn-login">
+                                    {{ __('Salvar') }}
                                 </button>
                             </div>
                     </form>

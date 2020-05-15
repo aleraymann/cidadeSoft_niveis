@@ -15,7 +15,7 @@ class CliForContatoController extends Controller
         
     }
 
-    public function salvar(Request $dadosFormulario, CliForContato $clifor_contato, $id = null)
+    public function update(Request $dadosFormulario, CliForContato $clifor_contato, $id = null)
     {
        //dd($dadosFormulario);
         try
@@ -47,13 +47,13 @@ class CliForContatoController extends Controller
             ->with("toast_error", "Houve um erro ao gravar o registro");
         }
     }
-    public function excluir($Codigo,  CliForContato $clifor_contato)
+    public function destroy($Codigo,  CliForContato $clifor_contato)
     { 
             $clifor_contato->destroy($Codigo);
 
     }
 
-    public function editar( CliForContato $clifor_contato, $id, CliFor $clifor)
+    public function edit( CliForContato $clifor_contato, $id, CliFor $clifor)
     {
         $clifor_contato = $clifor_contato->find($id);
         if (Gate::denies('view_clifor_contato', $clifor_contato)) {

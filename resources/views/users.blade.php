@@ -43,6 +43,7 @@
                         <thead>
                             <tr>
                                 <th class="">Código</th>
+                                <th class="">Imagem</th>
                                 <th class="">Usuário</th>
                                 <th class="">Email</th>
                                 <th class="">Empresa</th>
@@ -55,6 +56,9 @@
                             @foreach($users as $u)
                                 <tr>
                                     <td class=""> {{ $u->id }} </td>
+                                    <td>
+                                    <img src="{{ url("storage/users/{$u->image}") }}" style="max-width:50px; height:50px">
+                                    </td>
                                     <td class=""> {{ $u->name }} </td>
                                     <td class=""> {{ $u->email }} </td>
                                     <td class="">

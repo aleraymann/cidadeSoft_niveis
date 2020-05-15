@@ -63,7 +63,7 @@
           Tudo certo!
         </div>
       </div>
-      <div class="form-group col-lg-2">
+      <div class="form-group col-lg-3">
         <label for="Telefone">Telefone do Estabelecimento</label>
         <input type="text" class="form-control input-border-bottom" name="Telefone" id="Telefone"
         value="{{isset($clifor_referencia->Telefone) ? $clifor_referencia->Telefone : '' }}">
@@ -74,7 +74,7 @@
           Tudo certo!
         </div>
       </div>
-      <div class="form-group col-lg-2">
+      <div class="form-group col-lg-3">
         <label for="Ult_Compra">Data da última compra</label>
         <input type="date" class="form-control input-border-bottom" name="Ult_Compra" id="Ult_Compra"
         value="{{isset($clifor_referencia->Ult_Compra) ? $clifor_referencia->Ult_Compra : '' }}">

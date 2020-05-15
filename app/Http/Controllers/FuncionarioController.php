@@ -20,7 +20,7 @@ class FuncionarioController extends Controller
     }
 
 
-    public function salvar(Request $dadosFormulario, Funcionario $funcionario, $id = null)
+    public function update(Request $dadosFormulario, Funcionario $funcionario, $id = null)
     {
        //dd($dadosFormulario);
         try
@@ -51,7 +51,7 @@ class FuncionarioController extends Controller
         }
     }
 
-    public function editar(Funcionario $funcionario, $id)
+    public function edit(Funcionario $funcionario, $id)
     {
         $funcionario = Funcionario::find($id);
         //$empresa = $empresa->find($id);
@@ -62,12 +62,12 @@ class FuncionarioController extends Controller
         return view("edit.edit_funcionarios", compact("funcionario","id"));
     }
 
-    public function excluir($Codigo, Funcionario $funcionario)
+    public function destroy($Codigo, Funcionario $funcionario)
     {
         $funcionario->destroy($Codigo);
     }
 
-    public function vizualizar(Funcionario $funcionario, $id)
+    public function view(Funcionario $funcionario, $id)
     {
         $funcionario = $funcionario->find($id);
         if(Gate::denies('update_funcionario',$funcionario)){

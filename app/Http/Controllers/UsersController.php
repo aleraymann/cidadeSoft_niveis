@@ -45,9 +45,6 @@ class UsersController extends Controller
 
     public function excluir($Codigo, User $user)
     {
-        if (Gate::denies('view_users')) {
-            return redirect()->back();
-        }
         $user->destroy($Codigo);
     }
 

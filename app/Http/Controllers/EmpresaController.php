@@ -39,7 +39,7 @@ class EmpresaController extends Controller
             $data = $request->all();
                 if ($request->hasFile('Logo') && $request->file('Logo')->isValid()) {
                 
-                $name = uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
+                $name = kebab_case($request->Nome_Fantasia).kebab_case($request->Razao_Social); //uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
                 $extension = $request->Logo->extension(); // Recupera a extensão do arquivo
                 $nameFile = "{$name}.{$extension}"; // Define finalmente o nome
                 $upload = $request->Logo->storeAs('empresas', $nameFile); // Faz o upload:
@@ -66,7 +66,7 @@ class EmpresaController extends Controller
         }
     }
 
-    public function salvar(Request $request, Empresa $empresa, $id)
+    public function update(Request $request, Empresa $empresa, $id)
     {
         //dd($request->Logo);
         try {
@@ -75,7 +75,7 @@ class EmpresaController extends Controller
 
         if ($request->hasFile('Logo') && $request->file('Logo')->isValid()) { // existe imagem nova
                         
-            $name = uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
+            $name = kebab_case($request->Nome_Fantasia).kebab_case($request->Razao_Social);//uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
             $extension = $request->Logo->extension(); // Recupera a extensão do arquivo
             $nameFile = "{$name}.{$extension}"; // Define finalmente o nome
                  
@@ -107,12 +107,12 @@ class EmpresaController extends Controller
         }
     } 
 
-    public function excluir($Codigo, Empresa $empresa)
+    public function destroy($Codigo, Empresa $empresa)
     {
         $empresa->destroy($Codigo);
     }
 
-    public function editar(Empresa $empresa, $id, Funcionario $funcionario,Cond_Pag $cond_pag,Form_Pag $form_pag,
+    public function edit(Empresa $empresa, $id, Funcionario $funcionario,Cond_Pag $cond_pag,Form_Pag $form_pag,
        Transportadora $transportadora,CliFor $clifor)
     {
         //return 'update';
@@ -134,7 +134,7 @@ class EmpresaController extends Controller
         return view("edit.edit_empresas", compact("empresa","id","funcionario","cond_pag","form_pag","transportadora","clifor"));
     }
 
-    public function vizualizar(Empresa $empresa, $id)
+    public function view(Empresa $empresa, $id)
     {
         $empresa = Empresa::find($id);
         //$empresa = $empresa->find($id);
