@@ -18,8 +18,8 @@
 
 </script>
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
-        Voltar
+    <a href="{{ url("/Cadastro/transportadoras") }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
         <div class="card">
@@ -200,7 +200,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="CPF">CPF:</b>
                             <input type="text" class="form-control input-border-bottom" name="CPF" id="CPF"
-                                maxlength="14" required onblur="validarCPF(this)"
+                                maxlength="14"  onblur="validarCPF(this)"
                                 value="{{ isset($transportadora->CPF) ? $transportadora->CPF : '' }}">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
@@ -212,7 +212,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="RG">RG:</b>
                             <input type="text" class="form-control input-border-bottom" name="RG" id="RG" placeholder=""
-                                required minlength="4" maxlength="60" required
+                                 minlength="4" maxlength="60" 
                                 value="{{ isset($transportadora->RG) ? $transportadora->RG : '' }}">
                             <div class="invalid-feedback">
                                 Campo Obrigatório, Obrigatorio!

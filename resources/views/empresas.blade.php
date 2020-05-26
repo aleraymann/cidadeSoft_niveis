@@ -251,7 +251,7 @@
                                             </td>
                                         </tr>
                                     @endcan
-                                    @can("view_emp_func",$emp)
+                                    @can("view_empresa",$emp)
 
                                         <tr>
                                             <td> {{ $emp->Codigo }} </td>

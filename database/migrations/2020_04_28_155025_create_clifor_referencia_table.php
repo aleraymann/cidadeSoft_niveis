@@ -22,9 +22,10 @@ class CreateCliforReferenciaTable extends Migration
             $table->string('Loja_Banco',45)->nullable();
             $table->string('Conta',15)->nullable();
             $table->string('Telefone',15)->nullable();
-            $table->date('Ult_Compra')->nullable();
+            $table->string('Ult_Compra')->nullable();
             $table->decimal('Valor_UltCompra', 10,2)->default(0.00);
             $table->decimal('Limite', 10,2)->default(0.00);
+        });
     }
 
     /**

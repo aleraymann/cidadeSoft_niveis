@@ -1,6 +1,6 @@
 
 <!-- The Modal -->
-<div class="modal" id="myModal">
+<div class="modal fade" id="myModal">
     <div class="modal-dialog  modal-lg">
         <div class="modal-content">
 
@@ -20,7 +20,12 @@
             <div class="form-group col-lg-12" hidden>
               <b class="ls-label-text" for="user_id">User_ID:</b>
               <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id"
-              readonly value="{{ Auth::user()->id }}" >
+              readonly value="
+              @if(Auth::user()->hasAnyRoles('adm'))
+              {{ Auth::user()->id }}
+              @else
+              {{ Auth::user()->adm }}
+              @endif" >
             </div>
           </div>
                     <div class="form-row">
@@ -37,7 +42,8 @@
                         </div>
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Comi_Operad">Comissão a ser paga:</b>
-                            <input type="text" class="form-control input-border-bottom" name="Comi_Operad" id="Comi_Operad" minlength="3" value="0.00" required>
+                            <input type="text" class="form-control input-border-bottom" name="Comi_Operad" id="Comi_Operad"
+                            onblur="comi_Operad()" minlength="3" value="0.00" required>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -47,7 +53,8 @@
                         </div>
                         <div class="form-group col-lg-4">
                             <b class="ls-label-text" for="Tx_Antecip">Tava de antecip. de Crédito:</b>
-                            <input type="text" class="form-control input-border-bottom" name="Tx_Antecip" id="Tx_Antecip" minlength="3" value="0.00" required>
+                            <input type="text" class="form-control input-border-bottom" name="Tx_Antecip" id="Tx_Antecip"
+                            onblur="tx_Antecip()" minlength="3" value="0.00" required>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -90,7 +97,7 @@
                         </div>
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Dest_CliFor">Cli/For de Destino:</b>
-                            <input type="text" class="form-control input-border-bottom" name="Dest_CliFor" id="Dest_CliFor" minlength="3" value="1">
+                            <input type="text" class="form-control input-border-bottom" name="Dest_CliFor" id="Dest_CliFor" minlength="1" value="1">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -136,3 +143,17 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+ 
+ function comi_Operad() {
+        var desc = parseFloat(document.getElementById('Comi_Operad').value, 2);
+        lim = desc.toFixed(2);
+        document.getElementById('Comi_Operad').value = lim;
+    }
+
+    function tx_Antecip() {
+        var desc = parseFloat(document.getElementById('Tx_Antecip').value, 2);
+        lim = desc.toFixed(2);
+        document.getElementById('Tx_Antecip').value = lim;
+    }
+</script>

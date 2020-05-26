@@ -25,8 +25,8 @@ class CreateNcmTable extends Migration
             $table->decimal('AliqMun',3,2)->default(0.00)->nullable();
             $table->integer('Ex');
             $table->integer('Tipo')->nullable();
-            $table->date('VigenciaIni')->nullable();
-            $table->date('VigenciaFim')->nullable();
+            $table->string('VigenciaIni')->nullable();
+            $table->string('VigenciaFim')->nullable();
             $table->string('Versao',6);
             $table->string('Chave',6);
         });

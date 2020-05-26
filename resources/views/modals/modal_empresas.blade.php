@@ -1,6 +1,6 @@
 
 <!-- The Modal -->
-<div class="modal" id="myModal">
+<div class="modal fade" id="myModal">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
 
@@ -1351,13 +1351,20 @@
         <div class="form-row">
           <div class="form-group col-lg-4">
             <b class="ls-label-text" for="Ctb_RegData">Data de Registro do Contador:</b>
-            <input type="date" class="form-control input-border-bottom" name="Ctb_RegData" id="Ctb_RegData">
+            <input type="text" class="form-control input-border-bottom" name="Ctb_RegData" id="Ctb_RegData" placeholder="DD/MM/AAAA">
             <div class="invalid-feedback">
               Por favor, Campo Obrigatório!
             </div>
             <div class="valid-feedback">
               Tudo certo!
             </div>
+            <script type="text/javascript">
+            $(function () {
+                $('#Ctb_RegData').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
           </div>
           <div class="form-check-inline ml-4">
            

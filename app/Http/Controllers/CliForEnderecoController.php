@@ -49,9 +49,6 @@ class CliForEnderecoController extends Controller
 
     public function destroy($Codigo,  CliForEndereco $clifor_endereco)
     {
-        if (Gate::denies('view_clifor_endereco', $clifor_endereco)) {
-            return redirect()->back();
-        }
             $clifor_endereco->destroy($Codigo);
        
     }

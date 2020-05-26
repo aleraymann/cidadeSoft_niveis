@@ -9,10 +9,17 @@
   });
 </script>     
 <div class="main-panel"style="margin-top:60px">
-  <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
-      Voltar
+  <a href="{{ url()->previous() }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
   </a>
-<h2 class="ml-2">Edição de Destino</h2>
+  <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    Edição de Destino
+                </h4>
+            </div>
+            <div class="card-body">
 <!-- Modal body -->
 <div class="modal-body">
   @if(!isset($id))

@@ -116,9 +116,9 @@
  
        </script>
      <div class="main-panel" style="margin-top:60px">
-      <a href="{{ url()->previous() }}" class="btn btn-primary  btn-rounded">
-          Voltar
-      </a>
+     <a href="{{ url("/Cadastro/empresas") }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
+    </a>
       <div class="col-md-12">
       <div class="card">
       <div class="card-header">
@@ -1517,7 +1517,7 @@
         <div class="form-row">
           <div class="form-group col-lg-4">
             <label for="Ctb_RegData">Data de Registro do Contador</label>
-            <input type="date" class="form-control input-border-bottom" name="Ctb_RegData" id="Ctb_RegData"
+            <input type="text" class="form-control input-border-bottom" name="Ctb_RegData" id="Ctb_RegData"
             value="{{isset($empresa->Ctb_RegData) ? $empresa->Ctb_RegData : '' }} ">
             <div class="invalid-feedback">
               Por favor, Campo Obrigatório!
@@ -1525,6 +1525,13 @@
             <div class="valid-feedback">
               Tudo certo!
             </div>
+            <script type="text/javascript">
+            $(function () {
+                $('#Ctb_RegData').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
           </div>
         </div>
         <div class="form-row">

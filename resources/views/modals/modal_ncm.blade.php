@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<div class="modal" id="myModal">
+<div class="modal fade" id="myModal">
     <div class="modal-dialog  modal-lg">
         <div class="modal-content">
 
@@ -122,23 +122,37 @@
                 <div class="form-row">
                     <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="VigenciaIni">Início da Vigência:</b>
-                        <input type="date" class="form-control input-border-bottom" name="VigenciaIni" id="VigenciaIni">
+                        <input type="text" class="form-control input-border-bottom" name="VigenciaIni" id="VigenciaIni" placeholder="DD/MM/AAAA">
                         <div class="invalid-feedback">
                             Campo Obrigatório, Mínimo 4 caracteres!
                         </div>
                         <div class="valid-feedback">
                             Tudo certo!
                         </div>
+                        <script type="text/javascript">
+            $(function () {
+                $('#VigenciaIni').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
                     </div>
                     <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="VigenciaFim">Fim da Vigência:</b>
-                        <input type="date" class="form-control input-border-bottom" name="VigenciaFim" id="VigenciaFim">
+                        <input type="text" class="form-control input-border-bottom" name="VigenciaFim" id="VigenciaFim" placeholder="DD/MM/AAAA">
                         <div class="invalid-feedback">
                             Campo Obrigatório, Mínimo 4 caracteres!
                         </div>
                         <div class="valid-feedback">
                             Tudo certo!
                         </div>
+                        <script type="text/javascript">
+            $(function () {
+                $('#VigenciaFim').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
                     </div>
                     <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Versao">Versão da Tabela IBPT:</b>

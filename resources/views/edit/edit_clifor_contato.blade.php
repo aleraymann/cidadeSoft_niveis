@@ -11,10 +11,17 @@
  });
 </script>  
 <div class="main-panel" style="margin-top:60px">   
-<a href="{{ url()->previous() }}" class="btn btn-primary  btn-rounded">
-  Voltar
-</a>
-<h2 class="ml-2">Edição de Contato</h2>
+<a href="{{ url()->previous() }}"  class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
+  </a>
+  <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    Edição de Contato
+                </h4>
+            </div>
+            <div class="card-body">
 <!-- Modal body -->
 <div class="modal-body ml-2">
   @if(!isset($id))
@@ -69,7 +76,7 @@
       </div>
       <div class="form-group col-lg-2">
         <label for="Data_Nasc">Data de nascimento</label>
-        <input type="date" class="form-control input-border-bottom" name="Data_Nasc" id="Data_Nasc"
+        <input type="text" class="form-control input-border-bottom" name="Data_Nasc" id="Data_Nasc"
         value="{{isset($clifor_contato->Data_Nasc) ? $clifor_contato->Data_Nasc : '' }}" required>
         <div class="invalid-feedback">
           Por favor, Campo Obrigatório!
@@ -77,6 +84,13 @@
         <div class="valid-feedback">
           Tudo certo!
         </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#Data_Nasc').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+            </script>
       </div>
       <div class="form-group col-lg-2">
         <label for="RG">RG do Contato</label>

@@ -16,6 +16,9 @@ use App\model\CliForEndereco;
 use App\model\CliForReferencia;
 use App\model\Transportadora_Destino;
 use App\model\Transportadora_Valor;
+use App\model\Cond_Pag;
+use App\model\Form_Pag;
+use App\model\CentroCusto;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -37,7 +40,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         
-        //empresa------------------------------------------------------------------------------
+        //----------Empresa------------------------------------------------------------------------------
         Gate::define('update_empresa', function( User $user, Empresa $empresa){//update - delete
             return $user->id == $empresa->user_id;     
         });
@@ -49,29 +52,22 @@ class AuthServiceProvider extends ServiceProvider
             if( $user->hasAnyRoles('funcionario')){
                 return $user->empresa == $empresa->Codigo;     
             }
-        });
-        Gate::define('view_emp_func', function( User $user, Empresa $empresa){//update - delete
-            return $user->empresa == $empresa->Codigo;
+            if( $user->hasAnyRoles('financeiro')){
+                return $user->adm == $empresa->user_id;     
+            }
         });
         
-        
-        //clifor-------------------------------------------------------------------------------
+        //----------Clifor-------------------------------------------------------------------------------
         Gate::define('view_clifor', function( User $user, CliFor $clifor){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $clifor->user_id;     
             }
             if( $user->hasAnyRoles('funcionario')){
+                return $user->id == $clifor->Vendedor;     
+            }
+            if( $user->hasAnyRoles('financeiro')){
                 return $user->adm == $clifor->user_id;     
             }
-        });
-        Gate::define('view_cli_func', function( User $user, CliFor $clifor){//update - delete
-            return $user->id == $clifor->Vendedor;
-        });
-        Gate::define('view_cli_adm', function( User $user, CliFor $clifor){//update - delete
-            return $user->id == $clifor->user_id;
-        });
-        Gate::define('view_cli_fin', function( User $user, CliFor $clifor){//update - delete
-            return $user->adm == $clifor->user_id;
         });
 
 
@@ -79,38 +75,27 @@ class AuthServiceProvider extends ServiceProvider
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $cliforcontato->user_id;     
             }
-            if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $cliforcontato->user_id;     
-            }
         });
 
         Gate::define('view_clifor_endereco', function( User $user, CliForEndereco $cliforendereco){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $cliforendereco->user_id;     
             }
-            if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $cliforendereco->user_id;     
-            }
         });
         Gate::define('view_clifor_referencia', function( User $user, CliForReferencia $clifor_referencia){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $clifor_referencia->user_id;     
-            }
-            if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $clifor_referencia->user_id;     
-            }
+            }  
         });
       
 
-        //funcionario-------------------------------------------------------------------------------------
+        //----------Funcionario-------------------------------------------------------------------------------------
         Gate::define('update_funcionario', function( User $user, Funcionario $funcionario){//update - delete
             return $user->id == $funcionario->user_id;     
         });
-        Gate::define('update_vendedor', function( User $user, Funcionario $funcionario){//update - delete
-            return $user->id == $funcionario->user_id;     
-        });
         
-        //transportadoras------------------------------------------------------------------------------------
+
+        //----------Transportadoras------------------------------------------------------------------------------------
         Gate::define('view_transp', function( User $user, Transportadora $transportadora){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $transportadora->user_id;     
@@ -122,25 +107,56 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->adm == $transportadora->user_id;     
             }
         });
-        Gate::define('view_transp_destino', function( User $user, Transportadora_Destino $destino){//apenas visualizar
+
+            Gate::define('view_transp_destino', function( User $user, Transportadora_Destino $destino){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $destino->user_id;     
             }
-            if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $destino->user_id;     
-            }
         });
-        Gate::define('view_transp_valor', function( User $user, Transportadora_Valor $valor){//apenas visualizar
+
+            Gate::define('view_transp_valor', function( User $user, Transportadora_Valor $valor){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $valor->user_id;     
             }
+        });
+
+       
+        //----------Condição Pagamento------------------------------------------------------------------------------------
+        Gate::define('view_condPag', function( User $user, Cond_Pag $cond_pag){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $cond_pag->user_id;     
+            }
             if( $user->hasAnyRoles('funcionario')){
-                return $user->adm == $valor->user_id;     
+                return $user->adm == $cond_pag->user_id;     
+            }
+            if( $user->hasAnyRoles('financeiro')){
+                return $user->adm == $cond_pag->user_id;     
             }
         });
 
-        //Users--------------------------------------------------------------------------------
-       
+
+          //----------Forma Pagamento------------------------------------------------------------------------------------
+          Gate::define('view_formPag', function( User $user, Form_Pag $form_pag){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $form_pag->user_id;     
+            }else
+                return $user->adm == $form_pag->user_id;     
+        });
+
+
+        //----------Centro Custo------------------------------------------------------------------------------------
+        Gate::define('view_centroCusto', function( User $user, CentroCusto  $centrocusto){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $centrocusto->user_id;     
+            }else
+                return $user->adm == $centrocusto->user_id;     
+        });
+
+
+
+
+
+
 
         
         $permissions = Permission::with('roles')->get(); //recupera tudo das funcoes..

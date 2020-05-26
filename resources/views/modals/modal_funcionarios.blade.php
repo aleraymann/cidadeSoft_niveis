@@ -1,7 +1,7 @@
 
 
 <!-- The Modal -->
-<div class="modal" id="myModal">
+<div class="modal fade" id="myModal">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
 
@@ -133,7 +133,7 @@
             <div class="form-group col-lg-3">
               <b class="ls-label-text" for="ComiVend">Comissão de Venda:</b>
               <input type="text" class="form-control input-border-bottom" name="ComiVend" id="ComiVend" 
-             onblur="com_vend()" minlength="3" value="00.00">
+             onblur="com_vend()" minlength="3" maxlength="4" value="00.00">
               <div class="invalid-feedback" placeholder="0.00">
                 Por favor, Campo Obrigatório!
               </div>
@@ -144,7 +144,7 @@
             <div class="form-group col-lg-3">
               <b class="ls-label-text" for="ComiServ">Comissão de Seriços:</b>
               <input type="text" class="form-control input-border-bottom" name="ComiServ" id="ComiServ" 
-              onblur="com_serv()" minlength="3"value="00.00">
+              onblur="com_serv()" minlength="3" maxlength="4" value="00.00">
               <div class="invalid-feedback">
                 Por favor, Campo Obrigatório!
               </div>
@@ -154,7 +154,7 @@
             </div>
             <div class="form-group col-lg-3">
               <b class="ls-label-text" for="LimDescPV">Limite desc à vista:</b>
-              <input type="text" class="form-control input-border-bottom" name="LimDescPV" id="LimDescPV" minlength="3" value="00.00" onblur="lim_vista()">
+              <input type="text" class="form-control input-border-bottom" name="LimDescPV" id="LimDescPV" minlength="3" maxlength="4" value="00.00" onblur="lim_vista()">
               <div class="invalid-feedback">
                 Por favor, Campo Obrigatório!
               </div>

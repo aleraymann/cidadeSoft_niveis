@@ -57,6 +57,9 @@ class Form_PagController extends Controller
     public function editar(Form_Pag $form_pag, $id)
     {
         $form_pag = $form_pag->find($id);
+        if(Gate::denies('view_formPag', $form_pag)){
+            return redirect()->back();
+        }
         return view("edit.edit_form_pag", compact("form_pag","id"));
     }
 

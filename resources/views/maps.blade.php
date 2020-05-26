@@ -1,7 +1,10 @@
 @extends("template")
 
 @section("conteudo")
-<div class="main-panel">
+<div class="main-panel"  style="margin-top:60px">
+<a href="{{ url()->previous() }}"  class="btn btn-primary ml-3 float-left">
+    <i class="la la-long-arrow-left"></i>
+    </a>
     <div class="content-full">
         <div id="map-full" class="full-screen-maps">
             <iframe

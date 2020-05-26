@@ -68,14 +68,20 @@
     <div class="form-row">
       <div class="form-group col-lg-4">
         <label for="Ult_Compra">Data da última compra</label>
-        <input type="date" class="form-control input-border-bottom" name="Ult_Compra" id="Ult_Compra">
+        <input type="text" class="form-control input-border-bottom" name="Ult_Compra" id="Ult_Compra" placeholder="DD/MM/AAAA">
         <div class="invalid-feedback">
           Campo obrigatório!
         </div>
         <div class="valid-feedback">
           Tudo certo!
         </div>
-
+        <script type="text/javascript">
+            $(function () {
+                $('#Ult_Compra').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+            </script>
       </div>
       <div class="form-group col-lg-4">
         <label for="Ult_Compra">Valor da última compra</label>

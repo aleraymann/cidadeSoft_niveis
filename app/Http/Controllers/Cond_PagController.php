@@ -51,6 +51,9 @@ class Cond_PagController extends Controller
     public function editar(Cond_Pag $cond_pag, $id)
     {
         $cond_pag = $cond_pag->find($id);
+        if(Gate::denies('view_condPag', $cond_pag)){
+            return redirect()->back();
+        }
         return view("edit.edit_cond_pag", compact("cond_pag","id"));
     }
 

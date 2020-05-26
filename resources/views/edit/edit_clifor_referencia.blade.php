@@ -12,10 +12,17 @@
  });
 </script> 
 <div class="main-panel" style="margin-top:60px">   
-  <a href="{{ url()->previous() }}" class="btn btn-primary  btn-rounded">
-    Voltar
+  <a href="{{ url()->previous() }}"  class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
   </a>
-  <h2 class="ml-2">Edição de Referência</h2>
+  <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    Edição de Referência
+                </h4>
+            </div>
+            <div class="card-body">
 <!-- Modal body -->
 <div class="modal-body">
   @if(!isset($id))
@@ -76,7 +83,7 @@
       </div>
       <div class="form-group col-lg-3">
         <label for="Ult_Compra">Data da última compra</label>
-        <input type="date" class="form-control input-border-bottom" name="Ult_Compra" id="Ult_Compra"
+        <input type="text" class="form-control input-border-bottom" name="Ult_Compra" id="Ult_Compra"
         value="{{isset($clifor_referencia->Ult_Compra) ? $clifor_referencia->Ult_Compra : '' }}">
         <div class="invalid-feedback">
           Campo obrigatório!
@@ -84,6 +91,13 @@
         <div class="valid-feedback">
           Tudo certo!
         </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#Ult_Compra').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+            </script>
       </div>
     </div>
     <div class="form-row">

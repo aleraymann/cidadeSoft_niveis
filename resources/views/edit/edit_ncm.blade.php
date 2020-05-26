@@ -143,7 +143,7 @@
                     <div class="form-row">
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="VigenciaIni">Início da Vigência:</b>
-                            <input type="date" class="form-control input-border-bottom" name="VigenciaIni"
+                            <input type="text" class="form-control input-border-bottom" name="VigenciaIni"
                                 id="VigenciaIni"
                                 value="{{ isset($ncm->VigenciaIni) ? $ncm->VigenciaIni : '' }}">
                             <div class="invalid-feedback">
@@ -152,6 +152,13 @@
                             <div class="valid-feedback">
                                 Tudo certo!
                             </div>
+                            <script type="text/javascript">
+            $(function () {
+                $('#VigenciaIni').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
                         </div>
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="VigenciaFim">Fim da Vigência:</b>
@@ -164,6 +171,13 @@
                             <div class="valid-feedback">
                                 Tudo certo!
                             </div>
+                            <script type="text/javascript">
+            $(function () {
+                $('#VigenciaFim').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
                         </div>
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Versao">Versão da Tabela IBPT:</b>

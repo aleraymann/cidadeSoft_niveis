@@ -122,6 +122,7 @@
                         <th class="">Nome</th>
                         <th class="">Celular</th>
                         <th class="">Email</th>
+                        <th class="">Cod Adm</th>
 												</tr>
 											</thead>
 										
@@ -133,6 +134,7 @@
                           <td class=""> {{ $func->Nome }}   </td>
                           <td class=""> {{ $func->Celular }}   </td>
                           <td>  {{ $func->Email }}  </td>
+                          <td>  {{ $func->user_id }}  </td>
                           <td class=""> 
                             <div class="btn-group" role="group">
                               <a href='{{url("/Funcionario/editar/$func->Codigo")}}' class="btn btn-success"><i class='far fa-edit'></i></a>

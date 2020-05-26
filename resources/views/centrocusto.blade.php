@@ -21,10 +21,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Centros de Custo
+                @can('insere_centroCusto')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Centro de Custo
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_centrocusto")
@@ -36,23 +38,31 @@
                             <tr>
                                 <th class="">Cod</th>
                                 <th class="">Descrição</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($centrocusto as $c_custo)
-                                <tr>
-                                    <td class=""> {{ $c_custo->Codigo }} </td>
-                                    <td class=""> {{ $c_custo->Descricao }} </td>
-                                    <td class="">
-                                        <div class="btn-group" role="group">
-                                            <a href='{{ url("/CentroCusto/editar/$c_custo->Codigo") }}'
-                                                class="btn btn-success"><i class='far fa-edit'></i></a>
-                                            <a href="javascript:deletarRegistro('{{ $c_custo->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @can('view_centroCusto', $c_custo)
+                                    <tr>
+                                        <td class=""> {{ $c_custo->Codigo }} </td>
+                                        <td class=""> {{ $c_custo->Descricao }} </td>
+                                        <td class=""> {{ $c_custo->user_id }} </td>
+                                        <td class="">
+                                            <div class="btn-group" role="group">
+                                            @can('insere_centroCusto')
+                                                <a href='{{ url("/CentroCusto/editar/$c_custo->Codigo") }}'
+                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            @endcan
+                                            @can('insere_centroCusto')
+                                                <a href="javascript:deletarRegistro('{{ $c_custo->Codigo }}')"
+                                                    class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            @endcan
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

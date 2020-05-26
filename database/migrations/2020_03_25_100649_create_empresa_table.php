@@ -127,7 +127,7 @@ class CreateEmpresaTable extends Migration
             $table->string('Ctb_ContFone',13)->nullable();
             $table->string('Ctb_RegLocal')->nullable();
             $table->string('Ctb_RegNumero')->nullable();
-            $table->date('Ctb_RegData')->nullable();
+            $table->string('Ctb_RegData')->nullable();
             $table->integer('Vend_PedSimp')->default(1);
             $table->integer('Vend_CliForPadrao')->nullable();
             $table->integer('Vend_CondPadrao')->nullable();

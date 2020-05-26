@@ -60,9 +60,6 @@ class CliForReferenciaController extends Controller
 
     public function destroy($Codigo, CliForReferencia $clifor_referencia)
     {
-        if (Gate::denies('view_clifor_referencia', $clifor_referencia)) {
-            return redirect()->back();
-        }
             $clifor_referencia->destroy($Codigo);
       
     }

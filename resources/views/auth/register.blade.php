@@ -151,9 +151,13 @@
         if (value == "A") {
             empresa.hidden = true;
             adm.hidden = true;
+           
         } else if (value == "F") {
             empresa.hidden = false;
+            empresa.required = true;
+            adm.required = true;
             adm.hidden = false;
+
         }
     };
 

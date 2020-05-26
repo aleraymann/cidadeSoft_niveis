@@ -3,9 +3,9 @@
 @section("conteudo")
 
 <div class="main-panel"style="margin-top:60px">
-  <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
-      Voltar
-  </a>
+<a href="{{ url("/Cadastro/centrocusto") }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
+    </a>
   <div class="col-md-12">
         <div class="card">
             <div class="card-header">

@@ -21,7 +21,7 @@ class PermissionsController extends Controller
         if(Gate::denies('view_users')){
             return redirect()->back();
         }
-        $permissions = Permission::paginate(20);
+        $permissions = Permission::paginate(10);
         $totpermissions = Permission::all();
         $roles = Role::all();
         return view('permissions', compact('permissions','roles','totpermissions'));

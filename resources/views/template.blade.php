@@ -141,13 +141,6 @@
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<li>
 									<div class="user-box">
-										<div class="u-img">
-										@if(auth()->user()->image != null)
-										<img src="{{ url('storage/users/'.auth()->user()->image) }}"   alt="image profile">
-										@else
-										<img src="{{url("img/profile.jpg")}}" alt="Img Profile">
-										@endif
-										</div>
 										<div class="u-text">
 											<h4>{{ Auth::user()->name }}</h4>
 											<p class="text-muted">{{ Auth::user()->email }} </p>
@@ -210,10 +203,20 @@
 										<span class="user-level">Super-Admin</span>
 									@elseif( Auth::user()->hasAnyRoles('adm'))
 										<span class="user-level">Administrador</span>
+										<div class="dropdown-divider"></div>
+										Cod de Identif.: {{ Auth::user()->id }}
 									@elseif( Auth::user()->hasAnyRoles('funcionario'))
 										<span class="user-level">Vendedor</span>
-										@elseif( Auth::user()->hasAnyRoles('financeiro'))
+										<div class="dropdown-divider"></div>
+										Cod de Identif: {{ Auth::user()->id }}
+										<br>
+										Cod do Admin: {{ Auth::user()->adm }}
+									@elseif( Auth::user()->hasAnyRoles('financeiro'))
 										<span class="user-level">Financeiro</span>
+										<div class="dropdown-divider"></div>
+										Cod de Identif.: {{ Auth::user()->id }}
+										<br>
+										Cod do Admin: {{ Auth::user()->adm }}
 									@endif
 								</span>
 							</a>

@@ -27,10 +27,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Formas de Pagamento
+                @can('insere_formPag')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Formas
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_form_pag")
@@ -47,11 +49,13 @@
                                 <th class="">Forma Pagamento</th>
                                 <th class="">Destino do Pagamento</th>
                                 <th class="">Cli/For de Destino</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($form_pag as $f_pag)
+                            @can('view_formPag', $f_pag)
                                 <tr>
                                     <td class=""> {{ $f_pag->Codigo }} </td>
                                     <td class=""> {{ $f_pag->Descricao }} </td>
@@ -81,15 +85,21 @@
                                         <td>{{ $f_pag->Destino= "Contas" }}</td>
                                     @endif
                                     <td class=""> {{ $f_pag->Dest_CliFor }} </td>
+                                    <td class=""> {{ $f_pag->user_id}} </td>
                                     <td class="">
                                         <div class="btn-group" role="group">
+                                        @can('edita_condPag')
                                             <a href='{{ url("/Forma/editar/$f_pag->Codigo") }}'
                                                 class="btn btn-success"><i class='far fa-edit'></i></a>
+                                        @endcan
+                                        @can('edita_condPag')
                                                 <a href="javascript:deletarRegistro('{{ $f_pag->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        @endcan
                                         </div>
                                     </td>
                                 </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

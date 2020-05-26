@@ -26,9 +26,7 @@ class TransportadoraController extends Controller
             {   
              
                 $dados = $transportadora->find($id);
-                if(Gate::denies('view_transp', $transportadora)){
-                    return redirect()->back();
-                }
+                
                 $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("TransportadoraController@listar")

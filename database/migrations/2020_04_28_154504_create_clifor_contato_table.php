@@ -21,7 +21,7 @@ class CreateCliforContatoTable extends Migration
             $table->string('Tipo',10);
             $table->string('Setor',10);
             $table->string('Nome',45);
-            $table->date('Data_Nasc');
+            $table->string('Data_Nasc');
             $table->string('RG',15);
             $table->string('CPF',18);
             $table->string('Celular',14);

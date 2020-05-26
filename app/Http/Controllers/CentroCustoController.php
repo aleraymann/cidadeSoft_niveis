@@ -57,6 +57,9 @@ class CentroCustoController extends Controller
     public function editar (CentroCusto $centrocusto, $id)
     {
         $centrocusto = $centrocusto->find($id);
+        if(Gate::denies('view_centroCusto', $centrocusto)){
+            return redirect()->back();
+        }
         return view("edit.edit_centrocusto", compact("centrocusto","id"));
     }
 }

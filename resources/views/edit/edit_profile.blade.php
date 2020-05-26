@@ -37,10 +37,10 @@
                     <form method="post" enctype="multipart/form-data" action="{{ url("/User/profile_update") }}">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-lg-4">
-                                <b class="ls-label-text" for="image">Foto Atual:</b>
+                            <div class="form-group col-lg-3">
+                                <b class="ls-label-text" for="image">Imagem Atual: </b><br>
                                 @if(auth()->user()->image != null)
-                                <img src="{{ url('storage/users/'.auth()->user()->image) }}"   style="max-width:100px; height:100px" >
+                                <img src="{{ url('storage/users/'.auth()->user()->image) }}" style="max-width:100px; height:100px; border-radius:5px" >
 										@else
 										<img src="{{url("img/profile.jpg")}}" style="max-width:100px; height:100px" alt="Img Profile">
 										@endif

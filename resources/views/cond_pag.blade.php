@@ -26,10 +26,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Condições de Pagamento
+                @can('insere_condPag')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Condição
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_cond_pag")
@@ -45,29 +47,35 @@
                                 <th class="">Dias entre parcelas</th>
                                 <th class="">Forma de Pagamento</th>
                                 <th class="">Juros</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($cond_pag as $c_pag)
-                                <tr>
-
-                                    <td class=""> {{ $c_pag->Codigo }} </td>
-                                    <td class=""> {{ $c_pag->Condicao }} </td>
-                                    <td class=""> {{ $c_pag->Tab_Preco }} </td>
-                                    <td class=""> {{ $c_pag->ParcDias }} </td>
-                                    <td class=""> {{ $c_pag->ParcForma }} </td>
-                                    <td class=""> {{ $c_pag->ParcJuros }} </td>
-                                    <td> {{ $c_pag->Email }} </td>
-                                    <td class="">
-                                        <div class="btn-group" role="group">
-                                            <a href='{{ url("/Condicao/editar/$c_pag->Codigo") }}'
-                                                class="btn btn-success"><i class='far fa-edit'></i></a>
-                                                <a href="javascript:deletarRegistro('{{ $c_pag->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @can('view_condPag', $c_pag)
+                                    <tr>
+                                        <td class=""> {{ $c_pag->Codigo }} </td>
+                                        <td class=""> {{ $c_pag->Condicao }} </td>
+                                        <td class=""> {{ $c_pag->Tab_Preco }} </td>
+                                        <td class=""> {{ $c_pag->ParcDias }} </td>
+                                        <td class=""> {{ $c_pag->ParcForma }} </td>
+                                        <td class=""> {{ $c_pag->ParcJuros }} </td>
+                                        <td> {{ $c_pag->user_id }} </td>
+                                        <td class="">
+                                            <div class="btn-group" role="group">
+                                            @can('edita_condPag')
+                                                <a href='{{ url("/Condicao/editar/$c_pag->Codigo") }}'
+                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            @endcan
+                                            @can('deleta_condPag')
+                                                    <a href="javascript:deletarRegistro('{{ $c_pag->Codigo }}')"
+                                                    class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            @endcan
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

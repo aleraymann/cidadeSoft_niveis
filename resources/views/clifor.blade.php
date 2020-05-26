@@ -68,49 +68,20 @@
 
                         <tbody>
                             @foreach($clifor as $cf)
-                                @if( Auth::user()->hasAnyRoles('s_adm'))
-                                    <tr>
-                                        <td> {{ $cf->Codigo }} </td>
-                                        <td> {{ $cf->Nome_Fantasia }} </td>
-                                        <td> {{ $cf->Ativo==1? "Ativo":"Inativo" }}
-                                        </td>
-                                        <td> {{ $cf->Data_Cadastro }} </td>
-                                        @if( $cf->Tip=="C")
-                                            <td> {{ $cf->Tip = "Cliente" }} </td>
-                                        @elseif( $cf->Tip=="F")
-                                            <td> {{ $cf->Tip = "Fornecedor" }} </td>
-                                        @else
-                                            <td> {{ $cf->Tip = "Ambos" }} </td>
-                                        @endif
-                                        <td> {{ $cf->user_id }} </td>
-                                        <td>
-                                            <div class="btn-group" role="group">
-                                                    <a href='{{ url("/Clifor/editar/$cf->Codigo") }}'
-                                                        class="btn btn-success "><i class='far fa-edit'></i></a>
-                                                    <a href='{{ url("/Clifor/vizualizar/$cf->Codigo") }}'
-                                                        class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                                    <a href="javascript:deletarRegistro('{{ $cf->Codigo }}')"
-                                                        class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                               
-                                            </div>
-                                        </td>
-
-                                    </tr>
-                                @else
-                                    @can("view_cli_func",$cf)
+                                    @can("view_clifor",$cf)
                                         <tr>
                                             <td> {{ $cf->Codigo }} </td>
                                             <td> {{ $cf->Nome_Fantasia }} </td>
                                             <td> {{ $cf->Ativo==1? "Ativo":"Inativo" }}
                                             </td>
                                             <td> {{ $cf->Data_Cadastro }} </td>
-                                            @if( $cf->Tip=="C")
+                                                @if( $cf->Tip=="C")
                                                 <td> {{ $cf->Tip = "Cliente" }} </td>
-                                            @elseif( $cf->Tip=="F")
+                                                @elseif( $cf->Tip=="F")
                                                 <td> {{ $cf->Tip = "Fornecedor" }} </td>
-                                            @else
+                                                @else
                                                 <td> {{ $cf->Tip = "Ambos" }} </td>
-                                            @endif
+                                                @endif
                                             <td> {{ $cf->user_id }} </td>
                                             <td>
                                                 <div class="btn-group" role="group">
@@ -131,56 +102,6 @@
 
                                         </tr>
                                     @endcan
-                                    @can("view_cli_adm",$cf)
-                                        <tr>
-                                            <td> {{ $cf->Codigo }} </td>
-                                            <td> {{ $cf->Nome_Fantasia }} </td>
-                                            <td> {{ $cf->Ativo==1? "Ativo":"Inativo" }}
-                                            </td>
-                                            <td> {{ $cf->Data_Cadastro }} </td>
-                                            @if( $cf->Tip=="C")
-                                                <td> {{ $cf->Tip = "Cliente" }} </td>
-                                            @elseif( $cf->Tip=="F")
-                                                <td> {{ $cf->Tip = "Fornecedor" }} </td>
-                                            @else
-                                                <td> {{ $cf->Tip = "Ambos" }} </td>
-                                            @endif
-                                            <td> {{ $cf->user_id }} </td>
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                    <a href='{{ url("/Clifor/editar/$cf->Codigo") }}'
-                                                        class="btn btn-success "><i class='far fa-edit'></i></a>
-                                                        @can('view_clifor', $cf) 
-                                                    <a href='{{ url("/Clifor/vizualizar/$cf->Codigo") }}'
-                                                        class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                                        @endcan
-                                                    <a href="javascript:deletarRegistro('{{ $cf->Codigo }}')"
-                                                        class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                                </div>
-                                            </td>
-
-                                        </tr>
-                                    @endcan
-                                @endif
-                                @if( Auth::user()->hasAnyRoles('financeiro'))
-                                @can("view_cli_fin",$cf)
-                                    <tr>
-                                        <td> {{ $cf->Codigo }} </td>
-                                        <td> {{ $cf->Nome_Fantasia }} </td>
-                                        <td> {{ $cf->Ativo==1? "Ativo":"Inativo" }}
-                                        </td>
-                                        <td> {{ $cf->Data_Cadastro }} </td>
-                                        @if( $cf->Tip=="C")
-                                            <td> {{ $cf->Tip = "Cliente" }} </td>
-                                        @elseif( $cf->Tip=="F")
-                                            <td> {{ $cf->Tip = "Fornecedor" }} </td>
-                                        @else
-                                            <td> {{ $cf->Tip = "Ambos" }} </td>
-                                        @endif
-                                        <td> {{ $cf->user_id }} </td>
-                                    </tr>
-                                    @endcan
-                                    @endif
                             @endforeach
                         </tbody>
                     </table>

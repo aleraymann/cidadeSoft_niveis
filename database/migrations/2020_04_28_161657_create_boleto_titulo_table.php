@@ -19,8 +19,8 @@ class CreateBoletoTituloTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('Sel')->default(0);
             $table->integer('Cod_Conta')->default(0);
-            $table->date('Data_Doc');
-            $table->date('Vencimento');
+            $table->string('Data_Doc');
+            $table->string('Vencimento');
             $table->string('Nro_Doc',14);
             $table->string('Nosso_Num',20);
             $table->decimal('Valor',10,2)->default(0.00);
@@ -36,8 +36,8 @@ class CreateBoletoTituloTable extends Migration
             $table->integer('Cod_CliFor')->default(0);
             $table->integer('Cod_NF')->default(0)->nullable();
             $table->integer('Cod_CtaRec')->default(0)->nullable();
-            $table->date('Data_Bai')->nullable();
-            $table->date('Data_Liq')->nullable();
+            $table->string('Data_Bai')->nullable();
+            $table->string('Data_Liq')->nullable();
             $table->string('Situacao',1)->default("C");
             $table->integer('Cod_Rem')->default(0)->nullable();
             $table->integer('Transacao')->default(0);

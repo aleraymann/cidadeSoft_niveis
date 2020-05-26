@@ -1,6 +1,6 @@
 
 <!-- The Modal -->
- <div class="modal" id="myModal">
+ <div class="modal fade" id="myModal">
      <div class="modal-dialog  modal-lg">
          <div class="modal-content">
 
@@ -74,7 +74,7 @@
                      <div class="form-group col-lg-4 ">
                          <label for="Data_Nascimento">Data de Nascimento:</label>
                          <input type="text" class="form-control input-border-bottom date" name="Data_Nascimento"
-                             id="Data_Nascimento">
+                         placeholder="DD/MM/AAAA" id="Data_Nascimento">
                          
                          <div class="invalid-feedback">
                              Por favor, Campo Obrigatório!

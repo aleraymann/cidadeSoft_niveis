@@ -61,7 +61,7 @@
               </div>
               <div class="form-group col-lg-3">
                 <b class="ls-label-text" for="Data_Doc">Data do Documento:</b>
-                <input type="text" class="form-control input-border-bottom" name="Data_Doc" id="Data_Doc"  value="{{ date('Y-m-d') }}"  required readonly>
+                <input type="text" class="form-control input-border-bottom" name="Data_Doc" id="Data_Doc"  value="{{ date('d/m/Y') }}"  required readonly>
                 <div class="invalid-feedback">
                   Por favor, Campo Obrigatório!
                 </div>
@@ -71,13 +71,20 @@
               </div>
               <div class="form-group col-lg-3">
                 <b class="ls-label-text" for="Vencimento">Data de Vencimento</b>
-                <input type="date" class="form-control input-border-bottom" name="Vencimento" id="Vencimento" required>
+                <input type="text" class="form-control input-border-bottom" name="Vencimento" id="Vencimento" required placeholder="DD/MM/AAAA">
                 <div class="invalid-feedback">
                     Por favor, Campo Obrigatório!
                   </div>
                   <div class="valid-feedback">
                     Tudo certo!
                   </div>
+                  <script type="text/javascript">
+            $(function () {
+                $('#Vencimento').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
               </div>
             </div>
             <div class="form-row">
@@ -253,25 +260,39 @@
                   </div>
                   <div class="form-group col-lg-3">
                     <b class="ls-label-text" for="Data_Bai">Data de Baixa</b>
-                    <input type="date" class="form-control input-border-bottom" name="Data_Bai" id="Data_Bai" required>
+                    <input type="text" class="form-control input-border-bottom" name="Data_Bai" id="Data_Bai" placeholder="DD/MM/AAAA" required>
                     <div class="invalid-feedback">
                         Por favor, Campo Obrigatório!
                       </div>
                       <div class="valid-feedback">
                         Tudo certo!
                       </div>
+                      <script type="text/javascript">
+            $(function () {
+                $('#Data_Bai').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
                   </div>
             </div>
             <div class="form-row">
                   <div class="form-group col-lg-2">
                     <b class="ls-label-text" for="Data_Liq">Data de Liquidação</b>
-                    <input type="date" class="form-control input-border-bottom" name="Data_Liq" id="Data_Liq" required>
+                    <input type="text" class="form-control input-border-bottom" name="Data_Liq" id="Data_Liq" required placeholder="DD/MM/AAAA">
                     <div class="invalid-feedback">
                         Por favor, Campo Obrigatório!
                       </div>
                       <div class="valid-feedback">
                         Tudo certo!
                       </div>
+                      <script type="text/javascript">
+            $(function () {
+                $('#Data_Liq').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            });
+        </script>
                   </div>
                   <div class="form-group col-lg-2">
                     <b class="ls-label-text" for="Situacao">Situação do Título</b>

@@ -57,7 +57,12 @@
                                 <tr>
                                     <td class=""> {{ $u->id }} </td>
                                     <td>
+                                    @if($u->image != null)
                                     <img src="{{ url("storage/users/{$u->image}") }}" style="max-width:50px; height:50px">
+                            @else
+                                <img src="{{ url("img/profile.jpg") }}" style="max-width:50px; height:50px" alt="Img Profile" >
+                            @endif
+                                  
                                     </td>
                                     <td class=""> {{ $u->name }} </td>
                                     <td class=""> {{ $u->email }} </td>
