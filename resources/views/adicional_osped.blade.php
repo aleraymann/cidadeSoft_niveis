@@ -38,10 +38,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Adicional OS/Pedido
+                @can('insere_adiOS')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Adicional
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_adicional_osped")
@@ -60,31 +62,39 @@
                                 <th class="">Cod Produto Devolução</th>
                                 <th class="">Cod de Referencia Devolução</th>
                                 <th class="">Quantidade a Devolver</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($adicional_osped as $adicional)
-                                <tr>
-                                    <td> {{ $adicional->Codigo }} </td>
-                                    <td> {{ $adicional->Cod_item }} </td>
-                                    <td> {{ $adicional->Cod_Ref }} </td>
-                                    <td> {{ $adicional->Descricao }} </td>
-                                    <td> {{ $adicional->Valor }} </td>
-                                    <td> {{ $adicional->Qtd_Alterar }} </td>
-                                    <td> {{ $adicional->Cod_Item_Dev }} </td>
-                                    <td> {{ $adicional->Cod_Ref_Dev }} </td>
-                                    <td> {{ $adicional->Qtd_Dev }} </td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <a href='{{ url("/AdicionalOS/editar/$adicional->Codigo") }}'
-                                                class="btn btn-success "><i class='far fa-edit'></i></a>
-                                                <a href="javascript:deletarRegistro('{{ $adicional->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                        </div>
-                                    </td>
+                                @can('view_adiOS', $adicional)
+                                    <tr>
+                                        <td> {{ $adicional->Codigo }} </td>
+                                        <td> {{ $adicional->Cod_item }} </td>
+                                        <td> {{ $adicional->Cod_Ref }} </td>
+                                        <td> {{ $adicional->Descricao }} </td>
+                                        <td> {{ $adicional->Valor }} </td>
+                                        <td> {{ $adicional->Qtd_Alterar }} </td>
+                                        <td> {{ $adicional->Cod_Item_Dev }} </td>
+                                        <td> {{ $adicional->Cod_Ref_Dev }} </td>
+                                        <td> {{ $adicional->Qtd_Dev }} </td>
+                                        <td> {{ $adicional->user_id }} </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                            @can('edita_adiOS')
+                                                <a href='{{ url("/AdicionalOS/editar/$adicional->Codigo") }}'
+                                                    class="btn btn-success "><i class='far fa-edit'></i></a>
+                                            @endcan
+                                            @can('deleta_adiOS')
+                                                    <a href="javascript:deletarRegistro('{{ $adicional->Codigo }}')"
+                                                    class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            @endcan
+                                            </div>
+                                        </td>
 
-                                </tr>
+                                    </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

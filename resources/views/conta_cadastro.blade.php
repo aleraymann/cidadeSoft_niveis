@@ -43,10 +43,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Contas
+                @can('insere_conta')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Conta
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_conta_cadastro")
@@ -65,11 +67,13 @@
                                 <th class="">Conta</th>
                                 <th class="">Tipo_Conta</th>
                                 <th class="">Cod Empresa</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($contacadastro as $contacad)
+                            @can('view_conta', $contacad)
                                 <tr>
 
                                     <td>{{ $contacad->Codigo }}</td>
@@ -82,17 +86,25 @@
                                     <td>{{ $contacad->Tipo_Conta=="C"? "Caixa":"Banco" }}
                                     </td>
                                     <td>{{ $contacad->Empresa }}</td>
+                                    <td>{{ $contacad->user_id }}</td>
                                     <td class="">
                                         <div class="btn-group" role="group">
+                                        @can('edita_conta')
                                             <a href='{{ url("/Conta/editar/$contacad->Codigo") }}'
                                                 class="btn btn-success"><i class='far fa-edit'></i></a>
+                                        @endcan
+                                        @can('visual_conta')
                                             <a href='{{ url("/Conta/vizualizar/$contacad->Codigo") }}'
                                                 class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                        @endcan
+                                        @can('deleta_conta')
                                                 <a href="javascript:deletarRegistro('{{ $contacad->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        @endcan
                                         </div>
                                     </td>
                                 </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

@@ -322,11 +322,83 @@
 								</ul>
 							</div>
 						</li>
+						@can('gerar_relatorio')
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#relatorio">
+								<i class="flaticon-file"></i>
+								<p>Relatórios</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="relatorio">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href='{{ url("/pdf_empresas") }}' target='blank'>
+											<span class="sub-item">Empresas</span>
+										</a>
+									</li>
+									<li>
+										<a href='{{ url("/pdf_funcionarios") }}'target='blank'>
+											<span class="sub-item">Funcionarios</span>
+										</a>
+									</li>
+									<li>
+										<a href='{{ url("/pdf_clifor") }}'target='blank'>
+											<span class="sub-item">Clientes/Fornecedores</span>
+										</a>
+									</li>
+									<li>
+										<a href='{{ url("/pdf_transportadoras") }}'target='blank'>
+											<span class="sub-item">Transportadoras</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						@endcan
+						<li class="nav-item">
+						<a href="{{url('/Maps')}}">
+								<i class="flaticon-placeholder"></i>
+								<p>Encontre-nos</p>
+							</a>
+						</li>
+						<li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="la la-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">Pedido</h4>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#osped">
+								<i class="flaticon-box-2"></i>
+								<p>OS e Pedidos</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="osped">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{url('/Cadastro/os_ped')}}">
+											<span class="sub-item">Categoria para Totalização no Pedido</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{url('/Cadastro/adicional_osped')}}">
+											<span class="sub-item">Adicional OS/Pedido</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="la la-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">Financeiro</h4>
+						</li>
 						@can('view_financeiro')
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#financ">
 								<i class="flaticon-technology"></i>
-								<p>Financeiro</p>
+								<p>Pagamento</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="financ">
@@ -350,27 +422,7 @@
 							</div>
 						</li>
 						@endcan
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#osped">
-								<i class="flaticon-box-2"></i>
-								<p>OS e Pedidos</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="osped">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="{{url('/Cadastro/os_ped')}}">
-											<span class="sub-item">Categoria para Totalização no Pedido</span>
-										</a>
-									</li>
-									<li>
-										<a href="{{url('/Cadastro/adicional_osped')}}">
-											<span class="sub-item">Adicional OS/Pedido</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
+						
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#bolet">
 								<i class='la la-barcode' style='font-size:20px'></i>
@@ -417,60 +469,21 @@
 							</a>
 							<div class="collapse" id="imposto">
 								<ul class="nav nav-collapse">
-									<li>
-										<a href="{{url('/Cadastro/cest')}}">
-											<span class="sub-item">CEST</span>
-										</a>
-									</li>
-									<li>
+								<li>
 										<a href="{{url('/Cadastro/ncm')}}">
 											<span class="sub-item">NCM</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/cest')}}">
+											<span class="sub-item">CEST</span>
+										</a>
+									</li>									
 								</ul>
 							</div>
-						</li>
-						@can('gerar_relatorio')
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#relatorio">
-								<i class="flaticon-file"></i>
-								<p>Relatórios</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="relatorio">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href='{{ url("/pdf_empresas") }}' target='blank'>
-											<span class="sub-item">Empresas</span>
-										</a>
-									</li>
-									<li>
-										<a href='{{ url("/pdf_funcionarios") }}'target='blank'>
-											<span class="sub-item">Funcionarios</span>
-										</a>
-									</li>
-									<li>
-										<a href='{{ url("/pdf_clifor") }}'target='blank'>
-											<span class="sub-item">Clientes/Fornecedores</span>
-										</a>
-									</li>
-									<li>
-										<a href='{{ url("/pdf_transportadoras") }}'target='blank'>
-											<span class="sub-item">Transportadoras</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						@endcan
-						<li class="nav-item">
-						<a href="{{url('/Maps')}}">
-								<i class="flaticon-placeholder"></i>
-								<p>Encontre-nos</p>
-							</a>
 						</li>
 					@endcan
-						<li class="nav-section">
+						<!--<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="la la-ellipsis-h"></i>
 							</span>
@@ -646,7 +659,7 @@
 									</li>
 								</ul>
 							</div>
-						</li>
+						</li>-->
 						<li>
 							<footer class="sticky-footer mt-2" style="color:black">
 							<hr>

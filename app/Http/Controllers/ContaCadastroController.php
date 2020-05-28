@@ -7,6 +7,7 @@ use App\model\ContaCadastro;
 use App\model\Empresa;
 use App\model\ContaSaldo;
 use App\model\BoletoTitulo;
+use Gate;
 
 
 class ContaCadastroController extends Controller
@@ -59,6 +60,9 @@ class ContaCadastroController extends Controller
     public function editar(ContaCadastro $contacadastro, Empresa $empresa, $id)
     {
         $contacadastro = $contacadastro->find($id);
+        if(Gate::denies('view_conta', $contacadastro)){
+            return redirect()->back();
+        }
         $empresa = Empresa::all();
         return view("edit.edit_conta_cadastro", compact("contacadastro","empresa","id"));
     }
@@ -66,6 +70,9 @@ class ContaCadastroController extends Controller
     public function vizualizar(ContaCadastro $contacadastro, $id, ContaSaldo $contasaldo)
     {
         $contacadastro = $contacadastro->find($id);
+        if(Gate::denies('view_conta', $contacadastro)){
+            return redirect()->back();
+        }
         $contasaldo = ContaSaldo::all();
         return view("visual.view_conta_cadastro", compact("contacadastro","id","contasaldo"));
     }

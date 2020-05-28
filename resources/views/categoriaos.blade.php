@@ -20,10 +20,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Categoria para Totalização no Pedido, OS
+                @can('insere_catOS')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Categoria
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_categoriaos")
@@ -34,24 +36,32 @@
                         <thead>
                             <tr>
                                 <th class="">Cod</th>
-                                <th class="">Descricao</th>
+                                <th class="">Descrição</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($categoriaos as $cat)
+                                @can('view_catOS', $cat)
                                 <tr>
                                     <td class=""> {{ $cat->Codigo }} </td>
                                     <td class=""> {{ $cat->Descricao }} </td>
+                                    <td class=""> {{ $cat->user_id }} </td>
                                     <td class="">
                                         <div class="btn-group" role="group">
+                                        @can('edita_catOS')
                                             <a href='{{ url("/CatOSPed/editar/$cat->Codigo") }}'
                                                 class="btn btn-success"><i class='far fa-edit'></i></a>
+                                        @endcan
+                                        @can('edita_catOS')
                                                 <a href="javascript:deletarRegistro('{{ $cat->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        @endcan
                                         </div>
                                     </td>
                                 </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

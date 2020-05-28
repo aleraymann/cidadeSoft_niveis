@@ -84,7 +84,7 @@
 
                         <tbody>
                             @foreach($transportadora as $trans)
-                            @can('view_trans_adm', $trans)
+                            @can('view_transp', $trans)
                                 <tr>
                                     <td class=""> {{ $trans->Codigo }} </td>
                                     <td class=""> {{ $trans->Nome_Fantasia }} </td>

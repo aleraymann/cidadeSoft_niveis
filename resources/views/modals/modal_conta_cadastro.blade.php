@@ -21,7 +21,12 @@
             <div class="form-group col-lg-12" hidden>
               <b class="ls-label-text" for="user_id">User_ID:</b>
               <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id"
-              readonly value="{{ Auth::user()->id }}" >
+              readonly   value="
+                            @if(Auth::user()->hasAnyRoles('adm'))
+                            {{ Auth::user()->id }}
+                            @else
+                            {{ Auth::user()->adm }}
+                            @endif" >
             </div>
           </div>
                 <div class="form-row">
@@ -36,7 +41,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Cod_Banco">Número do Banco:</b>
                         <input type="text" class="form-control input-border-bottom" name="Cod_Banco" id="Cod_Banco"
                             placeholder="" required minlength="1" maxlength="6">
@@ -58,7 +63,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Nome_Banco">Nome do Banco:</b>
                         <input type="text" class="form-control input-border-bottom" name="Nome_Banco" id="Nome_Banco"
                             placeholder="" required minlength="2" maxlength="20">
@@ -120,7 +125,7 @@
                     <div class="form-group col-lg-1">
                         <b class="ls-label-text" for="Dig_Age">DV:</b>
                         <input type="text" class="form-control input-border-bottom" name="Dig_Age" id="Dig_Age"
-                            placeholder="" required minlength="2" maxlength="2">
+                            placeholder="" required minlength="1" maxlength="2">
                         <div class="invalid-feedback">
                             Por favor, Campo Obrigatório!
                         </div>
@@ -143,7 +148,7 @@
                     <div class="form-group col-lg-1">
                         <b class="ls-label-text" for="Digito">DV:</b>
                         <input type="text" class="form-control input-border-bottom" name="Digito" id="Digito"
-                            placeholder="" required minlength="2" maxlength="2">
+                            placeholder="" required minlength="1" maxlength="2">
                         <div class="invalid-feedback">
                             Por favor,Campo Obrigatório!
                         </div>
@@ -151,7 +156,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-1"></div>
+                    <div class="form-group col-lg-2"></div>
                     <div class="form-group col-lg-2">
                         <b class="ls-label-text" for="Tipo_Conta">Tipo de Conta:</b>
                         <select class="form-control input-border-bottom" id="Tipo_Conta" name="Tipo_Conta">
@@ -165,7 +170,9 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Tipo_Cobranca">Tipo de Cobrança:</b>
                         <select class="form-control input-border-bottom" id="Tipo_Cobranca" name="Tipo_Cobranca">
                             <option value="">Selecione</option>
@@ -182,8 +189,6 @@
                             Tudo certo!
                         </div>
                     </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Cod_Cedente">Código do Cedente:</b>
                         <input type="text" class="form-control input-border-bottom" name="Cod_Cedente" id="Cod_Cedente"
@@ -195,7 +200,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-3">
+                    <div class="form-group col-lg-4">
                         <b class="ls-label-text" for="Convenio">Num do Convenio da Cobrança:</b>
                         <input type="text" class="form-control input-border-bottom" name="Convenio" id="Convenio"
                             placeholder="" minlength="1" maxlength="15">
@@ -206,7 +211,9 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-3">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-4">
                         <b class="ls-label-text" for="Carteira">Num do Carteira da Cobrança:</b>
                         <input type="text" class="form-control input-border-bottom" name="Carteira" id="Carteira"
                             placeholder="" minlength="1" maxlength="2">
@@ -228,8 +235,6 @@
                             Tudo certo!
                         </div>
                     </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group col-lg-2">
                         <b class="ls-label-text" for="Cod_Moeda">Cod. Moeda:</b>
                         <input type="number" class="form-control input-border-bottom" name="Cod_Moeda" id="Cod_Moeda"
@@ -252,7 +257,9 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Especie_Doc">Espec. Documento:</b>
                         <input type="text" class="form-control input-border-bottom" name="Especie_Doc" id="Especie_Doc"
                             value="DM" placeholder="" minlength="1" maxlength="2">
@@ -263,7 +270,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Aceite">Aceite de Cobrança:</b>
                         <select class="form-control input-border-bottom" id="Aceite" name="Aceite">
                             <option value="N">Não</option>
@@ -276,7 +283,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-6">
                         <b class="ls-label-text" for="Local_Pgto">Local de pagamento:</b>
                         <input type="text" class="form-control input-border-bottom" name="Local_Pgto" id="Local_Pgto"
                             value="PAGÁVEL EM QUALQUER BANCO ATE O VENCIMENTO" placeholder="" minlength="2"
@@ -290,8 +297,8 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-lg-2">
-                        <b class="ls-label-text" for="Dias_Desc">Dias de Desconto :</b>
+                    <div class="form-group col-lg-3">
+                        <b class="ls-label-text" for="Dias_Desc">Dias de Desconto:</b>
                         <input type="number" class="form-control input-border-bottom" name="Dias_Desc" id="Dias_Desc"
                             value="0" placeholder="" minlength="1" maxlength="2">
                         <div class="invalid-feedback">
@@ -301,8 +308,8 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
-                        <b class="ls-label-text" for="Perc_Desc">Perc. de Desconto :</b>
+                    <div class="form-group col-lg-3">
+                        <b class="ls-label-text" for="Perc_Desc">Perc. de Desconto:</b>
                         <input type="text" class="form-control input-border-bottom" name="Perc_Desc" id="Perc_Desc"
                             value="0.00" placeholder="" minlength="1" maxlength="2">
                         <div class="invalid-feedback">
@@ -312,8 +319,8 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
-                        <b class="ls-label-text" for="Perc_Multa">Perc. de Multa :</b>
+                    <div class="form-group col-lg-3">
+                        <b class="ls-label-text" for="Perc_Multa">Perc. de Multa:</b>
                         <input type="text" class="form-control input-border-bottom" name="Perc_Multa" id="Perc_Multa"
                             value="0.00" placeholder="" minlength="1" maxlength="2">
                         <div class="invalid-feedback">
@@ -323,8 +330,8 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
-                        <b class="ls-label-text" for="Perc_Juros">Perc. de Juros :</b>
+                    <div class="form-group col-lg-3">
+                        <b class="ls-label-text" for="Perc_Juros">Perc. de Juros:</b>
                         <input type="text" class="form-control input-border-bottom" name="Perc_Juros" id="Perc_Juros"
                             value="0.00" placeholder="" minlength="1" maxlength="2">
                         <div class="invalid-feedback">
@@ -334,7 +341,9 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                </div>
+                <div class="form-row">
+                <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Dias_AvisoProt">Dias aviso Protesto :</b>
                         <input type="number" class="form-control input-border-bottom" name="Dias_AvisoProt"
                             id="Dias_AvisoProt" value="0" placeholder="" minlength="1" maxlength="2">
@@ -345,7 +354,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Dias_Prot">Dias a enviar Protesto :</b>
                         <input type="number" class="form-control input-border-bottom" name="Dias_Prot" id="Dias_Prot"
                             value="0" placeholder="" minlength="1" maxlength="2">
@@ -356,9 +365,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-lg-2">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Tx_Emissao">Taxa de Emissão :</b>
                         <input type="text" class="form-control input-border-bottom" name="Tx_Emissao" 
                         onblur="tx_Emissao()"id="Tx_Emissao"
@@ -370,12 +377,14 @@
                             Tudo certo!
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Empresa">Empresa:</b>
                         <select class="form-control input-border-bottom" required id="Empresa" name="Empresa">
                             <option value="">Selecione</option>
                             @foreach($empresa as $empresa)
+                            @can('view_empresa', $empresa)
                                 <option value="{{ $empresa->Codigo }}">{{ $empresa->Razao_Social }}</option>
+                            @endcan
                             @endforeach
                         </select>
                         <div class="invalid-feedback">

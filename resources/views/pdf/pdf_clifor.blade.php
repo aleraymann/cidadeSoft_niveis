@@ -87,7 +87,7 @@
 
                         <tbody>
                             @foreach($clifor as $cf)
-                            @can('view_cli_adm', $cf)
+                            @can('view_clifor', $cf)
                                 <tr>
                                     <td> {{ $cf->Codigo }} </td>
                                     <td> {{ $cf->Nome_Fantasia }} </td>

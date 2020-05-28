@@ -19,6 +19,13 @@ use App\model\Transportadora_Valor;
 use App\model\Cond_Pag;
 use App\model\Form_Pag;
 use App\model\CentroCusto;
+use App\model\CategoriaOS;
+use App\model\Adicional_OSPed;
+use App\model\BoletoRemessa;
+use App\model\BoletoTitulo;
+use App\model\ContaCadastro;
+use App\model\NCM;
+use App\model\CEST;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -41,35 +48,35 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         
         //----------Empresa------------------------------------------------------------------------------
-        Gate::define('update_empresa', function( User $user, Empresa $empresa){//update - delete
-            return $user->id == $empresa->user_id;     
-        });
-        
         Gate::define('view_empresa', function( User $user, Empresa $empresa){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $empresa->user_id;     
             }
-            if( $user->hasAnyRoles('funcionario')){
+            else
                 return $user->empresa == $empresa->Codigo;     
-            }
-            if( $user->hasAnyRoles('financeiro')){
-                return $user->adm == $empresa->user_id;     
-            }
+          
         });
+        Gate::define('view_empresa_boleto', function( User $user, Empresa $empresa){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $empresa->user_id;     
+            }
+            else
+                return $user->adm == $empresa->user_id;     
+          
+        });
+        
         
         //----------Clifor-------------------------------------------------------------------------------
         Gate::define('view_clifor', function( User $user, CliFor $clifor){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $clifor->user_id;     
             }
-            if( $user->hasAnyRoles('funcionario')){
+            else if( $user->hasAnyRoles('funcionario')){
                 return $user->id == $clifor->Vendedor;     
             }
-            if( $user->hasAnyRoles('financeiro')){
+            else
                 return $user->adm == $clifor->user_id;     
-            }
         });
-
 
         Gate::define('view_clifor_contato', function( User $user, CliForContato $cliforcontato){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
@@ -100,12 +107,8 @@ class AuthServiceProvider extends ServiceProvider
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $transportadora->user_id;     
             }
-            if( $user->hasAnyRoles('funcionario')){
+            else
                 return $user->adm == $transportadora->user_id;     
-            }
-            if( $user->hasAnyRoles('financeiro')){
-                return $user->adm == $transportadora->user_id;     
-            }
         });
 
             Gate::define('view_transp_destino', function( User $user, Transportadora_Destino $destino){//apenas visualizar
@@ -126,12 +129,8 @@ class AuthServiceProvider extends ServiceProvider
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $cond_pag->user_id;     
             }
-            if( $user->hasAnyRoles('funcionario')){
+           else
                 return $user->adm == $cond_pag->user_id;     
-            }
-            if( $user->hasAnyRoles('financeiro')){
-                return $user->adm == $cond_pag->user_id;     
-            }
         });
 
 
@@ -151,6 +150,67 @@ class AuthServiceProvider extends ServiceProvider
             }else
                 return $user->adm == $centrocusto->user_id;     
         });
+
+
+         //----------Categoria pedidos------------------------------------------------------------------------------------
+         Gate::define('view_catOS', function( User $user, CategoriaOS $categoriaOS){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $categoriaOS->user_id;     
+            }else
+                return $user->adm == $categoriaOS->user_id;     
+        });
+
+
+        //----------Adicional OS/Ped------------------------------------------------------------------------------------
+        Gate::define('view_adiOS', function( User $user, Adicional_OSPed $adiOS){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $adiOS->user_id;     
+            }else
+                return $user->adm == $adiOS->user_id;     
+        });
+
+        //----------Boleto Remessa------------------------------------------------------------------------------------
+        Gate::define('view_boletoRem', function( User $user, BoletoRemessa $boleto_remessa){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $boleto_remessa->user_id;     
+            }else
+                return $user->adm == $boleto_remessa->user_id;     
+        });
+
+         //----------Boleto Titulo------------------------------------------------------------------------------------
+         Gate::define('view_boletoTit', function( User $user, BoletoTitulo $boleto_titulo){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $boleto_titulo->user_id;     
+            }else
+                return $user->adm == $boleto_titulo->user_id;     
+        });
+
+        //----------Conta Bancária------------------------------------------------------------------------------------
+        Gate::define('view_conta', function( User $user, ContaCadastro $conta){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $conta->user_id;     
+            }else
+                return $user->adm == $conta->user_id;     
+        });
+
+        //----------NCM------------------------------------------------------------------------------------
+        Gate::define('view_ncm', function( User $user,NCM $ncm){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $ncm->user_id;     
+            }else
+                return $user->adm == $ncm->user_id;     
+        });
+         //----------CEST------------------------------------------------------------------------------------
+         Gate::define('view_cest', function( User $user, CEST $cest){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $cest->user_id;     
+            }else
+                return $user->adm == $cest->user_id;     
+        });
+
+        
+
+
 
 
 

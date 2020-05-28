@@ -20,10 +20,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">CEST
+                @can('insere_cest')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> CEST
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_cest")
@@ -37,25 +39,33 @@
                                 <th class="">CEST</th>
                                 <th class="">NCM </th>
                                 <th class="">Descrição</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($cest as $c)
+                            @can('view_cest', $c)
                                 <tr>
                                     <td class=""> {{ $c->Codigo }} </td>
                                     <td class=""> {{ $c->CEST }} </td>
                                     <td class=""> {{ $c->NCM }} </td>
                                     <td class=""> {{ $c->Descricao }} </td>
+                                    <td class=""> {{ $c->user_id }} </td>
                                     <td class="">
                                         <div class="btn-group" role="group">
+                                        @can('edita_cest')
                                             <a href='{{ url("/Cest/editar/$c->Codigo") }}'
                                                 class="btn btn-success"><i class='far fa-edit'></i></a>
+                                        @endcan
+                                        @can('deleta_cest')
                                                 <a href="javascript:deletarRegistro('{{ $c->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        @endcan
                                         </div>
                                     </td>
                                 </tr>
+                            @endcan
                             @endforeach
                         </tbody>
                     </table>

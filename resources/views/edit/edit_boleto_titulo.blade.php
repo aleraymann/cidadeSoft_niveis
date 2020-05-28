@@ -21,8 +21,8 @@
 
 </script>
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
-        Voltar
+<a href="{{ url("/Cadastro/boleto_titulo") }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
         <div class="card">
@@ -43,20 +43,24 @@
                     @endif
                     <div class="form-row">
 
-                        <div class="form-group col-lg-4">
-                            <strong><label class="form-check-label">Baixa / Envio ao Banco:</label></strong>
-                            <div class="form-check form-check-inline ml-2">
-                                <input class="form-check-input" type="radio" name="Sel" id="Sel" value="1">
-                                <label class="form-check-label" for="Sel">Sim</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="Sel" id="Sel" value="0">
-                                <label class="form-check-label" for="Sel">Não</label>
-                            </div>
+                        <div class="form-group col-lg-2">
+                            <b class="ls-label-text" for="Sel">Baixa/Envio ao Banco</b>
+                            <select class="form-control input-border-bottom" id="Sel" name="Sel" required>
+                            <option
+                                    value="{{ isset($boleto_titulo->Sel) ? $boleto_titulo->Sel : '' }} ">
+                                    @if( $boleto_titulo->Sel =="0" )
+                                        <label>Não</label><br>
+                                    @else
+                                        <label>Sim</label><br>
+                                    @endif
+                                </option>
+                                <option value="0">Não</option>
+                                <option value="1">Sim</option>
+                            </select>
                             <div class="invalid-feedback">
-                                Por favor, Campo Obrigatório!
+                                 Por favor, Campo Obrigatório!
                             </div>
-                            <div class="valid-feedback">
+                             <div class="valid-feedback">
                                 Tudo certo!
                             </div>
                         </div>
@@ -65,10 +69,12 @@
                             <select class="form-control input-border-bottom" id="Cod_Conta" name="Cod_Conta">
                                 <option value="0">Selecione</option>
                                 @foreach($conta as $conta)
+                                @can('view_conta', $conta)
                                     <option value="{{ $conta->Codigo }}"
                                         {{ $boleto_titulo->Cod_Conta == $conta->Codigo ? "selected" : "" }}>
                                         Ag:{{ $conta->Cod_Age }}-{{ $conta->Dig_Age }} /
                                         CC:{{ $conta->CC }}-{{ $conta->Digito }}</option>
+                                @endcan        
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">
@@ -78,7 +84,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-2">
+                        <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Data_Doc">Data do Documento:</b>
                             <input type="text" class="form-control input-border-bottom" name="Data_Doc" id="Data_Doc"
                                 value="{{ isset($boleto_titulo->Data_Doc) ? $boleto_titulo->Data_Doc : '' }}"
@@ -90,7 +96,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-2">
+                        <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Vencimento">Data de Vencimento</b>
                             <input type="text" class="form-control input-border-bottom" name="Vencimento"
                                 id="Vencimento" required
@@ -266,9 +272,11 @@
                             <select class="form-control input-border-bottom" id="Cod_CliFor" name="Cod_CliFor">
                                 <option value="0">Selecione</option>
                                 @foreach($clifor as $clifor)
+                                @can('view_clifor', $clifor)
                                     <option value="{{ $clifor->Codigo }}"
                                         {{ $boleto_titulo->Cod_CliFor == $clifor->Codigo ? "selected" : "" }}>
-                                        {{ $clifor->Razao_Social }}</option>
+                                        {{ $clifor->Nome_Fantasia }}</option>
+                                @endcan
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">
@@ -374,10 +382,11 @@
                             <select class="form-control input-border-bottom" id="Cod_Rem" name="Cod_Rem">
                                 <option value="0">Selecione</option>
                                 @foreach($boleto_remessa as $boleto_remessa)
-                                    <option value="{{ $boleto_remessa->Codigo }}"
+                                    @can('view_boletoRem', $boleto_remessa)
+                                     <option value="{{ $boleto_remessa->Codigo }}" 
                                         {{ $boleto_titulo->Cod_Rem == $boleto_remessa->Codigo ? "selected" : "" }}>
-                                        {{ $boleto_remessa->Numero_Rem }}
-                                    </option>
+                                        {{ $boleto_remessa->Numero_Rem }}</option>
+                                    @endcan
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">
@@ -400,13 +409,16 @@
                             </div>
                         </div>
                         <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="Cod_Rem">Empresa:</b>
-                            <select class="form-control input-border-bottom" id="Cod_Rem" name="Cod_Rem">
+                            <b class="ls-label-text" for="Empresa">Empresa:</b>
+                            <select class="form-control input-border-bottom" id="Empresa" name="Empresa" readonly 
+                            disabled>
                                 <option value="0">Sem empresa</option>
                                 @foreach($empresa as $empresa)
+                                @can('view_empresa_boleto', $empresa)
                                     <option value="{{ $empresa->Codigo }}"
-                                        {{ $boleto_titulo->Cod_Rem == $empresa->Codigo ? "selected" : "" }}>
+                                        {{ $boleto_titulo->Empresa == $empresa->Codigo ? "selected" : "" }}>
                                         {{ $empresa->Razao_Social }}</option>
+                                @endcan
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">

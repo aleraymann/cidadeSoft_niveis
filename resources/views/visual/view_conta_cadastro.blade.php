@@ -8,18 +8,23 @@
       @endif
       @include('sweetalert::alert')
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
-        Voltar
+    <a href="{{ url()->previous() }}"class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Conta</h4>
+                <h4 class="card-title">Conta: {{ $contacadastro->CC }}-{{ $contacadastro->Digito }} 
+                <br> Banco: {{ $contacadastro->Nome_Banco }}</h4>
                 <div class="btn-group " role="group">
+                @can('edita_conta')
         <a href='{{ url("/Conta/editar/$contacadastro->Codigo") }}'
             class="btn btn-success"><i class='far fa-edit'></i></a>
+            @endcan
+            @can('deleta_conta')
         <a href='{{ url("/Conta/excluir/$contacadastro->Codigo") }}' class="btn btn-danger"
             onclick="return confirm('Deseja mesmo Excluir?')"><i class='fas fa-trash-alt'></i></a>
+            @endcan
     </div>
             </div>
             <div class="card-body">
@@ -105,7 +110,7 @@
             </div>
         </div>
     </div>
-
+    @can('insere_saldo')
     <ul class="nav nav-tabs ml-3" role="tablist">
         <li class="nav-item">
             <a class="nav-link " href="#saldo" role="tab" data-toggle="tab"><b>+ Saldo</b> </a>
@@ -120,10 +125,11 @@
             </div>
         </div>
     </div>
-
+    @endcan
 
     <div class="col-md-12">
         <div class="card">
+        @can('visual_saldo')
             <div class="card-header">
                 <h4 class="card-title">Saldo</h4>
             </div>
@@ -185,10 +191,12 @@
                                             {{ $contacadastro->Especie }}{{ $contasaldo->Total_Duplicata }}</label>
                                         </td>
                                         <td>
+                                        @can('deleta_saldo')
                                             <div class="btn-group" role="group">
                                             <a href="javascript:deletarSaldo('{{ $contasaldo->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                             </div>
+                                        @endcan
                                         </td>
                                     </tr>
                                 @endif
@@ -197,6 +205,7 @@
                     </table>
                 </div>
             </div>
+            @endcan
         </div>
     </div>
 

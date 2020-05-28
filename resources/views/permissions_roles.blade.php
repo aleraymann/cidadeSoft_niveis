@@ -11,6 +11,9 @@
     
       <div class="main-panel">
         <div style="margin-top:60px">
+        <a href="{{ url("/Permission") }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
+    </a>
         <!-- Button to Open the Modal -->
         @include('sweetalert::alert')
         <!--end container-->    

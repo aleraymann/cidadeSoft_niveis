@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\NCM;
 use App\model\CEST;
+use Gate;
 
 class NCMController extends Controller
 {
@@ -52,6 +53,9 @@ class NCMController extends Controller
     public function editar(NCM $ncm, $id)
     {
         $ncm = $ncm->find($id);
+        if(Gate::denies('view_ncm',$ncm)){
+            return redirect()->back();
+        }
         return view("edit.edit_ncm", compact("ncm","id"));
     }
 

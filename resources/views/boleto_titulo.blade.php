@@ -37,10 +37,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Títulos
+                @can('insere_boletoTit')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Títulos
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_boleto_titulo")
@@ -56,11 +58,13 @@
                                 <th class="">Núm do Titulo no Banco</th>
                                 <th class="">Valor</th>
                                 <th class="">Situação</th>
+                                <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($boleto_titulo as $titulo)
+                            @can('view_boletoTit', $titulo)
                                 <tr>
                                     <td> {{ $titulo->Codigo }} </td>
                                     <td> {{ $titulo->Data_Doc }} </td>
@@ -76,18 +80,26 @@
                                     @else
                                         <td> {{ $titulo->Situacao = "Vencido" }} </td>
                                     @endif
+                                    <td> {{ $titulo->user_id }} </td>
                                     <td>
                                         <div class="btn-group" role="group">
+                                        @can('edita_boletoTit')
                                             <a href='{{ url("/Boleto_titulo/editar/$titulo->Codigo") }}'
                                                 class="btn btn-success "><i class='far fa-edit'></i></a>
+                                        @endcan
+                                        @can('visual_boletoTit')
                                             <a href='{{ url("/Boleto_titulo/vizualizar/$titulo->Codigo") }}'
                                                 class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                        @endcan
+                                        @can('deleta_boletoTit')
                                                 <a href="javascript:deletarRegistro('{{ $titulo->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        @endcan
                                         </div>
                                     </td>
 
                                 </tr>
+                            @endcan
                             @endforeach
                         </tbody>
                     </table>

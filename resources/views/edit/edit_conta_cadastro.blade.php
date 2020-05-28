@@ -440,9 +440,11 @@
                             <b class="ls-label-text" for="Empresa">Empresa:</b>
                             <select class="form-control input-border-bottom" required id="Empresa" name="Empresa">
                                 @foreach($empresa as $empresa)
+                                @can('view_empresa', $empresa)
                                     <option value="{{ $empresa->Codigo }}"
                                         {{ $contacadastro->Empresa == $empresa->Codigo ? "selected" : "" }}>
                                         {{ $empresa->Nome_Fantasia }}</option>
+                                @endcan
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">

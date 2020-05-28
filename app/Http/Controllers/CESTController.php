@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\CEST;
 use App\model\NCM;
+use Gate;
 
 class CESTController extends Controller
 {
@@ -53,6 +54,9 @@ class CESTController extends Controller
     public function editar(CEST $cest, $id,  NCM $ncm)
     {
         $cest = $cest->find($id);
+        if(Gate::denies('view_cest',$cest)){
+            return redirect()->back();
+        }
         $ncm = NCM::all();
         return view("edit.edit_cest", compact("cest","id","ncm"));
     }

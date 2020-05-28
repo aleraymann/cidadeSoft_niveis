@@ -22,34 +22,37 @@
             <div class="form-group col-lg-12" hidden>
               <b class="ls-label-text" for="user_id">User_ID:</b>
               <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id"
-              readonly value="{{ Auth::user()->id }}" >
+              readonly  value="
+                            @if(Auth::user()->hasAnyRoles('adm'))
+                            {{ Auth::user()->id }}
+                            @else
+                            {{ Auth::user()->adm }}
+                            @endif" >
             </div>
           </div>
             <div class="form-row">
              
               <div class="form-group col-lg-3">
-                <strong><label class="form-check-label">Baixa / Envio ao Banco:</label></strong>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="Sel" id="Sel" value="1"  required>
-                  <label class="form-check-label" for="Sel">Sim</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="Sel" id="Sel" value="0"  required>
-                    <label class="form-check-label" for="Sel">Não</label>
-                  </div>
-                <div class="invalid-feedback">
-                  Por favor, Campo Obrigatório!
-                </div>
-                <div class="valid-feedback">
-                  Tudo certo!
-                </div>
+                  <b class="ls-label-text" for="Sel">Baixa/Envio ao Banco</b>
+                    <select class="form-control input-border-bottom" id="Sel" name="Sel" required>
+                      <option value="0">Não</option>
+                      <option value="1">Sim</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Por favor, Campo Obrigatório!
+                    </div>
+                    <div class="valid-feedback">
+                      Tudo certo!
+                    </div>
               </div>
               <div class="form-group col-lg-3">
                 <b class="ls-label-text" for="Cod_Conta">Conta:</b>
                 <select class="form-control  input-border-bottom" id="Cod_Conta" name="Cod_Conta">
                   <option value="0">Selecione</option>
                   @foreach($conta as $conta)
+                  @can('view_conta', $conta)
                   <option value="{{$conta->Codigo}}">Ag:{{ $conta->Cod_Age }}-{{ $conta->Dig_Age }} / CC:{{ $conta->CC }}-{{ $conta->Digito }}</option>
+                  @endcan
                   @endforeach
                 </select>
                 <div class="invalid-feedback">
@@ -224,7 +227,9 @@
                     <select class="form-control input-border-bottom" id="Cod_CliFor" name="Cod_CliFor">
                       <option value="0">Selecione</option>
                       @foreach($clifor as $clifor)
-                      <option value="{{$clifor->Codigo}}">{{ $clifor->Razao_Social }}</option>
+                        @can('view_clifor', $clifor)
+                          <option value="{{$clifor->Codigo}}">{{ $clifor->Nome_Fantasia }}</option>
+                        @endcan
                       @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -277,7 +282,7 @@
                   </div>
             </div>
             <div class="form-row">
-                  <div class="form-group col-lg-2">
+                  <div class="form-group col-lg-4">
                     <b class="ls-label-text" for="Data_Liq">Data de Liquidação</b>
                     <input type="text" class="form-control input-border-bottom" name="Data_Liq" id="Data_Liq" required placeholder="DD/MM/AAAA">
                     <div class="invalid-feedback">
@@ -294,7 +299,7 @@
             });
         </script>
                   </div>
-                  <div class="form-group col-lg-2">
+                  <div class="form-group col-lg-4">
                     <b class="ls-label-text" for="Situacao">Situação do Título</b>
                     <select class="form-control input-border-bottom" id="Situacao" name="Situacao">
                       <option value="C">Carteira</option>
@@ -309,12 +314,14 @@
                       Tudo certo!
                     </div>
                   </div>
-                  <div class="form-group col-lg-2">
+                  <div class="form-group col-lg-4">
                     <b class="ls-label-text" for="Cod_Rem">Num da Remessa:</b>
                     <select class="form-control input-border-bottom" id="Cod_Rem" name="Cod_Rem">
                       <option value="0">Selecione</option>
                       @foreach($boleto_remessa as $boleto_remessa)
-                      <option value="{{$boleto_remessa->Codigo}}">{{ $boleto_remessa->Numero_Rem }}</option>
+                        @can('view_boletoRem', $boleto_remessa)
+                          <option value="{{$boleto_remessa->Codigo}}">Remessa:{{ $boleto_remessa->Numero_Rem }}</option>
+                        @endcan
                       @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -324,6 +331,8 @@
                       Tudo certo!
                     </div>
                   </div>
+                </div>
+                <div class="form-row">
                   <div class="form-group col-lg-3">
                     <b class="ls-label-text" for="Transacao">Num da Transação:</b>
                     <input type="text" class="form-control input-border-bottom" name="Transacao" id="Transacao" required maxlength="10" min="1">
@@ -335,11 +344,13 @@
                     </div>
                 </div>
                 <div class="form-group col-lg-3">
-                    <b class="ls-label-text" for="Cod_Rem">Empresa:</b>
-                    <select class="form-control input-border-bottom" id="Cod_Rem" name="Cod_Rem">
+                    <b class="ls-label-text" for="Empresa">Empresa:</b>
+                    <select class="form-control input-border-bottom" id="Empresa" name="Empresa">
                       <option value="0">Selecione</option>
                       @foreach($empresa as $empresa)
+                      @can('view_empresa', $empresa)
                       <option value="{{$empresa->Codigo}}">{{ $empresa->Razao_Social }}</option>
+                      @endcan
                       @endforeach
                     </select>
                     <div class="invalid-feedback">

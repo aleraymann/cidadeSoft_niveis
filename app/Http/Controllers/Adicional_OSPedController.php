@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\Adicional_OSPed;
+use Gate;
 
 class Adicional_OSPedController extends Controller
 {
@@ -52,6 +53,9 @@ class Adicional_OSPedController extends Controller
     public function editar (Adicional_OSPed $adicional_osped, $id)
     {
         $adicional_osped = $adicional_osped->find($id);
+        if(Gate::denies('view_adiOS', $adicional_osped)){
+            return redirect()->back();
+        }
         return view("edit.edit_adicional_osped", compact("adicional_osped","id"));
     }
 }

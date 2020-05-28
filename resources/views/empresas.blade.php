@@ -199,60 +199,7 @@
 
                         <tbody>
                             @foreach($empresas as $emp)
-                                @if( Auth::user()->hasAnyRoles('s_adm'))
-                                    <tr>
-                                        <td> {{ $emp->Codigo }} </td>
-                                        <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:100px; height:50px" ></td>
-                                        <td> {{ $emp->Nome_Fantasia }} </td>
-                                        <td> {{ $emp->Razao_Social }} </td>
-                                        <td> {{ $emp->CNPJ }} </td>
-                                        <td> {{ $emp->user_id }} </td>
-
-                                        <td>
-                                            <div class="btn-group" role="group">
-
-                                                <a href='{{ url("/Empresa/editar/$emp->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
-
-                                                <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}'
-                                                    class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                                <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
-                                                    class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @else
-                                    @can("update_empresa",$emp)
-
-                                        <tr>
-                                            <td> {{ $emp->Codigo }} </td>
-                                            <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:100px; height:50px" ></td>
-                                            <td> {{ $emp->Nome_Fantasia }} </td>
-                                            <td> {{ $emp->Razao_Social }} </td>
-                                            <td> {{ $emp->CNPJ }} </td>
-                                            <td> {{ $emp->user_id }} </td>
-
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                    @can('edita_empresa')
-                                                        <a href='{{ url("/Empresa/editar/$emp->Codigo") }}'
-                                                            class="btn btn-success"><i class='far fa-edit'></i></a>
-                                                    @endcan
-                                                    @can("visual_empresa")
-
-                                                        <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}'
-                                                            class="btn btn-secondary"><i class='far fa-eye'></i></a>
-                                                    @endcan
-                                                    @can('deleta_empresa')
-                                                        <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
-                                                            class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                                    @endcan
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endcan
                                     @can("view_empresa",$emp)
-
                                         <tr>
                                             <td> {{ $emp->Codigo }} </td>
                                             <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:100px; height:50px" ></td>
@@ -281,7 +228,7 @@
                                         </tr>
 
                                     @endcan
-                                    @endif
+                                   
                                 @endforeach
                         </tbody>
                     </table>

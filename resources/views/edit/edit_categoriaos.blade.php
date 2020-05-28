@@ -3,7 +3,7 @@
 @section("conteudo")
 
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url()->previous() }}"  class="btn btn-primary ml-3 mb-1">
+    <a href="{{ url("/Cadastro/os_ped") }}"  class="btn btn-primary ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">

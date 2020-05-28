@@ -22,7 +22,12 @@
             <div class="form-group col-lg-12" hidden>
               <b class="ls-label-text" for="user_id">User_ID:</b>
               <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id"
-              readonly value="{{ Auth::user()->id }}" >
+              readonly value="
+                            @if(Auth::user()->hasAnyRoles('adm'))
+                            {{ Auth::user()->id }}
+                            @else
+                            {{ Auth::user()->adm }}
+                            @endif" >
             </div>
           </div>
             <div class="form-row">

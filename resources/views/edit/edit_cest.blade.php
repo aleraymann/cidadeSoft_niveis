@@ -41,9 +41,11 @@
                             <b class="ls-label-text" for="NCM">NCM:</b>
                             <select class="form-control input-border-bottom" required id="NCM" name="NCM">
                                 @foreach($ncm as $ncm)
+                                @can('view_ncm', $ncm)
                                     <option value="{{ $ncm->NCM }}"
                                         {{ $cest->NCM == $ncm->NCM ? "selected" : "" }}>
                                         {{ $ncm->NCM }}</option>
+                                @endcan
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">

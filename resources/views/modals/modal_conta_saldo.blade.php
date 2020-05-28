@@ -37,7 +37,7 @@
         action="{{ url("/Conta/saldo/salvar") }}">
         <div class="form-row">
             <div class="form-group col-lg-1" hidden>
-                <label for="Cod_Conta">Transportadora:</label>
+                <label for="Cod_Conta">Conta:</label>
                 <input type="text" class="form-control input-border-bottom" name="Cod_Conta" id="Cod_Conta"
                     value="{{ $contacadastro->Codigo }}" readonly>
             </div>
@@ -180,7 +180,7 @@
                 <div class="form-group col-lg-4">
                     <b class="ls-label-text" for="Cod_Fun">Funcionário:</b>
                     <input type="text" class="form-control input-border-bottom" name="Cod_Fun" id="Cod_Fun"
-                        minlength="1" maxlength="4" value="0" required>
+                        minlength="1" maxlength="4" value="{{ Auth::user()->id }}" required readonly>
                     <div class="invalid-feedback">
                         Por favor, Campo Obrigatório!
                     </div>
@@ -191,7 +191,7 @@
                 <div class="form-group col-lg-3">
                     <b class="ls-label-text" for="Empresa">Empresa:</b>
                     <input type="text" class="form-control input-border-bottom" name="Empresa" id="Empresa"
-                        minlength="1" maxlength="4" value="1" required>
+                        minlength="1" maxlength="4" value="{{ $contacadastro->Empresa }}" required readonly>
                     <div class="invalid-feedback">
                         Por favor, Campo Obrigatório!
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\CategoriaOS;
+use Gate;
 
 
 class CategoriaOSController extends Controller
@@ -38,7 +39,7 @@ class CategoriaOSController extends Controller
         } 
         catch (\Illuminate\Database\QueryException $e) 
         {
-            //dd($e);
+            dd($e);
             return redirect()
             ->action("CategoriaOSController@listar")
             ->with("toast_error", "Houve um erro ao gravar o registro");
@@ -53,6 +54,9 @@ class CategoriaOSController extends Controller
     public function editar (CategoriaOS $categoriaos, $id)
     {
         $categoriaos = $categoriaos->find($id);
+        if(Gate::denies('view_catOS', $categoriaos)){
+            return redirect()->back();
+        }
         return view("edit.edit_categoriaos", compact("categoriaos","id"));
     }
 }

@@ -162,7 +162,7 @@
                         </div>
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="VigenciaFim">Fim da Vigência:</b>
-                            <input type="date" class="form-control input-border-bottom" name="VigenciaFim"
+                            <input type="text" class="form-control input-border-bottom" name="VigenciaFim"
                                 id="VigenciaFim"
                                 value="{{ isset($ncm->VigenciaFim) ? $ncm->VigenciaFim : '' }}">
                             <div class="invalid-feedback">
@@ -179,7 +179,7 @@
             });
         </script>
                         </div>
-                        <div class="form-group col-lg-2">
+                        <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Versao">Versão da Tabela IBPT:</b>
                             <input type="text" class="form-control input-border-bottom" name="Versao" id="Versao"
                                 placeholder="" required minlength="2" maxlength="6"

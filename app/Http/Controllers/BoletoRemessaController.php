@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\BoletoRemessa;
 use App\model\BoletoTitulo;
+use Gate;
 
 class BoletoRemessaController extends Controller
 {
@@ -54,6 +55,9 @@ class BoletoRemessaController extends Controller
     public function editar (BoletoRemessa $boleto_remessa, $id)
     {
         $boleto_remessa = $boleto_remessa->find($id);
+        if(Gate::denies('view_boletoRem', $boleto_remessa)){
+            return redirect()->back();
+        }
         return view("edit.edit_boleto_remessa", compact("boleto_remessa","id"));
     }
 }

@@ -2,8 +2,8 @@
 
 @section("conteudo")
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
-        Voltar
+    <a href="{{ url()->previous() }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
         <div class="card">
@@ -12,11 +12,15 @@
                     Num do Título no Sistema: {{ $boleto_titulo->Nro_Doc }}
                 </h4>
                 <div class="btn-group" role="group">
+                @can('edita_boletoTit')
         <a href='{{ url("/Boleto_titulo/editar/$boleto_titulo->Codigo") }}'
             class="btn btn-success"><i class='far fa-edit'></i></a>
+            @endcan
+            @can('edita_boletoTit')
         <a href='{{ url("/Boleto_titulo/excluir/$boleto_titulo->Codigo") }}'
             class="btn btn-danger" onclick="return confirm('Deseja mesmo Excluir?')"><i
                 class='fas fa-trash-alt'></i></a>
+            @endcan
     </div>
             </div>
             <div class="card-body">
@@ -57,12 +61,10 @@
                                     @if( $boleto_titulo->Situacao =="C" )
                                         <label>{{ $boleto_titulo->Situacao = "Carteira" }}
                                         </label><br>
-                                        <blade
-                                            elseif|(%24boleto_titulo-%3ESituacao%20%3D%3D%26%2334%3BB%26%2334%3B)%20%0D />
+                                            @elseif( $boleto_titulo->Situacao =="B" )
                                         <label>{{ $boleto_titulo->Situacao = "Baixado" }}
                                         </label><br>
-                                        <blade
-                                            elseif|(%24boleto_titulo-%3ESituacao%20%3D%3D%26%2334%3BL%26%2334%3B)%20%0D />
+                                            @elseif( $boleto_titulo->Situacao =="L" )
                                         <label>{{ $boleto_titulo->Situacao = "Liquidado" }}
                                         </label><br>
                                     @else

@@ -28,10 +28,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Remessas
+                @can('insere_boletoRem')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Remessa
                     </button>
+                @endcan
                 </h4>
 
                 @include("modals.modal_boleto_remessa")
@@ -52,6 +54,7 @@
 
                         <tbody>
                             @foreach($boleto_remessa as $remessa)
+                            @can('view_boletoRem', $remessa)
                                 <tr>
                                     <td> {{ $remessa->Codigo }} </td>
                                     <td> {{ $remessa->Data }} </td>
@@ -61,14 +64,19 @@
                                     <td> {{ $remessa->Arquivo }} </td>
                                     <td>
                                         <div class="btn-group" role="group">
+                                        @can('edita_boletoRem')
                                             <a href='{{ url("/Boleto_remessa/editar/$remessa->Codigo") }}'
                                                 class="btn btn-success "><i class='far fa-edit'></i></a>
+                                        @endcan
+                                        @can('deleta_boletoRem')
                                                 <a href="javascript:deletarRegistro('{{ $remessa->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        @endcan
                                         </div>
                                     </td>
 
                                 </tr>
+                                @endcan
                             @endforeach
                         </tbody>
                     </table>

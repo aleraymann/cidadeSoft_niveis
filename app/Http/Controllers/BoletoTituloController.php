@@ -8,6 +8,7 @@ use App\model\ContaCadastro;
 use App\model\CliFor;
 use App\model\BoletoRemessa;
 use App\model\Empresa;
+use Gate;
 
 
 class BoletoTituloController extends Controller
@@ -63,6 +64,9 @@ class BoletoTituloController extends Controller
     BoletoRemessa $boleto_remessa, Empresa $empresa)
     {
         $boleto_titulo = $boleto_titulo->find($id);
+        if(Gate::denies('view_boletoTit', $boleto_titulo)){
+            return redirect()->back();
+        }
         $conta = ContaCadastro::all();
         $clifor = CliFor::all();
         $boleto_remessa = BoletoRemessa::all();
@@ -72,6 +76,9 @@ class BoletoTituloController extends Controller
     public function vizualizar(BoletoTitulo $boleto_titulo, $id)
     {
         $boleto_titulo = $boleto_titulo->find($id);
+         if(Gate::denies('view_boletoTit', $boleto_titulo)){
+            return redirect()->back();
+        }
         return view("visual.view_boleto_titulo", compact("boleto_titulo","id"));
     }
 }
