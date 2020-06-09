@@ -320,7 +320,7 @@
                       <option value="0">Selecione</option>
                       @foreach($boleto_remessa as $boleto_remessa)
                         @can('view_boletoRem', $boleto_remessa)
-                          <option value="{{$boleto_remessa->Codigo}}">Remessa:{{ $boleto_remessa->Numero_Rem }}</option>
+                          <option value="{{$boleto_remessa->Codigo}}">{{ $boleto_remessa->Numero_Rem }}</option>
                         @endcan
                       @endforeach
                     </select>

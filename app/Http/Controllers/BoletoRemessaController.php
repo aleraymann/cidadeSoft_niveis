@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\model\BoletoRemessa;
 use App\model\BoletoTitulo;
+use App\model\Convenio;
 use Gate;
 
 class BoletoRemessaController extends Controller
@@ -13,7 +14,8 @@ class BoletoRemessaController extends Controller
     {  
         $boleto_remessa = $boleto_remessa->all();
         $boleto_remessa = BoletoRemessa::paginate(20);
-        return view("boleto_remessa", compact("boleto_remessa")); 
+        $convenio = Convenio::all();
+        return view("boleto_remessa", compact("boleto_remessa","convenio")); 
     }
     public function salvar(Request $dadosFormulario, BoletoRemessa $boleto_remessa, $id = null)
     {
@@ -55,9 +57,11 @@ class BoletoRemessaController extends Controller
     public function editar (BoletoRemessa $boleto_remessa, $id)
     {
         $boleto_remessa = $boleto_remessa->find($id);
+
         if(Gate::denies('view_boletoRem', $boleto_remessa)){
             return redirect()->back();
         }
-        return view("edit.edit_boleto_remessa", compact("boleto_remessa","id"));
+        $convenio = Convenio::all();
+        return view("edit.edit_boleto_remessa", compact("boleto_remessa","id","convenio"));
     }
 }

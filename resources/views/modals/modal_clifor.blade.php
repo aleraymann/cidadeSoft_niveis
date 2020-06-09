@@ -419,7 +419,7 @@
                      </div>
                      <div class="form-group col-lg-4">
                          <label for="Data_UltMov">Data do Ultimo Movimento:</label>
-                         <input type="date" class="form-control input-border-bottom" name="Data_UltMov"
+                         <input type="text" class="form-control input-border-bottom" name="Data_UltMov"  value="{{ date('d/m/Y') }}"
                              id="Data_UltMov">
                      </div>
                      <div class="invalid-feedback">
@@ -436,7 +436,7 @@
                              <option value="0">Selecione</option>
                             
                              @foreach($empresa as $empresa)
-                             @can("update_empresa",$empresa)
+                             @can("view_empresa",$empresa)
                                  <option value="{{ $empresa->Codigo }}">{{ $empresa->Nome_Fantasia }}</option>
                             @endcan
                              @endforeach

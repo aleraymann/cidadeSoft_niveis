@@ -205,7 +205,7 @@
 										<span class="user-level">Administrador</span>
 										<div class="dropdown-divider"></div>
 										Cod de Identif.: {{ Auth::user()->id }}
-									@elseif( Auth::user()->hasAnyRoles('funcionario'))
+									@elseif( Auth::user()->hasAnyRoles('vendedor'))
 										<span class="user-level">Vendedor</span>
 										<div class="dropdown-divider"></div>
 										Cod de Identif: {{ Auth::user()->id }}
@@ -322,51 +322,7 @@
 								</ul>
 							</div>
 						</li>
-						@can('gerar_relatorio')
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#relatorio">
-								<i class="flaticon-file"></i>
-								<p>Relatórios</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="relatorio">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href='{{ url("/pdf_empresas") }}' target='blank'>
-											<span class="sub-item">Empresas</span>
-										</a>
-									</li>
-									<li>
-										<a href='{{ url("/pdf_funcionarios") }}'target='blank'>
-											<span class="sub-item">Funcionarios</span>
-										</a>
-									</li>
-									<li>
-										<a href='{{ url("/pdf_clifor") }}'target='blank'>
-											<span class="sub-item">Clientes/Fornecedores</span>
-										</a>
-									</li>
-									<li>
-										<a href='{{ url("/pdf_transportadoras") }}'target='blank'>
-											<span class="sub-item">Transportadoras</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						@endcan
-						<li class="nav-item">
-						<a href="{{url('/Maps')}}">
-								<i class="flaticon-placeholder"></i>
-								<p>Encontre-nos</p>
-							</a>
-						</li>
-						<li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="la la-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Pedido</h4>
-						</li>
+						
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#osped">
 								<i class="flaticon-box-2"></i>
@@ -387,12 +343,6 @@
 									</li>
 								</ul>
 							</div>
-						</li>
-						<li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="la la-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Financeiro</h4>
 						</li>
 						@can('view_financeiro')
 						<li class="nav-item">
@@ -416,6 +366,11 @@
 									<li>
 										<a href="{{url('/Cadastro/centrocusto')}}">
 											<span class="sub-item">Centro de Custo</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{url('/Cadastro/convenio')}}">
+											<span class="sub-item">Convênio</span>	
 										</a>
 									</li>
 								</ul>
@@ -458,6 +413,27 @@
 											<span class="sub-item">Conta</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/movimento')}}">
+											<span class="sub-item">Movimento</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#contrato">
+								<i class='la la-briefcase'></i>
+								<p>Contrato</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="contrato">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{url('/Cadastro/contrato')}}">
+											<span class="sub-item">Contrato Cliente/Fornecedor</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>
@@ -482,7 +458,56 @@
 								</ul>
 							</div>
 						</li>
+						
+						<li class="nav-item">
+							<a href="{{url('/Calendario')}}">
+								<i class="flaticon-calendar"></i>
+								<p>Calendário</p>
+								
+							</a>
+						</li>
+
 					@endcan
+					@can('gerar_relatorio')
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#relatorio">
+								<i class="flaticon-file"></i>
+								<p>Relatórios</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="relatorio">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href='{{ url("/pdf_empresas") }}' target='blank'>
+											<span class="sub-item">Empresas</span>
+										</a>
+									</li>
+									<li>
+										<a href='{{ url("/pdf_funcionarios") }}'target='blank'>
+											<span class="sub-item">Funcionarios</span>
+										</a>
+									</li>
+									<li>
+										<a href='{{ url("/pdf_clifor") }}'target='blank'>
+											<span class="sub-item">Clientes/Fornecedores</span>
+										</a>
+									</li>
+									<li>
+										<a href='{{ url("/pdf_transportadoras") }}'target='blank'>
+											<span class="sub-item">Transportadoras</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						@endcan
+						<li class="nav-item">
+						<a href="{{url('/Maps')}}">
+								<i class="flaticon-placeholder"></i>
+								<p>Encontre-nos</p>
+							</a>
+						</li>
+						
 						<!--<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="la la-ellipsis-h"></i>
@@ -693,6 +718,7 @@
 		<!-- End Sidebar -->
 
 		@yield('conteudo')
+		
 		@include('sweetalert::alert')
 		<div class="quick-sidebar">
 			<a href="#" class="close-quick-sidebar">

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ea43bf11c51c50996b7393ccf3e52e6",
+    "content-hash": "974b55671d49a932264307315d08fbc0",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -504,23 +504,24 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.2",
+            "version": "6.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
+                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
-                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aab4ebd862aa7d04f01a4b51849d657db56d882e",
+                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
-                "php": ">=5.5"
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.11"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -528,7 +529,6 @@
                 "psr/log": "^1.1"
             },
             "suggest": {
-                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
@@ -567,7 +567,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-12-23T11:57:10+00:00"
+            "time": "2020-04-18T10:38:46+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1307,6 +1307,53 @@
                 }
             ],
             "time": "2020-03-17T18:58:12+00:00"
+        },
+        {
+            "name": "maddhatter/laravel-fullcalendar",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maddhatter/laravel-fullcalendar.git",
+                "reference": "6502ee3eee2d506d58fa37864af8f2003c9aaca1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maddhatter/laravel-fullcalendar/zipball/6502ee3eee2d506d58fa37864af8f2003c9aaca1",
+                "reference": "6502ee3eee2d506d58fa37864af8f2003c9aaca1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MaddHatter\\LaravelFullcalendar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Calendar": "MaddHatter\\LaravelFullcalendar\\Facades\\Calendar"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "MaddHatter\\LaravelFullcalendar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shawn Tunney",
+                    "email": "shawn.tunney@gmail.com"
+                }
+            ],
+            "description": "Laravel helper for FullCalendar.io",
+            "time": "2017-09-18T17:54:18+00:00"
         },
         {
             "name": "monolog/monolog",

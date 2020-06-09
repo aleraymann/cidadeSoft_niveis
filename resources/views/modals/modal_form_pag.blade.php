@@ -97,7 +97,7 @@
                         </div>
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Dest_CliFor">Cli/For de Destino:</b>
-                            <input type="text" class="form-control input-border-bottom" name="Dest_CliFor" id="Dest_CliFor" minlength="1" value="1">
+                            <input type="text" class="form-control input-border-bottom" name="Dest_CliFor" id="Dest_CliFor" minlength="1" placeholder="COD CliFor">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>

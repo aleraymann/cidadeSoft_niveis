@@ -332,7 +332,7 @@
           <div class="form-row">
             <div class="form-group col-lg-4">
               <b class="ls-label-text" for="Cfg_DataUltExec">Última Execução do Sistema:</b>
-              <input type="date" class="form-control input-border-bottom" name="Cfg_DataUltExec" id="Cfg_DataUltExec">
+              <input type="text" class="form-control input-border-bottom" name="Cfg_DataUltExec" id="Cfg_DataUltExec"  value="{{ date('d/m/Y') }}"  required readonly>
               <div class="invalid-feedback">
                 Por favor, Campo Obrigatório!
               </div>
@@ -343,7 +343,7 @@
 
             <div class="form-group col-lg-4">
               <b class="ls-label-text" for="Cfg_Ultbackup">Último Backup:</b>
-              <input type="date" class="form-control input-border-bottom" name="Cfg_Ultbackup" id="Cfg_Ultbackup">
+              <input type="text" class="form-control input-border-bottom" name="Cfg_Ultbackup" id="Cfg_Ultbackup"  value="{{ date('d/m/Y') }}"  required readonly>
               <div class="invalid-feedback">
                 Por favor, Campo Obrigatório!
               </div>
@@ -853,7 +853,9 @@
             <select class="form-control input-border-bottom" id="Fin_ForImposto" name="Fin_ForImposto">
               <option value="0">Selecione</option>
               @foreach ($clifor as $clifor)
-              <option value="{{$clifor->Codigo}}">{{ $clifor->Razao_Social }}</option>
+              @can("view_clifor",$clifor)
+              <option value="{{$clifor->Codigo}}">{{ $clifor->Nome_Fantasia }}</option>
+              @endcan
               @endforeach
             </select>
             <div class="invalid-feedback">
@@ -1404,7 +1406,9 @@
             <select class="form-control input-border-bottom" id="Condicao" name="Condicao">
               <option  value="0">Selecione</option>
               @foreach($cond_pag as $cond_pag)
+              @can("view_condPag",$cond_pag)
               <option value="{{$cond_pag->Codigo}}">{{ $cond_pag->Condicao }}</option>
+              @endcan
               @endforeach
             </select>
             <div class="invalid-feedback">
@@ -1419,7 +1423,9 @@
             <select class="form-control input-border-bottom" id="Vend_FormPadrao" name="Vend_FormPadrao">
               <option value="0">Selecione</option>
               @foreach($form_pag as $form_pag)
+              @can("view_formPag",$form_pag)
               <option value="{{$form_pag->Codigo}}">{{ $form_pag->Descricao }}</option>
+              @endcan
               @endforeach
             </select>
             <div class="invalid-feedback">

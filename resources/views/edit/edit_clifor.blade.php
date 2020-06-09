@@ -470,9 +470,7 @@
                         <select class="form-control input-border-bottom" id="Vendedor" name="Vendedor">
                         @foreach($user as $u)
                                 @if( $u->adm == Auth::user()->id )
-                                     <option value="{{ $u->id }}"
-                                    {{ $clifor->Vendedor == $u->id ? "selected" : "" }}
-                                    {{ $u->name }}</option>
+                                    <option value="{{ $u->id }}" {{ $clifor->Vendedor == $u->id ? "selected" : "" }}>{{ $u->name }}</option>
                                  @endif
                              @endforeach
                           

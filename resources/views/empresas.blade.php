@@ -202,7 +202,11 @@
                                     @can("view_empresa",$emp)
                                         <tr>
                                             <td> {{ $emp->Codigo }} </td>
-                                            <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:100px; height:50px" ></td>
+                                        @if($emp->Logo != null)
+                                            <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:50px; height:50px" ></td>
+			                            @else
+				                        <td> <img src="{{url("img/empresa_padrao.jpg")}}"  style="max-width:50px; height:50px"></td>
+			                            @endif
                                             <td> {{ $emp->Nome_Fantasia }} </td>
                                             <td> {{ $emp->Razao_Social }} </td>
                                             <td> {{ $emp->CNPJ }} </td>

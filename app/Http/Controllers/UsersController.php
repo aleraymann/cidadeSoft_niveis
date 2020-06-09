@@ -102,18 +102,15 @@ class UsersController extends Controller
                 $upload = $request->image->storeAs('users', $nameFile); // Faz o upload:
 
                 $data['image'] = $nameFile;
-                if (!$upload) { // SE NAO FIZER O UPLOAD PARA O STORANGE
+                if (!$upload) { // SE NAO FIZER O UPLOAD PARA O STORAGE
                     return redirect()
                     ->back()
                     ->with("toast_error", "Houve um erro ao gravar o Imagem");
                     }
                 }
-        
         //dd($data); // Confere os dados que estaram passando para o update
          $user->update($data); // grava todos os conteudos automativo
-
                 return redirect('/User/profile') // SE CHEGOU AQUI, DADOS ATUALIZADOS COM SUCESSO
-               
                 ->with("toast_success", "Perfil Editado Com Sucesso");
 
             }

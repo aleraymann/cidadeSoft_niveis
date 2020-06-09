@@ -26,6 +26,9 @@ use App\model\BoletoTitulo;
 use App\model\ContaCadastro;
 use App\model\NCM;
 use App\model\CEST;
+use App\model\Calendario;
+use App\model\Convenio;
+use App\model\Contrato;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -207,6 +210,31 @@ class AuthServiceProvider extends ServiceProvider
             }else
                 return $user->adm == $cest->user_id;     
         });
+
+         //----------Calendario------------------------------------------------------------------------------------
+         Gate::define('view_eventos', function( User $user, Calendario $calendar){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $calendar->user_id;     
+            }else
+                return $user->id == $calendar->cod_usuario;     
+        });
+
+         //----------Convenio------------------------------------------------------------------------------------
+         Gate::define('view_convenio', function( User $user, Convenio $convenio){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $convenio->user_id;     
+            }else
+                return $user->adm == $convenio->user_id;     
+        });
+
+          //----------Contrato------------------------------------------------------------------------------------
+          Gate::define('view_contrato', function( User $user, Contrato $contrato){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $contrato->user_id;     
+            }else
+                return $user->adm == $contrato->user_id;     
+        });
+
 
         
 

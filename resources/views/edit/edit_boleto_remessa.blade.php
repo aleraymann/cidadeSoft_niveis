@@ -54,7 +54,7 @@
                 </div>
               </div>
               <div class="form-group col-lg-2">
-                <b class="ls-label-text" for="Numero_Rem">Numero da Remessa</b>
+                <b class="ls-label-text" for="Numero_Rem">Num da Remessa</b>
                 <input type="text" class="form-control input-border-bottom" name="Numero_Rem" id="Numero_Rem"
                 value="{{isset($boleto_remessa->Numero_Rem) ? $boleto_remessa->Numero_Rem : '' }}" readonly required >
                 <div class="invalid-feedback">
@@ -64,10 +64,15 @@
                   Tudo certo!
                 </div>
               </div>
-              <div class="form-group col-lg-2">
+              <div class="form-group col-lg-3">
                 <b class="ls-label-text" for="Cod_Conv">Convênio da Cobrança</b>
-                <input type="text" class="form-control input-border-bottom" name="Cod_Conv" id="Cod_Conv"
-                value="{{isset($boleto_remessa->Cod_Conv) ? $boleto_remessa->Cod_Conv : '' }}" required>
+                <select class="form-control input-border-bottom"  name="Cod_Conv">
+              @foreach($convenio as $convenio)
+              @can("view_convenio",$convenio)
+              <option value="{{$convenio->Codigo}}" {{ $boleto_remessa->Cod_Conv == $convenio->Codigo ? "selected" : "" }} >{{ $convenio->Convenio}}</option>
+              @endcan
+              @endforeach
+            </select>
                 <div class="invalid-feedback">
                     Por favor, Campo Obrigatório!
                   </div>
@@ -75,7 +80,7 @@
                     Tudo certo!
                   </div>
               </div>
-              <div class="form-group col-lg-4">
+              <div class="form-group col-lg-3">
                 <b class="ls-label-text" for="Arquivo">Caminho do Arquivo:</b>
                 <input type="text" class="form-control input-border-bottom" name="Arquivo" id="Arquivo" required
                 value="{{isset($boleto_remessa->Arquivo) ? $boleto_remessa->Arquivo : '' }}">

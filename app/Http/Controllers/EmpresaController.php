@@ -13,6 +13,7 @@ use App\model\Transportadora;
 use App\model\CliFor;
 use App\model\ContaCadastro;
 use App\model\ContaSaldo;
+use app\User;
 use Gate;
 
 class EmpresaController extends Controller
@@ -29,7 +30,8 @@ class EmpresaController extends Controller
         $form_pag = Form_Pag::all();
         $transportadora = Transportadora::all();
         $clifor = CliFor::all();
-        return view("empresas", compact("empresas","funcionario","cond_pag","form_pag","transportadora","clifor")); 
+        $user = User::all();
+        return view("empresas", compact("empresas","funcionario","cond_pag","form_pag","transportadora","clifor",'user')); 
     }
 
     public function store(Request $request, Empresa $empresa)
@@ -37,6 +39,9 @@ class EmpresaController extends Controller
         //dd($request->Logo);
         try {
             $data = $request->all();
+            $data['Cfg_DataUltExec']  = date('Y-m-d', strtotime($data['Cfg_DataUltExec']));
+            $data['Cfg_Ultbackup']  = date('Y-m-d', strtotime($data['Cfg_Ultbackup']));
+            
                 if ($request->hasFile('Logo') && $request->file('Logo')->isValid()) {
                 
                 $name = kebab_case($request->Nome_Fantasia).kebab_case($request->Razao_Social); //uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
@@ -119,7 +124,7 @@ class EmpresaController extends Controller
         $empresa = Empresa::find($id);
         //$empresa = $empresa->find($id);
         //$this->authorize('update_empresa', $empresa);
-        if(Gate::denies('update_empresa', $empresa)){
+        if(Gate::denies('view_empresa', $empresa)){
             return redirect()->back();
         }
         if(Gate::denies('edita_empresa')){
@@ -131,7 +136,8 @@ class EmpresaController extends Controller
         $form_pag = Form_Pag::all();
         $transportadora = Transportadora::all();
         $clifor = CliFor::all();
-        return view("edit.edit_empresas", compact("empresa","id","funcionario","cond_pag","form_pag","transportadora","clifor"));
+        $user = User::all();
+        return view("edit.edit_empresas", compact("empresa","id","funcionario","cond_pag","form_pag","transportadora","clifor", 'user'));
     }
 
     public function view(Empresa $empresa, $id)

@@ -279,7 +279,7 @@
             <select class="form-control input-border-bottom" id="Empresa" name="Empresa" required>
                 <option value="">Selecione</option>
                 @foreach($empresa as $empresa)
-                    @can("update_empresa",$empresa)
+                    @can("view_empresa",$empresa)
                          <option value="{{ $empresa->Codigo }}">{{ $empresa->Nome_Fantasia }}</option>
                     @endcan
                 @endforeach

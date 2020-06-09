@@ -21,4 +21,9 @@ class BoletoRemessa extends Model
     {
       return $this->hasMany(' App\model\BoletoTitulo', 'Cod_remessa');
     }
+    //convenio em remessa
+    public function cod_ncm()
+    {
+        return $this->hasOne('App\model\Convenio', 'Codigo', 'Cod_convenio');
+    }
 }

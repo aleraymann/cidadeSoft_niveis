@@ -19,8 +19,11 @@
                     </div>
                 @endcan
             </div>
-            <img src="{{ url("storage/empresas/{$empresa->Logo}") }}"
-                style="max-width:150px; height:150px">
+            @if($empresa->Logo != null)
+              <img src="{{ url("storage/empresas/{$empresa->Logo}") }}"    style="max-width:150px; height:150px" >
+			@else
+				<img src="{{url("img/empresa_padrao.jpg")}}"  style="max-width:150px; height:150px">
+			@endif
             <div class="card-body">
 
                 <div class="table-responsive">

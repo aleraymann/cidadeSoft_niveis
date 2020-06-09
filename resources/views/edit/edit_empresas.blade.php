@@ -135,7 +135,12 @@
           <div class="form-row">
           <div class="form-group col-lg-4">
               <b class="ls-label-text" for="Logo">Logo Atual:</b><br>
+              @if($empresa->Logo != null)
               <img src="{{ url("storage/empresas/{$empresa->Logo}") }}"   style="max-width:100px; height:100px" >
+							@else
+								<img src="{{url("img/empresa_padrao.jpg")}}"  style="max-width:100px; height:100px">
+							@endif
+             
             </div>
           <div class="form-group col-lg-6">
               <b class="ls-label-text" for="Logo">Alterar Logo:</b>
@@ -444,7 +449,7 @@
             <div class="form-group col-lg-2">
               <label for="`Cfg_DataUltExec">Últ Exec do Sistema</label>
               <input type="date" class="form-control input-border-bottom" name="Cfg_DataUltExec" id="Cfg_DataUltExec"  
-              value="{{isset($empresa->Cfg_DataUltExec) ? $empresa->Cfg_DataUltExec : '' }}" >
+              value="{{isset($empresa->Cfg_DataUltExec) ? $empresa->Cfg_DataUltExec : '' }}" readonly>
               <div class="invalid-feedback">
                 Por favor, Campo Obrigatório!
               </div>
@@ -456,7 +461,7 @@
             <div class="form-group col-lg-2">
               <label for="`Cfg_Ultbackup">Ultimo Backup:</label>
               <input type="date" class="form-control input-border-bottom" name="Cfg_Ultbackup" id="Cfg_Ultbackup"  
-              value="{{isset($empresa->Cfg_Ultbackup) ? $empresa->Cfg_Ultbackup : '' }}" >
+              value="{{isset($empresa->Cfg_Ultbackup) ? $empresa->Cfg_Ultbackup : '' }}" readonly>
               <div class="invalid-feedback">
                 Por favor, Campo Obrigatório!
               </div>

@@ -30,6 +30,7 @@ Route::delete("/excluir/{id}", 'RoleUserController@excluir');
 });
 
 
+
 //permissões
 Route::group(["prefix" => "Permission",'middleware' => 'auth'], function () {
     Route::get("/", 'PermissionsController@index');
@@ -80,6 +81,17 @@ Route::get("/Maps", function () {
 })->middleware('auth');
 
 
+//calendario
+Route::group(["prefix" => "Calendario",'middleware' => 'auth'], function () {
+    Route::get("/", 'CalendarController@index');
+    Route::post("/salvar", 'CalendarController@store');
+    Route::get("/listar", 'CalendarController@show');
+    Route::get("/editar/{id}", "CalendarController@edit");
+    Route::post("/update/{id}", 'CalendarController@update');
+    Route::delete("/excluir/{id}", "CalendarController@destroy");
+});
+
+
 //rotas cadastros gerais
 Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/empresas","EmpresaController@listar");
@@ -96,6 +108,10 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/adicional_osped","Adicional_OSPedController@listar");
     Route::get("/boleto_remessa","BoletoRemessaController@listar");
     Route::get("/boleto_titulo","BoletoTituloController@listar");
+    Route::get("/convenio","ConvenioController@listar");
+    Route::get("/contrato","ContratoController@listar");
+    Route::get("/movimento","ContaMovimentoController@listar");
+    
     
 });
 
@@ -234,5 +250,29 @@ Route::get('/pdf_funcionarios', 'PDFController@gerar_funcionarios')->middleware(
 Route::get('/pdf_clifor', 'PDFController@gerar_clifor')->middleware('auth');
 Route::get('/pdf_transportadoras', 'PDFController@gerar_transportadoras')->middleware('auth');
 
+//crud convenio
+    Route::group(["prefix" => "Convenio",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ConvenioController@salvar");
+    Route::delete("/excluir/{id}", "ConvenioController@destroy");
+    Route::get("/editar/{id}", "ConvenioController@editar");
+});
+
+//crud contrato
+Route::group(["prefix" => "Contrato",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ContratoController@salvar");
+    Route::delete("/excluir/{id}", "ContratoController@destroy");
+    Route::get("/editar/{id}", "ContratoController@editar");
+    Route::get("/visualizar/{id}", "ContratoController@visualizar");
+});
+
+//crud contrato
+Route::group(["prefix" => "Movimento",'middleware' => 'auth'], function () {
+    Route::post("/pesquisa", "ContaMovimentoController@pesquisaAjax"); // cria essa funcao ou ja existe?
+    Route::post("/pesquisaSaldo", "ContaMovimentoController@pesquisaAjaxSaldo"); // cria essa funcao ou ja existe?
 
 
+    Route::post("/salvar/{id?}", "ContaMovimentoController@salvar");
+    Route::delete("/excluir/{id}", "ContaMovimentoController@destroy");
+    Route::get("/editar/{id}", "ContaMovimentoController@editar");
+    Route::get("/visualizar/{id}", "ContaMovimentoController@visualizar");
+});

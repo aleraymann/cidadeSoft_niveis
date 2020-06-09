@@ -71,13 +71,13 @@
                             </div>
                         </div>
                     
-                        <div class="row form-sub m-0">
+                        <!--<div class="row form-sub m-0">
                             @if(Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Esqueceu a sua Senha?') }}
                                 </a>
                             @endif
-                        </div>
+                        </div>-->
                     </div>
                     <div class="form-group row">
                         <div class="form-action m-auto">
