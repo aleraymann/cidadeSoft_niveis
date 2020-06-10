@@ -11,7 +11,7 @@ class ContaMovimento extends Model
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
         'user_id',
-        'Data',
+        'data_id',
        'Especie',
        'Documento',
         'Num_Doc',

@@ -29,6 +29,8 @@ use App\model\CEST;
 use App\model\Calendario;
 use App\model\Convenio;
 use App\model\Contrato;
+use App\model\DataContaMovimento;
+use App\model\ContaMovimento;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -233,6 +235,22 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $contrato->user_id;     
             }else
                 return $user->adm == $contrato->user_id;     
+        });
+
+         //----------Data Movimento------------------------------------------------------------------------------------
+         Gate::define('view_data_movimento', function( User $user, DataContaMovimento $data){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $data->user_id;     
+            }else
+                return $user->adm == $data->user_id;     
+        });
+
+         //---------- Movimento------------------------------------------------------------------------------------
+         Gate::define('view_movimento', function( User $user, ContaMovimento $movimento){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $movimento->user_id;     
+            }else
+                return $user->adm == $movimento->user_id;     
         });
 
 

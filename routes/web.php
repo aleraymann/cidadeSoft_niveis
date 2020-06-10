@@ -110,7 +110,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/boleto_titulo","BoletoTituloController@listar");
     Route::get("/convenio","ConvenioController@listar");
     Route::get("/contrato","ContratoController@listar");
-    Route::get("/movimento","ContaMovimentoController@listar");
+    Route::get("/movimento","DataContaMovimentoController@listar");
     
     
 });
@@ -269,10 +269,16 @@ Route::group(["prefix" => "Contrato",'middleware' => 'auth'], function () {
 Route::group(["prefix" => "Movimento",'middleware' => 'auth'], function () {
     Route::post("/pesquisa", "ContaMovimentoController@pesquisaAjax"); // cria essa funcao ou ja existe?
     Route::post("/pesquisaSaldo", "ContaMovimentoController@pesquisaAjaxSaldo"); // cria essa funcao ou ja existe?
-
-
     Route::post("/salvar/{id?}", "ContaMovimentoController@salvar");
     Route::delete("/excluir/{id}", "ContaMovimentoController@destroy");
     Route::get("/editar/{id}", "ContaMovimentoController@editar");
     Route::get("/visualizar/{id}", "ContaMovimentoController@visualizar");
+});
+
+
+//crud DataMovimento
+Route::group(["prefix" => "DataMovimento",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "DataContaMovimentoController@salvar");
+    Route::delete("/excluir/{id}", "DataContaMovimentoController@destroy");
+    Route::get("/visualizar/{id}", "DataContaMovimentoController@visualizar");
 });

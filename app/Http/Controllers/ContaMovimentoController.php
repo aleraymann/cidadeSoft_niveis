@@ -9,6 +9,9 @@ use App\model\CliFor;
 use App\model\ContaCadastro;
 use App\model\CentroCusto;
 use App\model\Empresa;
+use App\model\DataContaMovimento;
+use App\model\ContaSaldo;
+use Gate;
 use Illuminate\Support\Facades\DB;
 
 
@@ -54,7 +57,7 @@ class ContaMovimentoController extends Controller
                 $dados = $conta_movimento->find($id);
                 $dados->update($conta_movimento->all());
                 return redirect()
-                ->action("ContaMovimentoController@listar")
+                ->action("DataContaMovimentoController@listar")
                 ->with("toast_success", "Registro Editado com sucesso");
             }
             else
@@ -63,16 +66,30 @@ class ContaMovimentoController extends Controller
             }
             
             return redirect()
-            ->action("ContaMovimentoController@listar")
+            ->action("DataContaMovimentoController@listar")
             ->with("toast_success", "Registro Gravado com sucesso");
         } 
         catch (\Illuminate\Database\QueryException $e) 
         {
             dd($e);
             return redirect()
-            ->action("ContaMovimentoController@listar")
+            ->action("DataContaMovimentoController@listar")
             ->with("toast_error", "Erro ao Gravar Registro");
         }
 
+    }
+    public function editar(ContaMovimento $conta_movimento, $id)
+    {
+        $conta_movimento = $conta_movimento->find($id);
+        if(Gate::denies('view_movimento', $conta_movimento)){
+            return redirect()->back();
+        }
+        $clifor = CliFor::all();
+        $conta = ContaCadastro::all();
+        $saldo = ContaSaldo::all();
+        $custo = CentroCusto::all();
+        $empresa = Empresa::all();
+        $data_movimento = DataContaMovimento::all();
+        return view("edit.edit_conta_movimento", compact('conta_movimento','clifor','conta','custo','empresa','saldo', 'data_movimento'));
     }
 }

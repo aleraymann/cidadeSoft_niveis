@@ -26,15 +26,18 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Movimento de Contas
-                @can('insere_formPag')
-                    <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
+                <h4 class="card-title">Datas de Movimento de Contas
+                <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Movimento
                     </button>
-                @endcan
+                    <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
+                        data-target="#myModaldata">
+                        <i class='fas fa-plus'></i> Data
+                    </button>
+               
                 </h4>
-
+                @include("modals.modal_data_movimento")  
              @include("modals.modal_movimento")  
             </div>
             <div class="card-body">
@@ -47,8 +50,8 @@
                                 <th class="">Cod Adm</th>
                             </tr>
                         </thead>
-                        @foreach($conta_movimento as $m)
-                           
+                        @foreach($data_movimento as $m)
+                           @can('view_data_movimento', $m)
                                 <tr>
                                     <td class="">{{ $m->Codigo }}  </td>
                                     <td class="">{{ $m->Data }}  </td>
@@ -57,16 +60,16 @@
                                     <td class="">
                                         <div class="btn-group" role="group">
                                         
-                                            <a href='{{ url("/Convenio/editar/$m->Codigo") }}'
-                                                class="btn btn-success"><i class='far fa-edit'></i></a>
-                                      
-                                                <a href="javascript:deletarRegistro('{{ $m->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        <a href='{{url("/DataMovimento/visualizar/$m->Codigo")}}' class="btn btn-secondary">
+                                        <i class='far fa-eye'></i></a>
+
+                                        <a href="javascript:deletarRegistro('{{ $m->Codigo }}')"
+                                            class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                       
                                         </div>
                                     </td>
                                 </tr>
-                           
+                           @endcan
                            @endforeach
                         <tbody>
                            
@@ -128,7 +131,7 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{ url("Forma/excluir") }}" + '/' + id,
+                    url: "{{ url("DataMovimento/excluir") }}" + '/' + id,
                     type: 'DELETE',
                     data: {
                         '_method': 'DELETE',
