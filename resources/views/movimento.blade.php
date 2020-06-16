@@ -27,15 +27,18 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Datas de Movimento de Contas
+                @can('insere_mov')
                 <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         <i class='fas fa-plus'></i> Movimento
                     </button>
+                @endcan
+                @can('insere_data_mov')
                     <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
                         data-target="#myModaldata">
                         <i class='fas fa-plus'></i> Data
                     </button>
-               
+               @endcan
                 </h4>
                 @include("modals.modal_data_movimento")  
              @include("modals.modal_movimento")  
@@ -59,13 +62,14 @@
                                    
                                     <td class="">
                                         <div class="btn-group" role="group">
-                                        
+                                        @can('visual_data_mov')
                                         <a href='{{url("/DataMovimento/visualizar/$m->Codigo")}}' class="btn btn-secondary">
                                         <i class='far fa-eye'></i></a>
-
+                                        @endcan
+                                        @can('deleta_data_mov')
                                         <a href="javascript:deletarRegistro('{{ $m->Codigo }}')"
                                             class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
-                                      
+                                        @endcan
                                         </div>
                                     </td>
                                 </tr>

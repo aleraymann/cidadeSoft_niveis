@@ -40,7 +40,7 @@
                         <div class="form-group col-lg-6">
                             <b class="ls-label-text" for="Comissao">Comissão:</b>
                             <input type="text" class="form-control input-border-bottom" name="Comissao" id="Comissao"
-                                placeholder="" minlength="5" maxlength="45"
+                                placeholder="" minlength="5" maxlength="45"  onblur="comissao()"
                                 value="{{ isset($convenio->Comissao) ? $convenio->Comissao : '' }} ">
                             <div class="invalid-feedback">
                                 Por favor, Mínimo 5 caracteres!
@@ -70,6 +70,11 @@
                                 return false;
                             }
                         });
+                        function comissao() {
+        var desc = parseFloat(document.getElementById('Comissao').value, 2);
+        lim = desc.toFixed(2);
+        document.getElementById('Comissao').value = lim;
+    }
 
                     </script>
                     <div class="form-row">

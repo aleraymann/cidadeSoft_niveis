@@ -30,7 +30,7 @@ class CalendarController extends Controller
                 $row->id,
                     [
                         'color' => $row->cor,
-                    ],
+                    ]
                 );
         }
         $calendar = Calendar::addEvents($event_list);

@@ -62,7 +62,7 @@
                                             <a href='{{ url("/Convenio/editar/$c->Codigo") }}'
                                                 class="btn btn-success"><i class='far fa-edit'></i></a>
                                         @endcan
-                                        @can('edita_convenio')
+                                        @can('deleta_convenio')
                                                 <a href="javascript:deletarRegistro('{{ $c->Codigo }}')"
                                                 class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                         @endcan

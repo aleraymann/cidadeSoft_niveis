@@ -270,7 +270,7 @@ Route::group(["prefix" => "Movimento",'middleware' => 'auth'], function () {
     Route::post("/pesquisa", "ContaMovimentoController@pesquisaAjax"); // cria essa funcao ou ja existe?
     Route::post("/pesquisaSaldo", "ContaMovimentoController@pesquisaAjaxSaldo"); // cria essa funcao ou ja existe?
     Route::post("/salvar/{id?}", "ContaMovimentoController@salvar");
-    Route::delete("/excluir/{id}", "ContaMovimentoController@destroy");
+    Route::delete("/excluir/{id}", "ContaMovimentoController@excluir");
     Route::get("/editar/{id}", "ContaMovimentoController@editar");
     Route::get("/visualizar/{id}", "ContaMovimentoController@visualizar");
 });

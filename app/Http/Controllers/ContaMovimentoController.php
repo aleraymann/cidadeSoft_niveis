@@ -55,7 +55,7 @@ class ContaMovimentoController extends Controller
             if($id > 0)
             {
                 $dados = $conta_movimento->find($id);
-                $dados->update($conta_movimento->all());
+                $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("DataContaMovimentoController@listar")
                 ->with("toast_success", "Registro Editado com sucesso");
@@ -81,6 +81,7 @@ class ContaMovimentoController extends Controller
     public function editar(ContaMovimento $conta_movimento, $id)
     {
         $conta_movimento = $conta_movimento->find($id);
+        //dd($id);
         if(Gate::denies('view_movimento', $conta_movimento)){
             return redirect()->back();
         }
@@ -90,6 +91,18 @@ class ContaMovimentoController extends Controller
         $custo = CentroCusto::all();
         $empresa = Empresa::all();
         $data_movimento = DataContaMovimento::all();
-        return view("edit.edit_conta_movimento", compact('conta_movimento','clifor','conta','custo','empresa','saldo', 'data_movimento'));
+        return view("edit.edit_conta_movimento", compact('conta_movimento','id','clifor','conta','custo','empresa','saldo', 'data_movimento'));
+    }
+
+    public function excluir($Codigo,  ContaMovimento $conta_movimento)
+    {
+            $conta_movimento->destroy($Codigo);
+    }
+
+    public function visualizar(ContaMovimento $conta_movimento, $id)
+    {
+        $conta_movimento = ContaMovimento::find($id);
+
+        return view("visual.view_movimento", compact("conta_movimento","id"));
     }
 }

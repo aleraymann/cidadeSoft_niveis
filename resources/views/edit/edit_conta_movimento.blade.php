@@ -65,7 +65,7 @@
                 <div class="form-row">
                     <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="data_id">Data do Movimento:</b>
-                        <select class="form-control input-border-bottom" name="data_id" id="data_id" required>
+                        <select class="form-control input-border-bottom" name="data_id" id="data_id" required disabled>
                                 <option value="">Selecione</option>
                                 @foreach($data_movimento as $data)
                                 @can('view_data_movimento', $data)
@@ -339,7 +339,6 @@
                 <div class="form-row">
                     {{ csrf_field() }}
                     <button class="btn btn-success">Cadastrar</button>
-                    <input class="btn btn-secondary ml-5" id="reset" type='reset' value='Limpar Campos' />
                     </form>
                 
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
