@@ -24,17 +24,12 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Usuários
-                    <!--<button type="button" class="btn btn-success btn-rounded float-right ml-2" data-toggle="modal"
-                        data-target="#myModalUser">
-                        <i class='fas fa-plus'></i> Usuários
-                    </button>-->
-                  
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
                         Atribuir Cargos
                     </button>
                 </h4>
-                @include("modals.modal_user")
+               
                 @include("modals.modal_role_user")
             </div>
             <div class="card-body">

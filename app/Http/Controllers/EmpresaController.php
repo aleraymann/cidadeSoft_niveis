@@ -47,7 +47,16 @@ class EmpresaController extends Controller
                 $name = kebab_case($request->Nome_Fantasia).kebab_case($request->Razao_Social); //uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
                 $extension = $request->Logo->extension(); // Recupera a extensão do arquivo
                 $nameFile = "{$name}.{$extension}"; // Define finalmente o nome
+
+                //local
                 $upload = $request->Logo->storeAs('empresas', $nameFile); // Faz o upload:
+
+                 /*
+            //hospedagem
+             $upload = $request->Logo;
+                $destinationPath = public_path('../public_html/cidadesoft/storage/empresas');
+                $upload->move($destinationPath, $nameFile); // Faz o upload:
+            */
                 $data['Logo'] = $nameFile; // coloca no array q vc vai criar
 
                     if (!$upload) { // SE NAO FIZER O UPLOAD PARA O STORAGE
@@ -83,9 +92,17 @@ class EmpresaController extends Controller
             $name = kebab_case($request->Nome_Fantasia).kebab_case($request->Razao_Social);//uniqid(date('HisYmd')); // Define um novo nome data atual (nunca dar nome duplicado e sobrescrever)
             $extension = $request->Logo->extension(); // Recupera a extensão do arquivo
             $nameFile = "{$name}.{$extension}"; // Define finalmente o nome
-                 
-            $upload = $request->Logo->storeAs('empresas', $nameFile); // Faz o upload:
             
+            //local
+            $upload = $request->Logo->storeAs('empresas', $nameFile); // Faz o upload:
+
+            /*
+            //hospedagem
+             $upload = $request->Logo;
+                $destinationPath = public_path('../public_html/cidadesoft/storage/empresas');
+                $upload->move($destinationPath, $nameFile); // Faz o upload:
+            */
+
             $data['Logo'] = $nameFile; 
             if (!$upload) { // SE NAO FIZER O UPLOAD PARA O STORANGE
               return redirect()

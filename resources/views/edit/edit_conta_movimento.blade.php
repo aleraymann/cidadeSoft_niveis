@@ -30,14 +30,14 @@
 
 
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url()->previous() }}" class="btn btn-primary  btn-rounded">
-        Voltar
+    <a href="{{ url()->previous() }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">
-                    Edição de Conta
+                    Edição de Movimento de Contas
                 </h4>
             </div>
             <div class="card-body">
@@ -50,17 +50,7 @@
                         <form method="post" action="{{ url("/Movimento/salvar/$id") }}"
                             enctype="multipart/form-data">
                 @endif
-                <div class="form-row">
-                <div class="form-group col-lg-12" hidden>
-              <b class="ls-label-text" for="user_id">User_ID:</b>
-              <input type="text" class="form-control input-border-bottom" name="user_id" id="user_id"
-              readonly value="
-                            @if(Auth::user()->hasAnyRoles('adm'))
-                            {{ Auth::user()->id }}
-                            @else
-                            {{ Auth::user()->adm }}
-                            @endif" >
-            </div>
+                
           </div>
                 <div class="form-row">
                     <div class="form-group col-lg-3">

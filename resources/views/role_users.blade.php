@@ -11,8 +11,8 @@
     
       <div class="main-panel">
       <div class="ml-2" style="margin-top:60px">
-        <a href="{{ url()->previous() }}" class="btn btn-primary btn-rounded">
-            Voltar
+        <a href="{{ url()->previous() }}" class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
         </a>
         <!-- Button to Open the Modal -->
         @include('sweetalert::alert')

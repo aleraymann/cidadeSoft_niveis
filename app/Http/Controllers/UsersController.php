@@ -99,7 +99,16 @@ class UsersController extends Controller
                 $nameFile = "{$name}.{$extension}"; // Define finalmente o nome
 
                 //dd($nameFile);
+
+                //local
                 $upload = $request->image->storeAs('users', $nameFile); // Faz o upload:
+
+                //hospedagem
+                /*
+                 $upload = $request->image;
+                $destinationPath = public_path('../public_html/cidadesoft/storage/users');
+                $upload->move($destinationPath, $nameFile); // Faz o upload:
+                */
 
                 $data['image'] = $nameFile;
                 if (!$upload) { // SE NAO FIZER O UPLOAD PARA O STORAGE
