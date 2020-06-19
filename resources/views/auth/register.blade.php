@@ -38,7 +38,8 @@
 <body class="login mt-0">
     <div class="wrapper wrapper-login">
         <div class="container container-login animated fadeIn">
-            <h3 class="text-center">Registro</h3>
+        <img src="{{ url("img/cidadesoft.jpg") }}" class="img-fluid" style="border-radius:5px; box-shadow: 3px 3px 5px grey">
+                <h3 class="text-center mt-3">Registro</h3>
             <div class="login-form">
                 <div class="form-group col-lg-12">
                     <label for="tipo">Tipo:</label>
@@ -123,9 +124,9 @@
 
                     <div class="form-action">
                         <a href="{{ url("/") }}" id="show-signin"
-                            class="btn btn-danger btn-rounded btn-login mr-3">Cancel</a>
-                        <button type="submit" class="btn btn-primary btn-rounded btn-login">
-                            {{ __('Cadastrar') }}
+                            class="btn btn-danger btn-rounded btn-login mr-3">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-rounded btn-login">
+                            {{ __('Registrar') }}
                         </button>
                     </div>
                 </form>
@@ -134,7 +135,7 @@
     </div>
     <div class="card-footer">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; CidadeSoft 2020</span>
+        <strong> <span>Copyright &copy; CidadeSoft 2020</span></strong>
         </div>
     </div>
 </body>

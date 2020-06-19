@@ -36,8 +36,9 @@
 
 <body class="login">
     <div class="wrapper wrapper-login">
-        <div class="container container-login animated fadeIn">
-            <h3 class="text-center">Login</h3>
+        <div class="container container-login">
+            <img src="{{ url("img/cidadesoft.jpg") }}" class="img-fluid" style="border-radius:5px;  box-shadow: 3px 3px 5px grey">
+                <h3 class="text-center mt-3">Login</h3>
             <div class="login-form">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -71,25 +72,25 @@
                             </div>
                         </div>
                     
-                        <!--<div class="row form-sub m-0">
+                        <div class="row form-sub m-0">
                             @if(Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Esqueceu a sua Senha?') }}
                                 </a>
                             @endif
-                        </div>-->
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-action m-auto">
                             <button type="submit" class="btn btn-success btn-rounded btn-login">
-                                {{ __('Login') }}
+                                {{ __('Acessar') }}
                             </button>
                         </div>
                     </div>
                 </form>
                 <div class="login-account">
                     <span class="msg">Ainda não tem Conta?</span>
-                    <a href="{{ route('register') }}" id="show-signup" class="link">Cadastre-se</a>
+                    <a href="{{ route('register') }}" id="show-signup" class="link"><strong> Cadastre-se</strong></a>
                 </div>
                   
             </div>
@@ -97,9 +98,9 @@
         </div>
         
     </div>
-    <div class="card-footer mt-2">
+    <div class="card-footer">
 				<div class="copyright text-center my-auto">
-					<span>Copyright &copy; CidadeSoft 2020</span>
+					<strong> <span>Copyright &copy; CidadeSoft 2020</span></strong>
 				</div>
              </div>
     </body>
