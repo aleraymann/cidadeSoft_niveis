@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">
-                    Edição de Convênio
+                    Edição de Cotação
                 </h4>
             </div>
             <div class="card-body">
@@ -19,17 +19,16 @@
                 <div class="modal-body">
                     @if(!isset($id))
                         <form method="post" class="needs-validation" novalidate
-                            action="{{ url("/Convenio/salvar") }}">
+                            action="{{ url("/Cotacao/salvar") }}">
                         @else
-                            <form method="post" action="{{ url("/Convenio/salvar/$id") }}"
+                            <form method="post" action="{{ url("/Cotacao/salvar/$id") }}"
                                 enctype="multipart/form-data">
                     @endif
                     <div class="form-row">
-                        <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="Convenio">Convênio:</b>
-                            <input type="text" class="form-control input-border-bottom" name="Convenio" id="Convenio"
-                                minlength="3"
-                                value="{{ isset($convenio->Convenio) ? $convenio->Convenio : '' }} ">
+                    <div class="form-group col-lg-4">
+                            <b class="ls-label-text" for="Moeda">Moeda:</b>
+                            <input type="text" class="form-control input-border-bottom" name="Moeda" id="Moeda" minlength="1" placeholder="Real, Euro, Dolar, etc."
+                            value="{{ isset($cotacao->Moeda) ? $cotacao->Moeda : '' }} " required>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -37,20 +36,30 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <b class="ls-label-text" for="Comissao">Comissão:</b>
-                            <input type="text" class="form-control input-border-bottom" name="Comissao" id="Comissao"
-                                placeholder="" minlength="5" maxlength="45"  onblur="comissao()"
-                                value="{{ isset($convenio->Comissao) ? $convenio->Comissao : '' }} ">
+                    <div class="form-group col-lg-4">
+                        <b class="ls-label-text" for="Data">Data da Cotação:</b>
+                        <input type="date" class="form-control input-border-bottom" name="Data" id="Data" 
+                            required  value="{{$cotacao->Data}}">
+                        <div class="invalid-feedback">
+                            Campo Obrigatório, Mínimo 4 caracteres!!
+                        </div>
+                        <div class="valid-feedback">
+                            Tudo certo!
+                        </div>
+                    </div>
+                        <div class="form-group col-lg-4">
+                            <b class="ls-label-text" for="Cotacao">Cotação:</b>
+                            <input type="text" class="form-control input-border-bottom" name="Cotacao" id="Cotacao" minlength="3" 
+                            maxlength="10" value="{{ isset($cotacao->Cotacao) ? $cotacao->Cotacao : '' }} " required onblur="cotacao()">
                             <div class="invalid-feedback">
-                                Por favor, Mínimo 5 caracteres!
+                                Por favor, Campo Obrigatório!
                             </div>
                             <div class="valid-feedback">
                                 Tudo certo!
                             </div>
                         </div>
-
                     </div>
+
 
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                     <script type="text/javascript">
@@ -71,10 +80,10 @@
                             }
                         });
                         function comissao() {
-        var desc = parseFloat(document.getElementById('Comissao').value, 2);
-        lim = desc.toFixed(2);
-        document.getElementById('Comissao').value = lim;
-    }
+                        var desc = parseFloat(document.getElementById('Cotacao').value, 2);
+                        lim = desc.toFixed(2);
+                        document.getElementById('Cotacao').value = lim;
+                        }
 
                     </script>
                     <div class="form-row">

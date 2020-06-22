@@ -111,6 +111,8 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/convenio","ConvenioController@listar");
     Route::get("/contrato","ContratoController@listar");
     Route::get("/movimento","DataContaMovimentoController@listar");
+    Route::get("/cotacao","CotacaoController@listar");
+    Route::get("/ctas_pagar","ContasPagarController@listar");
     
     
 });
@@ -281,4 +283,20 @@ Route::group(["prefix" => "DataMovimento",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "DataContaMovimentoController@salvar");
     Route::delete("/excluir/{id}", "DataContaMovimentoController@destroy");
     Route::get("/visualizar/{id}", "DataContaMovimentoController@visualizar");
+});
+
+//crud Cotação
+Route::group(["prefix" => "Cotacao",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "CotacaoController@salvar");
+    Route::delete("/excluir/{id}", "CotacaoController@destroy");
+    Route::get("/editar/{id}", "CotacaoController@editar");
+});
+
+
+//crud Cotação
+Route::group(["prefix" => "Contas_Pagar",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ContasPagarController@salvar");
+    Route::delete("/excluir/{id}", "ContasPagarController@destroy");
+    Route::get("/editar/{id}", "ContasPagarController@editar");
+    Route::get("/visualizar/{id}", "ContasPagarController@visualizar");
 });

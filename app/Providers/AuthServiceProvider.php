@@ -31,6 +31,7 @@ use App\model\Convenio;
 use App\model\Contrato;
 use App\model\DataContaMovimento;
 use App\model\ContaMovimento;
+use App\model\Cotacao;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -251,6 +252,14 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $movimento->user_id;     
             }else
                 return $user->adm == $movimento->user_id;     
+        });
+
+          //---------- Cotacao------------------------------------------------------------------------------------
+          Gate::define('view_cotacao', function( User $user,Cotacao $cotacao){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $cotacao->user_id;     
+            }else
+                return $user->adm == $cotacao->user_id;     
         });
 
 

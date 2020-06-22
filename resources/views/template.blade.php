@@ -373,6 +373,11 @@
 											<span class="sub-item">Convênio</span>	
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/cotacao')}}">
+											<span class="sub-item">Cotação</span>	
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>
@@ -401,9 +406,25 @@
 							</div>
 						</li>
 						<li class="nav-item">
+							<a data-toggle="collapse" href="#contas">
+								<i class='la la-newspaper-o' style='font-size:20px'></i>
+								<p>Contas</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="contas">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{url('/Cadastro/ctas_pagar')}}">
+											<span class="sub-item">Contas a Pagar</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
 							<a data-toggle="collapse" href="#banco">
-								<i class='flaticon-credit-card-1'></i>
-								<p>Conta Bancária</p>
+								<i class='la la-bank'></i>
+								<p>Banco</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="banco">
