@@ -29,7 +29,7 @@ class CreateCtasPagarTable extends Migration
             $table->decimal('Valor_Origem',10,2)->default(0.00);
             $table->decimal('Valor_Divida',10,2)->default(0.00);
             $table->decimal('Multa',10,2)->default(0.00);
-            $table->decimal('Tava_Juros',3,2)->default(0.00);
+            $table->decimal('Taxa_Juros',3,2)->default(0.00);
             $table->decimal('Desconto',10,2)->default(0.00);
             $table->decimal('Juros',10,2)->default(0.00);
             $table->decimal('Divida_Estimada',10,2)->default(0.00);
@@ -47,10 +47,6 @@ class CreateCtasPagarTable extends Migration
             $table->integer('Plano_Ctas')->nullable();
             $table->integer('Centro_Custo');
             $table->integer('Empresa');
-
-
-
-
         });
     }
 

@@ -113,6 +113,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/movimento","DataContaMovimentoController@listar");
     Route::get("/cotacao","CotacaoController@listar");
     Route::get("/ctas_pagar","ContasPagarController@listar");
+    Route::get("/ctas_pagas","ContasPagasController@listar");
     
     
 });
@@ -293,10 +294,19 @@ Route::group(["prefix" => "Cotacao",'middleware' => 'auth'], function () {
 });
 
 
-//crud Cotação
+//crud ContasPagar
 Route::group(["prefix" => "Contas_Pagar",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "ContasPagarController@salvar");
     Route::delete("/excluir/{id}", "ContasPagarController@destroy");
     Route::get("/editar/{id}", "ContasPagarController@editar");
     Route::get("/visualizar/{id}", "ContasPagarController@visualizar");
+    Route::post("/pesquisa", "ContasPagarController@pesquisaAjax");
+});
+
+//crud ContasPagar
+Route::group(["prefix" => "Contas_Pagas",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ContasPagasController@salvar");
+    Route::delete("/excluir/{id}", "ContasPagasController@destroy");
+    Route::get("/editar/{id}", "ContasPagasController@editar");
+    Route::get("/visualizar/{id}", "ContasPagasController@visualizar");
 });

@@ -89,7 +89,7 @@
     </div>
 
     <div class="container">
-   
+    {{ $contrato->links() }}
     </div>
 </div>
 

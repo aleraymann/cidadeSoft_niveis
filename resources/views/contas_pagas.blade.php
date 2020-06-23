@@ -7,13 +7,12 @@
     jQuery(function ($) {
         $("#Parcela").mask("99/99");
         $("#Valor_Origem").mask("99999999.99");
+        $("#Valor_Pago").mask("99999999.99");
         $("#Valor_Divida").mask("99999999.99");
         $("#Multa").mask("99999999.99");
-        $("#Taxa_Juros").mask("9.99");
         $("#Desconto").mask("99999999.99");
         $("#Juros").mask("99999999.99");
-        $("#Divida_Estimada").mask("99999999.99");
-        $("#Transacao").mask("99999999999");
+        $("#Num_DocCxBco").mask("99999999999");
     });
 
 </script>
@@ -33,16 +32,16 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Contas a Pagar
-               @can('insere_ctas_pagar')
+                <h4 class="card-title">Contas Pagas
+             
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
-                        <i class='fas fa-plus'></i> Contas
+                        <i class='fas fa-plus'></i> Pagamentos
                     </button>
-                @endcan
+               
                 </h4>
 
-                @include("modals.modal_contas_pagar")
+                @include("modals.modal_contas_pagas")
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -52,30 +51,30 @@
                                 <th class="">Cod</th>
                                 <th class="">Num do Documento</th>
                                 <th class="">Parcela</th>
-                                <th class="">Vencimento</th>
+                                <th class="">Data Pagamento</th>
                                 <th class="">Valor</th>
                                 <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach($ctas_pagar as $c)
-                               @can('view_ctas_pagar', $c)
+                            @foreach($ctas_pagas as $c)
+                               @can('view_ctas_pagas', $c)
                                     <tr>
                                         <td class=""> {{ $c->Codigo }} </td>
                                         <td class=""> {{ $c->Num_Doc }} </td>
                                         <td class=""> {{ $c->Parcela }} </td>
-                                        <td class=""> {{ $c->Vencimento }} </td>
-                                        <td class=""> {{ $c->Valor_Divida }} </td>
+                                        <td class=""> {{ $c->Data_Pagto }} </td>
+                                        <td class=""> {{ $c->Valor_Pago }} </td>
                                         <td> {{ $c->user_id }} </td>
                                         <td class="">
                                             <div class="btn-group" role="group">
                                             @can('edita_ctas_pagar')
-                                                <a href='{{ url("/Contas_Pagar/editar/$c->Codigo") }}'
+                                                <a href='{{ url("/Contas_Pagas/editar/$c->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
                                             @endcan
                                             @can('visual_ctas_pagar')
-                                                    <a href='{{ url("/Contas_Pagar/visualizar/$c->Codigo") }}'
+                                                    <a href='{{ url("/Contas_Pagas/visualizar/$c->Codigo") }}'
                                                 class="btn btn-secondary"><i class='far fa-eye'></i></a>
                                             @endcan
                                             @can('deleta_ctas_pagar')
@@ -94,7 +93,7 @@
         </div>
     </div>
     <div class="container">
-    {{ $ctas_pagar->links() }}
+    {{ $ctas_pagas->links() }}
     </div>
     @endsection
 
@@ -143,7 +142,7 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{ url("Contas_Pagar/excluir") }}" + '/' + id,
+                    url: "{{ url("Contas_Pagas/excluir") }}" + '/' + id,
                     type: 'DELETE',
                     data: {
                         '_method': 'DELETE',
