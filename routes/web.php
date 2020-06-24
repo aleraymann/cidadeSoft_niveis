@@ -114,6 +114,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/cotacao","CotacaoController@listar");
     Route::get("/ctas_pagar","ContasPagarController@listar");
     Route::get("/ctas_pagas","ContasPagasController@listar");
+    Route::get("/ctas_receber","ContasReceberController@listar");
     
     
 });
@@ -303,10 +304,19 @@ Route::group(["prefix" => "Contas_Pagar",'middleware' => 'auth'], function () {
     Route::post("/pesquisa", "ContasPagarController@pesquisaAjax");
 });
 
-//crud ContasPagar
+//crud ContasPagas
 Route::group(["prefix" => "Contas_Pagas",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "ContasPagasController@salvar");
     Route::delete("/excluir/{id}", "ContasPagasController@destroy");
     Route::get("/editar/{id}", "ContasPagasController@editar");
     Route::get("/visualizar/{id}", "ContasPagasController@visualizar");
+});
+
+//crud ContasReceber
+Route::group(["prefix" => "Contas_Receber",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ContasReceberController@salvar");
+    Route::delete("/excluir/{id}", "ContasReceberController@destroy");
+    Route::get("/editar/{id}", "ContasReceberController@editar");
+    Route::get("/visualizar/{id}", "ContasReceberController@visualizar");
+    Route::post("/pesquisa", "ContasReceberController@pesquisaAjax");
 });

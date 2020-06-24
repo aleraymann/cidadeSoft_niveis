@@ -118,7 +118,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="Nro_Doc">Num do Doc no Sistema:</b>
+                            <b class="ls-label-text" for="Nro_Doc">Num do Doc no Banco:</b>
                             <input type="text" class="form-control input-border-bottom" name="Nro_Doc" id="Nro_Doc"
                                 required maxlength="14" min="10"
                                 value="{{ isset($boleto_titulo->Nro_Doc) ? $boleto_titulo->Nro_Doc : '' }}">
@@ -130,7 +130,7 @@
                             </div>
                         </div>
                         <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="Nosso_Num">Num do Titulo no Banco:</b>
+                            <b class="ls-label-text" for="Nosso_Num">Num do Titulo no Sistema:</b>
                             <input type="text" class="form-control input-border-bottom" name="Nosso_Num" id="Nosso_Num"
                                 required maxlength="20" min="10"
                                 value="{{ isset($boleto_titulo->Nosso_Num) ? $boleto_titulo->Nosso_Num : '' }}">

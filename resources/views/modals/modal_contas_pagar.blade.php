@@ -319,7 +319,7 @@
                     <div class="form-row">
                     <div class="form-group col-lg-4">
                             <b class="ls-label-text" for="NF">Nota Fiscal:</b>
-                            <select class="form-control input-border-bottom" name="Nosso_Numero" id="Nosso_Numero" required>
+                            <select class="form-control input-border-bottom" name="NF" id="NF" required>
                                 <option value="0">Selecione</option>
                             </select>
                             <div class="invalid-feedback">

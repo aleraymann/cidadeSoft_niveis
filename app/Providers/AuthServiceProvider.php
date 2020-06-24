@@ -34,6 +34,7 @@ use App\model\ContaMovimento;
 use App\model\Cotacao;
 use App\model\ContasPagar;
 use App\model\ContasPagas;
+use App\model\ContasReceber;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -271,11 +272,20 @@ class AuthServiceProvider extends ServiceProvider
             }else
                 return $user->adm == $ctas_pagar->user_id;     
         });
+
         Gate::define('view_ctas_pagas', function( User $user,ContasPagas $ctas_pagas){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $ctas_pagas->user_id;     
             }else
                 return $user->adm == $ctas_pagas->user_id;     
+        });
+
+        //---------- Contas Pagar------------------------------------------------------------------------------------
+        Gate::define('view_ctas_receber', function( User $user,ContasReceber $ctas_receber){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $ctas_receber->user_id;     
+            }else
+                return $user->adm == $ctas_receber->user_id;     
         });
 
 

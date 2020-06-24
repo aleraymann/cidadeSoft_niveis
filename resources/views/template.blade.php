@@ -423,6 +423,11 @@
 											<span class="sub-item">Contas Pagas</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/ctas_receber')}}">
+											<span class="sub-item">Contas Receber</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>

@@ -55,7 +55,8 @@
                                 <th class="">Cod</th>
                                 <th class="">Data</th>
                                 <th class="">Vencimento</th>
-                                <th class="">Núm do Titulo no Banco</th>
+                                <th class="">Titulo no Banco</th>
+                                <th class="">Titulo no Sistema</th>
                                 <th class="">Valor</th>
                                 <th class="">Situação</th>
                                 <th class="">Cod Adm</th>
@@ -69,6 +70,7 @@
                                     <td> {{ $titulo->Codigo }} </td>
                                     <td> {{ $titulo->Data_Doc }} </td>
                                     <td> {{ $titulo->Vencimento }} </td>
+                                    <td> {{ $titulo->Nro_Doc }} </td>
                                     <td> {{ $titulo->Nosso_Num }} </td>
                                     <td> {{ $titulo->Valor }} </td>
                                     @if( $titulo->Situacao=="C")

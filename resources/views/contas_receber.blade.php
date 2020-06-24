@@ -7,12 +7,13 @@
     jQuery(function ($) {
         $("#Parcela").mask("99/99");
         $("#Valor_Origem").mask("99999999.99");
-        $("#Valor_Pago").mask("99999999.99");
         $("#Valor_Divida").mask("99999999.99");
         $("#Multa").mask("99999999.99");
+        $("#Taxa_Juros").mask("9.99");
         $("#Desconto").mask("99999999.99");
         $("#Juros").mask("99999999.99");
-        $("#Num_DocCxBco").mask("99999999999");
+        $("#Divida_Estimada").mask("99999999.99");
+        $("#Transacao").mask("99999999999");
     });
 
 </script>
@@ -32,16 +33,16 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Contas Pagas
-                @can('insere_ctas_pagas')
+                <h4 class="card-title">Contas a Receber
+               @can('insere_ctas_receber')
                     <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
                         data-target="#myModal">
-                        <i class='fas fa-plus'></i> Pagamentos
+                        <i class='fas fa-plus'></i> Contas
                     </button>
                 @endcan
                 </h4>
 
-                @include("modals.modal_contas_pagas")
+                @include("modals.modal_contas_receber")
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -51,33 +52,33 @@
                                 <th class="">Cod</th>
                                 <th class="">Num do Documento</th>
                                 <th class="">Parcela</th>
-                                <th class="">Data Pagamento</th>
+                                <th class="">Vencimento</th>
                                 <th class="">Valor</th>
                                 <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach($ctas_pagas as $c)
-                               @can('view_ctas_pagas', $c)
+                            @foreach($ctas_receber as $c)
+                               @can('view_ctas_receber', $c)
                                     <tr>
                                         <td class=""> {{ $c->Codigo }} </td>
                                         <td class=""> {{ $c->Num_Doc }} </td>
                                         <td class=""> {{ $c->Parcela }} </td>
-                                        <td class=""> {{ $c->Data_Pagto }} </td>
-                                        <td class=""> {{ $c->Valor_Pago }} </td>
+                                        <td class=""> {{ $c->Vencimento }} </td>
+                                        <td class=""> {{ $c->Valor_Divida }} </td>
                                         <td> {{ $c->user_id }} </td>
                                         <td class="">
                                             <div class="btn-group" role="group">
-                                            @can('edita_ctas_pagas')
-                                                <a href='{{ url("/Contas_Pagas/editar/$c->Codigo") }}'
+                                            @can('edita_ctas_receber')
+                                                <a href='{{ url("/Contas_Receber/editar/$c->Codigo") }}'
                                                     class="btn btn-success"><i class='far fa-edit'></i></a>
                                             @endcan
-                                            @can('visual_ctas_pagas')
-                                                    <a href='{{ url("/Contas_Pagas/visualizar/$c->Codigo") }}'
+                                            @can('visual_ctas_receber')
+                                                    <a href='{{ url("/Contas_Receber/visualizar/$c->Codigo") }}'
                                                 class="btn btn-secondary"><i class='far fa-eye'></i></a>
                                             @endcan
-                                            @can('deleta_ctas_pagas')
+                                            @can('deleta_ctas_receber')
                                                     <a href="javascript:deletarRegistro('{{ $c->Codigo }}')"
                                                     class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
                                             @endcan
@@ -93,7 +94,7 @@
         </div>
     </div>
     <div class="container">
-    {{ $ctas_pagas->links() }}
+    {{ $ctas_receber->links() }}
     </div>
     @endsection
 
@@ -142,7 +143,7 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{ url("Contas_Pagas/excluir") }}" + '/' + id,
+                    url: "{{ url("Contas_Receber/excluir") }}" + '/' + id,
                     type: 'DELETE',
                     data: {
                         '_method': 'DELETE',

@@ -78,4 +78,13 @@ class ContasPagasController extends Controller
         return view("edit.edit_contas_pagas", compact("ctas_pagas","id","clifor","f_pag","c_pag","conta","c_cust","empresa"));
     }
 
+    public function visualizar(ContasPagas $ctas_pagas, $id)
+    {
+        $ctas_pagas = $ctas_pagas->find($id);
+        if(Gate::denies('view_ctas_pagas',$ctas_pagas)){
+            return redirect()->back();
+        }
+        return view("visual.view_contas_pagas", compact("ctas_pagas","id"));
+    }
+
 }
