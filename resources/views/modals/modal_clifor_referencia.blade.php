@@ -13,7 +13,7 @@
 <h4>Adicionar referência</h4>
 <!-- Modal body -->
 <div class="modal-body">
-  <form method="post" class="needs-validation" novalidate action="{{url("/Clifor/referencia/salvar")}}">
+  <form method="post" class="needs-validation" novalidate action="{{url("/Clifor/referencia/salvar")}}" onsubmit="return checkForm(this);">
   <div class="form-row">
             <div class="form-group col-lg-12" hidden>
                 <b class="ls-label-text" for="RG">User_ID:</b>
@@ -128,7 +128,7 @@
       </script>
     
     {{ csrf_field() }}
-    <button class="btn btn-success"> + Referência</button>
+    <button class="btn btn-success" name="cadastrar"> + Referência</button>
   </form>
 </div>
 <!-- <div class="form-row">-->

@@ -15,7 +15,7 @@
             <div class="modal-body">
                 @if(!isset($id))
                     <form method="post" class="needs-validation" novalidate
-                        action="{{ url("/Permission/salvar") }}">
+                        action="{{ url("/Permission/salvar") }}" onsubmit="return checkForm(this);">
                     @else
                         <form method="post" action="{{ url("/Permission/salvar/$id") }}"
                             enctype="multipart/form-data">
@@ -27,7 +27,7 @@
                         <input type="text" class="form-control input-border-bottom" name="name" id="name" placeholder=""
                             required minlength="4">
                         <div class="invalid-feedback">
-                            Campo Obrigatório, Mínimo 4 caracteres!!
+                            Campo Obrigatório
                         </div>
                         <div class="valid-feedback">
                             Tudo certo!
@@ -38,7 +38,7 @@
                         <input type="text" class="form-control input-border-bottom" name="label" id="label"
                             placeholder="" required minlength="4">
                         <div class="invalid-feedback">
-                            Campo Obrigatório, Mínimo 4 caracteres!
+                            Campo Obrigatório
                         </div>
                         <div class="valid-feedback">
                             Tudo certo!
@@ -68,7 +68,7 @@
                 </script>
                 <div class="form-row">
                     {{ csrf_field() }}
-                    <button class="btn btn-success">Cadastrar</button>
+                    <button class="btn btn-success" name="cadastrar">Cadastrar</button>
                     <input class="btn btn-secondary ml-5" id="reset" type='reset' value='Limpar Campos' />
                     </form>
                 </div>

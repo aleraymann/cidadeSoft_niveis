@@ -54,7 +54,7 @@ class EmpresaController extends Controller
                  /*
             //hospedagem
              $upload = $request->Logo;
-                $destinationPath = public_path('../public_html/cidadesoft/storage/empresas');
+                $destinationPath = public_path('../../public_html/cidadesoft/storage/empresas');
                 $upload->move($destinationPath, $nameFile); // Faz o upload:
             */
                 $data['Logo'] = $nameFile; // coloca no array q vc vai criar
@@ -99,7 +99,7 @@ class EmpresaController extends Controller
             /*
             //hospedagem
              $upload = $request->Logo;
-                $destinationPath = public_path('../public_html/cidadesoft/storage/empresas');
+                $destinationPath = public_path('../../public_html/cidadesoft/storage/empresas');
                 $upload->move($destinationPath, $nameFile); // Faz o upload:
             */
 

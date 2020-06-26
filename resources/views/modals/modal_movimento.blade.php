@@ -18,7 +18,7 @@
                         action="{{ url("/Movimento/salvar") }}">
                     @else
                         <form method="post" action="{{ url("/Movimento/salvar/$id") }}"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" onsubmit="return checkForm(this);">
                 @endif
                 <div class="form-row">
                 <div class="form-group col-lg-12" hidden>
@@ -274,7 +274,7 @@
                 </script>
                 <div class="form-row">
                     {{ csrf_field() }}
-                    <button class="btn btn-success">Cadastrar</button>
+                    <button class="btn btn-success" name="cadastrar">Cadastrar</button>
                     <input class="btn btn-secondary ml-5" id="reset" type='reset' value='Limpar Campos' />
                     </form>
                 </div>

@@ -26,7 +26,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="multi-filter-select" class="display table table-striped table-hover">
+                    <table id="multi-filter-select" class="display table table-striped table-hover text-center">
                         <thead>
                             <tr>
                                 <th class="">Cod. Cargo</th>

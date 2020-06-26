@@ -34,7 +34,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="multi-filter-select" class="display table table-striped table-hover">
+                    <table id="multi-filter-select" class="display table table-striped table-hover text-center">
                         <thead>
                             <tr>
                                 <th class="">Código</th>
@@ -62,7 +62,13 @@
                                     <td class=""> {{ $u->name }} </td>
                                     <td class=""> {{ $u->email }} </td>
                                     <td class="">
-                                        {{ $u->empresa !== null?" Funcionario(Empresa:  $u->empresa)": "Adm" }}
+                                    @if( $u->hasAnyRoles('s_adm'))
+                                         Super Admin
+                                    @elseif( $u->hasAnyRoles('adm'))
+                                        Administrador
+                                    @else
+                                        Funcionário(Empresa:  {{ $u->empresa }})
+                                    @endif
                                     </td>
                                     <td class=""> {{ $u->adm }} </td>
                                     <td class="">

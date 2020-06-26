@@ -14,7 +14,7 @@
             <!-- Modal body -->
             <div class="modal-body">
               @if(!isset($id))
-              <form method="post" class="needs-validation" novalidate action="{{url("/Transportadora/salvar")}}">
+              <form method="post" class="needs-validation" novalidate action="{{url("/Transportadora/salvar")}}" onsubmit="return checkForm(this);">
                  @else
                  <form method="post" action="{{url("/Transportadora/salvar/$id")}}" enctype="multipart/form-data">
                   @endif
@@ -313,7 +313,7 @@
       </script>
     <div class="form-row">
         {{ csrf_field() }}
-        <button class="btn btn-success">Cadastrar</button>
+        <button class="btn btn-success" name="cadastrar">Cadastrar</button>
         <input  class="btn btn-secondary ml-5" id="reset" type='reset' value='Limpar Campos'/>
     </form>
 </div>

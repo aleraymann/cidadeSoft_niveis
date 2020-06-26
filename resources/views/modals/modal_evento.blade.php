@@ -12,7 +12,7 @@
             <div class="modal-body">
                 @if(!isset($id))
                     <form method="post" class="needs-validation" novalidate
-                        action="{{ url("/Calendario/salvar") }}">
+                        action="{{ url("/Calendario/salvar") }}" onsubmit="return checkForm(this);">
                     @else
                         <form method="post" action="{{ url("/Calendario/salvar/$id") }}"
                             enctype="multipart/form-data">
@@ -135,7 +135,7 @@
                     <div class="form-row">
 
                         {{ csrf_field() }}
-                        <button class="btn btn-success">Cadastrar</button>
+                        <button class="btn btn-success" name="cadastrar">Cadastrar</button>
                         <input class="btn btn-secondary ml-5" id="reset" type='reset' value='Limpar Campos' />
                         </form>
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

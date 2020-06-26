@@ -106,7 +106,7 @@ class UsersController extends Controller
                 //hospedagem
                 /*
                  $upload = $request->image;
-                $destinationPath = public_path('../public_html/cidadesoft/storage/users');
+                $destinationPath = public_path('../../public_html/cidadesoft/storage/users');
                 $upload->move($destinationPath, $nameFile); // Faz o upload:
                 */
 

@@ -322,7 +322,32 @@
 								</ul>
 							</div>
 						</li>
-						
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#contas">
+								<i class='la la-newspaper-o' style='font-size:20px'></i>
+								<p>Contas</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="contas">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{url('/Cadastro/ctas_pagar')}}">
+											<span class="sub-item">Contas a Pagar</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{url('/Cadastro/ctas_pagas')}}">
+											<span class="sub-item">Contas Pagas</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{url('/Cadastro/ctas_receber')}}">
+											<span class="sub-item">Contas Receber</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#osped">
 								<i class="flaticon-box-2"></i>
@@ -405,32 +430,7 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#contas">
-								<i class='la la-newspaper-o' style='font-size:20px'></i>
-								<p>Contas</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="contas">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="{{url('/Cadastro/ctas_pagar')}}">
-											<span class="sub-item">Contas a Pagar</span>
-										</a>
-									</li>
-									<li>
-										<a href="{{url('/Cadastro/ctas_pagas')}}">
-											<span class="sub-item">Contas Pagas</span>
-										</a>
-									</li>
-									<li>
-										<a href="{{url('/Cadastro/ctas_receber')}}">
-											<span class="sub-item">Contas Receber</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
+						
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#banco">
 								<i class='la la-bank'></i>
@@ -441,12 +441,12 @@
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="{{url('/Cadastro/conta')}}">
-											<span class="sub-item">Conta</span>
+											<span class="sub-item">Conta Bancária</span>
 										</a>
 									</li>
 									<li>
 										<a href="{{url('/Cadastro/movimento')}}">
-											<span class="sub-item">Movimento</span>
+											<span class="sub-item">Movimento de Conta</span>
 										</a>
 									</li>
 								</ul>

@@ -46,7 +46,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="multi-filter-select" class="display table table-striped table-hover">
+                    <table id="multi-filter-select" class="display table table-striped table-hover text-center">
                         <thead>
                             <tr>
                                 <th class="">Cod</th>
@@ -102,7 +102,7 @@
     <!--validação-->
     <script>
         // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
-        (function () {
+        (function checkForm(form){
             'use strict';
             window.addEventListener('load', function () {
                 // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
@@ -114,6 +114,10 @@
                             event.preventDefault();
                             event.stopPropagation();
                         }
+                         // se validar desabilita o botao
+                    if (form.checkValidity() === true) {
+                        form.cadastrar.disabled = true;
+                    }
                         form.classList.add('was-validated');
                     }, false);
                 });

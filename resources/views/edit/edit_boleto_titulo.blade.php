@@ -301,7 +301,13 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Cod_CtaRec">Código Contas a Receber:</b>
                             <select class="form-control input-border-bottom" id="Cod_CtaRec" name="Cod_CtaRec">
-                                <option value="0">Selecione</option>
+                            @foreach($ctas_receber as $c)
+                                    @can('view_ctas_receber', $c)
+                                    <option value="{{ $c->Codigo }}" {{ $boleto_titulo->Cod_CtaRec == $c->Codigo ? "selected" : "" }}>
+                                    {{ $c->Num_Doc }}</option>
+                                    @endcan
+                                @endforeach
+
                             </select>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!

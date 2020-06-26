@@ -11,13 +11,10 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                @if(!isset($id))
+               
                     <form method="post" class="needs-validation" novalidate
-                        action="{{ url("/Boleto_remessa/salvar") }}">
-                    @else
-                        <form method="post" action="{{ url("/Boleto_remessa/salvar/$id") }}"
-                            enctype="multipart/form-data">
-                @endif
+                        action="{{ url("/Boleto_remessa/salvar") }}" onsubmit="return checkForm(this);">
+                   
                 <div class="form-row">
                     <div class="form-group col-lg-12" hidden>
                         <b class="ls-label-text" for="user_id">User_ID:</b>
@@ -101,7 +98,7 @@
                     <div class="form-row">
 
                         {{ csrf_field() }}
-                        <button class="btn btn-success">Cadastrar</button>
+                        <button class="btn btn-success" name="cadastrar">Cadastrar</button>
                         <input class="btn btn-secondary ml-5" id="reset" type='reset' value='Limpar Campos' />
                         </form>
                     </div>

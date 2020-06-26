@@ -13,11 +13,9 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-          @if(!isset($id))
-          <form method="post" class="needs-validation" novalidate action="{{url("/Boleto_titulo/salvar")}}">
-           @else
-           <form method="post" action="{{url("/Boleto_titulo/salvar/$id")}}" enctype="multipart/form-data">
-            @endif
+        
+          <form method="post" class="needs-validation" novalidate action="{{url("/Boleto_titulo/salvar")}}"  onsubmit="return checkForm(this);">
+         
             <div class="form-row">
             <div class="form-group col-lg-12" hidden>
               <b class="ls-label-text" for="user_id">User_ID:</b>
@@ -254,7 +252,12 @@
                   <div class="form-group col-lg-3">
                     <b class="ls-label-text" for="Cod_CtaRec">Código Contas a Receber:</b>
                     <select class="form-control input-border-bottom" id="Cod_CtaRec" name="Cod_CtaRec">
-                      <option value="0">Selecione</option>
+                      <option value="">Selecione</option>
+                      @foreach($ctas_receber as $c)
+                                    @can('view_ctas_receber', $c)
+                                        <option value="{{ $c->Codigo }}">{{ $c->Num_Doc }}</option>
+                                    @endcan
+                                @endforeach
                     </select>
                     <div class="invalid-feedback">
                       Por favor, Campo Obrigatório!
@@ -364,7 +367,7 @@
             <div class="form-row">
              
               {{ csrf_field() }}
-              <button class="btn btn-success">Cadastrar</button>
+              <button class="btn btn-success" name="cadastrar">Cadastrar</button>
               <input  class="btn btn-secondary ml-5" id="reset" type='reset' value='Limpar Campos'/>
             </form>
           </div>

@@ -8,6 +8,7 @@ use App\model\ContaCadastro;
 use App\model\CliFor;
 use App\model\BoletoRemessa;
 use App\model\Empresa;
+use App\model\ContasReceber;
 use Gate;
 
 
@@ -22,7 +23,8 @@ class BoletoTituloController extends Controller
         $clifor = CliFor::all();
         $boleto_remessa = BoletoRemessa::all();
         $empresa = Empresa::all();
-        return view("boleto_titulo", compact("boleto_titulo","conta","clifor","boleto_remessa","empresa")); 
+        $ctas_receber = ContasReceber::all();
+        return view("boleto_titulo", compact("boleto_titulo","conta","clifor","boleto_remessa","empresa", "ctas_receber")); 
     }
     public function salvar(Request $dadosFormulario, BoletoTitulo $boleto_titulo, $id = null)
     {
@@ -71,7 +73,8 @@ class BoletoTituloController extends Controller
         $clifor = CliFor::all();
         $boleto_remessa = BoletoRemessa::all();
         $empresa = Empresa::all();
-        return view("edit.edit_boleto_titulo", compact("boleto_titulo","id","conta","clifor","boleto_remessa","empresa"));
+        $ctas_receber = ContasReceber::all();
+        return view("edit.edit_boleto_titulo", compact("boleto_titulo","id","conta","clifor","boleto_remessa","empresa","ctas_receber"));
     }
     public function vizualizar(BoletoTitulo $boleto_titulo, $id)
     {

@@ -11,11 +11,7 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                @if(!isset($id))
-                <form method="post" class="needs-validation" novalidate action="{{url("/Cest/salvar")}}">
-                   @else
-                   <form method="post" action="{{url("/Cest/salvar/$id")}}" enctype="multipart/form-data">
-                    @endif
+                <form method="post" class="needs-validation" novalidate action="{{url("/Cest/salvar")}}" onsubmit="return checkForm(this);">
                     <div class="form-row">
                     <div class="form-group col-lg-12" hidden>
               <b class="ls-label-text" for="user_id">User_ID:</b>
@@ -31,7 +27,7 @@
                     <div class="form-row">
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="CEST">CEST:</b>
-                            <input type="text" class="form-control input-border-bottom" name="CEST" id="CEST" minlength="3" value=""  maxlength="10">
+                            <input type="text" class="form-control input-border-bottom" name="CEST" id="CEST" minlength="3" required  maxlength="10">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -92,28 +88,11 @@
                     <div class="form-row">
                      
                         {{ csrf_field() }}
-                        <button class="btn btn-success">Cadastrar</button>
+                        <button class="btn btn-success" name="cadastrar">Cadastrar</button>
                         <input  class="btn btn-secondary ml-5" id="reset" type='reset' value='Limpar Campos'/>
                     </form>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript">
-$('input').on("keypress", function(e) {
-    /* ENTER PRESSED*/
-    if (e.keyCode == 13) {
-        /* FOCUS ELEMENT */
-        var inputs = $(this).parents("form").eq(0).find(":input");
-        var idx = inputs.index(this);
+                   
 
-        if (idx == inputs.length - 1) {
-            inputs[0].select()
-        } else {
-            inputs[idx + 1].focus(); //  handles submit buttons
-           
-        }
-        return false;
-    }
-});
-  </script>
                 </div>
             </div>
 

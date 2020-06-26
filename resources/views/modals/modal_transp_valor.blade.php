@@ -12,7 +12,7 @@
 <!-- Modal body -->
 <h5>Add Valor</h5>
 <div class="modal-body">
-  <form method="post" class="needs-validation" novalidate action="{{url("/Transportadora/valor/salvar")}}">
+  <form method="post" class="needs-validation" novalidate action="{{url("/Transportadora/valor/salvar")}}" onsubmit="return checkForm(this);">
   <div class="form-row">
             <div class="form-group col-lg-12" hidden>
                 <b class="ls-label-text" for="RG">User_ID:</b>
@@ -64,7 +64,7 @@
     
     <!-- <div class="form-row">-->
       {{ csrf_field() }}
-      <button class="btn btn-success"> Cadastrar</button>
+      <button class="btn btn-success" name="cadastrar"> Cadastrar</button>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">

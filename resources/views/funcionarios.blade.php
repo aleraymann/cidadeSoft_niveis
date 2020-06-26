@@ -115,7 +115,7 @@
 								</div>
       <div class="card-body">
 									<div class="table-responsive">
-										<table id="multi-filter-select" class="display table table-striped table-hover" >
+										<table id="multi-filter-select" class="display table table-striped table-hover text-center" >
 											<thead>
 												<tr>
                         <th class="">Cod</th>
@@ -173,6 +173,10 @@
               event.preventDefault();
               event.stopPropagation();
             }
+             // se validar desabilita o botao
+             if (form.checkValidity() === true) {
+                        form.cadastrar.disabled = true;
+                    }
             form.classList.add('was-validated');
           }, false);
         });

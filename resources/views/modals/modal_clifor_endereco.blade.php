@@ -78,7 +78,7 @@
        <h5>Adicionar Endereço</h5>
        <!-- Modal body -->
        <div class="modal-body">
-        <form method="post" class="needs-validation" novalidate action="{{url("/Clifor/endereco/salvar")}}">
+        <form method="post" class="needs-validation" novalidate action="{{url("/Clifor/endereco/salvar")}}" onsubmit="return checkForm(this);">
         <div class="form-row">
             <div class="form-group col-lg-12" hidden>
                 <b class="ls-label-text" for="RG">User_ID:</b>
@@ -228,7 +228,7 @@
 
           <!-- <div class="form-row">-->
             {{ csrf_field() }}
-            <button class="btn btn-success"> + Endereço</button>
+            <button class="btn btn-success" name="cadastrar"> + Endereço</button>
           </form>
         </div>
         <script>
