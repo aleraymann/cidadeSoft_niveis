@@ -108,11 +108,6 @@
                         </div>
                     </div>
                     <div class="form-group form-floating-label col-12">
-                        <div>
-                            <input id="empresa" type="empresa" class="form-control input-border-bottom" name="empresa"
-                                placeholder="Cod da empresa a ser vinculado" hidden>
-
-                        </div>
                     </div>
                     <div class="form-group form-floating-label col-12">
                         <div>
@@ -150,12 +145,8 @@
         var tipo = document.getElementById("tipo");
 
         if (value == "A") {
-            empresa.hidden = true;
             adm.hidden = true;
-           
         } else if (value == "F") {
-            empresa.hidden = false;
-            empresa.required = true;
             adm.required = true;
             adm.hidden = false;
 
@@ -167,7 +158,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script type="text/javascript">
     jQuery(function ($) {
-        $("#empresa").mask("9999");
+        $("#adm").mask("9999");
     });
 
 </script>

@@ -1557,10 +1557,10 @@
           <div class="form-group col-lg-3">
             <label for="Vend_CliForPadrao">Vendedor Padrão </label>
             <select class="form-control input-border-bottom" id="Vend_CliForPadrao" name="Vend_CliForPadrao">
-              @foreach($funcionario as $funcionario)
-              @can("update_funcionario",$funcionario)
-              <option value="{{$funcionario->idmsgs}}" {{ $empresa->Vend_CliForPadrao == $funcionario->idmsgs ? "selected" : "" }} >{{ $funcionario->Nome}}</option>
-              @endcan
+            @foreach($user as $u)
+              @if(auth()->user()->image == $u->adm)
+              <option value="{{$u->id}}" {{ $empresa->Vend_CliForPadrao == $u->id ? "selected" : "" }} >{{ $u->name}}</option>
+              @endif
               @endforeach
             </select>
             <div class="invalid-feedback">

@@ -4,19 +4,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script type="text/javascript">
-    jQuery(function ($) {
-        $("#Cod_item").mask("99999999999");
-        $("#Valor").mask("99999999.99", {
-            reverse: true
-        });
-        $("#Qtd_Alterar").mask("999999.9999", {
-            reverse: true
-        });
-        $("#Cod_Item_Dev").mask("99999");
-        $("#Qtd_Dev").mask("999999.9999", {
-            reverse: true
-        });
-    });
 
 </script>
 <div class="main-panel ml-2" style="margin-top:60px">
@@ -59,13 +46,7 @@
 
                                     </div>
                                 </div>
-                            <div class="form-group form-floating-label col-2">
-                            <div>
-                                <input id="empresa" type="empresa" class="form-control input-border-bottom" name="empresa"
-                                value="{{ isset($user->empresa) ? $user->empresa : '' }} ">
-                                <label for="empresa" class="placeholder">Empresa</label>
-                            </div>
-                            </div>
+                            
                             <div class="form-group form-floating-label col-2">
                             <div>
                                 <input id="adm" type="adm" class="form-control input-border-bottom" name="adm"

@@ -32,7 +32,7 @@
                         <b class="ls-label-text" for="label">Usuário:</b>
                         <select class="form-control input-border-bottom" id="user_id" name="user_id">
                             <option value="0">Selecione</option>
-                            @foreach($users as $user)
+                            @foreach($totUsers as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                             </select>

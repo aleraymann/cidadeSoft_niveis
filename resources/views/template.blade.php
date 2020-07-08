@@ -205,7 +205,7 @@
 										<span class="user-level">Administrador</span>
 										<div class="dropdown-divider"></div>
 										Cod de Identif.: {{ Auth::user()->id }}
-									@elseif( Auth::user()->hasAnyRoles('vendedor'))
+									@elseif( Auth::user()->hasAnyRoles('funcionario'))
 										<span class="user-level">Vendedor</span>
 										<div class="dropdown-divider"></div>
 										Cod de Identif: {{ Auth::user()->id }}
@@ -494,6 +494,13 @@
 							<a href="{{url('/Calendario')}}">
 								<i class="flaticon-calendar"></i>
 								<p>Calendário</p>
+								
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{url('/pdv')}}">
+								<i class="flaticon-cart-1"></i>
+								<p>PDV</p>
 								
 							</a>
 						</li>

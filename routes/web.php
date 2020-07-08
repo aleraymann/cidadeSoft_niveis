@@ -320,3 +320,11 @@ Route::group(["prefix" => "Contas_Receber",'middleware' => 'auth'], function () 
     Route::get("/visualizar/{id}", "ContasReceberController@visualizar");
     Route::post("/pesquisa", "ContasReceberController@pesquisaAjax");
 });
+
+//crud ContasReceber
+Route::group(["prefix" => "pdv",'middleware' => 'auth'], function () {
+    Route::get("/","PDVController@listar");
+    Route::post("/pdv","PDVController@pdv");
+    Route::post("/pesquisa", "PDVController@pesquisaAjax");
+    
+});

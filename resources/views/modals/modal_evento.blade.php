@@ -41,6 +41,7 @@
                             </div>
                         </div>
                         <div class="form-group col-lg-4">
+                        <b class="ls-label-text" for="cod_usuario">Responsável:</b>
                          <select class="form-control input-border-bottom" id="cod_usuario" name="cod_usuario" required>
                              <option value="">Selecione o Responável</option>
                              <option value="{{ Auth::user()->id }}">{{Auth::user()->name}}</option>

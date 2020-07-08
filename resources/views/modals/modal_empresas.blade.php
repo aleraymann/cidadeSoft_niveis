@@ -1389,10 +1389,10 @@
             <b class="ls-label-text" for="Vend_CliForPadrao">Vendedor Padrão:</b>
             <select class="form-control input-border-bottom" id="Vend_CliForPadrao" name="Vend_CliForPadrao" required>
               <option value="0">Selecione</option>
-              @foreach($funcionario as $funcionario)
-              @can("update_funcionario",$funcionario)
-              <option value="{{$funcionario->idmsgs}}">{{ $funcionario->Nome }}</option>
-              @endcan
+              @foreach($user as $u)
+              @if(auth()->user()->image == $u->adm)
+              <option value="{{$u->id}}">{{ $u->name }}</option>
+              @endif
               @endforeach
             </select>
             <div class="invalid-feedback">

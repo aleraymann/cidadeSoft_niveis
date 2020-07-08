@@ -41,7 +41,7 @@
                                 <th class="">Imagem</th>
                                 <th class="">Usuário</th>
                                 <th class="">Email</th>
-                                <th class="">Empresa</th>
+                                <th class="">Cargo</th>
                                 <th class="">Cod Adm</th>
                             </tr>
                         </thead>
@@ -67,7 +67,7 @@
                                     @elseif( $u->hasAnyRoles('adm'))
                                         Administrador
                                     @else
-                                        Funcionário(Empresa:  {{ $u->empresa }})
+                                        Funcionário
                                     @endif
                                     </td>
                                     <td class=""> {{ $u->adm }} </td>

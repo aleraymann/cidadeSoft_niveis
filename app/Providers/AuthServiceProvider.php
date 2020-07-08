@@ -62,7 +62,7 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $empresa->user_id;     
             }
             else
-                return $user->empresa == $empresa->Codigo;     
+                return $user->id == $empresa->Vend_CliForPadrao;     
           
         });
         Gate::define('view_empresa_boleto', function( User $user, Empresa $empresa){//apenas visualizar
@@ -287,6 +287,8 @@ class AuthServiceProvider extends ServiceProvider
             }else
                 return $user->adm == $ctas_receber->user_id;     
         });
+
+       
 
 
         

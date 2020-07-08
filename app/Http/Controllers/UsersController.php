@@ -28,8 +28,9 @@ class UsersController extends Controller
         $role = Role::all();
 
         $users = $this->user->paginate(10);
+        $totUsers = User::all();
         $empresas = Empresa::all();
-        return view('users', compact('users', 'role', 'empresas'));
+        return view('users', compact('users', 'role', 'empresas','totUsers'));
     }
 
     public function roles($id)
