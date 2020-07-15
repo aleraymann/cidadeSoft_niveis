@@ -9,7 +9,7 @@
       @include('sweetalert::alert')
 
 <div class="main-panel" style="margin-top:60px">
-<a href="{{ url("/Cadastro/Clifor") }}" class="btn btn-primary ml-3 mb-1">
+<a href="{{ url("/Cadastro/Clifor") }}" class="btn btn-primary btn-xs ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
 
@@ -30,13 +30,9 @@
                 <div class="btn-group " role="group">
                 @can('edita_cliente')
                     <a href='{{ url("/Clifor/editar/$clifor->Codigo") }}'
-                        class="btn btn-success"><i class='far fa-edit'></i></a>
+                        class="btn btn-success btn-xs"><i class='far fa-edit'></i></a>
                 @endcan
-                @can('deleta_cliente')
-                    <a href='{{ url("/Clifor/excluir/$clifor->Codigo") }}'
-                        class="btn btn-danger" onclick="return confirm('Deseja mesmo Excluir?')"><i
-                            class='fas fa-trash-alt'></i></a>
-                @endcan
+               
                 </div>
             </div>
             <div class="card-body">
@@ -169,13 +165,13 @@
     @can('insere_cliente')
     <ul class="nav nav-tabs ml-3" role="tablist">
         <li class="nav-item">
-            <a class="nav-link " href="#contato" role="tab" data-toggle="tab"><b> + Contato</b></a>
+            <a class="nav-link " href="#contato" role="tab" data-toggle="tab"><button class="btn btn-info btn-rounded"> + Contato</button></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#endereco" role="tab" data-toggle="tab"><b> + Endereço</b></a>
+            <a class="nav-link" href="#endereco" role="tab" data-toggle="tab"><button class="btn btn-info btn-rounded"> + Endereço</button></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#referencia" role="tab" data-toggle="tab"><b>+ Referência</b></a>
+            <a class="nav-link" href="#referencia" role="tab" data-toggle="tab"><button class="btn btn-info btn-rounded"> + Referência</button></a>
         </li>
     </ul>
 
@@ -234,12 +230,14 @@
                                         <td>
                                             <div class="btn-group" role="group">
                                             @can('edita_cliente')
-                                                <a href='{{ url("/Clifor/contato/editar/$clifor_contato->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                <a href='{{ url("/Clifor/contato/editar/$clifor_contato->Codigo") }}' class="btn btn-success btn-xs mr-2" style="border-radius:2px;">
+                                                    <i class='far fa-edit'></i>
+                                                </a>
                                             @endcan
                                             @can('deleta_cliente')
-                                                    <a href="javascript:deletarContato('{{ $clifor_contato->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    <a href="javascript:deletarContato('{{ $clifor_contato->Codigo }}')" class="btn btn-danger btn-xs" style="border-radius:2px;">
+                                                            <i class='far fa-trash-alt'></i>
+                                                        </a>
                                             @endcan
                                             </div>
                                         </td>
@@ -305,12 +303,14 @@
                                         <td>
                                             <div class="btn-group" role="group">
                                             @can('edita_cliente')
-                                                <a href='{{ url("/Clifor/endereco/editar/$clifor_endereco->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                <a href='{{ url("/Clifor/endereco/editar/$clifor_endereco->Codigo") }}'class="btn btn-success btn-xs mr-2" style="border-radius:2px;">
+                                                    <i class='far fa-edit'></i>
+                                                </a>
                                             @endcan
                                             @can('deleta_cliente')
-                                                    <a href="javascript:deletarEndereco('{{ $clifor_endereco->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    <a href="javascript:deletarEndereco('{{ $clifor_endereco->Codigo }}')"class="btn btn-danger btn-xs" style="border-radius:2px;">
+                                                            <i class='far fa-trash-alt'></i>
+                                                        </a>
                                             @endcan
                                             </div>
                                         </td>
@@ -356,12 +356,14 @@
                                         <td>
                                             <div class="btn-group" role="group">
                                             @can('edita_cliente')
-                                                <a href='{{ url("/Clifor/referencia/editar/$clifor_referencia->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                <a href='{{ url("/Clifor/referencia/editar/$clifor_referencia->Codigo") }}'class="btn btn-success btn-xs mr-2" style="border-radius:2px;">
+                                                    <i class='far fa-edit'></i>
+                                                </a>
                                             @endcan
                                             @can('deleta_cliente')
-                                                    <a href="javascript:deletarReferencia('{{ $clifor_referencia->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    <a href="javascript:deletarReferencia('{{ $clifor_referencia->Codigo }}')"class="btn btn-danger btn-xs" style="border-radius:2px;">
+                                                            <i class='far fa-trash-alt'></i>
+                                                        </a>
                                             @endcan
                                             </div>
                                         </td>

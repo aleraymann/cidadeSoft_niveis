@@ -37,12 +37,22 @@
 <body class="login">
     <div class="wrapper wrapper-login">
         <div class="container container-login">
-            <img src="{{ url("img/cidadesoft.jpg") }}" class="img-fluid" style="border-radius:5px;  box-shadow: 3px 3px 5px grey">
-                <h3 class="text-center mt-3">Login</h3>
+            <img src="{{ url("img/cidadesoft.jpg") }}" class="img-fluid"
+                style="border-radius:5px;  box-shadow: 3px 3px 5px grey">
+            <h3 class="text-center mt-3">Login</h3>
             <div class="login-form">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-
+                    <div class="form-row ">
+                            <div class="form-group col-lg-12 text-center  m-auto">
+                                <b class="ls-label-text" for="local">Qual Sistema deseja utilizar?</b>
+                                <select onchange="verifica(this.value)" class="form-control input-border-bottom" id="local" name="local" required>
+                                    <option value="">Selecione</option>
+                                    <option value="D">Dashboard</option>
+                                    <option value="P">PDV</option>
+                                </select>
+                            </div>
+                        </div>
                     <div class="form-group row">
                         <div class="form-group form-floating-label col-12">
                             <div>
@@ -57,7 +67,7 @@
                                 @endif
                             </div>
                         </div>
-                   
+
                         <div class="form-group form-floating-label col-12">
                             <div>
                                 <input id="password" type="password"
@@ -71,7 +81,7 @@
                                 @endif
                             </div>
                         </div>
-                    
+
                         <div class="row form-sub m-0">
                             @if(Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -79,34 +89,51 @@
                                 </a>
                             @endif
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="form-action m-auto">
-                            <button type="submit" class="btn btn-success btn-rounded btn-login">
-                                {{ __('Acessar') }}
-                            </button>
                         </div>
-                    </div>
+                       
+                            <div class="form-group row">
+                                <div class="form-action m-auto">
+                                    <button type="submit" class="btn btn-success btn-rounded btn-login">
+                                        {{ __('Acessar') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                 </form>
                 <div class="login-account">
                     <span class="msg">Ainda não tem Conta?</span>
-                    <a href="{{ route('register') }}" id="show-signup" class="link"><strong> Cadastre-se</strong></a>
+                    <a href="{{ route('register') }}" id="show-signup" class="link"><strong>
+                            Cadastre-se</strong></a>
                 </div>
-                  
+
             </div>
-            
+
         </div>
-        
+
     </div>
     <div class="card-footer">
-				<div class="copyright text-center my-auto">
-					<strong> <span>Copyright &copy; CidadeSoft 2020</span></strong>
-				</div>
-             </div>
-    </body>
-    <script src="{{ url("js/core/jquery.3.2.1.min.js") }}"></script>
-    <script src="{{ url("js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js") }}"></script>
-    <script src="{{ url("js/core/popper.min.js") }}"></script>
-    <script src="{{ url("js/core/bootstrap.min.js") }}"></script>
-    <script src="{{ url("js/ready.js") }}"></script>
-    @endsection
+        <div class="copyright text-center my-auto">
+            <strong> <span>Copyright &copy; CidadeSoft 2020</span></strong>
+        </div>
+    </div>
+</body>
+<script src="{{ url("js/core/jquery.3.2.1.min.js") }}"></script>
+<script src="{{ url("js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js") }}"></script>
+<script src="{{ url("js/core/popper.min.js") }}"></script>
+<script src="{{ url("js/core/bootstrap.min.js") }}"></script>
+<script src="{{ url("js/ready.js") }}"></script>
+
+@endsection
+<script>
+    function verifica(value) {
+        var local = document.getElementById("local");
+        if (value == "D") {
+            console.log('dashboard')
+        } else if (value == "P"){
+            console.log('pdv')
+
+        }
+    };
+
+</script>

@@ -2,7 +2,7 @@
 
 @section("conteudo")
 <div class="main-panel" style="margin-top:60px">
-<a href="{{ url("/Cadastro/funcionarios") }}" class="btn btn-primary ml-3 mb-1">
+<a href="{{ url("/Cadastro/funcionarios") }}" class="btn btn-primary btn-xs ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
@@ -12,11 +12,9 @@
                  {{ $funcionario->Nome }}<br>
                 </h4>
                 <div class="btn-group" role="group">
-        <a href='{{ url("/Funcionario/editar/$funcionario->Codigo") }}'
-            class="btn btn-success"><i class='far fa-edit'></i></a>
-        <a href='{{ url("/Funcionario/excluir/$funcionario->Codigo") }}'
-            class="btn btn-danger" onclick="return confirm('Deseja mesmo Excluir?')"><i
-                class='fas fa-trash-alt'></i></a>
+        <a href='{{ url("/Funcionario/editar/$funcionario->Codigo") }}' class="btn btn-success btn-xs" style="border-radius:2px;">
+            <i class='far fa-edit'></i>
+        </a>
     </div>
             </div>
             <div class="card-body">

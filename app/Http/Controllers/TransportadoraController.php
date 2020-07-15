@@ -55,6 +55,8 @@ class TransportadoraController extends Controller
     {
         $transportadora->destroy($Codigo);
     }
+
+
     public function editar(Transportadora $transportadora, $id, Empresa $empresa)
     {
         
@@ -69,6 +71,7 @@ class TransportadoraController extends Controller
         $empresa = Empresa::all();
         return view("edit.edit_transportadora", compact("transportadora","id","empresa"));
     }
+    
     public function vizualizar(Transportadora $transportadora, $id,Transportadora_Destino $transportadora_destino,
         Transportadora_Valor $transportadora_valor)
     {

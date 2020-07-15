@@ -514,8 +514,9 @@
                         <label for="Empresa">Empresa:</label>
                         <select class="form-control input-border-bottom" id="Empresa" name="Empresa">
                             @foreach($empresa as $empresa)
+                            @can('view_empresa', $empresa)
                                 <option value="{{ $empresa->Codigo }}" {{ $clifor->Empresa == $empresa->Codigo ? "selected" : "" }}> {{ $empresa->Nome_Fantasia }}</option>
-
+                            @endcan
                             @endforeach
                         </select>
                         <div class="invalid-feedback">

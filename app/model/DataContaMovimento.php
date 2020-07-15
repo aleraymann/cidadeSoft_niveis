@@ -11,6 +11,8 @@ class DataContaMovimento extends Model
     protected $primaryKey = 'Codigo';
     protected $fillable = Array(
         "user_id",
+        "Num_caixa",
+        "Turno",
         "Data",
     );
 }

@@ -41,15 +41,23 @@
 
 </head>
 
-<body >
-
-
-        <div class="bg-primary" style="padding:5px;">
+        <div class="bg-primary" style="padding:10px;">
             <!-- Button to Open the Modal -->
             @include('sweetalert::alert')
-            <a href="{{ url("/home") }}" style="font-size:15px;padding:10px;"  class="btn btn-primary mb-1">
-            <i class="flaticon-home"></i> Início</a>
-            <h6 class="card-title float-right" style="color:white;padding:10px;" >Empresa: {{ $cod_empresa}} - {{ $nome_empresa}}</h6>
+           
+            <a class="btn btn-xs btn-danger float-right mt-auto"   href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <i class="flaticon-arrow"></i>
+                {{ __('Sair') }}
+                </a>
+                
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+                </form>
+                <a style="font-size:15px;padding:5px;">
+                <h6 class="card-title float-left" style="color:white;" >Empresa: {{ $cod_empresa}} - {{ $nome_empresa}}</h6>
+            </a>
             <!--end container-->
         </div>
         <div class="row">
@@ -155,7 +163,7 @@
                 </div>
             </div>
         </div>
-</body>
+
 
 
 </html>

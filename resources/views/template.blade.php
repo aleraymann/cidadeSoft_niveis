@@ -63,7 +63,7 @@
 					
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						
-						<li class="nav-item dropdown hidden-caret">
+						<!--<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="flaticon-envelope-1"></i>
 							</a>
@@ -73,8 +73,8 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Something else here</a>
 							</div>
-						</li>
-						<li class="nav-item dropdown hidden-caret">
+						</li>-->
+						<!--<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="flaticon-alarm"></i>
 								<span class="notification">3</span>
@@ -129,7 +129,7 @@
 									<a class="see-all" href="javascript:void(0);">See all notifications<i class="la la-angle-right"></i> </a>
 								</li>
 							</ul>
-						</li>
+						</li>-->
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 							@if(auth()->user()->image != null)
@@ -166,11 +166,11 @@
 								</li>
 							</ul>
 						</li>
-						<li class="nav-item">
+						<!--<li class="nav-item">
 							<a href="#" class="nav-link quick-sidebar-toggler">
 								<i class="flaticon-shapes-1"></i>
 							</a>
-						</li>
+						</li>-->
 					</ul>
 				</div>
 			</nav>
@@ -737,7 +737,7 @@
 									  <a href="https://www.linkedin.com/in/alessandro-r-153114150/" target="blank">
 										<i class='fab fa-linkedin' style="color:darkblue"></i>
 									  </a>
-									  <a class="ml-2" href="mailto:aleraymann@gmail.com">
+									  <a class="ml-2" href="mailto:dev.aleraymann@gmail.com">
 										<i class="flaticon-envelope-1" style="color:red"></i>
 									  </a>
 									</span>

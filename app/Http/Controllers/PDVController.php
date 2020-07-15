@@ -41,7 +41,7 @@ class PDVController extends Controller
        $empresa = Empresa::find($cod_empresa);
        if(Gate::denies('view_empresa', $empresa)){
         return redirect()->back()
-        ->with("toast_error", "Ação não Autorizada");
+        ->with("toast_error", "Ação não Autorizada!");
     }
         return view("pdv", compact("cod_empresa", "nome_empresa")); 
     }

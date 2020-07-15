@@ -87,15 +87,15 @@
                                         <div class="btn-group" role="group">
                                         @can('edita_boletoTit')
                                             <a href='{{ url("/Boleto_titulo/editar/$titulo->Codigo") }}'
-                                                class="btn btn-success "><i class='far fa-edit'></i></a>
+                                            class="btn btn-success btn-xs mr-2" style="border-radius:2px;"><i class='far fa-edit'></i></a>
                                         @endcan
                                         @can('visual_boletoTit')
                                             <a href='{{ url("/Boleto_titulo/vizualizar/$titulo->Codigo") }}'
-                                                class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                            class="btn btn-secondary btn-xs mr-2" style="border-radius:2px;"><i class='far fa-eye'></i></a>
                                         @endcan
                                         @can('deleta_boletoTit')
                                                 <a href="javascript:deletarRegistro('{{ $titulo->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                class="btn btn-danger btn-xs mr-2" style="border-radius:2px;"><i class='far fa-trash-alt'></i></a>
                                         @endcan
                                         </div>
                                     </td>

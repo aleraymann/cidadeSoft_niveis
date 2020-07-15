@@ -11,7 +11,7 @@
 
 
 <div class="main-panel" style="margin-top:60px">
-<a href="{{ url("/Cadastro/transportadoras") }}" class="btn btn-primary ml-3 mb-1">
+<a href="{{ url("/Cadastro/transportadoras") }}" class="btn btn-primary btn-xs ml-3 mb-1">
         <i class="la la-long-arrow-left"></i>
     </a>
 
@@ -23,13 +23,9 @@
                 </h4>
                 <div class="btn-group" role="group">
             @can('edita_transp')
-        <a href='{{ url("/Transportadora/editar/$transportadora->Codigo") }}'
-            class="btn btn-success"><i class='far fa-edit'></i></a>
-            @endcan
-            @can('deleta_transp')
-        <a href='{{ url("/Transportadora/excluir/$transportadora->Codigo") }}'
-            class="btn btn-danger" onclick="return confirm('Deseja mesmo Excluir?')"><i
-                class='fas fa-trash-alt'></i></a>
+        <a href='{{ url("/Transportadora/editar/$transportadora->Codigo") }}'class="btn btn-success btn-xs" style="border-radius:2px;">
+                            <i class='far fa-edit'></i>
+                        </a>
             @endcan  
     </div>
             </div>
@@ -160,12 +156,14 @@
                                         <td>
                                             <div class="btn-group" role="group">
                                             @can('edita_transp')
-                                                <a href='{{ url("/Transportadora/destino/editar/$transportadora_destino->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                <a href='{{ url("/Transportadora/destino/editar/$transportadora_destino->Codigo") }}' class="btn btn-success btn-xs mr-2" style="border-radius:2px;">
+                                                    <i class='far fa-edit'></i>
+                                                </a>
                                             @endcan
                                             @can('deleta_transp')
-                                                    <a href="javascript:deletarDestino('{{ $transportadora_destino->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    <a href="javascript:deletarDestino('{{ $transportadora_destino->Codigo }}')" class="btn btn-danger btn-xs" style="border-radius:2px;">
+                                                            <i class='far fa-trash-alt'></i>
+                                                        </a>
                                             @endcan
                                             </div>
                                         </td>
@@ -206,12 +204,14 @@
                                         <td>
                                             <div class="btn-group" role="group">
                                             @can('edita_transp')
-                                                <a href='{{ url("/Transportadora/valor/editar/$transportadora_valor->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                <a href='{{ url("/Transportadora/valor/editar/$transportadora_valor->Codigo") }}'  class="btn btn-success btn-xs mr-2" style="border-radius:2px;">
+                                                    <i class='far fa-edit'></i>
+                                                </a>
                                             @endcan
                                             @can('deleta_transp')
-                                                    <a href="javascript:deletarValor('{{ $transportadora_valor->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    <a href="javascript:deletarValor('{{ $transportadora_valor->Codigo }}')" class="btn btn-danger btn-xs" style="border-radius:2px;">
+                                                            <i class='far fa-trash-alt'></i>
+                                                        </a>
                                             </div>
                                             @endcan
                                         </td>

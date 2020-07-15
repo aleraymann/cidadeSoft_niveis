@@ -366,7 +366,7 @@
             el.value = "";
         } else {
             //trata se for valido
-            alert("Valido");
+
         }
     }
     function lim_prazo() {

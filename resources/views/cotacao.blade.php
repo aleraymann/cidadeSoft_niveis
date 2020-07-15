@@ -62,11 +62,11 @@
                                         <div class="btn-group" role="group">
                                         @can('edita_cotacao')
                                             <a href='{{ url("/Cotacao/editar/$c->Codigo") }}'
-                                                class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            class="btn btn-success btn-xs mr-2" style="border-radius:2px;"><i class='far fa-edit'></i></a>
                                         @endcan
                                         @can('deleta_cotacao')
                                                 <a href="javascript:deletarRegistro('{{ $c->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                class="btn btn-danger btn-xs mr-2" style="border-radius:2px;"><i class='far fa-trash-alt'></i></a>
                                         @endcan
                                         </div>
                                     </td>

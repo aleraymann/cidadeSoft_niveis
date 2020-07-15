@@ -329,7 +329,7 @@
                             <b class="ls-label-text" for="Empresa">Empresa:</b>
                             <select class="form-control input-border-bottom" id="Empresa" name="Empresa" required>
                                 @foreach($empresa as $empresa)
-                                @can("update_empresa",$empresa)
+                                @can("view_empresa",$empresa)
                                     <option value="{{ $empresa->Codigo }}"
                                         {{ $transportadora->Empresa == $empresa->Codigo ? "selected" : "" }}>
                                         {{ $empresa->Nome_Fantasia }}</option>

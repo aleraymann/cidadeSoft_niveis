@@ -44,25 +44,9 @@
                     <div class="form-row">
 
                         <div class="form-group col-lg-2">
-                            <b class="ls-label-text" for="Sel">Baixa/Envio ao Banco</b>
-                            <select class="form-control input-border-bottom" id="Sel" name="Sel" required>
-                            <option
-                                    value="{{ isset($boleto_titulo->Sel) ? $boleto_titulo->Sel : '' }} ">
-                                    @if( $boleto_titulo->Sel =="0" )
-                                        <label>Não</label><br>
-                                    @else
-                                        <label>Sim</label><br>
-                                    @endif
-                                </option>
-                                <option value="0">Não</option>
-                                <option value="1">Sim</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                 Por favor, Campo Obrigatório!
-                            </div>
-                             <div class="valid-feedback">
-                                Tudo certo!
-                            </div>
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" id="Sel" name="Sel" value="1" <?php if($boleto_titulo->Sel == '1'){ echo "checked"; } ?>> Baixa/Envio ao Banco
+                        </label>
                         </div>
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Cod_Conta">Conta:</b>

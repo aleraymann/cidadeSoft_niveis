@@ -411,9 +411,7 @@
                 Tudo certo!
               </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-lg-4">
+            <div class="form-group col-lg-3">
               <label for="CNAE">Cod. Nac. de Ativ. da Empresa</label>
               <input type="text" class="form-control input-border-bottom" name="CNAE" id="CNAE"  maxlength="10"  
               value="{{isset($empresa->CNAE) ? $empresa->CNAE : '' }}" >
@@ -424,6 +422,9 @@
                 Tudo certo!
               </div>
             </div>
+          </div>
+          <div class="form-row">
+            
             <div class="form-group col-lg-2">
               <label for="CliFor_Saida">Cli/For Saída</label>
               <input type="text" class="form-control input-border-bottom" name="CliFor_Saida" id="CliFor_Saida"
@@ -575,77 +576,58 @@
               </div>
             </div>
           </div>
-          <div class="form-check">
-            <strong> <label class="form-check-label">Pré Vizualizar Relatórios Emitidos?</label></strong>
-            <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_PreviewRel" id="Cfg_PreviewRel" value="1">
-             <label class="form-check-label" for="Cfg_PreviewRel">Sim</label>
-           </div>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_PreviewRel" id="Cfg_PreviewRel" value="0">
-             <label class="form-check-label" for="Cfg_PreviewRel">Não</label>
-           </div>
-         </div>
-      
-         <div class="form-check">
-           <strong> <label class="form-check-label">Lembrar Aniversario de Clientes?</label></strong>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_LembCliAniv" id="Cfg_LembCliAniv" value="1">
-             <label class="form-check-label" for="Cfg_LembCliAniv">Sim</label>
-           </div>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_LembCliAniv" id="Cfg_LembCliAniv" value="0">
-             <label class="form-check-label" for="Cfg_LembCliAniv">Não</label>
-           </div>
-         </div>
-        
-         <div class="form-check">
-           <strong><label class="form-check-label">Pesquisa automatica de CEP?</label></strong>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_PesqCep" id="Cfg_PesqCep" value="1">
-             <label class="form-check-label" for="Cfg_PesqCep">Sim</label>
-           </div>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_PesqCep" id="Cfg_PesqCep" value="0">
-             <label class="form-check-label" for="Cfg_PesqCep">Não</label>
-           </div>
-         </div>
-        
-         <div class="form-check">
-           <strong><label class="form-check-label">Utilizar identificador de chamadas?</label></strong>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_IdentChamada" id="Cfg_IdentChamada" value="1">
-             <label class="form-check-label" for="Cfg_IdentChamada">Sim</label>
-           </div>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_IdentChamada" id="Cfg_IdentChamada" value="0">
-             <label class="form-check-label" for="Cfg_IdentChamada">Não</label>
-           </div>
-         </div>
-       
-         <div class="form-check">
-           <strong><label class="form-check-label">Atualização dos preços a prazo?</label></strong>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_AtuPrecoPrazo" id="Cfg_AtuPrecoPrazo" value="1">
-             <label class="form-check-label" for="Cfg_AtuPrecoPrazo">Sim</label>
-           </div>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_AtuPrecoPrazo" id="Cfg_AtuPrecoPrazo" value="0">
-             <label class="form-check-label" for="Cfg_AtuPrecoPrazo">Não</label>
-           </div>
-         </div>
-       
-         <div class="form-check">
-           <strong><label class="form-check-label">Permite duplicar cadastro do cliente?</label></strong>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="radio" name="Cfg_PermDuplicar" id="Cfg_PermDuplicar" value="1">
-             <label class="form-check-label" for="Cfg_PermDuplicar">Sim</label>
-           </div>
-           <div class="form-check form-check-inline">
-             <input class="form-check-input " type="radio" name="Cfg_PermDuplicar" id="Cfg_PermDuplicar" value="0">
-             <label class="form-check-label" for="Cfg_PermDuplicar">Não</label>
-           </div>
-         </div>
+
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PreviewRel" name="Cfg_PreviewRel" value="1" <?php if($empresa->Cfg_PreviewRel == '1'){ echo "checked"; } ?>> Pré Vizualizar Relatórios Emitidos?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_LembCliAniv" name="Cfg_LembCliAniv" value="1" <?php if($empresa->Cfg_LembCliAniv == '1'){ echo "checked"; } ?>> Lembrar Aniversario de Clientes?
+                    </label>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PesqCep" name="Cfg_PesqCep" value="1" <?php if($empresa->Cfg_PesqCep == '1'){ echo "checked"; } ?>> Pesquisa automatica de CEP?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_IdentChamada" name="Cfg_IdentChamada" value="1" <?php if($empresa->Cfg_IdentChamada == '1'){ echo "checked"; } ?>> Utilizar identificador de chamadas?
+                    </label>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_AtuPrecoPrazo" name="Cfg_AtuPrecoPrazo" value="1" <?php if($empresa->Cfg_AtuPrecoPrazo == '1'){ echo "checked"; } ?>>Atualização dos preços a prazo?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PermDuplicar" name="Cfg_PermDuplicar" value="1" <?php if($empresa->Cfg_PermDuplicar == '1'){ echo "checked"; } ?>> Permite duplicar cadastro do cliente?
+                    </label>
+                  </div>
+              </div>
+          </div>
          <hr>
          <div class="form-row">
           <div class="form-group col-lg-4">
@@ -706,18 +688,23 @@
             </div>
           </div>
         </div>
-        <div class="form-check">
-          <strong><label class="form-check-label">Utiliza Sistema de Seguranca SSL ou TLS?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="SMTP_Seguro" id="SMTP_Seguro" value="1">
-            <label class="form-check-label" for="SMTP_Seguro">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="SMTP_Seguro" id="SMTP_Seguro" value="0">
-            <label class="form-check-label" for="SMTP_Seguro">Não</label>
-          </div>
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="SMTP_Seguro" name="SMTP_Seguro" value="1"  <?php if($empresa->SMTP_Seguro == '1'){ echo "checked"; } ?>>Utiliza Sistema de Seguranca SSL ou TLS?
+                    </label>
+                  </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="SMTP_EmailCopia" name="SMTP_EmailCopia" value="1"  <?php if($empresa->SMTP_EmailCopia == '1'){ echo "checked"; } ?>>Enviar cópia de email para e Empresa?
+                    </label>
+                  </div>
+            </div>
+            
         </div>
-        <br>
         <div class="form-row">
           <div class="form-group col-lg-4">
             <label for="SMTP_SSL">Tipo de Segurança SSL ou TLS</label>
@@ -729,17 +716,6 @@
           </div>
         </div>
         <br>
-        <div class="form-check">
-          <strong><label class="form-check-label">Enviar cópia de email para e Empresa?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="SMTP_EmailCopia" id="SMTP_EmailCopia" value="1">
-            <label class="form-check-label" for="SMTP_EmailCopia">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="SMTP_EmailCopia" id="SMTP_EmailCopia" value="0">
-            <label class="form-check-label" for="SMTP_EmailCopia">Não</label>
-          </div>
-        </div>
         <hr>
         <div class="form-row">
           <div class="form-group col-lg-3">
@@ -969,18 +945,15 @@
             Tudo certo!
           </div>
         </div>
-        <div class="form-check">
-          <strong><label class="form-check-label">Efetuar controle de caixa, exigindo abertura e fechamento diário?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Fin_ControlaCaixa" id="Fin_ControlaCaixa" value="1">
-            <label class="form-check-label" for="Fin_ControlaCaixa">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Fin_ControlaCaixa" id="Fin_ControlaCaixa" value="0">
-            <label class="form-check-label" for="Fin_ControlaCaixa">Não</label>
-          </div>
-        </div>
-        <br>
+        <div class="form-row">
+        <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Fin_ControlaCaixa" name="Fin_ControlaCaixa" value="1"  <?php if($empresa->Fin_ControlaCaixa == '1'){ echo "checked"; } ?>>Efetuar controle de caixa, exigindo abertura e fechamento diário?
+                    </label>
+                  </div>
+            </div>
+            </div>
         <div class="form-row">
           <div class="form-group col-lg-4">
             <label for="Fin_MultaPadrao">Multa padrão a ser aplicada no atraso de títulos</label>
@@ -998,7 +971,9 @@
             <label for="Fin_ForImposto">Fornecedor</label>
             <select class="form-control input-border-bottom" id="Fin_ForImposto" name="Fin_ForImposto">
               @foreach($clifor as $clifor)
-              <option value="{{$clifor->Codigo}}" {{ $empresa->Vend_CliForPadrao == $clifor->Codigo ? "selected" : "Selecione" }} >{{$clifor->Razao_Social}}</option>
+              @can('view_clifor', $clifor)
+              <option value="{{$clifor->Codigo}}" {{ $empresa->Vend_CliForPadrao == $clifor->Codigo ? "selected" : "Selecione" }} >{{$clifor->Nome_Fantasia}}</option>
+              @endcan
               @endforeach                          
             </select>
             <div class="invalid-feedback">
@@ -1011,25 +986,21 @@
         </div>
         <hr>
         <div class="form-row">
-          <strong><label class="form-check-label">Utilizar pagamento de comissão fracionada aos vendedores?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Fin_ComiFrac" id="Fin_ComiFrac" value="1">
-            <label class="form-check-label" for="Fin_ComiFrac">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Fin_ComiFrac" id="Fin_ComiFrac" value="0">
-            <label class="form-check-label" for="Fin_ComiFrac">Não</label>
-          </div>
-          <strong><label class="form-check-label ml-4">Controlar Comissões?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Fin_ContrComi" id="Fin_ContrComi" value="1">
-            <label class="form-check-label" for="Fin_ContrComi">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Fin_ContrComi" id="Fin_ContrComi" value="0">
-            <label class="form-check-label" for="Fin_ContrComi">Não</label>
-          </div>
-          
+            <div class="form-group col-lg-7">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Fin_ComiFrac" name="Fin_ComiFrac" value="1"  <?php if($empresa->Fin_ComiFrac == '1'){ echo "checked"; } ?>>Utilizar pagamento de comissão fracionada aos vendedores?
+                    </label>
+                  </div>
+            </div>
+            <div class="form-group col-lg-5">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Fin_ContrComi" name="Fin_ContrComi" value="1"  <?php if($empresa->Fin_ContrComi == '1'){ echo "checked"; } ?>>Controlar Comissões?
+                    </label>
+                  </div>
+            </div>
+            
         </div>
         <hr>
         <div class="form-row">
@@ -1144,18 +1115,13 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-check-inline ml-3">
-            <strong><label class="form-check-label">Utilizar ICMS Fixo, descontando o percentual nas Notas de empresa Simples?</label></strong>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="Fisc_ICMSFixo" id="Fisc_ICMSFixo" value="1">
-              <label class="form-check-label" for="Fisc_ICMSFixo">Sim</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="Fisc_ICMSFixo" id="Fisc_ICMSFixo" value="0">
-              <label class="form-check-label" for="Fisc_ICMSFixo">Não</label>
-            </div>
+          <div class="form-group col-lg-7">
+              <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Fisc_ICMSFixo" name="Fisc_ICMSFixo" value="1"  <?php if($empresa->Fisc_ICMSFixo == '1'){ echo "checked"; } ?>>Utilizar ICMS Fixo, descontando o percentual nas Notas de empresa Simples?
+                    </label>
+              </div>
           </div>
-          
         </div>
         <br>
         <div class="form-row">
@@ -1317,7 +1283,7 @@
               Tudo certo!
             </div>
           </div>
-          <div class="form-group col-lg-3">
+          <div class="form-group col-lg-4">
             <label for="NFe_Versao">Versão dos Schemas para emissão da Nota</label>
             <input type="text" class="form-control input-border-bottom" name="NFe_Versao" id="NFe_Versao" maxlength="4"
             value="{{isset($empresa->NFe_Versao) ? $empresa->NFe_Versao : '' }} ">
@@ -1338,17 +1304,13 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-check-inline ml-4">
-            <strong><label class="form-check-label">Validar Notas de Entrada?</label></strong>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="NFe_Valida" id="NFe_Valida" value="1">
-              <label class="form-check-label" for="Fisc_ICMSFixo">Sim</label>
+        <div class="form-group col-lg-4">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="NFe_Valida" name="NFe_Valida" value="1" <?php if($empresa->NFe_Valida == '1'){ echo "checked"; } ?>>Validar Notas de Entrada?
+                    </label>
+                  </div>
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="NFe_Valida" id="NFe_Valida" value="0">
-              <label class="form-check-label" for="NFe_Valida">Não</label>
-            </div>
-          </div>
           <div class="form-group col-lg-6">
             <label for="NFe_Obs">Observação a ser impressa no rodapé da NFe</label>
             <input type="text" class="form-control input-border-bottom" name="NFe_Obs" id="NFe_Obs"
@@ -1540,19 +1502,14 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-check-inline ml-4"> 
-            <strong><label class="form-check-label">Tela simplificada para emissao de pedidos?</label></strong>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="Vend_PedSimp" id="Vend_PedSimp" value="1">
-              <label class="form-check-label" for="Fisc_ICMSFixo">Sim</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="Vend_PedSimp" id="Vend_PedSimp" value="0">
-              <label class="form-check-label" for="Vend_PedSimp">Não</label>
-            </div>
+        <div class="form-group col-lg-4 ml-2">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_PedSimp" name="Vend_PedSimp" value="1" <?php if($empresa->Vend_PedSimp == '1'){ echo "checked"; } ?>>Tela simplificada para emissao de pedidos?
+                    </label>
+                </div>
           </div>
         </div>
-        
         <div class="form-row">
           <div class="form-group col-lg-3">
             <label for="Vend_CliForPadrao">Vendedor Padrão </label>
@@ -1602,7 +1559,7 @@
         <hr>
         <div class="form-row">
           <div class="form-group col-lg-4">
-            <label for="Vend_DescAdicOrca">Descricao Adicional impressa no rodapé dos Orçamentos</label>
+            <label for="Vend_DescAdicOrca">Descrição Adicional impressa no rodapé dos Orçamentos</label>
             <input type="text" class="form-control input-border-bottom" name="Vend_DescAdicOrca" id="Vend_DescAdicOrca" maxlength="150"
             value="{{isset($empresa->Vend_DescAdicOrca) ? $empresa->Vend_DescAdicOrca : '' }} ">
           </div>
@@ -1636,71 +1593,49 @@
           </div>
         </div>
         
-        <div class="form-check">
-          
-          <strong><label class="form-check-label">Altera Preco Total nos Orcamentos, Pedidos e OSs?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_AltPrTot" id="Vend_AltPrTot" value="1">
-            <label class="form-check-label" for="Vend_AltPrTot">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_AltPrTot" id="Vend_AltPrTot" value="0">
-            <label class="form-check-label" for="Vend_AltPrTot">Não</label>
-          </div>
-          
-        </div><br>
-        <div class="form-check">
-         
-          <strong><label class="form-check-label">Exibir a quantidade de Estoque na tela de Pedido, OS?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_ExibeEst" id="Vend_ExibeEst" value="1">
-            <label class="form-check-label" for="Vend_ExibeEst">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_ExibeEst" id="Vend_ExibeEst" value="0">
-            <label class="form-check-label" for="Vend_ExibeEst">Não</label>
-          </div>
-          
-        </div><br>
-        <div class="form-check">
-          
-          <strong><label class="form-check-label">Agrupar itens lancados duplicados no Pedido?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_AgrupaltPed" id="Vend_AgrupaltPed" value="1">
-            <label class="form-check-label" for="Vend_AgrupaltPed">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_AgrupaltPed" id="Vend_AgrupaltPed" value="0">
-            <label class="form-check-label" for="Vend_AgrupaltPed">Não</label>
-          </div>
-          
-        </div><br>
-        <div class="form-check">
-          
-          <strong><label class="form-check-label">Valor do Frete incorpora o Total do Pedido, OS?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_FreteIncorp" id="Vend_FreteIncorp" value="1">
-            <label class="form-check-label" for="Vend_FreteIncorp">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_FreteIncorp" id="Vend_FreteIncorp" value="0">
-            <label class="form-check-label" for="Vend_FreteIncorp">Não</label>
-          </div>
-          
-        </div><br>
-        <div class="form-check">
-          
-          <strong><label class="form-check-label">Baixar Estoque em OS com Situacao EM ORCAMENTO?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_BxEstOSOrc" id="Vend_BxEstOSOrc" value="1">
-            <label class="form-check-label" for="Vend_BxEstOSOrc">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_BxEstOSOrc" id="Vend_BxEstOSOrc" value="0">
-            <label class="form-check-label" for="Vend_BxEstOSOrc">Não</label>
-          </div>
-          
-        </div>
+        <div class="form-row">
+      <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_AltPrTot" name="Vend_AltPrTot" value="1" <?php if($empresa->Vend_AltPrTot == '1'){ echo "checked"; } ?>>Altera Preco Total nos Orcamentos, Pedidos e OSs?
+                    </label>
+                  </div>
+            </div>
+
+            <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_ExibeEst" name="Vend_ExibeEst" value="1" <?php if($empresa->Vend_ExibeEst == '1'){ echo "checked"; } ?>>Exibir a quantidade de Estoque na tela de Pedido, OS?
+                    </label>
+                  </div>
+            </div>
+      </div>
+      <div class="form-row">
+            <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_FreteIncorp" name="Vend_FreteIncorp" value="1" <?php if($empresa->Vend_FreteIncorp == '1'){ echo "checked"; } ?>>Valor do Frete incorpora o Total do Pedido, OS?
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_AgrupaltPed" name="Vend_AgrupaltPed" value="1" <?php if($empresa->Vend_AgrupaltPed == '1'){ echo "checked"; } ?>>Agrupar itens lancados duplicados no Pedido?
+                    </label>
+                  </div>
+            </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_BxEstOSOrc" name="Vend_BxEstOSOrc" value="1" <?php if($empresa->Vend_BxEstOSOrc == '1'){ echo "checked"; } ?>> Baixar Estoque em OS com Situacao EM ORCAMENTO?
+                    </label>
+                  </div>
+            </div>
+      </div>
         <hr>
         <div class="form-row">
           <div class="form-group col-lg-4">
@@ -1727,51 +1662,39 @@
             Tudo certo!
           </div>
         </div>
-        <div class="form-check">
-          <strong><label class="form-check-label">Mudar Status de Ordem de Servico ao Faturar?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_MudaStatOS" id="Vend_MudaStatOS" value="1">
-            <label class="form-check-label" for="Vend_MudaStatOS">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_MudaStatOS" id="Vend_MudaStatOS" value="0">
-            <label class="form-check-label" for="Vend_MudaStatOS">Não</label>
-          </div>
-        </div><br>
-        <div class="form-check">
-          <strong><label class="form-check-label">Utiliza observacoes de produtos nas buscas?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_BuscObs" id="Vend_BuscObs" value="1">
-            <label class="form-check-label" for="Vend_BuscObs">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_BuscObs" id="Vend_BuscObs" value="0">
-            <label class="form-check-label" for="Vend_BuscObs">Não</label>
-          </div>
-        </div><br>
-        <div class="form-check">
-          <strong><label class="form-check-label">Utilizar programa de fidelidade?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_ProgFide" id="Vend_ProgFide" value="1">
-            <label class="form-check-label" for="Vend_ProgFide">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_ProgFide" id="Vend_ProgFide" value="0">
-            <label class="form-check-label" for="Vend_ProgFide">Não</label>
-          </div>
-        </div><br>
-        <div class="form-check">
-          <strong><label class="form-check-label">Filtro do Sistema pelo Inicio do Mes?</label></strong>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_FiltroIniMes" id="Vend_FiltroIniMes" value="1">
-            <label class="form-check-label" for="Vend_FiltroIniMes">Sim</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="Vend_FiltroIniMes" id="Vend_FiltroIniMes" value="0">
-            <label class="form-check-label" for="Vend_MudaStatOS">Não</label>
-          </div>
-        </div>
-        <br>
+        <div class="form-row">
+      <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_MudaStatOS" name="Vend_MudaStatOS" value="1"<?php if($empresa->Vend_MudaStatOS == '1'){ echo "checked"; } ?>>Mudar Status de Ordem de Servico ao Faturar?
+                    </label>
+                  </div>
+            </div>
+
+            <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_BuscObs" name="Vend_BuscObs" value="1"<?php if($empresa->Vend_BuscObs == '1'){ echo "checked"; } ?>>Utiliza observacoes de produtos nas buscas?
+                    </label>
+                  </div>
+            </div>
+      </div>
+      <div class="form-row">
+            <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_ProgFide" name="Vend_ProgFide" value="1"<?php if($empresa->Vend_ProgFide == '1'){ echo "checked"; } ?>>Utilizar programa de fidelidade?
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_FiltroIniMes" name="Vend_FiltroIniMes" value="1"<?php if($empresa->Vend_FiltroIniMes == '1'){ echo "checked"; } ?>>Filtro do Sistema pelo Inicio do Mes?
+                    </label>
+                  </div>
+            </div>
+      </div>
         <div class="form-row">
           <div class="form-group col-lg-4">
             <label for="Vend_TranspPadrao">Transportadora padrão</label>

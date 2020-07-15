@@ -52,11 +52,11 @@
                                         <div class="btn-group" role="group">
                                         @can('edita_catOS')
                                             <a href='{{ url("/CatOSPed/editar/$cat->Codigo") }}'
-                                                class="btn btn-success"><i class='far fa-edit'></i></a>
+                                            class="btn btn-success btn-xs mr-2" style="border-radius:2px;"><i class='far fa-edit'></i></a>
                                         @endcan
                                         @can('edita_catOS')
                                                 <a href="javascript:deletarRegistro('{{ $cat->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                class="btn btn-danger btn-xs mr-2" style="border-radius:2px;"><i class='far fa-trash-alt'></i></a>
                                         @endcan
                                         </div>
                                     </td>

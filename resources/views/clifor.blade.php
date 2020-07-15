@@ -86,16 +86,20 @@
                                             <td>
                                                 <div class="btn-group" role="group">
                                                     @can('edita_cliente')
-                                                        <a href='{{ url("/Clifor/editar/$cf->Codigo") }}'
-                                                            class="btn btn-success "><i class='far fa-edit'></i></a>
+                                                        <a href='{{ url("/Clifor/editar/$cf->Codigo") }}'class="btn btn-success btn-xs mr-2" style="border-radius:2px;">
+                                                            <i class='far fa-edit'></i>
+                                                        </a>
                                                     @endcan
+                                                 
                                                     @can('visual_cliente')
-                                                        <a href='{{ url("/Clifor/vizualizar/$cf->Codigo") }}'
-                                                            class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                                        <a href='{{ url("/Clifor/vizualizar/$cf->Codigo") }}'class="btn btn-secondary btn-xs mr-2" style="border-radius:2px;">
+                                                            <i class='far fa-eye'></i>
+                                                        </a>
                                                     @endcan
                                                     @can('deleta_cliente')
-                                                        <a href="javascript:deletarRegistro('{{ $cf->Codigo }}')"
-                                                            class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                        <a href="javascript:deletarRegistro('{{ $cf->Codigo }}')"class="btn btn-danger btn-xs" style="border-radius:2px;">
+                                                            <i class='far fa-trash-alt'></i>
+                                                        </a>
                                                     @endcan
                                                 </div>
                                             </td>

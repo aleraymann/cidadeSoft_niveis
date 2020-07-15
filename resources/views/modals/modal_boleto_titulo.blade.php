@@ -31,17 +31,11 @@
             <div class="form-row">
              
               <div class="form-group col-lg-3">
-                  <b class="ls-label-text" for="Sel">Baixa/Envio ao Banco</b>
-                    <select class="form-control input-border-bottom" id="Sel" name="Sel" required>
-                      <option value="0">Não</option>
-                      <option value="1">Sim</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Por favor, Campo Obrigatório!
-                    </div>
-                    <div class="valid-feedback">
-                      Tudo certo!
-                    </div>
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Sel" name="Sel" value="1"> Baixa/Envio ao Banco
+                    </label>
+                  </div>
               </div>
               <div class="form-group col-lg-3">
                 <b class="ls-label-text" for="Cod_Conta">Conta:</b>

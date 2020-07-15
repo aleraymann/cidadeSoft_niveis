@@ -2,7 +2,7 @@
 
 @section("conteudo")
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url("/Cadastro/ctas_pagas")}}" class="btn btn-primary ml-3 mb-1">
+    <a href="{{ url("/Cadastro/ctas_pagas")}}" class="btn btn-primary btn-xs ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
@@ -14,12 +14,7 @@
                 <div class="btn-group" role="group">
                 @can('edita_ctas_pagas')      
         <a href='{{ url("/Contas_Pagas/editar/$ctas_pagas->Codigo") }}'
-            class="btn btn-success"><i class='far fa-edit'></i></a>
-           @endcan
-            @can('deleta_ctas_pagas')
-        <a href='{{ url("/Contas_Pagas/excluir/$ctas_pagas->Codigo") }}'
-            class="btn btn-danger" onclick="return confirm('Deseja mesmo Excluir?')"><i
-                class='fas fa-trash-alt'></i></a>
+        class="btn btn-success btn-xs mr-2" style="border-radius:2px;"><i class='far fa-edit'></i></a>
           @endcan
     </div>
             </div>

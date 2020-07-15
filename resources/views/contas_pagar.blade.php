@@ -71,16 +71,19 @@
                                         <td class="">
                                             <div class="btn-group" role="group">
                                             @can('edita_ctas_pagar')
-                                                <a href='{{ url("/Contas_Pagar/editar/$c->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                <a href='{{ url("/Contas_Pagar/editar/$c->Codigo") }}' class="btn btn-success btn-xs mr-2" style="border-radius:2px;">
+                                                            <i class='far fa-edit'></i>
+                                                        </a>
                                             @endcan
                                             @can('visual_ctas_pagar')
-                                                    <a href='{{ url("/Contas_Pagar/visualizar/$c->Codigo") }}'
-                                                class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                                    <a href='{{ url("/Contas_Pagar/visualizar/$c->Codigo") }}' class="btn btn-secondary btn-xs mr-2" style="border-radius:2px;">
+                                                            <i class='far fa-eye'></i>
+                                                        </a>
                                             @endcan
                                             @can('deleta_ctas_pagar')
-                                                    <a href="javascript:deletarRegistro('{{ $c->Codigo }}')"
-                                                    class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    <a href="javascript:deletarRegistro('{{ $c->Codigo }}')" class="btn btn-danger btn-xs" style="border-radius:2px;">
+                                                            <i class='far fa-trash-alt'></i>
+                                                        </a>
                                             @endcan
                                             </div>
                                         </td>

@@ -72,15 +72,15 @@
                                             <div class="btn-group" role="group">
                                             @can('edita_ctas_receber')
                                                 <a href='{{ url("/Contas_Receber/editar/$c->Codigo") }}'
-                                                    class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                class="btn btn-success btn-xs mr-2" style="border-radius:2px;"><i class='far fa-edit'></i></a>
                                             @endcan
                                             @can('visual_ctas_receber')
                                                     <a href='{{ url("/Contas_Receber/visualizar/$c->Codigo") }}'
-                                                class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                                    class="btn btn-secondary btn-xs mr-2" style="border-radius:2px;"><i class='far fa-eye'></i></a>
                                             @endcan
                                             @can('deleta_ctas_receber')
                                                     <a href="javascript:deletarRegistro('{{ $c->Codigo }}')"
-                                                    class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                    class="btn btn-danger btn-xs mr-2" style="border-radius:2px;"><i class='fas fa-trash-alt'></i></a>
                                             @endcan
                                             </div>
                                         </td>

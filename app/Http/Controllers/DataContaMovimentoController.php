@@ -17,11 +17,8 @@ class DataContaMovimentoController extends Controller
     
     {  
         $data_movimento = $data_movimento->all();
-        $clifor = CliFor::all();
-        $conta = ContaCadastro::all();
-        $custo = CentroCusto::all();
-        $empresa = Empresa::all();
-        return view('movimento',compact('data_movimento','clifor','conta','custo','empresa'));
+       
+        return view('movimento',compact('data_movimento'));
        
     }
     public function salvar(Request $dadosFormulario,DataContaMovimento $data_movimento, $id = null)
@@ -61,8 +58,12 @@ class DataContaMovimentoController extends Controller
         if(Gate::denies('view_data_movimento', $data_movimento)){
             return redirect()->back();
         }
-        $conta = ContaMovimento::all();
-        return view("visual.view_data_movimento", compact("data_movimento","id","conta"));
+        $conta_movimento = ContaMovimento::all();
+        $clifor = CliFor::all();
+        $conta = ContaCadastro::all();
+        $custo = CentroCusto::all();
+        $empresa = Empresa::all();
+        return view("visual.view_data_movimento", compact("data_movimento","id",'clifor','conta','custo','empresa','conta_movimento'));
     }
 
     public function destroy($Codigo,DataContaMovimento $data_movimento)

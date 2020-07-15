@@ -2,7 +2,7 @@
 
 @section("conteudo")
 <div class="main-panel" style="margin-top:60px">
-<a href="{{ url("/Cadastro/empresas") }}" class="btn btn-primary ml-3 mb-1">
+<a href="{{ url("/Cadastro/empresas") }}" class="btn btn-primary btn-xs ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
 
@@ -12,10 +12,11 @@
                 <h4 class="card-title">
                     {{ $empresa->Razao_Social }}
                 </h4>
-                @can("update_empresa",$empresa)
+                @can("view_empresa",$empresa)
                     <div class="btn-group" role="group">
-                        <a href='{{ url("/Empresa/editar/$empresa->Codigo") }}'
-                            class="btn btn-success"><i class='far fa-edit'></i></a>
+                        <a href='{{ url("/Empresa/editar/$empresa->Codigo") }}' class="btn btn-success btn-xs" style="border-radius:2px;">
+                            <i class='far fa-edit'></i>
+                        </a>
                     </div>
                 @endcan
             </div>

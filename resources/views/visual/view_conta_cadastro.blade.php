@@ -8,7 +8,7 @@
       @endif
       @include('sweetalert::alert')
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url()->previous() }}"class="btn btn-primary ml-3 mb-1">
+    <a href="{{ url()->previous() }}"class="btn btn-primary btn-xs ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
@@ -19,11 +19,7 @@
                 <div class="btn-group " role="group">
                 @can('edita_conta')
         <a href='{{ url("/Conta/editar/$contacadastro->Codigo") }}'
-            class="btn btn-success"><i class='far fa-edit'></i></a>
-            @endcan
-            @can('deleta_conta')
-        <a href='{{ url("/Conta/excluir/$contacadastro->Codigo") }}' class="btn btn-danger"
-            onclick="return confirm('Deseja mesmo Excluir?')"><i class='fas fa-trash-alt'></i></a>
+        class="btn btn-success btn-xs mr-2" style="border-radius:2px;"><i class='far fa-edit'></i></a>
             @endcan
     </div>
             </div>
@@ -164,8 +160,7 @@
                                             {{ $contacadastro->Especie }}{{ $contasaldo->Saldo_Final }}</label><br>
                                             @if($contasaldo->Situacao=="A")
                                                 <b><label for="">Situação:</b> Aberto</label><br>
-                                                <blade
-                                                    elseif|(%24contasaldo-%3ESituacao%3D%3D%26%2334%3BX%26%2334%3B)%0D />
+                                                @elseif($contasaldo->Situacao=="X")
                                                 <b><label for="">Situação:</b> Ausente</label><br>
                                             @else
                                                 <b><label for="">Situação:</b> Fechado</label><br>
@@ -194,7 +189,7 @@
                                         @can('deleta_saldo')
                                             <div class="btn-group" role="group">
                                             <a href="javascript:deletarSaldo('{{ $contasaldo->Codigo }}')"
-                                                class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                            class="btn btn-danger btn-xs mr-2" style="border-radius:2px;"><i class='far fa-trash-alt'></i></a>
                                             </div>
                                         @endcan
                                         </td>

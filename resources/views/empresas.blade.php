@@ -184,7 +184,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="multi-filter-select" class="display table table-striped table-hover text-center">
+                    <table id="multi-filter-select" class="display table table-sm table-striped table-hover text-center">
                         <thead>
                             <tr>
                                 <th class="">Cod</th>
@@ -203,9 +203,9 @@
                                         <tr>
                                             <td> {{ $emp->Codigo }} </td>
                                         @if($emp->Logo != null)
-                                            <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:50px; height:50px" ></td>
+                                            <td><img src="{{ url("storage/empresas/{$emp->Logo}") }}" style="max-width:30px; height:30px" ></td>
 			                            @else
-				                        <td> <img src="{{url("img/empresa_padrao.jpg")}}"  style="max-width:50px; height:50px"></td>
+				                        <td> <img src="{{url("img/empresa_padrao.jpg")}}"  style="max-width:30px; height:30px"></td>
 			                            @endif
                                             <td> {{ $emp->Nome_Fantasia }} </td>
                                             <td> {{ $emp->Razao_Social }} </td>
@@ -215,17 +215,19 @@
                                             <td>
                                                 <div class="btn-group" role="group">
                                                     @can('edita_empresa')
-                                                        <a href='{{ url("/Empresa/editar/$emp->Codigo") }}'
-                                                            class="btn btn-success"><i class='far fa-edit'></i></a>
+                                                        <a href='{{ url("/Empresa/editar/$emp->Codigo") }}' class="btn btn-success btn-xs mr-2" style="border-radius:2px;">
+                                                            <i class='far fa-edit'></i>
+                                                        </a>
                                                     @endcan
                                                     @can("visual_empresa")
-
-                                                        <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}'
-                                                            class="btn btn-secondary"><i class='far fa-eye'></i></a>
+                                                        <a href='{{ url("/Empresa/vizualizar/$emp->Codigo") }}' class="btn btn-secondary btn-xs mr-2" style="border-radius:2px;">
+                                                            <i class='far fa-eye'></i>
+                                                        </a>
                                                     @endcan
                                                     @can('deleta_empresa')
-                                                        <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')"
-                                                            class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                                        <a href="javascript:deletarRegistro('{{ $emp->Codigo }}')" class="btn btn-danger btn-xs" style="border-radius:2px;">
+                                                            <i class='far fa-trash-alt'></i>
+                                                        </a>
                                                     @endcan
                                                 </div>
                                             </td>

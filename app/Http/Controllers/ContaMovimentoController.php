@@ -21,11 +21,7 @@ class ContaMovimentoController extends Controller
     
     {  
         $conta_movimento = $conta_movimento->all();
-        $clifor = CliFor::all();
-        $conta = ContaCadastro::all();
-        $custo = CentroCusto::all();
-        $empresa = Empresa::all();
-        return view('movimento',compact('conta_movimento','clifor','conta','custo','empresa'));
+        return view('movimento',compact('conta_movimento'));
        
     }
 
@@ -41,9 +37,7 @@ class ContaMovimentoController extends Controller
 
     public function pesquisaAjaxSaldo(Request $request){
         $id_conta = $request['id_conta'];
-  
         $dados = DB::select("SELECT * FROM `conta_saldo` WHERE Cod_Conta = '$id_conta' order by Codigo desc limit 1 ");
-        
         return ($dados);
     }
 
@@ -102,7 +96,6 @@ class ContaMovimentoController extends Controller
     public function visualizar(ContaMovimento $conta_movimento, $id)
     {
         $conta_movimento = ContaMovimento::find($id);
-
         return view("visual.view_movimento", compact("conta_movimento","id"));
     }
 }

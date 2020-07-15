@@ -27,12 +27,7 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Datas de Movimento de Contas
-                @can('insere_mov')
-                <button type="button" class="btn btn-success btn-rounded float-right" data-toggle="modal"
-                        data-target="#myModal">
-                        <i class='fas fa-plus'></i> Movimento
-                    </button>
-                @endcan
+               
                 @can('insere_data_mov')
                     <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
                         data-target="#myModaldata">
@@ -41,7 +36,7 @@
                @endcan
                 </h4>
                 @include("modals.modal_data_movimento")  
-             @include("modals.modal_movimento")  
+            
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -49,6 +44,8 @@
                         <thead>
                             <tr>
                                 <th class="">Cod</th>
+                                <th class="">Num do Caixa</th>
+                                <th class="">Turno</th>
                                 <th class="">Data</th>
                                 <th class="">Cod Adm</th>
                             </tr>
@@ -57,18 +54,27 @@
                            @can('view_data_movimento', $m)
                                 <tr>
                                     <td class="">{{ $m->Codigo }}  </td>
+                                    <td class="">{{ $m->Num_caixa }}  </td>
+                                    @if( $m->Turno==1)
+                                        <td>Manhã </td>
+                                    @elseif( $m->Turno==2)
+                                        <td>Tarde </td>
+                                    @else
+                                        <td>Noite </td>
+                                    @endif 
+
                                     <td class="">{{ $m->Data }}  </td>
                                     <td class="">{{ $m->user_id }}  </td>
                                    
                                     <td class="">
                                         <div class="btn-group" role="group">
                                         @can('visual_data_mov')
-                                        <a href='{{url("/DataMovimento/visualizar/$m->Codigo")}}' class="btn btn-secondary">
+                                        <a href='{{url("/DataMovimento/visualizar/$m->Codigo")}}'class="btn btn-secondary btn-xs mr-2" style="border-radius:2px;">
                                         <i class='far fa-eye'></i></a>
                                         @endcan
                                         @can('deleta_data_mov')
                                         <a href="javascript:deletarRegistro('{{ $m->Codigo }}')"
-                                            class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                        class="btn btn-danger btn-xs mr-2" style="border-radius:2px;"><i class='far fa-trash-alt'></i></a>
                                         @endcan
                                         </div>
                                     </td>

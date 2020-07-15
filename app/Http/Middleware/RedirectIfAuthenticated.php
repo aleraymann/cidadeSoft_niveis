@@ -17,9 +17,15 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        $local = $request['local'];
+        //dd($local);
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
-        }
+           if( $local == "D"){
+           return redirect('/Dashboard');
+           } else if( $local == "P"){
+            return redirect('/pdv');
+           }
+        } 
 
         return $next($request);
     }

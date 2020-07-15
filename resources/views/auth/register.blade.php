@@ -108,8 +108,6 @@
                         </div>
                     </div>
                     <div class="form-group form-floating-label col-12">
-                    </div>
-                    <div class="form-group form-floating-label col-12">
                         <div>
                             <input id="adm" type="adm" class="form-control input-border-bottom" name="adm"
                                 placeholder="Cod do Administrador" hidden>

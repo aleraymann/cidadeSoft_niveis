@@ -2,7 +2,7 @@
 
 @section("conteudo")
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url("/Cadastro/movimento")}}" class="btn btn-primary ml-3 mb-1">
+    <a href="{{ url("/Cadastro/movimento")}}" class="btn btn-primary btn-xs ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
@@ -11,8 +11,13 @@
                 <h4 class="card-title">
                    Data: {{ $data_movimento->Data }}
                 </h4>
-                <div class="btn-group" role="group">
-    </div>
+                @can('insere_mov')
+                <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
+                        data-target="#myModaldata">
+                        <i class='fas fa-plus'></i> Movimento
+                    </button>
+                @include("modals.modal_movimento")
+                @endcan
             </div>
             <div class="card-body">
             <div class="table-responsive">
@@ -30,7 +35,7 @@
                         </thead>
 
                         <tbody>
-                        @foreach($conta as $c)
+                        @foreach($conta_movimento as $c)
                         @if($c->data_id == $data_movimento->Codigo)
                            <tr>
                             <td class="">{{ $c->Codigo }}  </td>
@@ -51,15 +56,15 @@
                                    <div class="btn-group" role="group">
                                    @can('edita_mov')
                                    <a href='{{ url("/Movimento/editar/$c->Codigo") }}'
-                                                class="btn btn-success "><i class='far fa-edit'></i></a>
+                                   class="btn btn-success btn-xs mr-2" style="border-radius:2px;"><i class='far fa-edit'></i></a>
                                    @endcan
                                    @can('visual_mov')
-                                   <a href='{{url("/Movimento/visualizar/$c->Codigo")}}' class="btn btn-secondary">
+                                   <a href='{{url("/Movimento/visualizar/$c->Codigo")}}' class="btn btn-secondary btn-xs mr-2" style="border-radius:2px;">
                                    <i class='far fa-eye'></i></a>
                                    @endcan
                                    @can('deleta_mov')
                                    <a href="javascript:deletarRegistro('{{ $c->Codigo }}')"
-                                       class="btn btn-danger "><i class='fas fa-trash-alt'></i></a>
+                                   class="btn btn-danger btn-xs mr-2" style="border-radius:2px;"><i class='far fa-trash-alt'></i></a>
                                     @endcan
                                    </div>
                                </td>

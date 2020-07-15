@@ -34,6 +34,13 @@ class BoletoTituloController extends Controller
             if($id > 0)
             {
                 $dados = $boleto_titulo->find($id);
+                //dd($dadosFormulario->Sel);
+                if($dadosFormulario['Sel'] == "1"){
+                    $dadosFormulario['Sel'] = $dadosFormulario['Sel']; 
+                } else{ 
+                    $dadosFormulario['Sel'] = 0;
+                }
+                //dd($dadosFormulario['Sel']);
                 $dados->update($dadosFormulario->all());
                 return redirect()
                 ->action("BoletoTituloController@listar")

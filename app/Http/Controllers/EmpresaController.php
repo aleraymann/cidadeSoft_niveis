@@ -86,6 +86,148 @@ class EmpresaController extends Controller
         try {
             $dados = $empresa->find($id);
             $data = $request->all();
+            
+            
+            if($request['Cfg_PreviewRel'] == "1"){
+                $data['Cfg_PreviewRel'] = $data['Cfg_PreviewRel']; 
+            } else{ 
+                $data['Cfg_PreviewRel'] = 0;
+            }
+             //dd($request['Cfg_PreviewRel']);
+
+            if($request['Cfg_LembCliAniv'] == "1"){
+                $data['Cfg_LembCliAniv'] = $data['Cfg_LembCliAniv']; 
+            } else{ 
+                $data['Cfg_LembCliAniv'] = 0;
+            }
+
+            if($request['Cfg_PesqCep'] == "1"){
+                $data['Cfg_PesqCep'] = $data['Cfg_PesqCep']; 
+            } else{ 
+                $data['Cfg_PesqCep'] = 0;
+            }
+
+            if($request['Cfg_AtuPrecoPrazo'] == "1"){
+                $data['Cfg_PesqCep'] = $data['Cfg_AtuPrecoPrazo']; 
+            } else{ 
+                $data['Cfg_AtuPrecoPrazo'] = 0;
+            }
+
+            if($request['Cfg_IdentChamada'] == "1"){
+                $data['Cfg_IdentChamada'] = $data['Cfg_IdentChamada']; 
+            } else{ 
+                $data['Cfg_IdentChamada'] = 0;
+            }
+
+            if($request['Cfg_PermDuplicar'] == "1"){
+                $data['Cfg_PermDuplicar'] = $data['Cfg_PermDuplicar']; 
+            } else{ 
+                $data['Cfg_PermDuplicar'] = 0;
+            }
+
+            if($request['SMTP_Seguro'] == "1"){
+                $data['SMTP_Seguro'] = $data['SMTP_Seguro']; 
+            } else{ 
+                $data['SMTP_Seguro'] = 0;
+            }
+
+            if($request['SMTP_EmailCopia'] == "1"){
+                $data['SMTP_EmailCopia'] = $data['SMTP_EmailCopia']; 
+            } else{ 
+                $data['SMTP_EmailCopia'] = 0;
+            }
+
+            if($request['Fin_ControlaCaixa'] == "1"){
+                $data['Fin_ControlaCaixa'] = $data['Fin_ControlaCaixa']; 
+            } else{ 
+                $data['Fin_ControlaCaixa'] = 0;
+            }
+
+            if($request['Fin_ComiFrac'] == "1"){
+                $data['Fin_ComiFrac'] = $data['Fin_ComiFrac']; 
+            } else{ 
+                $data['Fin_ComiFrac'] = 0;
+            }
+
+            if($request['Fin_ContrComi'] == "1"){
+                $data['Fin_ContrComi'] = $data['Fin_ContrComi']; 
+            } else{ 
+                $data['Fin_ContrComi'] = 0;
+            }
+
+            if($request['Fisc_ICMSFixo'] == "1"){
+                $data['Fisc_ICMSFixo'] = $data['Fisc_ICMSFixo']; 
+            } else{ 
+                $data['Fisc_ICMSFixo'] = 0;
+            }
+
+            if($request['NFe_Valida'] == "1"){
+                $data['NFe_Valida'] = $data['NFe_Valida']; 
+            } else{ 
+                $data['NFe_Valida'] = 0;
+            }
+
+            if($request['Vend_PedSimp'] == "1"){
+                $data['Vend_PedSimp'] = $data['Vend_PedSimp']; 
+            } else{ 
+                $data['Vend_PedSimp'] = 0;
+            }
+
+
+            if($request['Vend_AltPrTot'] == "1"){
+                $data['Vend_AltPrTot'] = $data['Vend_AltPrTot']; 
+            } else{ 
+                $data['Vend_AltPrTot'] = 0;
+            }
+
+            if($request['Vend_ExibeEst'] == "1"){
+                $data['Vend_ExibeEst'] = $data['Vend_ExibeEst']; 
+            } else{ 
+                $data['Vend_ExibeEst'] = 0;
+            }
+
+            if($request['Vend_FreteIncorp'] == "1"){
+                $data['Vend_FreteIncorp'] = $data['Vend_FreteIncorp']; 
+            } else{ 
+                $data['Vend_FreteIncorp'] = 0;
+            }
+
+            if($request['Vend_AgrupaltPed'] == "1"){
+                $data['Vend_AgrupaltPed'] = $data['Vend_AgrupaltPed']; 
+            } else{ 
+                $data['Vend_AgrupaltPed'] = 0;
+            }
+
+            if($request['Vend_BxEstOSOrc'] == "1"){
+                $data['Vend_BxEstOSOrc'] = $data['Vend_BxEstOSOrc']; 
+            } else{ 
+                $data['Vend_BxEstOSOrc'] = 0;
+            }
+
+            if($request['Vend_MudaStatOS'] == "1"){
+                $data['Vend_MudaStatOS'] = $data['Vend_MudaStatOS']; 
+            } else{ 
+                $data['Vend_MudaStatOS'] = 0;
+            }
+
+            if($request['Vend_BuscObs'] == "1"){
+                $data['Vend_BuscObs'] = $data['Vend_BuscObs']; 
+            } else{ 
+                $data['Vend_BuscObs'] = 0;
+            }
+
+            if($request['Vend_ProgFide'] == "1"){
+                $data['Vend_ProgFide'] = $data['Vend_ProgFide']; 
+            } else{ 
+                $data['Vend_ProgFide'] = 0;
+            }
+
+            if($request['Vend_FiltroIniMes'] == "1"){
+                $data['Vend_FiltroIniMes'] = $data['Vend_FiltroIniMes']; 
+            } else{ 
+                $data['Vend_FiltroIniMes'] = 0;
+            }
+           
 
         if ($request->hasFile('Logo') && $request->file('Logo')->isValid()) { // existe imagem nova
                         
@@ -114,6 +256,7 @@ class EmpresaController extends Controller
             $data['Logo'] = $request->LogoBanco;  
         }
         //dd($data); // Confere os dados que estaram passando para o update
+
          $empresa->find($id)->update($data); // grava todos os conteudos automativo
 
             return redirect() // SE CHEGOU AQUI, DADOS ATUALIZADOS COM SUCESSO

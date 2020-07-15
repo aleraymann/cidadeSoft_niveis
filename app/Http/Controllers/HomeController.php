@@ -24,7 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Empresa $totalEmpresas, User $totalUsers, CliFor $totalClifor)
+    public function index( Request $request, Empresa $totalEmpresas, User $totalUsers, CliFor $totalClifor)
     {   
         $totalEmpresas = Empresa::count();
         $totalUsers = User::count();
