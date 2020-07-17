@@ -456,58 +456,6 @@
             
           </div>
           <hr>
-          <div class="form-row">
-            <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_PreviewRel" name="Cfg_PreviewRel" value="1"> Pré Vizualizar Relatórios Emitidos?
-                    </label>
-                  </div>
-              </div>
-
-              <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_LembCliAniv" name="Cfg_LembCliAniv" value="1"> Lembrar Aniversario de Clientes?
-                    </label>
-                  </div>
-              </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_PesqCep" name="Cfg_PesqCep" value="1"> Pesquisa automatica de CEP?
-                    </label>
-                  </div>
-              </div>
-
-              <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_IdentChamada" name="Cfg_IdentChamada" value="1"> Utilizar identificador de chamadas?
-                    </label>
-                  </div>
-              </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_AtuPrecoPrazo" name="Cfg_AtuPrecoPrazo" value="1">Atualização dos preços a prazo?
-                    </label>
-                  </div>
-              </div>
-
-              <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_PermDuplicar" name="Cfg_PermDuplicar" value="1"> Permite duplicar cadastro do cliente?
-                    </label>
-                  </div>
-              </div>
-          </div>
-        <hr>
         <div class="form-row">
           <div class="form-group col-lg-6">
             <b class="ls-label-text" for="SMTP_CorpoEmail">Corpo da Mensagem a ser enviada por email:</b>
@@ -1379,15 +1327,7 @@
           </div>
         </div>
         <hr>
-        <div class="form-row">
-        <div class="form-group col-lg-4 ml-2">
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Vend_PedSimp" name="Vend_PedSimp" value="1">Tela simplificada para emissao de pedidos?
-                    </label>
-                  </div>
-            </div>
-        </div>
+        
         <div class="form-row">
           <div class="form-group col-lg-12">
             <b class="ls-label-text" for="Vend_DescAdicOrca">Descrição adicional a ser impressa no rodapé dos Orçamentos:</b>
@@ -1424,6 +1364,57 @@
             Tudo certo!
           </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PreviewRel" name="Cfg_PreviewRel" value="1"> Pré Vizualizar Relatórios Emitidos?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_LembCliAniv" name="Cfg_LembCliAniv" value="1"> Lembrar Aniversario de Clientes?
+                    </label>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PesqCep" name="Cfg_PesqCep" value="1"> Pesquisa automatica de CEP?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_IdentChamada" name="Cfg_IdentChamada" value="1"> Utilizar identificador de chamadas?
+                    </label>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_AtuPrecoPrazo" name="Cfg_AtuPrecoPrazo" value="1">Atualização dos preços a prazo?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PermDuplicar" name="Cfg_PermDuplicar" value="1"> Permite duplicar cadastro do cliente?
+                    </label>
+                  </div>
+              </div>
+          </div>
       <div class="form-row">
       <div class="form-group col-lg-6">
                 <div class="form-check-inline">
@@ -1457,42 +1448,7 @@
                   </div>
             </div>
       </div>
-
       <div class="form-row">
-        <div class="form-group col-lg-6">
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Vend_BxEstOSOrc" name="Vend_BxEstOSOrc" value="1"> Baixar Estoque em OS com Situacao EM ORCAMENTO?
-                    </label>
-                  </div>
-            </div>
-      </div>
-        <hr>
-        <div class="form-row">
-          <div class="form-group col-lg-6">
-            <b class="ls-label-text" for="Vend_DiasLocacao">Dias padrão para Lançamento de Locações:</b>
-            <input type="text" class="form-control input-border-bottom" name="Vend_DiasLocacao" id="Vend_DiasLocacao" maxlength="5" value="0">
-            <div class="invalid-feedback">
-              Por favor, Campo Obrigatório!
-            </div>
-            <div class="valid-feedback">
-              Tudo certo!
-            </div>
-          </div>
-          <div class="form-group col-lg-6">
-            <b class="ls-label-text" for="Vend_ProgPtos">Valor base de pontos no prog de fidelidade:</b>
-            <input type="text" class="form-control input-border-bottom" name="Vend_ProgPtos"
-            onblur="val_base()" id="Vend_ProgPtos" maxlength="10" value="0.00">
-          </div>
-          <div class="invalid-feedback">
-            Por favor, Campo Obrigatório!
-          </div>
-          <div class="valid-feedback">
-            Tudo certo!
-          </div>
-        </div>
-
-        <div class="form-row">
       <div class="form-group col-lg-6">
                 <div class="form-check-inline">
                     <label class="form-check-label">
@@ -1525,6 +1481,48 @@
                   </div>
             </div>
       </div>
+      <div class="form-row">
+        <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_BxEstOSOrc" name="Vend_BxEstOSOrc" value="1"> Baixar Estoque em OS com Situacao EM ORCAMENTO?
+                    </label>
+                  </div>
+            </div>
+            <div class="form-group col-lg-4">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_PedSimp" name="Vend_PedSimp" value="1">Tela simplificada para emissao de pedidos?
+                    </label>
+                  </div>
+            </div>
+        
+      </div>
+        <hr>
+        <div class="form-row">
+          <div class="form-group col-lg-6">
+            <b class="ls-label-text" for="Vend_DiasLocacao">Dias padrão para Lançamento de Locações:</b>
+            <input type="text" class="form-control input-border-bottom" name="Vend_DiasLocacao" id="Vend_DiasLocacao" maxlength="5" value="0">
+            <div class="invalid-feedback">
+              Por favor, Campo Obrigatório!
+            </div>
+            <div class="valid-feedback">
+              Tudo certo!
+            </div>
+          </div>
+          <div class="form-group col-lg-6">
+            <b class="ls-label-text" for="Vend_ProgPtos">Valor base de pontos no prog de fidelidade:</b>
+            <input type="text" class="form-control input-border-bottom" name="Vend_ProgPtos"
+            onblur="val_base()" id="Vend_ProgPtos" maxlength="10" value="0.00">
+          </div>
+          <div class="invalid-feedback">
+            Por favor, Campo Obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Tudo certo!
+          </div>
+        </div>
+
 
         <div class="form-row">
           <div class="form-group col-lg-4">

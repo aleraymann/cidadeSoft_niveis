@@ -87,7 +87,6 @@ class EmpresaController extends Controller
             $dados = $empresa->find($id);
             $data = $request->all();
             
-            
             if($request['Cfg_PreviewRel'] == "1"){
                 $data['Cfg_PreviewRel'] = $data['Cfg_PreviewRel']; 
             } else{ 
@@ -172,7 +171,6 @@ class EmpresaController extends Controller
             } else{ 
                 $data['Vend_PedSimp'] = 0;
             }
-
 
             if($request['Vend_AltPrTot'] == "1"){
                 $data['Vend_AltPrTot'] = $data['Vend_AltPrTot']; 

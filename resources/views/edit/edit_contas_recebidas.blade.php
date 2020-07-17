@@ -17,14 +17,14 @@
 
 </script>
 <div class="main-panel" style="margin-top:60px">
-    <a  href="{{ url("/Cadastro/ctas_pagas")}}"  class="btn btn-primary ml-3 mb-1">
+    <a  href="{{ url("/Cadastro/ctas_recebidas")}}"  class="btn btn-primary ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">
-                    Edição de Contas Pagas
+                    Edição de Contas Recebidas
                 </h4>
             </div>
             <div class="card-body">
@@ -32,9 +32,9 @@
                 <div class="modal-body">
                     @if(!isset($id))
                         <form method="post" class="needs-validation" novalidate
-                            action="{{ url("/Contas_Pagas/salvar") }}">
+                            action="{{ url("/Contas_Recebidas/salvar") }}">
                         @else
-                            <form method="post" action="{{ url("/Contas_Pagas/salvar/$id") }}"
+                            <form method="post" action="{{ url("/Contas_Recebidas/salvar/$id") }}"
                                 enctype="multipart/form-data">
                     @endif
                     <div class=" form-row">
@@ -44,7 +44,7 @@
                                 <option value="">Selecione</option>
                                 @foreach($conta as $conta)
                                     @can('view_conta', $conta)
-                                    <option value="{{$conta->Codigo }}" {{ $ctas_pagas->Cod_Conta == $conta->Codigo ? "selected" : "" }}>
+                                    <option value="{{$conta->Codigo }}" {{ $ctas_recebidas->Cod_Conta == $conta->Codigo ? "selected" : "" }}>
                                     Ag:{{ $conta->Cod_Age }}-{{ $conta->Dig_Age }} / CC:{{ $conta->CC }}-{{$conta->Digito}}</option>
                                     @endcan
                                 @endforeach
@@ -59,7 +59,7 @@
                         <div class="form-group col-lg-4">
                             <b class="ls-label-text" for="Num_Doc">Número do Documento:</b>
                             <input type="text" class="form-control input-border-bottom" name="Num_Doc" id="Num_Doc"
-                                maxlength="15" minlength="1"  value="{{ isset($ctas_pagas->Num_Doc) ? $ctas_pagas->Num_Doc : '' }} ">
+                                maxlength="15" minlength="1"  value="{{ isset($ctas_recebidas->Num_Doc) ? $ctas_recebidas->Num_Doc : '' }} ">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -70,7 +70,7 @@
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Parcela">Parcela:</b>
                             <input type="text" class="form-control input-border-bottom" name="Parcela" id="Parcela"
-                                maxlength="5" minlength="5"  value="{{ isset($ctas_pagas->Parcela) ? $ctas_pagas->Parcela : '' }} " >
+                                maxlength="5" minlength="5"  value="{{ isset($ctas_recebidas->Parcela) ? $ctas_recebidas->Parcela : '' }} " >
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -84,7 +84,7 @@
                                 <option value="">Selecione</option>
                                 @foreach($clifor as $clifor)
                                     @can('view_clifor', $clifor)
-                                    <option value="{{ $clifor->Codigo }}" {{ $ctas_pagas->Cod_Clifor == $clifor->Codigo ? "selected" : "" }}>
+                                    <option value="{{ $clifor->Codigo }}" {{ $ctas_recebidas->Cod_Clifor == $clifor->Codigo ? "selected" : "" }}>
                                     {{ $clifor->Nome_Fantasia }}</option>
                                     @endcan
                                 @endforeach
@@ -104,7 +104,7 @@
                                 <option value="">Selecione</option>
                                 @foreach($f_pag as $f)
                                     @can('view_formPag', $f)
-                                    <option value="{{ $f->Codigo }}" {{ $ctas_pagas->Forma_Pag == $f->Codigo ? "selected" : "" }}>
+                                    <option value="{{ $f->Codigo }}" {{ $ctas_recebidas->Forma_Pag == $f->Codigo ? "selected" : "" }}>
                                     {{  $f->Descricao }}</option>
                                     @endcan
                                 @endforeach
@@ -122,7 +122,7 @@
                                 <option value="">Selecione</option>
                                 @foreach($c_pag as $f)
                                     @can('view_condPag', $f)
-                                    <option value="{{ $f->Codigo }}" {{ $ctas_pagas->Cond_Pag == $f->Codigo ? "selected" : "" }}>
+                                    <option value="{{ $f->Codigo }}" {{ $ctas_recebidas->Cond_Pag == $f->Codigo ? "selected" : "" }}>
                                     {{  $f->Condicao }}</option>
                                     @endcan
                                 @endforeach
@@ -137,7 +137,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Data_Pagto">Data de Pagamento:</b>
                             <input type="date" class="form-control input-border-bottom" name="Data_Pagto"
-                                id="Data_Pagto" required minlength="" maxlength="10"  value="{{ $ctas_pagas->Data_Pagto }}">
+                                id="Data_Pagto" required minlength="" maxlength="10"  value="{{ $ctas_recebidas->Data_Pagto }}">
                             <div class="invalid-feedback">
                                 Campo Obrigatório, Mínimo 4 caracteres!!
                             </div>
@@ -148,7 +148,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Data_Baixa">Data de Baixa:</b>
                             <input type="date" class="form-control input-border-bottom" name="Data_Baixa"
-                                id="Data_Baixa" required minlength="" maxlength="10" value="{{ $ctas_pagas->Data_Baixa }}">
+                                id="Data_Baixa" required minlength="" maxlength="10" value="{{ $ctas_recebidas->Data_Baixa }}">
                             <div class="invalid-feedback">
                                 Campo Obrigatório, Mínimo 4 caracteres!!
                             </div>
@@ -161,8 +161,8 @@
                     <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Tipo_Pag">Tipo de Pagamento:</b>
                             <select class="form-control input-border-bottom" name="Tipo_Pag" id="Tipo_Pag" required>
-                            <option value="{{ isset($ctas_pagas->Tipo_Pag) ? $ctas_pagas->Tipo_Pag : '' }} ">
-                            {{ $ctas_pagas->Tipo_Pag }}
+                            <option value="{{ isset($ctas_recebidas->Tipo_Pag) ? $ctas_recebidas->Tipo_Pag : '' }} ">
+                            {{ $ctas_recebidas->Tipo_Pag }}
                                 <option value="Total">Total</option>
                                 <option value="Parcial">Parcial</option>
                                 
@@ -177,7 +177,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Valor_Origem">Valor de Origem:</b>
                             <input type="text" class="form-control input-border-bottom" name="Valor_Origem" id="Valor_Origem" minlength="3" 
-                            maxlength="10" value="{{ isset($ctas_pagas->Valor_Origem) ? $ctas_pagas->Valor_Origem : '' }} " onblur="valor_Origem()">
+                            maxlength="10" value="{{ isset($ctas_recebidas->Valor_Origem) ? $ctas_recebidas->Valor_Origem : '' }} " onblur="valor_Origem()">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -188,7 +188,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Valor_Pago">Valor Pago:</b>
                             <input type="text" class="form-control input-border-bottom" name="Valor_Pago" id="Valor_Pago" minlength="3" 
-                            maxlength="10"value="{{ isset($ctas_pagas->Valor_Pago) ? $ctas_pagas->Valor_Pago : '' }} " required onblur="valor_Pago()">
+                            maxlength="10"value="{{ isset($ctas_recebidas->Valor_Pago) ? $ctas_recebidas->Valor_Pago : '' }} " required onblur="valor_Pago()">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -199,7 +199,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Valor_Divida">Valor da Dívida:</b>
                             <input type="text" class="form-control input-border-bottom" name="Valor_Divida" id="Valor_Divida" minlength="3" 
-                            maxlength="10" value="{{ isset($ctas_pagas->Valor_Divida) ? $ctas_pagas->Valor_Divida : '' }} "  onblur="valor_Divida()">
+                            maxlength="10" value="{{ isset($ctas_recebidas->Valor_Divida) ? $ctas_recebidas->Valor_Divida : '' }} "  onblur="valor_Divida()">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -213,7 +213,7 @@
                     <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Multa">(%) de Multa :</b>
                             <input type="text" class="form-control input-border-bottom" name="Multa" id="Multa" minlength="3" 
-                            maxlength="10"  value="{{ isset($ctas_pagas->Multa) ? $ctas_pagas->Multa : '' }} "  onblur="multa()">
+                            maxlength="10"  value="{{ isset($ctas_recebidas->Multa) ? $ctas_recebidas->Multa : '' }} "  onblur="multa()">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -224,7 +224,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Desconto">Desconto:</b>
                             <input type="text" class="form-control input-border-bottom" name="Desconto" id="Desconto" minlength="3" 
-                            maxlength="10" value="{{ isset($ctas_pagas->Desconto) ? $ctas_pagas->Desconto : '' }} "  onblur="desconto()">
+                            maxlength="10" value="{{ isset($ctas_recebidas->Desconto) ? $ctas_recebidas->Desconto : '' }} "  onblur="desconto()">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -235,7 +235,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Juros">Juros:</b>
                             <input type="text" class="form-control input-border-bottom" name="Juros" id="Juros" minlength="3" 
-                            maxlength="10" value="{{ isset($ctas_pagas->Juros) ? $ctas_pagas->Juros : '' }} "  onblur="juros()" >
+                            maxlength="10" value="{{ isset($ctas_recebidas->Juros) ? $ctas_recebidas->Juros : '' }} "  onblur="juros()" >
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -246,7 +246,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Origem">Local/Nota de Origem:</b>
                             <input type="text" class="form-control input-border-bottom" name="Origem" id="Origem"
-                                maxlength="15" minlength="3"  value="{{ isset($ctas_pagas->Origem) ? $ctas_pagas->Origem : '' }} ">
+                                maxlength="15" minlength="3"  value="{{ isset($ctas_recebidas->Origem) ? $ctas_recebidas->Origem : '' }} ">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -259,8 +259,8 @@
                     <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Local_Pag">Local do Pagamento:</b>
                             <select class="form-control input-border-bottom" required name="Local_Pag" id="Local_Pag" >
-                            <option value="{{ isset($ctas_pagas->Local_Pag) ? $ctas_pagas->Local_Pag : '' }} ">
-                            {{ $ctas_pagas->Local_Pag == 'BCO'? 'Banco': 'Caixa' }}
+                            <option value="{{ isset($ctas_recebidas->Local_Pag) ? $ctas_recebidas->Local_Pag : '' }} ">
+                            {{ $ctas_recebidas->Local_Pag == 'BCO'? 'Banco': 'Caixa' }}
                                 <option value="BCO">Banco</option>
                                 <option value="CX">Caixa</option>
                             </select>
@@ -274,7 +274,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Num_DocCxBco">Num do Doc Banco/Caixa:</b>
                             <input type="text" class="form-control input-border-bottom" name="Num_DocCxBco" id="Num_DocCxBco"
-                                maxlength="11" minlength="3" value="{{ isset($ctas_pagas->Num_DocCxBco) ? $ctas_pagas->Num_DocCxBco : '' }} ">
+                                maxlength="11" minlength="3" value="{{ isset($ctas_recebidas->Num_DocCxBco) ? $ctas_recebidas->Num_DocCxBco : '' }} ">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -285,7 +285,7 @@
                         <div class="form-group col-lg-6">
                             <b class="ls-label-text" for="Observacoes">Observações:</b>
                             <input type="text" class="form-control input-border-bottom" name="Observacoes" id="Observacoes"
-                                maxlength="80" minlength="3" value="{{ isset($ctas_pagas->Observacoes) ? $ctas_pagas->Observacoes : '' }} ">
+                                maxlength="80" minlength="3" value="{{ isset($ctas_recebidas->Observacoes) ? $ctas_recebidas->Observacoes : '' }} ">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -325,7 +325,7 @@
                                 <option value="">Selecione</option>
                                 @foreach($c_cust as $f)
                                     @can('view_centroCusto', $f)
-                                    <option value="{{ $f->Codigo }}" {{ $ctas_pagas->Centro_Custo == $f->Codigo ? "selected" : "" }}>
+                                    <option value="{{ $f->Codigo }}" {{ $ctas_recebidas->Centro_Custo == $f->Codigo ? "selected" : "" }}>
                                     {{ $f->Descricao }}</option>
                                     @endcan
                                 @endforeach
@@ -343,7 +343,7 @@
                                 <option value="">Selecione</option>
                                 @foreach($empresa as $e)
                                     @can('view_empresa', $e)
-                                    <option value="{{ $e->Codigo }}" {{ $ctas_pagas->Empresa == $e->Codigo ? "selected" : "" }}>
+                                    <option value="{{ $e->Codigo }}" {{ $ctas_recebidas->Empresa == $e->Codigo ? "selected" : "" }}>
                                     {{ $e->Nome_Fantasia }}</option>
                                     @endcan
                                 @endforeach
@@ -417,7 +417,7 @@
 
                         {{ csrf_field() }}
                         <button class="btn btn-success">Salvar</button>
-                        <a href="{{ url("/Cadastro/ctas_pagas") }}" class="btn btn-danger ml-3">Cancelar</a>
+                        <a href="{{ url("/Cadastro/ctas_recebidas") }}" class="btn btn-danger ml-3">Cancelar</a>
                         </form>
 
                     </div>

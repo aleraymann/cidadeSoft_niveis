@@ -35,6 +35,7 @@ use App\model\Cotacao;
 use App\model\ContasPagar;
 use App\model\ContasPagas;
 use App\model\ContasReceber;
+use App\model\ContasRecebidas;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -280,12 +281,20 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->adm == $ctas_pagas->user_id;     
         });
 
-        //---------- Contas Pagar------------------------------------------------------------------------------------
+        //---------- Contas Receber------------------------------------------------------------------------------------
         Gate::define('view_ctas_receber', function( User $user,ContasReceber $ctas_receber){//apenas visualizar
             if( $user->hasAnyRoles('adm')){
                 return $user->id == $ctas_receber->user_id;     
             }else
                 return $user->adm == $ctas_receber->user_id;     
+        });
+
+         //---------- Contas Recebidas------------------------------------------------------------------------------------
+         Gate::define('view_ctas_recebidas', function( User $user,ContasRecebidas $ctas_recebidas){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $ctas_recebidas->user_id;     
+            }else
+                return $user->adm == $ctas_recebidas->user_id;     
         });
 
        

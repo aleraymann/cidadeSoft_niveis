@@ -345,6 +345,11 @@
 											<span class="sub-item">Contas Receber</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/ctas_recebidas')}}">
+											<span class="sub-item">Contas Recebidas</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>
@@ -497,13 +502,13 @@
 								
 							</a>
 						</li>
-						<li class="nav-item">
+						<!--<li class="nav-item">
 							<a href="{{url('/pdv')}}">
 								<i class="flaticon-cart-1"></i>
 								<p>PDV</p>
 								
 							</a>
-						</li>
+						</li>-->
 
 					@endcan
 					@can('gerar_relatorio')

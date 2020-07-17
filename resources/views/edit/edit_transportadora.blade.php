@@ -349,6 +349,7 @@
                     <div class="form-row">
                         {{ csrf_field() }}
                         <button class="btn btn-success">Salvar</button>
+                        <a href="{{ url("/Cadastro/transportadoras") }}" class="btn btn-danger ml-3">Cancelar</a>
                         </form>
                     </div>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

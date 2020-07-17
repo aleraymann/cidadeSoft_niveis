@@ -97,6 +97,7 @@
              
               {{ csrf_field() }}
       <button class="btn btn-success">Salvar</button>
+      <a href="{{ url("/Cadastro/boleto_remessa") }}"  class="btn btn-danger ml-3">Cancelar</a>
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

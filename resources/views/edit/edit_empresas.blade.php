@@ -122,9 +122,11 @@
       <div class="col-md-12">
       <div class="card">
       <div class="card-header">
+     
       <h4 class="card-title">
                     Edição de Empresas
                 </h4>
+                <button id="btn1" type="button" class="btn btn-success">Salvar</button>
                 </div>
       <div class="modal-body">
         @if(!isset($id))
@@ -577,58 +579,7 @@
             </div>
           </div>
 
-          <div class="form-row">
-            <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_PreviewRel" name="Cfg_PreviewRel" value="1" <?php if($empresa->Cfg_PreviewRel == '1'){ echo "checked"; } ?>> Pré Vizualizar Relatórios Emitidos?
-                    </label>
-                  </div>
-              </div>
-
-              <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_LembCliAniv" name="Cfg_LembCliAniv" value="1" <?php if($empresa->Cfg_LembCliAniv == '1'){ echo "checked"; } ?>> Lembrar Aniversario de Clientes?
-                    </label>
-                  </div>
-              </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_PesqCep" name="Cfg_PesqCep" value="1" <?php if($empresa->Cfg_PesqCep == '1'){ echo "checked"; } ?>> Pesquisa automatica de CEP?
-                    </label>
-                  </div>
-              </div>
-
-              <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_IdentChamada" name="Cfg_IdentChamada" value="1" <?php if($empresa->Cfg_IdentChamada == '1'){ echo "checked"; } ?>> Utilizar identificador de chamadas?
-                    </label>
-                  </div>
-              </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_AtuPrecoPrazo" name="Cfg_AtuPrecoPrazo" value="1" <?php if($empresa->Cfg_AtuPrecoPrazo == '1'){ echo "checked"; } ?>>Atualização dos preços a prazo?
-                    </label>
-                  </div>
-              </div>
-
-              <div class="form-group col-lg-6">
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Cfg_PermDuplicar" name="Cfg_PermDuplicar" value="1" <?php if($empresa->Cfg_PermDuplicar == '1'){ echo "checked"; } ?>> Permite duplicar cadastro do cliente?
-                    </label>
-                  </div>
-              </div>
-          </div>
-         <hr>
+         
          <div class="form-row">
           <div class="form-group col-lg-4">
             <label for="SMTP_CorpoEmail">Corpo da Mensagem a ser enviada por email</label>
@@ -1501,15 +1452,7 @@
         </script>
           </div>
         </div>
-        <div class="form-row">
-        <div class="form-group col-lg-4 ml-2">
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Vend_PedSimp" name="Vend_PedSimp" value="1" <?php if($empresa->Vend_PedSimp == '1'){ echo "checked"; } ?>>Tela simplificada para emissao de pedidos?
-                    </label>
-                </div>
-          </div>
-        </div>
+        
         <div class="form-row">
           <div class="form-group col-lg-3">
             <label for="Vend_CliForPadrao">Vendedor Padrão </label>
@@ -1558,7 +1501,7 @@
         </div>
         <hr>
         <div class="form-row">
-          <div class="form-group col-lg-4">
+          <div class="form-group col-lg-12">
             <label for="Vend_DescAdicOrca">Descrição Adicional impressa no rodapé dos Orçamentos</label>
             <input type="text" class="form-control input-border-bottom" name="Vend_DescAdicOrca" id="Vend_DescAdicOrca" maxlength="150"
             value="{{isset($empresa->Vend_DescAdicOrca) ? $empresa->Vend_DescAdicOrca : '' }} ">
@@ -1569,7 +1512,9 @@
           <div class="valid-feedback">
             Tudo certo!
           </div>
-          <div class="form-group col-lg-4">
+          </div>
+          <div class="form-row">
+          <div class="form-group col-lg-12">
             <label for="Vend_DescAdicPed">Descricao Adicional impressa no rodapé dos Pedidos</label>
             <input type="text" class="form-control input-border-bottom" name="Vend_DescAdicPed" id="Vend_DescAdicPed" maxlength="150"
             value="{{isset($empresa->Vend_DescAdicPed) ? $empresa->Vend_DescAdicPed : '' }} ">
@@ -1580,7 +1525,9 @@
           <div class="valid-feedback">
             Tudo certo!
           </div>
-          <div class="form-group col-lg-4">
+          </div>
+          <div class="form-row">
+          <div class="form-group col-lg-12">
             <label for="Vend_DescAdicOS">Descricao Adicional impressa no rodapé da OS</label>
             <input type="text" class="form-control input-border-bottom" name="Vend_DescAdicOS" id="Vend_DescAdicOS" maxlength="150"
             value="{{isset($empresa->Vend_DescAdicOS) ? $empresa->Vend_DescAdicOS : '' }} ">
@@ -1592,7 +1539,74 @@
             Tudo certo!
           </div>
         </div>
-        
+         <div class="form-row">
+        <div class="form-group col-lg-6">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_BxEstOSOrc" name="Vend_BxEstOSOrc" value="1" <?php if($empresa->Vend_BxEstOSOrc == '1'){ echo "checked"; } ?>> Baixar Estoque em OS com Situacao EM ORCAMENTO?
+                    </label>
+                  </div>
+            </div>
+            
+        <div class="form-group col-lg-4 ml-2">
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Vend_PedSimp" name="Vend_PedSimp" value="1" <?php if($empresa->Vend_PedSimp == '1'){ echo "checked"; } ?>>Tela simplificada para emissao de pedidos?
+                    </label>
+                </div>
+          </div>
+      </div>
+         <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PreviewRel" name="Cfg_PreviewRel" value="1" <?php if($empresa->Cfg_PreviewRel == '1'){ echo "checked"; } ?>> Pré Vizualizar Relatórios Emitidos?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_LembCliAniv" name="Cfg_LembCliAniv" value="1" <?php if($empresa->Cfg_LembCliAniv == '1'){ echo "checked"; } ?>> Lembrar Aniversario de Clientes?
+                    </label>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PesqCep" name="Cfg_PesqCep" value="1" <?php if($empresa->Cfg_PesqCep == '1'){ echo "checked"; } ?>> Pesquisa automatica de CEP?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_IdentChamada" name="Cfg_IdentChamada" value="1" <?php if($empresa->Cfg_IdentChamada == '1'){ echo "checked"; } ?>> Utilizar identificador de chamadas?
+                    </label>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_AtuPrecoPrazo" name="Cfg_AtuPrecoPrazo" value="1" <?php if($empresa->Cfg_AtuPrecoPrazo == '1'){ echo "checked"; } ?>>Atualização dos preços a prazo?
+                    </label>
+                  </div>
+              </div>
+
+              <div class="form-group col-lg-6">
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" id="Cfg_PermDuplicar" name="Cfg_PermDuplicar" value="1" <?php if($empresa->Cfg_PermDuplicar == '1'){ echo "checked"; } ?>> Permite duplicar cadastro do cliente?
+                    </label>
+                  </div>
+              </div>
+          </div>
         <div class="form-row">
       <div class="form-group col-lg-6">
                 <div class="form-check-inline">
@@ -1626,43 +1640,7 @@
                   </div>
             </div>
       </div>
-
       <div class="form-row">
-        <div class="form-group col-lg-6">
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" id="Vend_BxEstOSOrc" name="Vend_BxEstOSOrc" value="1" <?php if($empresa->Vend_BxEstOSOrc == '1'){ echo "checked"; } ?>> Baixar Estoque em OS com Situacao EM ORCAMENTO?
-                    </label>
-                  </div>
-            </div>
-      </div>
-        <hr>
-        <div class="form-row">
-          <div class="form-group col-lg-4">
-            <label for="Vend_DiasLocacao">Dias padrão para Lançamento de Locações </label>
-            <input type="text" class="form-control input-border-bottom" name="Vend_DiasLocacao" id="Vend_DiasLocacao" maxlength="5"
-            value="{{isset($empresa->Vend_DiasLocacao) ? $empresa->Vend_DiasLocacao : '' }} ">
-            <div class="invalid-feedback">
-              Por favor, Campo Obrigatório!
-            </div>
-            <div class="valid-feedback">
-              Tudo certo!
-            </div>
-          </div>
-          <div class="form-group col-lg-6">
-            <label for="Vend_ProgPtos">Valor base para computação de pontos no prog de fidelidade </label>
-            <input type="text" class="form-control input-border-bottom" name="Vend_ProgPtos" 
-            onblur="valor_base()"id="Vend_ProgPtos" maxlength="10"
-            value="{{isset($empresa->Vend_ProgPtos) ? $empresa->Vend_ProgPtos : '' }} ">
-          </div>
-          <div class="invalid-feedback">
-            Por favor, Campo Obrigatório!
-          </div>
-          <div class="valid-feedback">
-            Tudo certo!
-          </div>
-        </div>
-        <div class="form-row">
       <div class="form-group col-lg-6">
                 <div class="form-check-inline">
                     <label class="form-check-label">
@@ -1695,6 +1673,33 @@
                   </div>
             </div>
       </div>
+         <hr>
+        <div class="form-row">
+          <div class="form-group col-lg-4">
+            <label for="Vend_DiasLocacao">Dias padrão para Lançamento de Locações </label>
+            <input type="text" class="form-control input-border-bottom" name="Vend_DiasLocacao" id="Vend_DiasLocacao" maxlength="5"
+            value="{{isset($empresa->Vend_DiasLocacao) ? $empresa->Vend_DiasLocacao : '' }} ">
+            <div class="invalid-feedback">
+              Por favor, Campo Obrigatório!
+            </div>
+            <div class="valid-feedback">
+              Tudo certo!
+            </div>
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="Vend_ProgPtos">Valor base para computação de pontos no prog de fidelidade </label>
+            <input type="text" class="form-control input-border-bottom" name="Vend_ProgPtos" 
+            onblur="valor_base()"id="Vend_ProgPtos" maxlength="10"
+            value="{{isset($empresa->Vend_ProgPtos) ? $empresa->Vend_ProgPtos : '' }} ">
+          </div>
+          <div class="invalid-feedback">
+            Por favor, Campo Obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Tudo certo!
+          </div>
+        </div>
+        
         <div class="form-row">
           <div class="form-group col-lg-4">
             <label for="Vend_TranspPadrao">Transportadora padrão</label>
@@ -1739,7 +1744,8 @@
         </div>
         <div class="form-row">
           {{ csrf_field() }}
-          <button class="btn btn-success">Salvar</button>
+          <button id="btn2" class="btn btn-success">Salvar</button>
+          <a href="{{ url("/Cadastro/empresas") }}" class="btn btn-danger ml-3"> Cancelar</a>
         </form>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript">
@@ -1968,4 +1974,11 @@
         document.getElementById('Fin_CFixos').value = lim;
     }
 </script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script>
+			$(document).ready(() => {
+				$('#btn1').on('click', () => {
+					$('#btn2').trigger('click')
+				})
+			})
+		</script>

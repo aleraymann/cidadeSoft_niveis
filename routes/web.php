@@ -115,6 +115,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/ctas_pagar","ContasPagarController@listar");
     Route::get("/ctas_pagas","ContasPagasController@listar");
     Route::get("/ctas_receber","ContasReceberController@listar");
+    Route::get("/ctas_recebidas","ContasRecebidasController@listar");
     
     
 });
@@ -319,6 +320,13 @@ Route::group(["prefix" => "Contas_Receber",'middleware' => 'auth'], function () 
     Route::get("/editar/{id}", "ContasReceberController@editar");
     Route::get("/visualizar/{id}", "ContasReceberController@visualizar");
     Route::post("/pesquisa", "ContasReceberController@pesquisaAjax");
+});
+//crud ContasRecebidas
+Route::group(["prefix" => "Contas_Recebidas",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ContasRecebidasController@salvar");
+    Route::delete("/excluir/{id}", "ContasRecebidasController@destroy");
+    Route::get("/editar/{id}", "ContasRecebidasController@editar");
+    Route::get("/visualizar/{id}", "ContasRecebidasController@visualizar");
 });
 
 //crud ContasReceber

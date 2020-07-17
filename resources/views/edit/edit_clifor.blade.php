@@ -38,6 +38,7 @@
                         Cliente/Fornecedor
                     @endif
                 </h4>
+                <button id="btn1" type="button" class="btn btn-success">Salvar</button>
             </div>
             <div class="card-body">
 
@@ -572,7 +573,8 @@
                 </div>
                 <!-- <div class="form-row">-->
                 {{ csrf_field() }}
-                <button class="btn btn-success">Salvar</button>
+                <button id="btn2" class="btn btn-success">Salvar</button>
+                <a href="{{ url("/Cadastro/Clifor") }}" class="btn btn-danger ml-3">Cancelar</a>
                 </form>
 
                 <script type="text/javascript">
@@ -799,3 +801,11 @@
     };
 
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script>
+			$(document).ready(() => {
+				$('#btn1').on('click', () => {
+					$('#btn2').trigger('click')
+				})
+			})
+		</script>

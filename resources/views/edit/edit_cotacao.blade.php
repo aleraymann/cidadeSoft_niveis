@@ -4,7 +4,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url()->previous() }}"  class="btn btn-primary ml-3 mb-1">
+<a href="{{ url("/Cadastro/cotacao")  }}"  class="btn btn-primary ml-3 mb-1">
+    <i class="la la-long-arrow-left"></i>
+    </a>
     <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
@@ -90,6 +92,7 @@
 
                         {{ csrf_field() }}
                         <button class="btn btn-success">Salvar</button>
+                        <a href="{{ url("/Cadastro/cotacao")  }}"  class="btn btn-danger ml-3">Cancelar</a>
                         </form>
 
                     </div>

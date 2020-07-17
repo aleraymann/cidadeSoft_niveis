@@ -196,6 +196,7 @@
 
                         {{ csrf_field() }}
                         <button class="btn btn-success">Salvar</button>
+                        <a href="{{ url("/Cadastro/contrato") }}" class="btn btn-danger ml-3">Cancelar</a>
                         </form>
 
                     </div>
