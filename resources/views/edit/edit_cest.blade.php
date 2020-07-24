@@ -37,7 +37,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="NCM">NCM:</b>
                             <select class="form-control input-border-bottom" required id="NCM" name="NCM">
                                 @foreach($ncm as $ncm)

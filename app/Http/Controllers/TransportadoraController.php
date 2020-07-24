@@ -15,7 +15,8 @@ class TransportadoraController extends Controller
         //$transportadora = $transportadora->all();
         $transportadora = Transportadora::paginate(10);
         $empresa = Empresa::all();
-        return view("transportadoras", compact("transportadora","empresa"));
+        $criterio = "";
+        return view("transportadoras", compact("transportadora","empresa",'criterio'));
     }
     public function salvar(Request $dadosFormulario, Transportadora $transportadora, $id = null)
     {
@@ -82,6 +83,29 @@ class TransportadoraController extends Controller
         $transportadora_destino = Transportadora_Destino::all();
         $transportadora_valor = Transportadora_Valor::all();
         return view("visual.view_transportadora", compact("transportadora","id","transportadora_destino","transportadora_valor"));
+    }
+
+    public function busca( Request $request){
+
+        //var_dump($request->criterio);.
+        $criterio  = $request->criterio;
+        $transportadora = Transportadora::where( 'Nome_Fantasia' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        //dd($funcionario);
+        $empresa = Empresa::all();
+        return view("transportadoras", compact("transportadora","empresa",'criterio'));
+
+    }
+
+
+    public function busca2( Request $request){
+
+        //var_dump($request->criterio1);
+        $criterio  = $request->criterio;
+        $transportadora = Transportadora::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        //dd($funcionario);
+        $empresa = Empresa::all();
+        return view("transportadoras", compact("transportadora","empresa",'criterio'));
+
     }
 
 }

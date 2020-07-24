@@ -31,7 +31,8 @@ class EmpresaController extends Controller
         $transportadora = Transportadora::all();
         $clifor = CliFor::all();
         $user = User::all();
-        return view("empresas", compact("empresas","funcionario","cond_pag","form_pag","transportadora","clifor",'user')); 
+        $criterio = "";
+        return view("empresas", compact("empresas","funcionario","cond_pag","form_pag","transportadora","clifor",'user','criterio')); 
     }
 
     public function store(Request $request, Empresa $empresa)
@@ -307,5 +308,40 @@ class EmpresaController extends Controller
             return redirect()->back();
         }
         return view("visual.view_empresas", compact("empresa","id"));
+    }
+
+    public function busca( Request $request){
+
+        //var_dump($request->criterio);.
+        $criterio  = $request->criterio;
+        $empresas = Empresa::where( 'Nome_Fantasia' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        //dd($funcionario);
+        $funcionario = Funcionario::all();
+        $cond_pag = Cond_Pag::all();
+        $form_pag = Form_Pag::all();
+        $transportadora = Transportadora::all();
+        $clifor = CliFor::all();
+        $user = User::all();
+        return view("empresas", compact("empresas","funcionario","cond_pag","form_pag","transportadora","clifor",'user','criterio')); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
+    }
+
+
+    public function busca2( Request $request){
+
+        //var_dump($request->criterio1);
+        $criterio  = $request->criterio;
+        $empresas = Empresa::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        //dd($funcionario);
+        $funcionario = Funcionario::all();
+        $cond_pag = Cond_Pag::all();
+        $form_pag = Form_Pag::all();
+        $transportadora = Transportadora::all();
+        $clifor = CliFor::all();
+        $user = User::all();
+        return view("empresas", compact("empresas","funcionario","cond_pag","form_pag","transportadora","clifor",'user','criterio')); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
     }
 }

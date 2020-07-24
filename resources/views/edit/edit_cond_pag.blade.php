@@ -33,7 +33,7 @@
                                 enctype="multipart/form-data">
                     @endif
                     <div class="form-row">
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Condicao	">Condição</b>
                             <input type="text" class="form-control input-border-bottom" name="Condicao" id="Condicao"
                                 placeholder="1x, 30/60, 15 D.D." required minlength="2" maxlength="45"
@@ -73,14 +73,12 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-lg-4">
-                            <b class="ls-label-text" for="ParcForma">Forma de Pagamento no Recebimento</b>
+                            <b class="ls-label-text" for="ParcForma">Forma de Pag no Recebimento</b>
                             <input type="text" class="form-control input-border-bottom" name="ParcForma" id="ParcForma" required
                             value="{{ isset($cond_pag->ParcForma) ? $cond_pag->ParcForma : '' }} ">
                         </div>
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="ParcJuros">Juro a ser aplicado:</b>
                             <input type="text" class="form-control input-border-bottom" name="ParcJuros" id="ParcJuros"
                                 minlength="3" onblur="parcJuros()"

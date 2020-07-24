@@ -16,7 +16,8 @@ class FuncionarioController extends Controller
         }
         $funcionarios = $funcionario->all();
         $funcionario = Funcionario::paginate(10);
-        return view("funcionarios", compact("funcionario")); 
+        $criterio = "";
+        return view("funcionarios", compact("funcionario",'criterio')); 
     }
 
 
@@ -74,6 +75,28 @@ class FuncionarioController extends Controller
             return redirect()->back();
         }
         return view("visual.view_funcionarios", compact("funcionario","id"));
+    }
+
+    public function busca( Request $request){
+
+        //var_dump($request->criterio);.
+        $criterio  = $request->criterio;
+        $funcionario = Funcionario::where('Nome', 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        //dd($funcionario);
+        return view("funcionarios", compact("funcionario",'criterio')); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
+    }
+
+    public function busca2( Request $request){
+
+        //var_dump($request->criterio1);
+        $criterio  = $request->criterio;
+        $funcionario = Funcionario::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        //dd($funcionario);
+        return view("funcionarios", compact("funcionario",'criterio')); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
     }
 
 }

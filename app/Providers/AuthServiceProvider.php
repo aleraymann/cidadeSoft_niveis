@@ -36,6 +36,7 @@ use App\model\ContasPagar;
 use App\model\ContasPagas;
 use App\model\ContasReceber;
 use App\model\ContasRecebidas;
+use App\model\Inventario;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -295,6 +296,13 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $ctas_recebidas->user_id;     
             }else
                 return $user->adm == $ctas_recebidas->user_id;     
+        });
+        //---------- Inventario------------------------------------------------------------------------------------
+        Gate::define('view_inventario', function( User $user,Inventario $inventario){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $inventario->user_id;     
+            }else
+                return $user->adm == $inventario->user_id;     
         });
 
        

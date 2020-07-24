@@ -7,8 +7,6 @@
 <a href="{{ url("/Cadastro/cotacao")  }}"  class="btn btn-primary ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
-    <i class="la la-long-arrow-left"></i>
-    </a>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -27,7 +25,7 @@
                                 enctype="multipart/form-data">
                     @endif
                     <div class="form-row">
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Moeda">Moeda:</b>
                             <input type="text" class="form-control input-border-bottom" name="Moeda" id="Moeda" minlength="1" placeholder="Real, Euro, Dolar, etc."
                             value="{{ isset($cotacao->Moeda) ? $cotacao->Moeda : '' }} " required>
@@ -38,7 +36,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-3">
                         <b class="ls-label-text" for="Data">Data da Cotação:</b>
                         <input type="date" class="form-control input-border-bottom" name="Data" id="Data" 
                             required  value="{{$cotacao->Data}}">
@@ -49,7 +47,7 @@
                             Tudo certo!
                         </div>
                     </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Cotacao">Cotação:</b>
                             <input type="text" class="form-control input-border-bottom" name="Cotacao" id="Cotacao" minlength="3" 
                             maxlength="10" value="{{ isset($cotacao->Cotacao) ? $cotacao->Cotacao : '' }} " required onblur="cotacao()">

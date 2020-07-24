@@ -158,7 +158,7 @@
                         </div>
                         </div> 
                         <div class="form-row">  
-                        <div class="form-group col-lg-12">
+                        <div class="form-group col-lg-6">
                          <label for="Observacoes">Observções Gerais:</label>
                          <textarea type="text" class="form-control input-border-bottom " name="Observacoes"
                             id="Observacoes"

@@ -42,7 +42,7 @@
                                 enctype="multipart/form-data">
                     @endif
                     <div class="form-row">
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Cod_item">Cód Item</b>
                             <input type="text" class="form-control input-border-bottom" name="Cod_item" id="Cod_item"
                                 placeholder="" required minlength="" maxlength="11"
@@ -66,7 +66,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-4">
                             <b class="ls-label-text" for="Descricao">Descrição:</b>
                             <input type="text" class="form-control input-border-bottom" name="Descricao" id="Descricao"
                                 minlength="5" maxlength="40" required
@@ -78,9 +78,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Valor">Valor</b>
                             <input type="text" class="form-control input-border-bottom" name="Valor" id="Valor"
                             onblur=" valor()" required
@@ -92,6 +90,9 @@
                                 Tudo certo!
                             </div>
                         </div>
+                    </div>
+                    <div class="form-row">
+                        
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Qtd_Alterar">Quantidade a Alterar:</b>
                             <input type="text" class="form-control input-border-bottom" name="Qtd_Alterar"
@@ -131,7 +132,7 @@
                         <div class="valid-feedback">
                             Tudo certo!
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Qtd_Dev">Quantidade a Devolver:</b>
                             <input type="text" class="form-control input-border-bottom" name="Qtd_Dev" id="Qtd_Dev"
                                 value="{{ isset($adicional_osped->Qtd_Dev) ? $adicional_osped->Qtd_Dev : '' }}"

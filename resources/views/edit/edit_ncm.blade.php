@@ -39,7 +39,7 @@
                     @endif
 
                     <div class="form-row">
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="NCM">NCM:</b>
                             <input type="text" class="form-control input-border-bottom" name="NCM" id="NCM"
                                 placeholder="" required minlength="" maxlength="10"
@@ -51,7 +51,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Descricao">Descrição:</b>
                             <input type="text" class="form-control input-border-bottom" name="Descricao" id="Descricao"
                                 placeholder="" required minlength="4" maxlength="60"
@@ -63,8 +63,8 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="AliqIBPT">Aliquota de Imposto IBPT:</b>
+                        <div class="form-group col-lg-2">
+                            <b class="ls-label-text" for="AliqIBPT">Aliquota IBPT:</b>
                             <input type="text" class="form-control input-border-bottom" name="AliqIBPT" id="AliqIBPT"
                                 maxlength="3" minlength="1" onblur="aliqIBPT()"
                                 value="{{ isset($ncm->AliqIBPT) ? $ncm->AliqIBPT : '' }}"
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="AliqImp">Aliquota Imposto Importado:</b>
+                            <b class="ls-label-text" for="AliqImp">Aliquota Importado:</b>
                             <input type="text" class="form-control input-border-bottom" name="AliqImp" id="AliqImp"
                                 maxlength="3" minlength="1" onblur="aliqImp()"
                                 value="{{ isset($ncm->AliqImp) ? $ncm->AliqImp : '' }}"
@@ -89,10 +89,8 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="AliqEst">Aliquota Imposto Estadual:</b>
+                            <b class="ls-label-text" for="AliqEst">Aliquota Estadual:</b>
                             <input type="text" class="form-control input-border-bottom" name="AliqEst" id="AliqEst"
                                 maxlength="3" minlength="1" onblur="aliqEst()"
                                 value="{{ isset($ncm->AliqEst) ? $ncm->AliqEst : '' }}">
@@ -103,8 +101,11 @@
                                 Tudo certo!
                             </div>
                         </div>
+                    </div>
+                    <div class="form-row">
+                        
                         <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="AliqMun">Aliquota Imposto Municipal:</b>
+                            <b class="ls-label-text" for="AliqMun">Aliquota Municipal:</b>
                             <input type="text" class="form-control input-border-bottom" name="AliqMun" id="AliqMun"
                                 maxlength="3" minlength="1"  onblur="aliqMun()"
                                 value="{{ isset($ncm->AliqMun) ? $ncm->AliqMun : '' }}">
@@ -139,8 +140,6 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="VigenciaIni">Início da Vigência:</b>
                             <input type="text" class="form-control input-border-bottom" name="VigenciaIni"
@@ -179,6 +178,9 @@
             });
         </script>
                         </div>
+                    </div>
+                    <div class="form-row">
+                        
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Versao">Versão da Tabela IBPT:</b>
                             <input type="text" class="form-control input-border-bottom" name="Versao" id="Versao"

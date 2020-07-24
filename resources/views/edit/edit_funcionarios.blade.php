@@ -278,7 +278,7 @@
                             </div>
                         </div>
                         <div class="form-group col-lg-4">
-                            <b class="ls-label-text" for="idmsgs">Número de Identificação para abrir chamados:</b>
+                            <b class="ls-label-text" for="idmsgs">Num de Ident. para abrir chamados:</b>
                             <input type="text" class="form-control input-border-bottom" name="idmsgs" id="idmsgs"
                                 required
                                 value="{{ isset($funcionario->idmsgs) ? $funcionario->idmsgs : '' }}">

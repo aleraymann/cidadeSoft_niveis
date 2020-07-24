@@ -79,13 +79,13 @@
                 
             </div>
             <div class="card-body">
-            <h5 class="card-title text-center mb-3">Entre com o CNPJ da Empresa</h5>
+            <h5 class="card-title text-center mb-3">CNPJ informado:</h5>
                 <form method="post" action="{{ url("/pdv/pdv") }}" enctype="multipart/form-data">
                     <div class="form-row container">
                         <div class="form-group col-lg-3 m-auto text-center">
                             <b class="ls-label-text" for="cnpj">CNPJ:</b>
                             <input type="text" class="form-control input-border-bottom" name="cnpj" id="cnpj"
-                                onblur="pesquisaAjax()">
+                                onblur="pesquisaAjax()" value="{{isset($cnpj) ? $cnpj : '' }}" autofocus>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
@@ -96,7 +96,7 @@
                         <div class="form-group col-lg-1 text-center  m-auto">
                             <b class="ls-label-text" for="cod_empresa">Cod:</b>
                             <input type="text" class="form-control input-border-bottom" name="cod_empresa"
-                                id="cod_empresa" maxlength="5" readonly>
+                                id="cod_empresa" maxlength="5" readonly >
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>

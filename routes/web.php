@@ -116,28 +116,36 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/ctas_pagas","ContasPagasController@listar");
     Route::get("/ctas_receber","ContasReceberController@listar");
     Route::get("/ctas_recebidas","ContasRecebidasController@listar");
+    Route::get("/inventario","InventarioController@listar");
     
     
 });
 
 //crud clifor
 Route::group(["prefix" => "Clifor", 'middleware' => 'auth'], function () {
+    //clifor
     Route::post("/salvar/{id?}", "CliForController@update");
     Route::delete("/excluir/{id}", "CliForController@destroy");
     Route::get("/editar/{id}", "CliForController@edit");
     Route::get("/vizualizar/{id}", "CliForController@view");
+    Route::post("/busca", "CliForController@busca");
+    Route::post("/busca2", "CliForController@busca2");
+    //contato
     Route::get("/contato","CliForContatoController@listar");
     Route::post("/contato/salvar/{id?}","CliForContatoController@update");
     Route::delete("/contato/excluir/{id}", "CliForContatoController@destroy");
     Route::get("/contato/editar/{id}", "CliForContatoController@edit");
+    //endereco
     Route::get("/endereco","CliForEnderecoController@listar");
     Route::post("/endereco/salvar/{id?}","CliForEnderecoController@update");
     Route::delete("/endereco/excluir/{id}", "CliForEnderecoController@destroy");
     Route::get("/endereco/editar/{id}", "CliForEnderecoController@edit");
+    //referencia
     Route::get("/referencia","CliForReferenciaController@listar");
     Route::post("/referencia/salvar/{id?}","CliForReferenciaController@update");
     Route::delete("/referencia/excluir/{id}", "CliForReferenciaController@destroy");
     Route::get("/referencia/editar/{id}", "CliForReferenciaController@edit");
+    
 });
 
 //crud funcionario
@@ -146,6 +154,8 @@ Route::group(["prefix" => "Funcionario",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "FuncionarioController@destroy");
     Route::get("/editar/{id}", "FuncionarioController@edit");
     Route::get("/vizualizar/{id}", "FuncionarioController@view");
+    Route::post("/busca", "FuncionarioController@busca");
+    Route::post("/busca2", "FuncionarioController@busca2");
 });
 
 //crud empresa
@@ -155,6 +165,8 @@ Route::group(["prefix" => "Empresa", 'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "EmpresaController@destroy");
     Route::get("/editar/{id}", "EmpresaController@edit");
     Route::get("/vizualizar/{id}", "EmpresaController@view");
+    Route::post("/busca", "EmpresaController@busca");
+    Route::post("/busca2", "EmpresaController@busca2");
 });
 
 //crud consicao de pagamento
@@ -173,13 +185,18 @@ Route::group(["prefix" => "Forma",'middleware' => 'auth'], function () {
 
 //crud transportadora
 Route::group(["prefix" => "Transportadora",'middleware' => 'auth'], function () {
+    //transportadora
     Route::post("/salvar/{id?}", "TransportadoraController@salvar");
     Route::delete("/excluir/{id}", "TransportadoraController@excluir");
     Route::get("/editar/{id}", "TransportadoraController@editar");
     Route::get("/vizualizar/{id}", "TransportadoraController@vizualizar");
+    Route::post("/busca", "TransportadoraController@busca");
+    Route::post("/busca2", "TransportadoraController@busca2");
+    //destino
     Route::post("/destino/salvar/{id?}","Transportadora_DestinoController@salvar");
     Route::delete("/destino/excluir/{id}", "Transportadora_DestinoController@excluir");
     Route::get("/destino/editar/{id}", "Transportadora_DestinoController@editar");
+    //valor
     Route::post("/valor/salvar/{id?}","Transportadora_ValorController@salvar");
     Route::delete("/valor/excluir/{id}", "Transportadora_ValorController@excluir");
     Route::get("/valor/editar/{id}", "Transportadora_ValorController@editar");
@@ -329,10 +346,18 @@ Route::group(["prefix" => "Contas_Recebidas",'middleware' => 'auth'], function (
     Route::get("/visualizar/{id}", "ContasRecebidasController@visualizar");
 });
 
-//crud ContasReceber
+//crud PDV
 Route::group(["prefix" => "pdv",'middleware' => 'auth'], function () {
     Route::get("/","PDVController@listar");
     Route::post("/pdv","PDVController@pdv");
     Route::post("/pesquisa", "PDVController@pesquisaAjax");
     
+});
+
+//crud Inventario
+Route::group(["prefix" => "Inventario",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "InventarioController@salvar");
+    Route::delete("/excluir/{id}", "InventarioController@destroy");
+    Route::get("/editar/{id}", "InventarioController@editar");
+    Route::get("/visualizar/{id}", "InventarioController@visualizar");
 });

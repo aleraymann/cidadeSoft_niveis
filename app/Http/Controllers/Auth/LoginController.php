@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -20,12 +21,24 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    protected function authenticated(Request $request,$user)
+    {
+        $local = $request['local'];
+        $cnpj = $request['cnpj'];
+        //dd($local);
+        //dd($cnpj);
+    if( $local == 1 ) {// do your margic here
+        return redirect('/Dashboard');
+    }else
+    return view("emp_pdv", compact("cnpj")); 
+    }
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo;
+   
 
    
 

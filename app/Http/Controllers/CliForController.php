@@ -24,7 +24,8 @@ class CliForController extends Controller
         $vendedor = Funcionario::all();
         $empresa = Empresa::all();
         $user = User::all();
-        return view("clifor", compact("clifor","vendedor","empresa","user")); 
+        $criterio = "";
+        return view("clifor", compact("clifor","vendedor","empresa","user","criterio")); 
     }
     public function update(Request $dadosFormulario, CliFor $clifor, $id = null)
     {
@@ -98,6 +99,35 @@ class CliForController extends Controller
         $clifor_referencia = CliforReferencia::all();
         $clifor_endereco = CliForEndereco::all();
         return view("visual.view_clifor", compact("clifor","id","clifor_contato","clifor_endereco","clifor_referencia"));
+    }
+
+    public function busca( Request $request){
+
+        //var_dump($request->criterio);.
+        $criterio  = $request->criterio;
+        $clifor = CliFor::where( 'Nome_Fantasia' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        //dd($funcionario);
+        $vendedor = Funcionario::all();
+        $empresa = Empresa::all();
+        $user = User::all();
+        return view("clifor", compact("clifor","vendedor","empresa","user","criterio")); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
+    }
+
+
+    public function busca2( Request $request){
+
+        //var_dump($request->criterio1);
+        $criterio  = $request->criterio;
+        $clifor = CliFor::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        //dd($funcionario);
+        $vendedor = Funcionario::all();
+        $empresa = Empresa::all();
+        $user = User::all();
+        return view("clifor", compact("clifor","vendedor","empresa","user","criterio")); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
     }
  
 }

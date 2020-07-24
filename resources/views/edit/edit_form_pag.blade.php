@@ -33,7 +33,7 @@
                                 enctype="multipart/form-data">
                     @endif
                     <div class="form-row">
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Descricao	">Descrição:</b>
                             <input type="text" class="form-control  input-border-bottom" name="Descricao" id="Descricao"
                                 placeholder="" required minlength="2" maxlength="45"
@@ -69,8 +69,6 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Tipo">Código:</b>
                             <select class="form-control input-border-bottom" id="Tipo" name="Tipo">
@@ -104,7 +102,22 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-2">
+                            <b class="ls-label-text" for="Dest_CliFor">Cli/For de Destino:</b>
+                            <input type="text" class="form-control input-border-bottom" name="Dest_CliFor"
+                                id="Dest_CliFor" minlength="3"
+                                value="{{ isset($form_pag->Dest_CliFor) ? $form_pag->Dest_CliFor : '' }} ">
+                            <div class="invalid-feedback">
+                                Por favor, Campo Obrigatório!
+                            </div>
+                            <div class="valid-feedback">
+                                Tudo certo!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                       
+                        <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Destino">Destino do Pagamento:</b>
                             <select class="form-control input-border-bottom" id="Destino" name="Destino">
                                 <option
@@ -128,18 +141,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="Dest_CliFor">Cli/For de Destino:</b>
-                            <input type="text" class="form-control input-border-bottom" name="Dest_CliFor"
-                                id="Dest_CliFor" minlength="3"
-                                value="{{ isset($form_pag->Dest_CliFor) ? $form_pag->Dest_CliFor : '' }} ">
-                            <div class="invalid-feedback">
-                                Por favor, Campo Obrigatório!
-                            </div>
-                            <div class="valid-feedback">
-                                Tudo certo!
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div class="form-row">

@@ -25,7 +25,7 @@
                                 enctype="multipart/form-data">
                     @endif
                     <div class="form-row">
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Convenio">Convênio:</b>
                             <input type="text" class="form-control input-border-bottom" name="Convenio" id="Convenio"
                                 minlength="3"
@@ -37,7 +37,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Comissao">Comissão:</b>
                             <input type="text" class="form-control input-border-bottom" name="Comissao" id="Comissao"
                                 placeholder="" minlength="5" maxlength="45"  onblur="comissao()"

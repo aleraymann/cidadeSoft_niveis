@@ -43,22 +43,25 @@
             <div class="login-form">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="form-row ">
-                            <div class="form-group col-lg-12 text-center  m-auto">
+                    <div class="form-row">
+                            <div class="form-group col-md-12 text-center">
                                 <b class="ls-label-text" for="local">Qual Sistema deseja utilizar?</b>
-                                <select onchange="verifica(this.value)" class="form-control input-border-bottom" id="local" name="local" required>
-                                    <option value="">Selecione</option>
-                                    <option value="D">Dashboard</option>
-                                    <option value="P">PDV</option>
+                                <select onchange="verifica(this.value)" class="form-control input-border-bottom m-auto col-sm-6" id="local" name="local" required>
+                                    <option value="">Selecione um Sistema</option>
+                                    <option value="1">Dashboard</option>
+                                    <option value="2">PDV</option>
                                 </select>
                             </div>
-                        </div>
-                    <div class="form-group row">
+                    </div>      
+                            <input type="text" class="form-control input-border-bottom" name="cnpj" id="cnpj" placeholder="Informe o CNPJ" hidden>
+                       
+
+                    <div class="form-row">
                         <div class="form-group form-floating-label col-12">
                             <div>
                                 <input id="email" type="email"
                                     class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} input-border-bottom"
-                                    name="email" value="{{ old('email') }}" required autofocus>
+                                    name="email" value="{{ old('email') }}" required>
                                 <label for="email" class="placeholder">E-mail</label>
                                 @if($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -128,9 +131,14 @@
 <script>
     function verifica(value) {
         var local = document.getElementById("local");
-        if (value == "D") {
+
+        if (value == 1) {
+            cnpj.hidden = true;
+            cnpj.required = false;
             console.log('dashboard')
-        } else if (value == "P"){
+        } else if (value == 2){
+            cnpj.hidden = false;
+            cnpj.required = true;
             console.log('pdv')
 
         }

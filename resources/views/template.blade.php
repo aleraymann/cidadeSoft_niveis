@@ -509,7 +509,13 @@
 								
 							</a>
 						</li>-->
-
+						<li class="nav-item">
+							<a href="{{url('/Cadastro/inventario')}}">
+								<i class="la la-clipboard"></i>
+								<p>Inventário</p>
+								
+							</a>
+						</li>
 					@endcan
 					@can('gerar_relatorio')
 						<li class="nav-item">

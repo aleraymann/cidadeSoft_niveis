@@ -42,7 +42,7 @@
                     @endif
 
                     <div class="form-row">
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Razao_Social">Razão Social:</b>
                             <input type="text" class="form-control input-border-bottom" name="Razao_Social"
                                 id="Razao_Social" placeholder="Razão Social" required minlength="4" maxlength="60"
@@ -54,7 +54,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Nome_Fantasia">Nome Fantasia:</b>
                             <input type="text" class="form-control input-border-bottom" name="Nome_Fantasia"
                                 id="Nome_Fantasia" placeholder="Nome Fantasia ou Apelido" required minlength="4"
@@ -67,19 +67,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-2">
-                            <b class="ls-label-text" for="Fis_Jur">Tipo:</b>
-                            <select onchange="verifica(this.value)" class="form-control input-border-bottom" id="Fis_Jur" name="Fis_Jur" required>
-                                <option value="J">Jurídica</option>
-                                <option value="F">Física</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Por favor, Campo Obrigatório!
-                            </div>
-                            <div class="valid-feedback">
-                                Tudo certo!
-                            </div>
-                        </div>
+                       
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="CEP">CEP:</b>
                             <input type="text" class="form-control input-border-bottom" name="CEP" id="CEP"
@@ -92,8 +80,6 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-lg-4">
                             <b class="ls-label-text" for="Endereco">Endereço:</b>
                             <input type="text" class="form-control input-border-bottom" name="Endereco" id="Endereco"
@@ -106,6 +92,9 @@
                                 Tudo certo!
                             </div>
                         </div>
+                    </div>
+                    <div class="form-row">
+                        
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Bairro">Bairro:</b>
                             <input type="text" class="form-control input-border-bottom" name="Bairro" id="Bairro"
@@ -130,7 +119,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-2">
+                        <div class="form-group col-lg-1">
                             <b class="ls-label-text" for="Estado">Estado:</b>
                             <input type="text" class="form-control input-border-bottom" name="Estado" id="Estado"
                                 minlength="2" maxlength="2" placeholder="Sigla" required
@@ -142,8 +131,19 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
+                        <div class="form-group col-lg-2">
+                            <b class="ls-label-text" for="Fis_Jur">Tipo:</b>
+                            <select onchange="verifica(this.value)" class="form-control input-border-bottom" id="Fis_Jur" name="Fis_Jur" required>
+                                <option value="J">Jurídica</option>
+                                <option value="F">Física</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor, Campo Obrigatório!
+                            </div>
+                            <div class="valid-feedback">
+                                Tudo certo!
+                            </div>
+                        </div>
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Email">Email:</b>
                             <input type="email" class="form-control input-border-bottom" name="Email" id="Email"
@@ -156,6 +156,9 @@
                                 Tudo certo!
                             </div>
                         </div>
+                    </div>
+                    <div class="form-row">
+                       
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Telefone">Telefone:</b>
                             <input type="text" class="form-control input-border-bottom" name="Telefone" id="Telefone"
@@ -194,46 +197,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="CPF">CPF:</b>
-                            <input type="text" class="form-control input-border-bottom" name="CPF" id="CPF"
-                                maxlength="14"  onblur="validarCPF(this)"
-                                value="{{ isset($transportadora->CPF) ? $transportadora->CPF : '' }}">
-                            <div class="invalid-feedback">
-                                Por favor, Campo Obrigatório!
-                            </div>
-                            <div class="valid-feedback">
-                                Tudo certo!
-                            </div>
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="RG">RG:</b>
-                            <input type="text" class="form-control input-border-bottom" name="RG" id="RG" placeholder=""
-                                 minlength="4" maxlength="60" 
-                                value="{{ isset($transportadora->RG) ? $transportadora->RG : '' }}">
-                            <div class="invalid-feedback">
-                                Campo Obrigatório, Obrigatorio!
-                            </div>
-                            <div class="valid-feedback">
-                                Tudo certo!
-                            </div>
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="CNPJ">CNPJ:</b>
-                            <input type="text" class="form-control input-border-bottom" name="CNPJ" id="CNPJ"
-                                onblur="validarCNPJ(this)" required
-                                value="{{ isset($transportadora->CNPJ) ? $transportadora->CNPJ : '' }}">
-                            <div class="invalid-feedback">
-                                Por favor, Campo Obrigatório!
-                            </div>
-                            <div class="valid-feedback">
-                                Tudo certo!
-                            </div>
-                        </div>
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="IE">Inscrição Estadual:</b>
                             <input type="text" class="form-control input-border-bottom" name="IE" id="IE" minlength="9"
                                 maxlength="13" required
@@ -246,8 +210,87 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="form-row">
+                        <div class="form-group col-lg-2">
+                            <b class="ls-label-text" for="CPF">CPF:</b>
+                            <input type="text" class="form-control input-border-bottom" name="CPF" id="CPF"
+                                maxlength="14"  onblur="validarCPF(this)"
+                                value="{{ isset($transportadora->CPF) ? $transportadora->CPF : '' }}">
+                            <div class="invalid-feedback">
+                                Por favor, Campo Obrigatório!
+                            </div>
+                            <div class="valid-feedback">
+                                Tudo certo!
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <b class="ls-label-text" for="RG">RG:</b>
+                            <input type="text" class="form-control input-border-bottom" name="RG" id="RG" placeholder=""
+                                 minlength="4" maxlength="60" 
+                                value="{{ isset($transportadora->RG) ? $transportadora->RG : '' }}">
+                            <div class="invalid-feedback">
+                                Campo Obrigatório, Obrigatorio!
+                            </div>
+                            <div class="valid-feedback">
+                                Tudo certo!
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <b class="ls-label-text" for="CNPJ">CNPJ:</b>
+                            <input type="text" class="form-control input-border-bottom" name="CNPJ" id="CNPJ"
+                                onblur="validarCNPJ(this)" required
+                                value="{{ isset($transportadora->CNPJ) ? $transportadora->CNPJ : '' }}">
+                            <div class="invalid-feedback">
+                                Por favor, Campo Obrigatório!
+                            </div>
+                            <div class="valid-feedback">
+                                Tudo certo!
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <b class="ls-label-text" for="FretePor">Tipo de Frete:</b>
+                            <select class="form-control input-border-bottom" id="FretePor" name="FretePor" required>
+                                <option
+                                    value="{{ isset($transportadora->FretePor) ? $transportadora->FretePor : '' }} ">
+                                    @if($transportadora->FretePor=="K")
+                                        KM
+                                    @else
+                                        Destino
+                                    @endif
+                                </option>
+                                <option value="K">KM</option>
+                                <option value="D">Destino</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor, Campo Obrigatório!
+                            </div>
+                            <div class="valid-feedback">
+                                Tudo certo!
+                            </div>
+                        </div>
                         <div class="form-group col-lg-3">
+                            <b class="ls-label-text" for="Empresa">Empresa:</b>
+                            <select class="form-control input-border-bottom" id="Empresa" name="Empresa" required>
+                                @foreach($empresa as $empresa)
+                                @can("view_empresa",$empresa)
+                                    <option value="{{ $empresa->Codigo }}"
+                                        {{ $transportadora->Empresa == $empresa->Codigo ? "selected" : "" }}>
+                                        {{ $empresa->Nome_Fantasia }}</option>
+                                        @endcan   
+                        
+                    
+                                @endforeach
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor, Campo Obrigatório!
+                            </div>
+                            <div class="valid-feedback">
+                                Tudo certo!
+                            </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Tipo_Frete">Tipo de Frete:</b>
                             <select class="form-control input-border-bottom" id="Tipo_Frete" name="Tipo_Frete" required>
                                 <option
@@ -263,7 +306,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2 ml-2">
                             <b class="ls-label-text" for="FreteM">Frete por M:</b>
                             <input type="text" class="form-control input-border-bottom" name="FreteM"
                             onblur="fretem()" id="FreteM"
@@ -276,7 +319,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-3  ml-2">
                             <b class="ls-label-text" for="FreteM2">Frete por M<sup>2</sup> :</b>
                             <input type="text" class="form-control input-border-bottom" name="FreteM2" 
                             onblur="fretem2()"id="FreteM2"
@@ -304,46 +347,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-lg-3">
-                            <b class="ls-label-text" for="FretePor">Tipo de Frete:</b>
-                            <select class="form-control input-border-bottom" id="FretePor" name="FretePor" required>
-                                <option
-                                    value="{{ isset($transportadora->FretePor) ? $transportadora->FretePor : '' }} ">
-                                    @if($transportadora->FretePor=="K")
-                                        KM
-                                    @else
-                                        Destino
-                                    @endif
-                                </option>
-                                <option value="K">KM</option>
-                                <option value="D">Destino</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Por favor, Campo Obrigatório!
-                            </div>
-                            <div class="valid-feedback">
-                                Tudo certo!
-                            </div>
-                        </div>
-                        <div class="form-group col-lg-4">
-                            <b class="ls-label-text" for="Empresa">Empresa:</b>
-                            <select class="form-control input-border-bottom" id="Empresa" name="Empresa" required>
-                                @foreach($empresa as $empresa)
-                                @can("view_empresa",$empresa)
-                                    <option value="{{ $empresa->Codigo }}"
-                                        {{ $transportadora->Empresa == $empresa->Codigo ? "selected" : "" }}>
-                                        {{ $empresa->Nome_Fantasia }}</option>
-                                        @endcan   
-                        
-                    
-                                @endforeach
-                            </select>
-                            <div class="invalid-feedback">
-                                Por favor, Campo Obrigatório!
-                            </div>
-                            <div class="valid-feedback">
-                                Tudo certo!
-                            </div>
+                       
                         </div>
                     </div>
                     <div class="form-row">

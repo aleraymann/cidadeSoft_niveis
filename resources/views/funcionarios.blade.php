@@ -113,7 +113,46 @@
                   @include("modals.modal_funcionarios")
                   @endcan
 								</div>
-      <div class="card-body">
+                <div class="form-group col-lg-2">
+                         <select onchange="verifica(this.value)" class="form-control input-border-bottom" id="filtro"
+                             name="filtro">
+                             <option >Filtro de Busca</option>
+                             <option value="C">Código</option>
+                             <option value="N">Nome</option>
+                         </select>
+                     </div>
+            <div  id="name" hidden>
+             <form action="{{ url('/Funcionario/busca') }}" method="post">
+             <div class=" container">
+                <div class="input-group col-sm-4 mt-2">
+                  <input type="text" class="form-control" name="criterio" placeholder="Digite o Nome">
+                  <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">OK</button>
+                  </div>
+                </div>
+             </div>
+                {{ csrf_field() }} 
+                </form> 
+            </div>
+
+            <div id="cod" hidden>
+                <form action="{{ url('/Funcionario/busca2') }}" method="post">
+             <div class="container">
+                <div class="input-group col-sm-3">
+                  <input type="text" class="form-control" name="criterio" placeholder="Digite o Código">
+                  <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">OK</button>
+                  </div>
+                </div>
+             </div>
+                {{ csrf_field() }} 
+                </form> 
+            </div>
+            @if($criterio != "")
+                <div class="card-body">
+                    <h5>Encontrado com: "{{ $criterio }}" </h5>
+                </div>
+             @endif
 									<div class="table-responsive">
 										<table id="multi-filter-select" class="display table table-sm table-striped table-hover text-center" >
 											<thead>
@@ -235,5 +274,19 @@
     }
 
 </script>
+<script>
+     function verifica(value) {
+         var cod = document.getElementById("cod");
+         var name = document.getElementById("name");
+         if (value == "C") {
+             cod.hidden = false;
+             name.hidden = true;
+            
+         } else if (value == "N") {
+            cod.hidden = true;
+             name.hidden = false;
+         }
+     };
+ </script>
 
 

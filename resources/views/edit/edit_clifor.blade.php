@@ -55,7 +55,7 @@
                                 enctype="multipart/form-data">
                     @endif
                     <div class="form-row">
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-3">
                             <label for="Nome_Fantasia">Nome Fantasia:</label>
                             <input type="text" class="form-control input-border-bottom" name="Nome_Fantasia"
                                 id="Nome_Fantasia" placeholder="Nome Fantasia ou Apelido" minlength="4" maxlength="60"
@@ -67,7 +67,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-3">
                             <label for="Razao_Social">Razão Social:</label>
                             <input type="text" class="form-control input-border-bottom" name="Razao_Social"
                                 id="Razao_Social" placeholder="Razão Social" minlength="4" maxlength="60" 
@@ -79,9 +79,6 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-
-                    <div class="form-row">
                         <div class="form-group col-lg-2">
                             <label for="Fis_Jur">Tipo de Pessoa:</label>
                             <select onchange="verifica(this.value)" class="form-control input-border-bottom"
@@ -120,9 +117,13 @@
 
                             </script>
                         </div>
-                        <div class="form-group col-lg-3">
+                    </div>
+
+                    <div class="form-row">
+                        
+                        <div class="form-group col-lg-2">
                             <label for="Estado_Civil">Estado Civil:</label>
-                            <select class="form-control input-border-bottom" id="Estado_Civil input-border-bottom"
+                            <select class="form-control input-border-bottom" id="Estado_Civil"
                                 name="Estado_Civil">
                                 <option
                                     value="{{ isset($clifor->Estado_Civil) ? $clifor->Estado_Civil : '' }} ">
@@ -148,7 +149,7 @@
                                 Tudo certo!
                             </div>
                         </div>
-                        <div class="form-group col-lg-3">
+                        <div class="form-group col-lg-2">
                             <label for="Sexo">Sexo:</label>
                             <select class="form-control input-border-bottom" id="Sexo" name="Sexo">
                                 <option
@@ -165,9 +166,6 @@
                                 Tudo certo!
                             </div>
                         </div>
-                    </div>
-
-                    <div class="form-row">
                         <div class="form-group col-lg-2">
                             <label for="Telefone">Telefone:</label>
                             <input type="text" class="form-control input-border-bottom" name="Telefone" id="Telefone"
@@ -205,10 +203,7 @@
                             </div>
                         </div>
                     </div>
-
-
-                </div>
-
+                    </div>
 
                 <div class="form-row">
                     <div class="form-group col-lg-2">
@@ -275,7 +270,7 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-2">
-                        <label for="IEST">Ins. Est. do Substituto Tributario:</label>
+                        <label for="IEST">Ins. Est. do Subst Tributario:</label>
                         <input type="text" class="form-control input-border-bottom" name="IEST" id="IEST" minlength="9"
                             maxlength="14"
                             value="{{ isset($clifor->IEST) ? $clifor->IEST : '' }}">
@@ -788,6 +783,8 @@
             rg.placeholder = "Somente os Números"
             cpf.disabled = false;
             cpf.placeholder = "Somente os Números"
+            Sexo.disabled = false;
+            Estado_Civil.disabled = false;
         } else if (value == "J") {
             cnpj.disabled = false;
             cnpj.placeholder = "Somente os Números"
@@ -797,6 +794,8 @@
             rg.placeholder = "P. Jurídica (RG não necessário)"
             cpf.disabled = true;
             cpf.placeholder = "P. Jurídica (CPF não necessário)"
+            Sexo.disabled = true;
+            Estado_Civil.disabled = true;
         }
     };
 

@@ -652,6 +652,8 @@
              rg.placeholder = "Somente os Números"
              cpf.disabled = false;
              cpf.placeholder = "Somente os Números"
+             Sexo.disabled = false;
+            Estado_Civil.disabled = false;
          } else if (value == "J") {
              estado.disabled = true;
              sexo.disabled = true;
@@ -663,6 +665,8 @@
              rg.placeholder = "P. Jurídica (RG não necessário)"
              cpf.disabled = true;
              cpf.placeholder = "P. Jurídica (CPF não necessário)"
+             Sexo.disabled = true;
+            Estado_Civil.disabled = true;
          }
      };
      function lim_cred() {
