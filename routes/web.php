@@ -117,6 +117,9 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/ctas_receber","ContasReceberController@listar");
     Route::get("/ctas_recebidas","ContasRecebidasController@listar");
     Route::get("/inventario","InventarioController@listar");
+    Route::get("/fluxo","FluxoController@listar");
+    Route::get("/fidelidade","FidelidadeController@listar");
+    Route::get("/cfop","CFOPController@listar");
     
     
 });
@@ -360,4 +363,26 @@ Route::group(["prefix" => "Inventario",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "InventarioController@destroy");
     Route::get("/editar/{id}", "InventarioController@editar");
     Route::get("/visualizar/{id}", "InventarioController@visualizar");
+});
+
+//crud Fluxo
+Route::group(["prefix" => "Fluxo",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "FluxoController@salvar");
+    Route::delete("/excluir/{id}", "FluxoController@destroy");
+    Route::get("/editar/{id}", "FluxoController@editar");
+});
+
+//crud Fidelidade
+Route::group(["prefix" => "Fidelidade",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "FidelidadeController@salvar");
+    Route::delete("/excluir/{id}", "FidelidadeController@destroy");
+    Route::get("/editar/{id}", "FidelidadeController@editar");
+});
+
+//crud CFOP
+Route::group(["prefix" => "CFOP",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "CFOPController@salvar");
+    Route::delete("/excluir/{id}", "CFOPController@destroy");
+    Route::get("/editar/{id}", "CFOPController@editar");
+    Route::get("/visualizar/{id}", "CFOPController@visualizar");
 });

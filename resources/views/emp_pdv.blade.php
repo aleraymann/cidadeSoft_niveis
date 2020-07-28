@@ -95,7 +95,7 @@
                         </div>
                         <div class="form-group col-lg-1 text-center  m-auto">
                             <b class="ls-label-text" for="cod_empresa">Cod:</b>
-                            <input type="text" class="form-control input-border-bottom" name="cod_empresa"
+                            <input type="text" class="form-control input-border-bottom text-center" name="cod_empresa"
                                 id="cod_empresa" maxlength="5" readonly >
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-group col-lg-4  text-center  m-auto">
                             <b class="ls-label-text" for="Nome_Fantasia">Nome Fantasia:</b>
-                            <input type="text" class="form-control input-border-bottom" name="Nome_Fantasia"
+                            <input type="text" class="form-control input-border-bottom text-center" name="Nome_Fantasia"
                                 id="Nome_Fantasia" maxlength="5" readonly>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
@@ -159,8 +159,8 @@
                     return;
                 } else {
 
-                    document.getElementById('cod_empresa').value = '';
-                    document.getElementById('Nome_Fantasia').value = '';
+                    document.getElementById('cod_empresa').value = 'Inexistente';
+                    document.getElementById('Nome_Fantasia').value = 'Inexistente';
                     // aqui é se der erro, se der erro muda pra vaziu
                     console.log(data); // só pra debug mesmo dps vc tira
 

@@ -454,6 +454,11 @@
 											<span class="sub-item">Movimento de Conta</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/fluxo')}}">
+											<span class="sub-item">Fluxo de Conta</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>
@@ -490,6 +495,11 @@
 										<a href="{{url('/Cadastro/cest')}}">
 											<span class="sub-item">CEST</span>
 										</a>
+									</li>	
+									<li>
+										<a href="{{url('/Cadastro/cfop')}}">
+											<span class="sub-item">CFOP</span>
+										</a>
 									</li>									
 								</ul>
 							</div>
@@ -513,6 +523,13 @@
 							<a href="{{url('/Cadastro/inventario')}}">
 								<i class="la la-clipboard"></i>
 								<p>Inventário</p>
+								
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{url('/Cadastro/fidelidade')}}">
+								<i class="la la-star"></i>
+								<p>Fidelidade</p>
 								
 							</a>
 						</li>

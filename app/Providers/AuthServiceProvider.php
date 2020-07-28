@@ -37,6 +37,10 @@ use App\model\ContasPagas;
 use App\model\ContasReceber;
 use App\model\ContasRecebidas;
 use App\model\Inventario;
+use App\model\Fluxo;
+use App\model\Fidelidade;
+use App\model\CFOP;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -303,6 +307,30 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $inventario->user_id;     
             }else
                 return $user->adm == $inventario->user_id;     
+        });
+
+         //---------- Fluxo------------------------------------------------------------------------------------
+         Gate::define('view_fluxo', function( User $user,Fluxo $fluxo){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $fluxo->user_id;     
+            }else
+                return $user->adm == $fluxo->user_id;     
+        });
+
+         //---------- Fidelidade------------------------------------------------------------------------------------
+         Gate::define('view_fidelidade', function( User $user,Fidelidade $fidelidade){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $fidelidade->user_id;     
+            }else
+                return $user->adm == $fidelidade->user_id;     
+        });
+
+        //---------- CFOP ------------------------------------------------------------------------------------
+        Gate::define('view_cfop', function( User $user,CFOP $cfop){//apenas visualizar
+            if( $user->hasAnyRoles('adm')){
+                return $user->id == $cfop->user_id;     
+            }else
+                return $user->adm == $cfop->user_id;     
         });
 
        

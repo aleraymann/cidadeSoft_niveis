@@ -28,7 +28,7 @@ class PDVController extends Controller
             }
         }else{
             // se retornou vazio, ele manda null pro ajax
-            $dados1 = '';
+            $dados1 = null;
         }
         return json_encode($dados1);
     }
