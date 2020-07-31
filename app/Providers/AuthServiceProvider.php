@@ -40,6 +40,8 @@ use App\model\Inventario;
 use App\model\Fluxo;
 use App\model\Fidelidade;
 use App\model\CFOP;
+use App\model\Recibo;
+use App\model\Equipamento;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -333,7 +335,21 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->adm == $cfop->user_id;     
         });
 
-       
+       //---------- Recibo ------------------------------------------------------------------------------------
+       Gate::define('view_recibo', function( User $user,Recibo $recibo){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $recibo->user_id;     
+        }else
+            return $user->adm == $recibo->user_id;     
+    });
+
+    //---------- Equipamento ------------------------------------------------------------------------------------
+    Gate::define('view_equipamento', function( User $user,Equipamento $equipamento){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $equipamento->user_id;     
+        }else
+            return $user->adm == $equipamento->user_id;     
+    });
 
 
         

@@ -350,6 +350,11 @@
 											<span class="sub-item">Contas Recebidas</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/recibo')}}">
+											<span class="sub-item">Recibos</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>
@@ -523,6 +528,13 @@
 							<a href="{{url('/Cadastro/inventario')}}">
 								<i class="la la-clipboard"></i>
 								<p>Inventário</p>
+								
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{url('/Cadastro/equipamento')}}">
+								<i class="la la-archive"></i>
+								<p>Equipamento</p>
 								
 							</a>
 						</li>

@@ -120,6 +120,8 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/fluxo","FluxoController@listar");
     Route::get("/fidelidade","FidelidadeController@listar");
     Route::get("/cfop","CFOPController@listar");
+    Route::get("/recibo","ReciboController@listar");
+    Route::get("/equipamento","EquipamentoController@listar");
     
     
 });
@@ -386,3 +388,23 @@ Route::group(["prefix" => "CFOP",'middleware' => 'auth'], function () {
     Route::get("/editar/{id}", "CFOPController@editar");
     Route::get("/visualizar/{id}", "CFOPController@visualizar");
 });
+
+//crud Recibo
+Route::group(["prefix" => "Recibo",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ReciboController@salvar");
+    Route::delete("/excluir/{id}", "ReciboController@destroy");
+    Route::get("/editar/{id}", "ReciboController@editar");
+    Route::get("/visualizar/{id}", "ReciboController@visualizar");
+});
+
+//crud Equipamento
+Route::group(["prefix" => "Equipamento", 'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id}", "EquipamentoController@update");
+    Route::post("/salvar", "EquipamentoController@store");
+    Route::delete("/excluir/{id}", "EquipamentoController@destroy");
+    Route::get("/editar/{id}", "EquipamentoController@edit");
+    Route::get("/vizualizar/{id}", "EquipamentoController@view");
+    Route::post("/busca", "EquipamentoController@busca");
+    Route::post("/busca2", "EquipamentoController@busca2");
+});
+
