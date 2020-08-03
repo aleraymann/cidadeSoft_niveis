@@ -50,6 +50,9 @@
                 @include("modals.modal_clifor")
             </div>
             <div class="form-row col-lg-12">
+            <div>
+                    <a href="{{ url("/Cadastro/Clifor") }}" class="btn btn-sm btn-info mt-3 mr-2">Todos</a>
+                </div>
                 <div class="form-group col-lg-2">
                     <select onchange="verificar(this.value)" class="form-control input-border-bottom" id="filtro"
                         name="filtro">
@@ -71,7 +74,7 @@
                         {{ csrf_field() }}
                     </form>
                 </div>
-                </div>
+                
                 <div id="cod" hidden>
                     <form action="{{ url('/Clifor/busca2') }}" method="post">
                         <div class="container">
@@ -85,12 +88,13 @@
                         {{ csrf_field() }}
                     </form>
                 </div>
-
+                <div class="form-row col-lg-12">
                 @if($criterio != "")
                     <div class="card-body">
                         <h5>Encontrado com: "{{ $criterio }}" </h5>
                     </div>
                 @endif
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="multi-filter-select" class="display table table-striped table-hover text-center">
@@ -253,17 +257,4 @@
                 name.hidden = false;
             }
         };
-
-        function paginate(value) {
-            var pag = document.getElementById("paginate");
-
-            if (value == "10") {
-                console.log("10")
-            } else if (value == "1") {
-                console.log("1")
-            } else if (value == "2") {
-                console.log("2")
-            }
-        };
-
     </script>

@@ -15,7 +15,8 @@ class EquipamentoController extends Controller
         $equipamento = $equipamento->all();
         $equipamento = Equipamento::paginate(10);
         $clifor = CliFor::all();
-        return view("equipamento", compact("equipamento","clifor")); 
+        $criterio = "";
+        return view("equipamento", compact("equipamento","clifor","criterio")); 
     }
 
     public function store(Request $request, Equipamento $equipamento)
@@ -135,6 +136,31 @@ class EquipamentoController extends Controller
     public function destroy($Codigo, Equipamento $equipamento)
     {
         $equipamento->destroy($Codigo);
+    }
+
+    public function busca( Request $request){
+
+        //var_dump($request->criterio);.
+        $criterio  = $request->criterio;
+        $equipamento = Equipamento::where( 'Equipamento' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        //dd($funcionario);
+        $clifor = CliFor::all();
+        return view("equipamento", compact("equipamento","clifor","criterio")); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
+    }
+
+
+    public function busca2( Request $request){
+
+        //var_dump($request->criterio1);
+        $criterio  = $request->criterio;
+        $equipamento = Equipamento::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        //dd($funcionario);
+        $clifor = CliFor::all();
+        return view("equipamento", compact("equipamento","clifor","criterio")); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
     }
 
 

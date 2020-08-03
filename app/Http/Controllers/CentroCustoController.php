@@ -15,7 +15,8 @@ class CentroCustoController extends Controller
         }
         $centrocusto = $centrocusto->all();
         $centrocusto = CentroCusto::paginate(20);
-        return view("centrocusto", compact("centrocusto")); 
+        $criterio = "";
+        return view("centrocusto", compact("centrocusto","criterio")); 
     }
     public function salvar(Request $dadosFormulario, CentroCusto $centrocusto, $id = null)
     {
@@ -62,4 +63,17 @@ class CentroCustoController extends Controller
         }
         return view("edit.edit_centrocusto", compact("centrocusto","id"));
     }
+
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $centrocusto = CentroCusto::where( 'Descricao' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("centrocusto", compact("centrocusto","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $centrocusto = CentroCusto::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("centrocusto", compact("centrocusto","criterio")); 
+    }
+
 }

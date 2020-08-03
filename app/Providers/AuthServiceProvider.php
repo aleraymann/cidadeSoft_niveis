@@ -42,6 +42,7 @@ use App\model\Fidelidade;
 use App\model\CFOP;
 use App\model\Recibo;
 use App\model\Equipamento;
+use App\model\ReciboTitulo;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -349,6 +350,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $equipamento->user_id;     
         }else
             return $user->adm == $equipamento->user_id;     
+    });
+
+    //---------- Recibo Titulo ------------------------------------------------------------------------------------
+    Gate::define('view_recibo_tit', function( User $user, ReciboTitulo $recibo_tit){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $recibo_tit->user_id;     
+        }else
+            return $user->adm == $recibo_tit->user_id;     
     });
 
 

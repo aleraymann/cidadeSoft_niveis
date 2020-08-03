@@ -13,7 +13,8 @@ class CategoriaOSController extends Controller
     {  
         $categoriaos = $categoriaos->all();
         $categoriaos = CategoriaOS::paginate(20);
-        return view("categoriaos", compact("categoriaos")); 
+        $criterio = "";
+        return view("categoriaos", compact("categoriaos","criterio")); 
     }
     public function salvar(Request $dadosFormulario, CategoriaOS $categoriaos, $id = null)
     {
@@ -59,4 +60,28 @@ class CategoriaOSController extends Controller
         }
         return view("edit.edit_categoriaos", compact("categoriaos","id"));
     }
+
+    public function busca( Request $request){
+
+        //var_dump($request->criterio);.
+        $criterio  = $request->criterio;
+        $categoriaos = CategoriaOS::where( 'Descricao' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        //dd($funcionario);
+        return view("categoriaos", compact("categoriaos","criterio")); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
+    }
+
+
+    public function busca2( Request $request){
+
+        //var_dump($request->criterio1);
+        $criterio  = $request->criterio;
+        $categoriaos = CategoriaOS::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        //dd($funcionario);
+        return view("categoriaos", compact("categoriaos","criterio")); 
+        //return view("funcionarios", [ 'funcionario' => $funcionario, 'criterio' => $request->criterio ]); 
+
+    }
+
 }

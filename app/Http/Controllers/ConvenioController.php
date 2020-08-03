@@ -12,7 +12,8 @@ class ConvenioController extends Controller
     {  
         $convenio = $convenio->all();
         $convenio = Convenio::paginate(20);
-        return view("convenio", compact("convenio")); 
+        $criterio = "";
+        return view("convenio", compact("convenio","criterio")); 
     }
 
     public function salvar(Request $dadosFormulario, Convenio $convenio, $id = null)
@@ -59,6 +60,18 @@ class ConvenioController extends Controller
     public function destroy($Codigo, Convenio $convenio)
     {
         $convenio->destroy($Codigo);
+    }
+
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $convenio = Convenio::where( 'Convenio' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("convenio", compact("convenio","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $convenio = Convenio::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("convenio", compact("convenio","criterio")); 
     }
 
 }

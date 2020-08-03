@@ -436,6 +436,11 @@
 											<span class="sub-item">Titulo</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/recibo_titulo')}}">
+											<span class="sub-item">Recibo de Titulos</span>
+										</a>
+									</li>
 								
 								</ul>
 							</div>

@@ -16,7 +16,8 @@ class Form_PagController extends Controller
         }
         $form_pag = $form_pag->all();
         $form_pag = Form_Pag::paginate(20);
-        return view("form_pag", compact("form_pag"));
+        $criterio = "";
+        return view("form_pag", compact("form_pag", "criterio"));
     }
     public function salvar(Request $dadosFormulario,Form_Pag $form_pag, $id = null)
     {
@@ -61,6 +62,18 @@ class Form_PagController extends Controller
             return redirect()->back();
         }
         return view("edit.edit_form_pag", compact("form_pag","id"));
+    }
+
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $form_pag = Form_Pag::where( 'Descricao' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("form_pag", compact("form_pag","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $form_pag = Form_Pag::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("form_pag", compact("form_pag","criterio")); 
     }
 
 

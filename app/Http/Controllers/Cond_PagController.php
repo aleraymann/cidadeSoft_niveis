@@ -16,7 +16,8 @@ class Cond_PagController extends Controller
         }
         $cond_pag = $cond_pag->all();
         $cond_pag = Cond_Pag::paginate(20);
-        return view("cond_pag", compact("cond_pag")); 
+        $criterio = "";
+        return view("cond_pag", compact("cond_pag","criterio")); 
     }
     public function salvar(Request $dadosFormulario, Cond_Pag $cond_pag, $id = null)
     {
@@ -61,5 +62,18 @@ class Cond_PagController extends Controller
     {
         $cond_pag->destroy($Codigo);
     }
+
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $cond_pag = Cond_Pag::where( 'Condicao' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("cond_pag", compact("cond_pag","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $cond_pag = Cond_Pag::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("cond_pag", compact("cond_pag","criterio")); 
+    }
+
 
 }

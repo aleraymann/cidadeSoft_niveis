@@ -120,6 +120,9 @@
                 @include("modals.modal_transportadora")
             </div>
             <div class="form-row col-lg-12">
+            <div>
+                    <a href="{{ url("/Cadastro/transportadoras") }}" class="btn btn-sm btn-info mt-3 mr-2"> Todos</a>
+                </div>
             <div class="form-group col-lg-2">
                          <select onchange="verificar(this.value)" class="form-control input-border-bottom" id="filtro"
                              name="filtro">

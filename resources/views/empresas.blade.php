@@ -183,6 +183,9 @@
                 @include("modals.modal_empresas")
             </div>
             <div class="form-row col-lg-12">
+            <div>
+                    <a href="{{ url("/Cadastro/empresas") }}" class="btn btn-sm btn-info mt-3 mr-2"> Todos</a>
+                </div>
                     <div class="form-group col-lg-2">
                          <select onchange="verifica(this.value)" class="form-control input-border-bottom" id="filtro"
                              name="filtro">
@@ -218,12 +221,13 @@
                 {{ csrf_field() }} 
                 </form> 
             </div>
-            </div>
+            <div class="form-row col-lg-12">
             @if($criterio != "")
                 <div class="card-body">
                     <h5>Encontrado com: "{{ $criterio }}" </h5>
                 </div>
              @endif
+             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="multi-filter-select" class="display table table-sm table-striped table-hover text-center">

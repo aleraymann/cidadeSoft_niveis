@@ -122,8 +122,8 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/cfop","CFOPController@listar");
     Route::get("/recibo","ReciboController@listar");
     Route::get("/equipamento","EquipamentoController@listar");
-    
-    
+    Route::get("/recibo_titulo","ReciboTituloController@listar");
+
 });
 
 //crud clifor
@@ -179,6 +179,8 @@ Route::group(["prefix" => "Condicao",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "Cond_PagController@salvar");
     Route::delete("/excluir/{id}", "Cond_PagController@excluir");
     Route::get("/editar/{id}", "Cond_PagController@editar");
+    Route::post("/busca", "Cond_PagController@busca");
+    Route::post("/busca2", "Cond_PagController@busca2");
 });
 
 //crud forma de pagamento
@@ -186,6 +188,8 @@ Route::group(["prefix" => "Forma",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "Form_PagController@salvar");
     Route::delete("/excluir/{id}", "Form_PagController@excluir");
     Route::get("/editar/{id}", "Form_PagController@editar");
+    Route::post("/busca", "Form_PagController@busca");
+    Route::post("/busca2", "Form_PagController@busca2");
 });
 
 //crud transportadora
@@ -212,14 +216,17 @@ Route::group(["prefix" => "CentroCusto",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "CentroCustoController@salvar");
     Route::delete("/excluir/{id}", "CentroCustoController@excluir");  
     Route::get("/editar/{id}", "CentroCustoController@editar");
+    Route::post("/busca", "CentroCustoController@busca");
+    Route::post("/busca2", "CentroCustoController@busca2");
 });
-
 
 // crud categoria OS
 Route::group(["prefix" => "CatOSPed",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "CategoriaOSController@salvar");
     Route::delete("/excluir/{id}", "CategoriaOSController@excluir");
     Route::get("/editar/{id}", "CategoriaOSController@editar");
+    Route::post("/busca", "CategoriaOSController@busca");
+    Route::post("/busca2", "CategoriaOSController@busca2");
 });
 
 
@@ -253,6 +260,8 @@ Route::group(["prefix" => "AdicionalOS",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "Adicional_OSPedController@salvar");
     Route::delete("/excluir/{id}", "Adicional_OSPedController@excluir");
     Route::get("/editar/{id}", "Adicional_OSPedController@editar");
+    Route::post("/busca", "Adicional_OSPedController@busca");
+    Route::post("/busca2", "Adicional_OSPedController@busca2");
 });
 
 //crud boleto remessa
@@ -282,6 +291,8 @@ Route::get('/pdf_transportadoras', 'PDFController@gerar_transportadoras')->middl
     Route::post("/salvar/{id?}", "ConvenioController@salvar");
     Route::delete("/excluir/{id}", "ConvenioController@destroy");
     Route::get("/editar/{id}", "ConvenioController@editar");
+    Route::post("/busca", "ConvenioController@busca");
+    Route::post("/busca2", "ConvenioController@busca2");
 });
 
 //crud contrato
@@ -395,6 +406,12 @@ Route::group(["prefix" => "Recibo",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "ReciboController@destroy");
     Route::get("/editar/{id}", "ReciboController@editar");
     Route::get("/visualizar/{id}", "ReciboController@visualizar");
+});
+//crud Recibo de Titulos
+Route::group(["prefix" => "ReciboTitulo",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ReciboTituloController@salvar");
+    Route::delete("/excluir/{id}", "ReciboTituloController@destroy");
+    Route::get("/editar/{id}", "ReciboTituloController@editar");
 });
 
 //crud Equipamento

@@ -12,7 +12,8 @@ class Adicional_OSPedController extends Controller
     {  
         $adicional_osped = $adicional_osped->all();
         $adicional_osped = Adicional_OSPed::paginate(20);
-        return view("adicional_osped", compact("adicional_osped")); 
+        $criterio = "";
+        return view("adicional_osped", compact("adicional_osped","criterio")); 
     }
     public function salvar(Request $dadosFormulario, Adicional_OSPed $adicional_osped, $id = null)
     {
@@ -58,4 +59,17 @@ class Adicional_OSPedController extends Controller
         }
         return view("edit.edit_adicional_osped", compact("adicional_osped","id"));
     }
+
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $adicional_osped = Adicional_OSPed::where( 'Descricao' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("adicional_osped", compact("adicional_osped","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $adicional_osped = Adicional_OSPed::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("adicional_osped", compact("adicional_osped","criterio")); 
+    }
+
 }
