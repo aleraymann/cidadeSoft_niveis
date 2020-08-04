@@ -326,6 +326,8 @@ Route::group(["prefix" => "Cotacao",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "CotacaoController@salvar");
     Route::delete("/excluir/{id}", "CotacaoController@destroy");
     Route::get("/editar/{id}", "CotacaoController@editar");
+    Route::post("/busca", "CotacaoController@busca");
+    Route::post("/busca2", "CotacaoController@busca2");
 });
 
 
@@ -336,6 +338,8 @@ Route::group(["prefix" => "Contas_Pagar",'middleware' => 'auth'], function () {
     Route::get("/editar/{id}", "ContasPagarController@editar");
     Route::get("/visualizar/{id}", "ContasPagarController@visualizar");
     Route::post("/pesquisa", "ContasPagarController@pesquisaAjax");
+    Route::post("/busca", "ContasPagarController@busca");
+    Route::post("/busca2", "ContasPagarController@busca2");
 });
 
 //crud ContasPagas
@@ -344,6 +348,8 @@ Route::group(["prefix" => "Contas_Pagas",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "ContasPagasController@destroy");
     Route::get("/editar/{id}", "ContasPagasController@editar");
     Route::get("/visualizar/{id}", "ContasPagasController@visualizar");
+    Route::post("/busca", "ContasPagasController@busca");
+    Route::post("/busca2", "ContasPagasController@busca2");
 });
 
 //crud ContasReceber
@@ -353,6 +359,8 @@ Route::group(["prefix" => "Contas_Receber",'middleware' => 'auth'], function () 
     Route::get("/editar/{id}", "ContasReceberController@editar");
     Route::get("/visualizar/{id}", "ContasReceberController@visualizar");
     Route::post("/pesquisa", "ContasReceberController@pesquisaAjax");
+    Route::post("/busca", "ContasReceberController@busca");
+    Route::post("/busca2", "ContasReceberController@busca2");
 });
 //crud ContasRecebidas
 Route::group(["prefix" => "Contas_Recebidas",'middleware' => 'auth'], function () {
@@ -360,6 +368,8 @@ Route::group(["prefix" => "Contas_Recebidas",'middleware' => 'auth'], function (
     Route::delete("/excluir/{id}", "ContasRecebidasController@destroy");
     Route::get("/editar/{id}", "ContasRecebidasController@editar");
     Route::get("/visualizar/{id}", "ContasRecebidasController@visualizar");
+    Route::post("/busca", "ContasRecebidasController@busca");
+    Route::post("/busca2", "ContasRecebidasController@busca2");
 });
 
 //crud PDV

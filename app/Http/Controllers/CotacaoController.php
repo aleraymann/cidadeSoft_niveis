@@ -12,7 +12,8 @@ class CotacaoController extends Controller
     {  
         $cotacao = $cotacao->all();
         $cotacao = Cotacao::paginate(20);
-        return view("cotacao", compact("cotacao")); 
+        $criterio = "";
+        return view("cotacao", compact("cotacao","criterio")); 
     }
 
     public function salvar(Request $dadosFormulario, Cotacao $cotacao, $id = null)
@@ -59,5 +60,19 @@ class CotacaoController extends Controller
     public function destroy($Codigo, Cotacao $cotacao)
     {
         $cotacao->destroy($Codigo);
+    }
+
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $criterio = "data de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $cotacao = Cotacao::whereBetween( 'Data' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("cotacao", compact("cotacao","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $cotacao = Cotacao::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("cotacao", compact("cotacao","criterio")); 
     }
 }

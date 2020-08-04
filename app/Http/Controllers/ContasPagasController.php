@@ -25,7 +25,8 @@ class ContasPagasController extends Controller
         $conta = ContaCadastro::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
-        return view("contas_pagas", compact("ctas_pagas","clifor","f_pag","c_pag","conta","c_cust","empresa")); 
+        $criterio = "";
+        return view("contas_pagas", compact("ctas_pagas","clifor","f_pag","c_pag","conta","c_cust","empresa","criterio")); 
     }
 
     public function salvar(Request $dadosFormulario,ContasPagas $ctas_pagas, $id = null)
@@ -85,6 +86,32 @@ class ContasPagasController extends Controller
             return redirect()->back();
         }
         return view("visual.view_contas_pagas", compact("ctas_pagas","id"));
+    }
+
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $criterio = "pagamento de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $clifor = CliFor::all();
+        $f_pag = Form_Pag::all();
+        $c_pag = Cond_Pag::all();
+        $conta = ContaCadastro::all();
+        $c_cust = CentroCusto::all();
+        $empresa = Empresa::all();
+        $ctas_pagas = ContasPagas::whereBetween( 'Data_Pagto' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("contas_pagas", compact("ctas_pagas","clifor","f_pag","c_pag","conta","c_cust","empresa", "criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $clifor = CliFor::all();
+        $f_pag = Form_Pag::all();
+        $c_pag = Cond_Pag::all();
+        $conta = ContaCadastro::all();
+        $c_cust = CentroCusto::all();
+        $empresa = Empresa::all();
+        $ctas_pagas = ContasPagas::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("contas_pagas", compact("ctas_pagas","clifor","f_pag","c_pag","conta","c_cust","empresa", "criterio")); 
     }
 
 }

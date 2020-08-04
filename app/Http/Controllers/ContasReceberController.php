@@ -25,7 +25,8 @@ class ContasReceberController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
-        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa")); 
+        $criterio = "";
+        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa","criterio")); 
     }
     public function pesquisaAjax(Request $request){
         $numBoleto = $request['numBoleto'];
@@ -95,6 +96,32 @@ class ContasReceberController extends Controller
             return redirect()->back();
         }
         return view("visual.view_contas_receber", compact("ctas_receber","id"));
+    }
+
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $criterio = "vencimento de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $clifor = CliFor::all();
+        $f_pag = Form_Pag::all();
+        $c_pag = Cond_Pag::all();
+        $boleto = BoletoTitulo::all();
+        $c_cust = CentroCusto::all();
+        $empresa = Empresa::all();
+        $ctas_receber = ContasReceber::whereBetween( 'Vencimento' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $clifor = CliFor::all();
+        $f_pag = Form_Pag::all();
+        $c_pag = Cond_Pag::all();
+        $boleto = BoletoTitulo::all();
+        $c_cust = CentroCusto::all();
+        $empresa = Empresa::all();
+        $ctas_receber = ContasReceber::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio")); 
     }
 
 }
