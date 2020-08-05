@@ -15,7 +15,8 @@ class BoletoRemessaController extends Controller
         $boleto_remessa = $boleto_remessa->all();
         $boleto_remessa = BoletoRemessa::paginate(20);
         $convenio = Convenio::all();
-        return view("boleto_remessa", compact("boleto_remessa","convenio")); 
+        $criterio = "";
+        return view("boleto_remessa", compact("boleto_remessa","convenio","criterio")); 
     }
     public function salvar(Request $dadosFormulario, BoletoRemessa $boleto_remessa, $id = null)
     {
@@ -63,5 +64,20 @@ class BoletoRemessaController extends Controller
         }
         $convenio = Convenio::all();
         return view("edit.edit_boleto_remessa", compact("boleto_remessa","id","convenio"));
+    }
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $criterio = "data de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $convenio = Convenio::all();
+        $boleto_remessa = BoletoRemessa::whereBetween( 'Data' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("boleto_remessa", compact("boleto_remessa","convenio","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $convenio = Convenio::all();
+        $boleto_remessa = BoletoRemessa::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("boleto_remessa", compact("boleto_remessa","convenio", "criterio")); 
     }
 }

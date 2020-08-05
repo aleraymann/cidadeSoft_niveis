@@ -31,7 +31,7 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Data">Data da Remessa:</b>
                             <input type="text" class="form-control input-border-bottom" name="Data" id="Data"
-                                value="{{ date('d/m/Y') }}" required readonly>
+                                value="{{ date('Y-m-d') }}" required readonly>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>

@@ -38,6 +38,56 @@
 
                 @include("modals.modal_boleto_remessa")
             </div>
+            <div class="form-row col-sm-12">
+                <div>
+                    <a href="{{ url("/Cadastro/boleto_remessa") }}" class="btn btn-sm btn-info mt-3 mr-2">Todos</a>
+                </div>
+                <div class="form-group col-lg-2">
+                    <select onchange="verificar(this.value)" class="form-control input-border-bottom" id="filtro"
+                        name="filtro">
+                        <option>Filtro de Busca</option>
+                        <option value="C">Código</option>
+                        <option value="D">Data</option>
+                    </select>
+                </div>
+                <div id="name" hidden>
+                    <form action="{{ url('/Boleto_remessa/busca') }}" method="post">
+                        <div class=" container">
+                            <div class="input-group col-lg-12 mt-2">
+                            <b class="mt-2">Início:</b>
+                                <input type="date" class="form-control ml-1" name="data_inicio">
+                            <b class="ml-2 mt-2">Fim:</b>
+                                <input type="date" class="form-control ml-1 mr-2" name="data_fim">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+                
+                <div id="cod" hidden>
+                    <form action="{{ url('/Boleto_remessa/busca2') }}" method="post">
+                        <div class="container">
+                            <div class="input-group col-lg-8 mt-2">
+                                <input type="text" class="form-control" name="criterio" placeholder="Código">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+               
+                <div class="form-row col-lg-12">
+                @if($criterio != "")
+                    <div class="card-body">
+                        <h5>Encontrado com: "{{ $criterio }}" </h5>
+                    </div>
+                @endif
+                </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="multi-filter-select" class="display table table-striped table-hover text-center">
@@ -57,7 +107,7 @@
                             @can('view_boletoRem', $remessa)
                                 <tr>
                                     <td> {{ $remessa->Codigo }} </td>
-                                    <td> {{ $remessa->Data }} </td>
+                                    <td>  {{ date('d-m-Y', strtotime($remessa->Data)) }}</td>
                                     <td> {{ $remessa->Hora }} </td>
                                     <td> {{ $remessa->Numero_Rem }} </td>
                                     <td> {{ $remessa->Cod_Conv }} </td>
@@ -165,3 +215,16 @@
     }
 
 </script>
+<script>
+        function verificar(value) {
+            var cod = document.getElementById("cod");
+            var name = document.getElementById("name");
+            if (value == "C") {
+                cod.hidden = false;
+                name.hidden = true;
+            } else if (value == "D") {
+                cod.hidden = true;
+                name.hidden = false;
+            }
+        };
+    </script>

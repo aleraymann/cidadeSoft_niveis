@@ -239,6 +239,8 @@ Route::group(["prefix" => "Conta",'middleware' => 'auth'], function () {
     Route::post("/saldo/salvar/{id?}","ContaSaldoController@salvar");
     Route::delete("/saldo/excluir/{id}", "ContaSaldoController@excluir");
     Route::get("/saldo/editar/{id}", "ContaSaldoController@editar");
+    Route::post("/busca", "ContaCadastroController@busca");
+    Route::post("/busca2", "ContaCadastroController@busca2");
 });
 
 //crud CEST
@@ -269,6 +271,8 @@ Route::group(["prefix" => "Boleto_remessa",'middleware' => 'auth'], function () 
     Route::post("/salvar/{id?}", "BoletoRemessaController@salvar");
     Route::delete("/excluir/{id}", "BoletoRemessaController@excluir");
     Route::get("/editar/{id}", "BoletoRemessaController@editar");
+    Route::post("/busca", "BoletoRemessaController@busca");
+    Route::post("/busca2", "BoletoRemessaController@busca2");
 });
 
 //crud boleto titulo
@@ -277,6 +281,9 @@ Route::group(["prefix" => "Boleto_titulo",'middleware' => 'auth'], function () {
     Route::get("/vizualizar/{id}", "BoletoTituloController@vizualizar");
     Route::delete("/excluir/{id}", "BoletoTituloController@excluir");
     Route::get("/editar/{id}", "BoletoTituloController@editar");
+    Route::post("/busca", "BoletoTituloController@busca");
+    Route::post("/busca2", "BoletoTituloController@busca2");
+    Route::post("/busca3", "BoletoTituloController@busca3");
 });
 
 
@@ -319,6 +326,9 @@ Route::group(["prefix" => "DataMovimento",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "DataContaMovimentoController@salvar");
     Route::delete("/excluir/{id}", "DataContaMovimentoController@destroy");
     Route::get("/visualizar/{id}", "DataContaMovimentoController@visualizar");
+    Route::post("/busca", "DataContaMovimentoController@busca");
+    Route::post("/busca2", "DataContaMovimentoController@busca2");
+    Route::post("/busca3", "DataContaMovimentoController@busca3");
 });
 
 //crud Cotação
@@ -393,6 +403,9 @@ Route::group(["prefix" => "Fluxo",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "FluxoController@salvar");
     Route::delete("/excluir/{id}", "FluxoController@destroy");
     Route::get("/editar/{id}", "FluxoController@editar");
+    Route::post("/busca", "FluxoController@busca");
+    Route::post("/busca2", "FluxoController@busca2");
+    Route::post("/busca3", "FluxoController@busca3");
 });
 
 //crud Fidelidade
@@ -416,12 +429,18 @@ Route::group(["prefix" => "Recibo",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "ReciboController@destroy");
     Route::get("/editar/{id}", "ReciboController@editar");
     Route::get("/visualizar/{id}", "ReciboController@visualizar");
+    Route::post("/busca", "ReciboController@busca");
+    Route::post("/busca2", "ReciboController@busca2");
+    Route::post("/busca3", "ReciboController@busca3");
 });
 //crud Recibo de Titulos
 Route::group(["prefix" => "ReciboTitulo",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "ReciboTituloController@salvar");
     Route::delete("/excluir/{id}", "ReciboTituloController@destroy");
     Route::get("/editar/{id}", "ReciboTituloController@editar");
+    Route::post("/busca", "ReciboTituloController@busca");
+    Route::post("/busca2", "ReciboTituloController@busca2");
+    Route::post("/busca3", "ReciboTituloController@busca3");
 });
 
 //crud Equipamento

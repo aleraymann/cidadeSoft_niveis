@@ -82,22 +82,15 @@
                         </div>
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Vencimento">Data de Vencimento</b>
-                            <input type="text" class="form-control input-border-bottom" name="Vencimento"
+                            <input type="date" class="form-control input-border-bottom" name="Vencimento"
                                 id="Vencimento" required
-                                value="{{ isset($boleto_titulo->Vencimento) ? $boleto_titulo->Vencimento : '' }}">
+                                value="{{$boleto_titulo->Vencimento}}">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
                             <div class="valid-feedback">
                                 Tudo certo!
                             </div>
-                            <script type="text/javascript">
-            $(function () {
-                $('#Vencimento').datetimepicker({
-                    format: 'DD/MM/YYYY'
-                });
-            });
-        </script>
                         </div>
                     </div>
                     <div class="form-row">
@@ -302,43 +295,29 @@
                         </div>
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Data_Bai">Data de Baixa</b>
-                            <input type="text" class="form-control input-border-bottom" name="Data_Bai" id="Data_Bai"
+                            <input type="date" class="form-control input-border-bottom" name="Data_Bai" id="Data_Bai"
                                 required
-                                value="{{ isset($boleto_titulo->Data_Bai) ? $boleto_titulo->Data_Bai : '' }}">
+                                value="{{$boleto_titulo->Data_Bai}}">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
                             <div class="valid-feedback">
                                 Tudo certo!
                             </div>
-                            <script type="text/javascript">
-            $(function () {
-                $('#Data_Bai').datetimepicker({
-                    format: 'DD/MM/YYYY'
-                });
-            });
-        </script>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Data_Liq">Data de Liquidação</b>
-                            <input type="text" class="form-control input-border-bottom" name="Data_Liq" id="Data_Liq"
+                            <input type="date" class="form-control input-border-bottom" name="Data_Liq" id="Data_Liq"
                                 required
-                                value="{{ isset($boleto_titulo->Data_Liq) ? $boleto_titulo->Data_Liq : '' }}">
+                                value="{{$boleto_titulo->Data_Liq}}">
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
                             </div>
                             <div class="valid-feedback">
                                 Tudo certo!
                             </div>
-                            <script type="text/javascript">
-            $(function () {
-                $('#Data_Liq').datetimepicker({
-                    format: 'DD/MM/YYYY'
-                });
-            });
-        </script>
                         </div>
                         <div class="form-group col-lg-2">
                             <b class="ls-label-text" for="Situacao">Situação do Título</b>

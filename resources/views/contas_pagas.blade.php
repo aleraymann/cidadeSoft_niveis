@@ -43,7 +43,7 @@
 
                 @include("modals.modal_contas_pagas")
             </div>
-            <div class="form-row col-lg-12">
+            <div class="form-row col-sm-12">
                 <div>
                     <a href="{{ url("/Cadastro/ctas_pagas") }}" class="btn btn-sm btn-info mt-3 mr-2">Todos</a>
                 </div>

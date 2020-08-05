@@ -47,6 +47,73 @@
 
                 @include("modals.modal_boleto_titulo")
             </div>
+            <div class="form-row col-sm-12">
+                <div>
+                    <a href="{{ url("/Cadastro/boleto_titulo") }}" class="btn btn-sm btn-info mt-3 mr-2">Todos</a>
+                </div>
+                <div class="form-group col-lg-2">
+                    <select onchange="verificar(this.value)" class="form-control input-border-bottom" id="filtro"
+                        name="filtro">
+                        <option>Filtro de Busca</option>
+                        <option value="C">Código</option>
+                        <option value="D">Data</option>
+                        <option value="P">Vencimento</option>
+                    </select>
+                </div>
+                <div id="name" hidden>
+                    <form action="{{ url('/Boleto_titulo/busca') }}" method="post">
+                        <div class=" container">
+                            <div class="input-group col-lg-12 mt-2">
+                            <b class="mt-2">Início:</b>
+                                <input type="date" class="form-control ml-1" name="data_inicio">
+                            <b class="ml-2 mt-2">Fim:</b>
+                                <input type="date" class="form-control ml-1 mr-2" name="data_fim">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+                <div id="venc" hidden>
+                    <form action="{{ url('/Boleto_titulo/busca3') }}" method="post">
+                        <div class=" container">
+                            <div class="input-group col-lg-12 mt-2">
+                            <b class="mt-2">Início:</b>
+                                <input type="date" class="form-control ml-1" name="data_inicio">
+                            <b class="ml-2 mt-2">Fim:</b>
+                                <input type="date" class="form-control ml-1 mr-2" name="data_fim">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+                
+                <div id="cod" hidden>
+                    <form action="{{ url('/Boleto_titulo/busca2') }}" method="post">
+                        <div class="container">
+                            <div class="input-group col-lg-8 mt-2">
+                                <input type="text" class="form-control" name="criterio" placeholder="Código">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
+               
+                <div class="form-row col-lg-12">
+                @if($criterio != "")
+                    <div class="card-body">
+                        <h5>Encontrado com: "{{ $criterio }}" </h5>
+                    </div>
+                @endif
+                </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="multi-filter-select" class="display table table-striped table-hover text-center">
@@ -68,8 +135,8 @@
                             @can('view_boletoTit', $titulo)
                                 <tr>
                                     <td> {{ $titulo->Codigo }} </td>
-                                    <td> {{ $titulo->Data_Doc }} </td>
-                                    <td> {{ $titulo->Vencimento }} </td>
+                                    <td>  {{ date('d-m-Y', strtotime($titulo->Data_Doc)) }}</td>
+                                    <td>  {{ date('d-m-Y', strtotime($titulo->Vencimento)) }}</td>
                                     <td> {{ $titulo->Nro_Doc }} </td>
                                     <td> {{ $titulo->Nosso_Num }} </td>
                                     <td> {{ $titulo->Valor }} </td>
@@ -115,25 +182,6 @@
     </div>
 </div>
 
-
-
-
-
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800 ml-2">Títulos</h1>
-    <button type="button" class="btn btn-success mr-5 mt-20  btn-rounded" data-toggle="modal" data-target="#myModal">
-        <i class='fas fa-plus'></i> Boleto Títulos
-    </button>
-
-</div>
-
-<table class="table-sm table-bordered table-hover table-responsive text-center">
-    <tr>
-
-    </tr>
-
-</table>
-</div>
 @endsection
 
 
@@ -209,3 +257,25 @@
     }
 
 </script>
+<script>
+        function verificar(value) {
+            var cod = document.getElementById("cod");
+            var name = document.getElementById("name");
+            var venc = document.getElementById("venc");
+            if (value == "C") {
+                cod.hidden = false;
+                name.hidden = true;
+                venc.hidden = true;
+
+            } else if (value == "D") {
+                cod.hidden = true;
+                name.hidden = false;
+                venc.hidden = true;
+            }
+            else if (value == "P") {
+                cod.hidden = true;
+                name.hidden = true;
+                venc.hidden = false;
+            }
+        };
+    </script>

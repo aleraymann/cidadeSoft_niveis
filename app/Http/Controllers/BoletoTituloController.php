@@ -24,7 +24,8 @@ class BoletoTituloController extends Controller
         $boleto_remessa = BoletoRemessa::all();
         $empresa = Empresa::all();
         $ctas_receber = ContasReceber::all();
-        return view("boleto_titulo", compact("boleto_titulo","conta","clifor","boleto_remessa","empresa", "ctas_receber")); 
+        $criterio = "";
+        return view("boleto_titulo", compact("boleto_titulo","conta","clifor","boleto_remessa","empresa", "ctas_receber","criterio")); 
     }
     public function salvar(Request $dadosFormulario, BoletoTitulo $boleto_titulo, $id = null)
     {
@@ -91,4 +92,42 @@ class BoletoTituloController extends Controller
         }
         return view("visual.view_boleto_titulo", compact("boleto_titulo","id"));
     }
+
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $criterio = "data de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $conta = ContaCadastro::all();
+        $clifor = CliFor::all();
+        $boleto_remessa = BoletoRemessa::all();
+        $empresa = Empresa::all();
+        $ctas_receber = ContasReceber::all();
+        $boleto_titulo = BoletoTitulo::whereBetween( 'Data_Doc' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("boleto_titulo", compact("boleto_titulo","conta","clifor","boleto_remessa","empresa", "ctas_receber","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $conta = ContaCadastro::all();
+        $clifor = CliFor::all();
+        $boleto_remessa = BoletoRemessa::all();
+        $empresa = Empresa::all();
+        $ctas_receber = ContasReceber::all();
+        $boleto_titulo = BoletoTitulo::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("boleto_titulo", compact("boleto_titulo","conta","clifor","boleto_remessa","empresa", "ctas_receber","criterio")); 
+    }
+
+    public function busca3( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $criterio = "vencimento de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $conta = ContaCadastro::all();
+        $clifor = CliFor::all();
+        $boleto_remessa = BoletoRemessa::all();
+        $empresa = Empresa::all();
+        $ctas_receber = ContasReceber::all();
+        $boleto_titulo = BoletoTitulo::whereBetween( 'Vencimento' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("boleto_titulo", compact("boleto_titulo","conta","clifor","boleto_remessa","empresa", "ctas_receber","criterio")); 
+    }
+    
 }

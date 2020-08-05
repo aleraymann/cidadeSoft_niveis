@@ -17,7 +17,8 @@ class ContaCadastroController extends Controller
         $contacadastro = $contacadastro->all();
         $contacadastro = ContaCadastro::paginate(20);
         $empresa = Empresa::all();
-        return view("conta_cadastro", compact("contacadastro","empresa")); 
+        $criterio = "";
+        return view("conta_cadastro", compact("contacadastro","empresa","criterio")); 
     }
     public function salvar(Request $dadosFormulario, ContaCadastro $contacadastro, $id = null)
     {
@@ -75,6 +76,20 @@ class ContaCadastroController extends Controller
         }
         $contasaldo = ContaSaldo::all();
         return view("visual.view_conta_cadastro", compact("contacadastro","id","contasaldo"));
+    }
+
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $empresa = Empresa::all();
+        $contacadastro = ContaCadastro::where( 'Descricao' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("conta_cadastro", compact("contacadastro","empresa","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $empresa = Empresa::all();
+        $contacadastro = ContaCadastro::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("conta_cadastro", compact("contacadastro","empresa" , "criterio")); 
     }
 
 

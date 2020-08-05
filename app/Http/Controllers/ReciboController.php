@@ -17,7 +17,8 @@ class ReciboController extends Controller
         $clifor = CliFor::all();
         $clifor1 = CliFor::all();
         $empresa = Empresa::all();
-        return view("recibo", compact("recibo","clifor","empresa","clifor1"));
+        $criterio = "";
+        return view("recibo", compact("recibo","clifor","empresa","clifor1","criterio"));
     }
 
     public function salvar(Request $dadosFormulario,Recibo $recibo, $id = null)
@@ -65,6 +66,7 @@ class ReciboController extends Controller
         $clifor = CliFor::all();
         $clifor1 = CliFor::all();
         $empresa = Empresa::all();
+
         return view("edit.edit_recibo", compact("recibo","id","clifor","empresa","clifor1"));
     }
 
@@ -75,5 +77,40 @@ class ReciboController extends Controller
             return redirect()->back();
         }
         return view("visual.view_recibo", compact("recibo","id"));
+    }
+
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $criterio = "pagamento de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $clifor = CliFor::all();
+        $clifor1 = CliFor::all();
+        $empresa = Empresa::all();
+        $recibo = Recibo::whereBetween( 'Data' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("recibo", compact("recibo","clifor","empresa","clifor1","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $clifor = CliFor::all();
+        $clifor1 = CliFor::all();
+        $empresa = Empresa::all();
+        $recibo = Recibo::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("recibo", compact("recibo","clifor","empresa","clifor1","criterio")); 
+    }
+
+    public function busca3( Request $request){
+        if( $request->criterio == "P"){
+            $criterio  = "Pago";
+        }else{
+            $criterio  = "Recebido";
+        }
+      
+        //dd($request->criterio);
+        $clifor = CliFor::all();
+        $clifor1 = CliFor::all();
+        $empresa = Empresa::all();
+        $recibo = Recibo::where( 'Pag_Rec' , '=', $request->criterio)->paginate(10);
+        return view("recibo", compact("recibo","clifor","empresa","clifor1","criterio")); 
     }
 }

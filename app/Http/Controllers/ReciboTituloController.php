@@ -16,7 +16,8 @@ class ReciboTituloController extends Controller
         $recibo_tit = ReciboTitulo::paginate(20);
         $recibo = Recibo::all();
         $titulo = BoletoTitulo::all();
-        return view("recibo_titulo", compact("recibo_tit","titulo","recibo"));
+        $criterio = "";
+        return view("recibo_titulo", compact("recibo_tit","titulo","recibo","criterio"));
     }
 
     public function salvar(Request $dadosFormulario,ReciboTitulo $recibo_tit, $id = null)
@@ -64,6 +65,31 @@ class ReciboTituloController extends Controller
         $recibo = Recibo::all();
         $titulo = BoletoTitulo::all();
         return view("edit.edit_recibo_titulo", compact("recibo_tit","id","recibo","titulo"));
+    }
+
+
+    public function busca( Request $request){
+        $criterio  = "Cod do Título = " .$request->criterio;
+        $recibo_tit = ReciboTitulo::where( 'Cod_Tit' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        $recibo = Recibo::all();
+        $titulo = BoletoTitulo::all();
+        return view("recibo_titulo", compact("recibo_tit","titulo","recibo","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $recibo = Recibo::all();
+        $titulo = BoletoTitulo::all();
+        $recibo_tit = ReciboTitulo::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("recibo_titulo", compact("recibo_tit","titulo","recibo","criterio")); 
+    }
+
+    public function busca3( Request $request){
+        $criterio  = "Cod do Recibo = " . $request->criterio;
+        $recibo = Recibo::all();
+        $titulo = BoletoTitulo::all();
+        $recibo_tit = ReciboTitulo::where( 'Cod_Rec' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("recibo_titulo", compact("recibo_tit","titulo","recibo","criterio")); 
     }
 
 }

@@ -17,8 +17,8 @@ class DataContaMovimentoController extends Controller
     
     {  
         $data_movimento = $data_movimento->all();
-       
-        return view('movimento',compact('data_movimento'));
+        $criterio = "";
+        return view('movimento',compact('data_movimento',"criterio"));
        
     }
     public function salvar(Request $dadosFormulario,DataContaMovimento $data_movimento, $id = null)
@@ -69,5 +69,31 @@ class DataContaMovimentoController extends Controller
     public function destroy($Codigo,DataContaMovimento $data_movimento)
     {
         $data_movimento->destroy($Codigo);
+    }
+
+    public function busca3( Request $request){
+        $criterio  = $request->criterio;
+        if( $request->criterio == "1"){
+            $criterio  = "Turno da Manhã";
+        }else if( $request->criterio == "2"){
+            $criterio  = "Turno da Tarde";
+        }else{
+            $criterio  = "Turno da Noite";
+        }
+        $data_movimento = DataContaMovimento::where( 'Turno' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("movimento", compact("data_movimento","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $data_movimento = DataContaMovimento::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("movimento", compact("data_movimento","criterio")); 
+    }
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $criterio = "Data de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $data_movimento = DataContaMovimento::whereBetween( 'Data' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("movimento", compact("data_movimento", "criterio")); 
     }
 }

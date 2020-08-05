@@ -16,7 +16,8 @@ class FluxoController extends Controller
         $fluxo = Fluxo::paginate(20);
         $conta = ContaCadastro::all();
         $empresa = Empresa::all();
-        return view("fluxo", compact("fluxo","conta","empresa")); 
+        $criterio = "";
+        return view("fluxo", compact("fluxo","conta","empresa","criterio")); 
     }
 
     public function salvar(Request $dadosFormulario,Fluxo $fluxo, $id = null)
@@ -66,6 +67,31 @@ class FluxoController extends Controller
     {
         $fluxo->destroy($Codigo);
 
+    }
+
+    public function busca3( Request $request){
+        $criterio  = $request->criterio;
+        $conta = ContaCadastro::all();
+        $empresa = Empresa::all();
+        $fluxo = Fluxo::where( 'Cod_Conta' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("fluxo", compact("fluxo","conta","empresa","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $conta = ContaCadastro::all();
+        $empresa = Empresa::all();
+        $fluxo = Fluxo::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("fluxo", compact("fluxo","conta","empresa","criterio")); 
+    }
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $conta = ContaCadastro::all();
+        $empresa = Empresa::all();
+        $criterio = "Data de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $fluxo = Fluxo::whereBetween( 'Data' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("fluxo", compact("fluxo","conta","empresa","criterio")); 
     }
 
 }
