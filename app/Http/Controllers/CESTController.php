@@ -14,7 +14,8 @@ class CESTController extends Controller
         $cest = $cest->all();
         $cest = CEST::paginate(20);
         $ncm = NCM::all();
-        return view("cest", compact("cest","ncm"));
+        $criterio = "";
+        return view("cest", compact("cest","ncm","criterio"));
     }
     public function salvar(Request $dadosFormulario,CEST $cest, $id = null)
     {
@@ -59,6 +60,21 @@ class CESTController extends Controller
         }
         $ncm = NCM::all();
         return view("edit.edit_cest", compact("cest","id","ncm"));
+    }
+
+    
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $ncm = NCM::all();
+        $cest = CEST::where( 'CEST' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("cest", compact("cest","criterio","ncm")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $ncm = NCM::all();
+        $cest = CEST::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("cest", compact("cest","criterio","ncm")); 
     }
 
 

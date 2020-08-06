@@ -248,6 +248,8 @@ Route::group(["prefix" => "Cest",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "CESTController@salvar");
     Route::delete("/excluir/{id}", "CESTController@excluir");
     Route::get("/editar/{id}", "CESTController@editar");
+    Route::post("/busca", "CESTController@busca");
+    Route::post("/busca2", "CESTController@busca2");
 });
 
 //crud NCM
@@ -255,6 +257,8 @@ Route::group(["prefix" => "Ncm",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "NCMController@salvar");
     Route::delete("/excluir/{id}", "NCMController@excluir");
     Route::get("/editar/{id}", "NCMController@editar");
+    Route::post("/busca", "NCMController@busca");
+    Route::post("/busca2", "NCMController@busca2");
 });
 
 //crud Adicinal de OS
@@ -308,9 +312,12 @@ Route::group(["prefix" => "Contrato",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "ContratoController@destroy");
     Route::get("/editar/{id}", "ContratoController@editar");
     Route::get("/visualizar/{id}", "ContratoController@visualizar");
+    Route::post("/busca", "ContratoController@busca");
+    Route::post("/busca2", "ContratoController@busca2");
+    Route::post("/busca3", "ContratoController@busca3");
 });
 
-//crud contrato
+//crud Movimento de Conta
 Route::group(["prefix" => "Movimento",'middleware' => 'auth'], function () {
     Route::post("/pesquisa", "ContaMovimentoController@pesquisaAjax"); // cria essa funcao ou ja existe?
     Route::post("/pesquisaSaldo", "ContaMovimentoController@pesquisaAjaxSaldo"); // cria essa funcao ou ja existe?
@@ -318,6 +325,8 @@ Route::group(["prefix" => "Movimento",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "ContaMovimentoController@excluir");
     Route::get("/editar/{id}", "ContaMovimentoController@editar");
     Route::get("/visualizar/{id}", "ContaMovimentoController@visualizar");
+    
+    
 });
 
 
@@ -396,6 +405,10 @@ Route::group(["prefix" => "Inventario",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "InventarioController@destroy");
     Route::get("/editar/{id}", "InventarioController@editar");
     Route::get("/visualizar/{id}", "InventarioController@visualizar");
+    Route::post("/busca", "InventarioController@busca");
+    Route::post("/busca2", "InventarioController@busca2");
+    Route::post("/busca3", "InventarioController@busca3");
+    
 });
 
 //crud Fluxo
@@ -413,6 +426,9 @@ Route::group(["prefix" => "Fidelidade",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "FidelidadeController@salvar");
     Route::delete("/excluir/{id}", "FidelidadeController@destroy");
     Route::get("/editar/{id}", "FidelidadeController@editar");
+    Route::post("/busca", "FidelidadeController@busca");
+    Route::post("/busca2", "FidelidadeController@busca2");
+    Route::post("/busca3", "FidelidadeController@busca3");
 });
 
 //crud CFOP
@@ -421,6 +437,8 @@ Route::group(["prefix" => "CFOP",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "CFOPController@destroy");
     Route::get("/editar/{id}", "CFOPController@editar");
     Route::get("/visualizar/{id}", "CFOPController@visualizar");
+    Route::post("/busca", "CFOPController@busca");
+    Route::post("/busca2", "CFOPController@busca2");
 });
 
 //crud Recibo

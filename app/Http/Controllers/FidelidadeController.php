@@ -14,7 +14,8 @@ class FidelidadeController extends Controller
         $fidelidade = $fidelidade->all();
         $fidelidade = Fidelidade::paginate(20);
         $clifor = CliFor::all();
-        return view("fidelidade", compact("fidelidade","clifor")); 
+        $criterio = "";
+        return view("fidelidade", compact("fidelidade","clifor","criterio")); 
     }
 
     public function salvar(Request $dadosFormulario,Fidelidade $fidelidade, $id = null)
@@ -70,5 +71,27 @@ class FidelidadeController extends Controller
     {
         $fidelidade->destroy($Codigo);
 
+    }
+
+    public function busca3( Request $request){
+        $criterio  = $request->criterio;
+        $clifor = CliFor::all();
+        $fidelidade = Fidelidade::where( 'Cod_CliFor' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("fidelidade", compact("fidelidade","clifor","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $clifor = CliFor::all();
+        $fidelidade = Fidelidade::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("fidelidade", compact("fidelidade","clifor","criterio")); 
+    }
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $clifor = CliFor::all();
+        $criterio = "Data de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $fidelidade = Fidelidade::whereBetween( 'Data' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("fidelidade", compact("fidelidade","clifor","criterio")); 
     }
 }

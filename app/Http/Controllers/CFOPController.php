@@ -12,7 +12,8 @@ class CFOPController extends Controller
     {  
         $cfop = $cfop->all();
         $cfop = CFOP::paginate(20);
-        return view("cfop", compact("cfop")); 
+        $criterio = "";
+        return view("cfop", compact("cfop","criterio")); 
     }
 
     public function salvar(Request $dadosFormulario,CFOP $cfop, $id = null)
@@ -80,5 +81,19 @@ class CFOPController extends Controller
             return redirect()->back();
         }
         return view("visual.view_cfop", compact("cfop","id"));
+    }
+
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+
+        $cfop = CFOP::where( 'CFOP' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("cfop", compact("cfop","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+
+        $cfop = CFOP::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("cfop", compact("cfop","criterio")); 
     }
 }

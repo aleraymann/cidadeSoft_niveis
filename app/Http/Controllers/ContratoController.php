@@ -16,7 +16,8 @@ class ContratoController extends Controller
         $contrato = Contrato::paginate(20);
         $clifor = CliFor::all();
         $convenio = Convenio::all();
-        return view("contrato", compact("contrato","clifor","convenio")); 
+        $criterio = "";
+        return view("contrato", compact("contrato","clifor","convenio","criterio")); 
     }
 
     public function salvar(Request $dadosFormulario, Contrato $contrato, $id = null)
@@ -74,5 +75,30 @@ class ContratoController extends Controller
             return redirect()->back();
         }
         return view("visual.view_contrato", compact("contrato","id"));
+    }
+
+    public function busca3( Request $request){
+        $criterio  = $request->criterio;
+        $clifor = CliFor::all();
+        $convenio = Convenio::all();
+        $contrato = Contrato::where( 'Cod_CliFor' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("contrato", compact("contrato","clifor","convenio","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $clifor = CliFor::all();
+        $convenio = Convenio::all();
+        $contrato = Contrato::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("contrato", compact("contrato","clifor","convenio","criterio")); 
+    }
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+        $clifor = CliFor::all();
+        $convenio = Convenio::all();
+        $criterio = "Data de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $contrato = Contrato::whereBetween( 'Data' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("contrato", compact("contrato","clifor","convenio","criterio")); 
     }
 }

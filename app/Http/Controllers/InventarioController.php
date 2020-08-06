@@ -13,8 +13,8 @@ class InventarioController extends Controller
     
     {  
         $inventario = $inventario->all();
-       
-        return view('inventario',compact('inventario'));
+        $criterio = "";
+        return view('inventario',compact('inventario',"criterio"));
        
     }
     public function salvar(Request $dadosFormulario, Inventario $inventario, $id = null)
@@ -65,5 +65,27 @@ class InventarioController extends Controller
             return redirect()->back();
         }
         return view("visual.view_inventario", compact("inventario","id"));
+    }
+
+    public function busca3( Request $request){
+        $criterio  = $request->criterio;
+       
+        $inventario = Inventario::where( 'Responsavel' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("inventario", compact("inventario","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+       
+        $inventario = Inventario::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("inventario", compact("inventario","criterio")); 
+    }
+    public function busca( Request $request){
+        $data_inicio  = $request->data_inicio;
+        $data_fim  = $request->data_fim;
+     
+        $criterio = "Data de: ".date('d-m-Y', strtotime($request->data_inicio))." até ". date('d-m-Y', strtotime($request->data_fim));
+        $inventario = Inventario::whereBetween( 'Data' , [$request->data_inicio , $request->data_fim] )->paginate(10);
+        return view("inventario", compact("inventario","criterio")); 
     }
 }
