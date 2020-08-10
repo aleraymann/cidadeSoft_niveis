@@ -77,6 +77,7 @@
                     </div>
                 @endif
                 </div>
+                </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="multi-filter-select" class="display table table-striped table-hover text-center">

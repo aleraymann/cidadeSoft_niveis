@@ -550,6 +550,13 @@
 								
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{url('/Cadastro/telemarketing')}}">
+								<i class="flaticon-customer-support"></i>
+								<p>Telemarketing</p>
+								
+							</a>
+						</li>
 					@endcan
 					@can('gerar_relatorio')
 						<li class="nav-item">

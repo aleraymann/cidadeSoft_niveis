@@ -123,6 +123,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/recibo","ReciboController@listar");
     Route::get("/equipamento","EquipamentoController@listar");
     Route::get("/recibo_titulo","ReciboTituloController@listar");
+    Route::get("/telemarketing","TelemarketingController@listar");
 
 });
 
@@ -470,5 +471,18 @@ Route::group(["prefix" => "Equipamento", 'middleware' => 'auth'], function () {
     Route::get("/vizualizar/{id}", "EquipamentoController@view");
     Route::post("/busca", "EquipamentoController@busca");
     Route::post("/busca2", "EquipamentoController@busca2");
+});
+
+//crud Telemarketing
+Route::group(["prefix" => "Telemarketing", 'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id}", "TelemarketingController@store");
+    Route::post("/salvar", "TelemarketingController@store");
+    Route::delete("/excluir/{id}", "TelemarketingController@destroy");
+    Route::get("/editar/{id}", "TelemarketingController@edit");
+    Route::get("/visualizar/{id}", "TelemarketingController@view");
+    Route::post("/busca", "TelemarketingController@busca");
+    Route::post("/busca2", "TelemarketingController@busca2");
+    Route::post("/busca3", "TelemarketingController@busca3");
+    Route::post("/busca4", "TelemarketingController@busca4");
 });
 
