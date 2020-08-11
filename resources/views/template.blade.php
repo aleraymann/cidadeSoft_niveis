@@ -514,6 +514,22 @@
 								</ul>
 							</div>
 						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#estoque">
+								<i class="flaticon-box-3"></i>
+								<p>Estoque</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="estoque">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{url('/Cadastro/ajuste_estoque')}}">
+											<span class="sub-item">Ajuste de Estoque</span>
+										</a>
+									</li>						
+								</ul>
+							</div>
+						</li>
 						
 						<li class="nav-item">
 							<a href="{{url('/Calendario')}}">

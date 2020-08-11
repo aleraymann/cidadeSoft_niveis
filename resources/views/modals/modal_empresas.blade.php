@@ -1279,7 +1279,7 @@
             <select class="form-control input-border-bottom" id="Vend_CliForPadrao" name="Vend_CliForPadrao" required>
               <option value="0">Selecione</option>
               @foreach($user as $u)
-              @if(auth()->user()->image == $u->adm)
+              @if(auth()->user()->id == $u->adm)
               <option value="{{$u->id}}">{{ $u->name }}</option>
               @endif
               @endforeach

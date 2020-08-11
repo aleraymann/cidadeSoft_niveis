@@ -1458,7 +1458,7 @@
             <label for="Vend_CliForPadrao">Vendedor Padrão </label>
             <select class="form-control input-border-bottom" id="Vend_CliForPadrao" name="Vend_CliForPadrao">
             @foreach($user as $u)
-              @if(auth()->user()->image == $u->adm)
+              @if(auth()->user()->id == $u->adm)
               <option value="{{$u->id}}" {{ $empresa->Vend_CliForPadrao == $u->id ? "selected" : "" }} >{{ $u->name}}</option>
               @endif
               @endforeach

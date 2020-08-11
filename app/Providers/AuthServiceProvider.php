@@ -44,6 +44,7 @@ use App\model\Recibo;
 use App\model\Equipamento;
 use App\model\ReciboTitulo;
 use App\model\Telemarketing;
+use App\model\AjusteEstoque;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -367,6 +368,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $telemarketing->user_id;     
         }else
             return $user->adm == $telemarketing->user_id;     
+    });
+
+     //---------- Ajuste Estoque ------------------------------------------------------------------------------------
+     Gate::define('view_ajuste_est', function( User $user, AjusteEstoque $ajuste){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $ajuste->user_id;     
+        }else
+            return $user->adm == $ajuste->user_id;     
     });
 
 

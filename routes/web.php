@@ -124,6 +124,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/equipamento","EquipamentoController@listar");
     Route::get("/recibo_titulo","ReciboTituloController@listar");
     Route::get("/telemarketing","TelemarketingController@listar");
+    Route::get("/ajuste_estoque","AjusteEstoqueController@listar");
 
 });
 
@@ -486,3 +487,14 @@ Route::group(["prefix" => "Telemarketing", 'middleware' => 'auth'], function () 
     Route::post("/busca4", "TelemarketingController@busca4");
 });
 
+//crud Ajuste de estoque
+Route::group(["prefix" => "AjusteEstoque",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "AjusteEstoqueController@salvar");
+    Route::delete("/excluir/{id}", "AjusteEstoqueController@excluir");
+    Route::get("/editar/{id}", "AjusteEstoqueController@editar");
+    Route::get("/visualizar/{id}", "AjusteEstoqueController@visualizar");
+    Route::post("/busca", "AjusteEstoqueController@busca");
+    Route::post("/busca2", "AjusteEstoqueController@busca2");
+    Route::post("/busca3", "AjusteEstoqueController@busca3");
+    Route::post("/busca4", "AjusteEstoqueController@busca4");
+});
