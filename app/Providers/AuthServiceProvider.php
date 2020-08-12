@@ -45,6 +45,7 @@ use App\model\Equipamento;
 use App\model\ReciboTitulo;
 use App\model\Telemarketing;
 use App\model\AjusteEstoque;
+use App\model\Duplicata;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -376,6 +377,22 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $ajuste->user_id;     
         }else
             return $user->adm == $ajuste->user_id;     
+    });
+
+     //---------- Duplicata ------------------------------------------------------------------------------------
+     Gate::define('view_duplicata', function( User $user, Duplicata $duplicata){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $duplicata->user_id;     
+        }else
+            return $user->adm == $duplicata->user_id;     
+    });
+
+     //---------- Contagem de Inventario ------------------------------------------------------------------------------------
+     Gate::define('view_invent_cont', function( User $user, InventarioContagem $inventario_contagem){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $inventario_contagem->user_id;     
+        }else
+            return $user->adm == $inventario_contagem->user_id;     
     });
 
 

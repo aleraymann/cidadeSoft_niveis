@@ -355,6 +355,11 @@
 											<span class="sub-item">Recibos</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{url('/Cadastro/duplicata')}}">
+											<span class="sub-item">Duplicata</span>	
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>
@@ -413,6 +418,7 @@
 											<span class="sub-item">Cotação</span>	
 										</a>
 									</li>
+
 								</ul>
 							</div>
 						</li>
@@ -545,12 +551,27 @@
 								
 							</a>
 						</li>-->
+						
 						<li class="nav-item">
-							<a href="{{url('/Cadastro/inventario')}}">
+							<a data-toggle="collapse" href="#inventario">
 								<i class="la la-clipboard"></i>
 								<p>Inventário</p>
-								
+								<span class="caret"></span>
 							</a>
+							<div class="collapse" id="inventario">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{url('/Cadastro/inventario')}}">
+											<span class="sub-item">Data de Inventário</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{url('/Cadastro/inventario_cont')}}">
+											<span class="sub-item">Contagem de Inventário</span>
+										</a>
+									</li>
+								</ul>
+							</div>
 						</li>
 						<li class="nav-item">
 							<a href="{{url('/Cadastro/equipamento')}}">

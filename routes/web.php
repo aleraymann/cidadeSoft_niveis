@@ -125,6 +125,9 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/recibo_titulo","ReciboTituloController@listar");
     Route::get("/telemarketing","TelemarketingController@listar");
     Route::get("/ajuste_estoque","AjusteEstoqueController@listar");
+    Route::get("/duplicata","DuplicataController@listar");
+    Route::get("/inventario_cont","InventarioContagemController@listar");
+    
 
 });
 
@@ -176,7 +179,7 @@ Route::group(["prefix" => "Empresa", 'middleware' => 'auth'], function () {
     Route::post("/busca2", "EmpresaController@busca2");
 });
 
-//crud consicao de pagamento
+//crud condicao de pagamento
 Route::group(["prefix" => "Condicao",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "Cond_PagController@salvar");
     Route::delete("/excluir/{id}", "Cond_PagController@excluir");
@@ -497,4 +500,25 @@ Route::group(["prefix" => "AjusteEstoque",'middleware' => 'auth'], function () {
     Route::post("/busca2", "AjusteEstoqueController@busca2");
     Route::post("/busca3", "AjusteEstoqueController@busca3");
     Route::post("/busca4", "AjusteEstoqueController@busca4");
+});
+
+//crud Duplicata
+Route::group(["prefix" => "Duplicata",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "DuplicataController@salvar");
+    Route::delete("/excluir/{id}", "DuplicataController@excluir");
+    Route::get("/editar/{id}", "DuplicataController@editar");
+    Route::get("/visualizar/{id}", "DuplicataController@visualizar");
+    Route::post("/busca", "DuplicataController@busca");
+    Route::post("/busca2", "DuplicataController@busca2");
+    Route::post("/busca3", "DuplicataController@busca3");
+    Route::post("/busca4", "DuplicataController@busca4");
+});
+
+//crud Inventario Contagem
+Route::group(["prefix" => "InventarioContagem",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "InventarioContagemController@salvar");
+    Route::delete("/excluir/{id}", "InventarioContagemController@excluir");
+    Route::get("/editar/{id}", "InventarioContagemController@editar");
+    Route::post("/busca", "InventarioContagemController@busca");
+    Route::post("/busca2", "InventarioContagemController@busca2");
 });
