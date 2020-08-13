@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\model\Inventario;
+use App\model\InventarioItem;
+
 use Gate;
 
 class InventarioController extends Controller
@@ -64,8 +66,17 @@ class InventarioController extends Controller
         if(Gate::denies('view_inventario', $inventario)){
             return redirect()->back();
         }
-        return view("visual.view_inventario", compact("inventario","id"));
+        $inventario_item = InventarioItem::all();
+        $criterio="";
+        return view("visual.view_inventario", compact("inventario","id", "inventario_item","criterio"));
     }
+
+
+    public function excluir($Codigo, Inventario $inventario)
+    {
+        $inventario->destroy($Codigo);
+    }
+
 
     public function busca3( Request $request){
         $criterio  = $request->criterio;

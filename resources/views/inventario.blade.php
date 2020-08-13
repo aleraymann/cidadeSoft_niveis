@@ -203,7 +203,7 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{ url("DataMovimento/excluir") }}" + '/' + id,
+                    url: "{{ url("Inventario/excluir") }}" + '/' + id,
                     type: 'DELETE',
                     data: {
                         '_method': 'DELETE',

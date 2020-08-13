@@ -127,6 +127,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/ajuste_estoque","AjusteEstoqueController@listar");
     Route::get("/duplicata","DuplicataController@listar");
     Route::get("/inventario_cont","InventarioContagemController@listar");
+    Route::get("/inventario_item","InventarioItemController@listar");
     
 
 });
@@ -407,7 +408,7 @@ Route::group(["prefix" => "pdv",'middleware' => 'auth'], function () {
 //crud Inventario
 Route::group(["prefix" => "Inventario",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "InventarioController@salvar");
-    Route::delete("/excluir/{id}", "InventarioController@destroy");
+    Route::delete("/excluir/{id}", "InventarioController@excluir");
     Route::get("/editar/{id}", "InventarioController@editar");
     Route::get("/visualizar/{id}", "InventarioController@visualizar");
     Route::post("/busca", "InventarioController@busca");
@@ -521,4 +522,16 @@ Route::group(["prefix" => "InventarioContagem",'middleware' => 'auth'], function
     Route::get("/editar/{id}", "InventarioContagemController@editar");
     Route::post("/busca", "InventarioContagemController@busca");
     Route::post("/busca2", "InventarioContagemController@busca2");
+});
+
+//crud Item de Inventario
+Route::group(["prefix" => "InventarioItem",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "InventarioItemController@salvar");
+    Route::delete("/excluir/{id}", "InventarioItemController@excluir");
+    Route::get("/editar/{id}", "InventarioItemController@editar");
+    Route::get("/visualizar/{id}", "InventarioItemController@visualizar");
+    Route::post("/busca", "InventarioItemController@busca");
+    Route::post("/busca2", "InventarioItemController@busca2");
+    Route::post("/busca3", "InventarioItemController@busca3");
+    Route::post("/busca4", "InventarioItemController@busca4");
 });

@@ -46,6 +46,8 @@ use App\model\ReciboTitulo;
 use App\model\Telemarketing;
 use App\model\AjusteEstoque;
 use App\model\Duplicata;
+use App\model\InventarioContagem;
+use App\model\InventarioItem;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -393,6 +395,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $inventario_contagem->user_id;     
         }else
             return $user->adm == $inventario_contagem->user_id;     
+    });
+
+    //---------- Item de Inventario ------------------------------------------------------------------------------------
+    Gate::define('view_invent_item', function( User $user, InventarioItem $inventario_item){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $inventario_item->user_id;     
+        }else
+            return $user->adm == $inventario_item->user_id;     
     });
 
 

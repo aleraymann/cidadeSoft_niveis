@@ -11,12 +11,13 @@
                 <h4 class="card-title">
                    Data: {{ $inventario->Data }}
                 </h4>
-                @can('insere_item')
+                @can('insere_invent_item')
                 <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
-                        data-target="#myModaldata">
+                        data-target="#myModal">
                         <i class='fas fa-plus'></i> Item
                     </button>
                 @endcan
+                @include('modals.modal_inventario_item')
             </div>
             <div class="card-body">
             <div class="table-responsive">
@@ -24,16 +25,42 @@
                         <thead>
                             <tr>
                                 <th>Cod</th>
-                                <th class="">Espécie</th>
-                                <th class="">Documento</th>
-                                <th class="">Número do Documento</th>
-                                <th class="">Valor</th>
-                                <th class="">Operador</th>
+                                <th class="">Cod de Ref</th>
+                                <th class="">Cod do Item</th>
+                                <th class="">Cod Barras</th>
                                 <th class="">Cod Adm</th>
                             </tr>
                         </thead>
 
                         <tbody>
+                        @foreach($inventario_item as $c)
+                        @if($c->Cod_Invent == $inventario->Codigo)
+                           <tr>
+                            <td class="">{{ $c->Codigo }}  </td>
+                               <td class="">{{ $c->Cod_Ref }}  </td>
+                               <td class="">{{ $c->Cod_Item }}  </td>
+                               <td class="">{{ $c->Cod_Barras }}  </td>
+                               <td class="">{{ $c->user_id }}  </td>
+                              
+                               <td class="">
+                                   <div class="btn-group" role="group">
+                                   @can('edita_invent_item')
+                                   <a href='{{ url("/InventarioItem/editar/$c->Codigo") }}'
+                                   class="btn btn-success btn-xs mr-2" style="border-radius:2px;"><i class='far fa-edit'></i></a>
+                                   @endcan
+                                   @can('visual_invent_item')
+                                   <a href='{{url("/InventarioItem/visualizar/$c->Codigo")}}' class="btn btn-secondary btn-xs mr-2" style="border-radius:2px;">
+                                   <i class='far fa-eye'></i></a>
+                                   @endcan
+                                   @can('deleta_invent_item')
+                                   <a href="javascript:deletarRegistro('{{ $c->Codigo }}')"
+                                   class="btn btn-danger btn-xs mr-2" style="border-radius:2px;"><i class='far fa-trash-alt'></i></a>
+                                    @endcan
+                                   </div>
+                               </td>
+                           </tr>
+                      @endif
+                      @endforeach
                       
                         </tbody>
                     </table>
@@ -66,7 +93,7 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{ url("Movimento/excluir") }}" + '/' + id,
+                    url: "{{ url("InventarioItem/excluir") }}" + '/' + id,
                     type: 'DELETE',
                     data: {
                         '_method': 'DELETE',
