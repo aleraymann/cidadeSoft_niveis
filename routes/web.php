@@ -331,6 +331,9 @@ Route::group(["prefix" => "Movimento",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "ContaMovimentoController@excluir");
     Route::get("/editar/{id}", "ContaMovimentoController@editar");
     Route::get("/visualizar/{id}", "ContaMovimentoController@visualizar");
+    Route::post("/busca", "ContaMovimentoController@busca");
+    Route::post("/busca2", "ContaMovimentoController@busca2");
+    Route::post("/busca3", "ContaMovimentoController@busca3");
     
     
 });

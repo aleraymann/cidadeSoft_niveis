@@ -2,74 +2,19 @@
 
 @section("conteudo")
 <div class="main-panel" style="margin-top:60px">
-    <a href="{{ url("/Cadastro/inventario")}}" class="btn btn-primary btn-xs ml-3 mb-1">
+    <a href="{{  url()->previous()}}" class="btn btn-primary btn-xs ml-3 mb-1">
     <i class="la la-long-arrow-left"></i>
     </a>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">
-                   Data: {{ $inventario->Data }}
-                </h4>
-                @can('insere_invent_item')
-                <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
-                        data-target="#myModal">
-                        <i class='fas fa-plus'></i> Item
-                    </button>
-                @endcan
-                @include('modals.modal_inventario_item')
+            @if($criterio != "")
+                    <h4 class="card-title">Busca filtrada com: "{{ $criterio }}" </h4>
+                @endif
+               
             </div>
-            <div class="form-row col-sm-12">
-                <div class="form-group col-lg-2">
-                    <select onchange="verificar(this.value)" class="form-control input-border-bottom" id="filtro"
-                        name="filtro">
-                        <option>Filtro de Busca</option>
-                        <option value="C">Código</option>
-                        <option value="D">Cod de Ref</option>
-                        <option value="P">Cod do Item</option>
-                    </select>
-                </div>
-                <div id="name" hidden>
-                    <form action="{{ url('/InventarioItem/busca') }}" method="post">
-                        <div class=" container">
-                            <div class="input-group col-lg-12 mt-2">
-                            <input type="text" class="form-control" name="criterio" placeholder="Código Ref">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success" type="submit">OK</button>
-                                </div>
-                            </div>
-                        </div>
-                        {{ csrf_field() }}
-                    </form>
-                </div>
-                
-                <div id="cod" hidden>
-                    <form action="{{ url('/InventarioItem/busca2') }}" method="post">
-                        <div class="container">
-                            <div class="input-group col-lg-8 mt-2">
-                                <input type="text" class="form-control" name="criterio" placeholder="Código">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success" type="submit">OK</button>
-                                </div>
-                            </div>
-                        </div>
-                        {{ csrf_field() }}
-                    </form>
-                </div>
-                <div id="pag_rec" hidden>
-                    <form action="{{ url('/InventarioItem/busca3') }}" method="post">
-                        <div class="container">
-                            <div class="input-group col-lg-12 mt-2 mr-2" >
-                            <input type="text" class="form-control" name="criterio" placeholder="Código do Item">
-                                <div class="input-group-append ml-2">
-                                    <button class="btn btn-success" type="submit">OK</button>
-                                </div>
-                            </div>
-                        </div>
-                        {{ csrf_field() }}
-                    </form>
-                    
-                </div>
+            <div>
+                    <a href="{{  url()->previous() }}" class="btn btn-sm btn-info mt-3 ml-2">Todos</a>
                 </div>
             <div class="card-body">
             <div class="table-responsive">
@@ -87,7 +32,7 @@
 
                         <tbody>
                         @foreach($inventario_item as $c)
-                        @if($c->Cod_Invent == $inventario->Codigo)
+                       
                         @can('view_invent_item', $c)
                            <tr>
                             <td class="">{{ $c->Codigo }}  </td>
@@ -115,7 +60,7 @@
                                </td>
                            </tr>
                        @endcan    
-                      @endif
+                     
                       @endforeach
                       
                         </tbody>
@@ -173,24 +118,3 @@
     }
 
 </script>
-<script>
-        function verificar(value) {
-            var cod = document.getElementById("cod");
-            var name = document.getElementById("name");
-            var pag = document.getElementById("pag_rec");
-            if (value == "C") {
-                cod.hidden = false;
-                name.hidden = true;
-                pag.hidden = true;
-
-            } else if (value == "D") {
-                cod.hidden = true;
-                name.hidden = false;
-                pag.hidden = true;
-            }else if (value == "P") {
-                cod.hidden = true;
-                name.hidden = true;
-                pag.hidden = false;
-            }
-        };
-    </script>

@@ -66,5 +66,24 @@ class InventarioItemController extends Controller
         return view("visual.view_inventario_item", compact("id", "inventario_item"));
     }
 
+    public function busca3( Request $request){
+        $criterio  = $request->criterio;
+        
+        $inventario_item = InventarioItem::where( 'Cod_Item' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("busca_invent_item", compact("inventario_item","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+       
+        $inventario_item = InventarioItem::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("busca_invent_item", compact("inventario_item","criterio")); 
+    }
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $inventario_item = InventarioItem::where( 'Cod_Ref' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("busca_invent_item", compact("inventario_item","criterio")); 
+    }
+
 
 }

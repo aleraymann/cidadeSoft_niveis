@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-lg-3">
-                                <b class="ls-label-text" for="Documento">Tipo do Movimento:</b>
+                                <b class="ls-label-text" for="Documento">Tipo do Documento:</b>
                                 <select class="form-control input-border-bottom" name="Documento" id="Documento"
                                     required>
                                     <option value="NFF">Nota Fiscal</option>

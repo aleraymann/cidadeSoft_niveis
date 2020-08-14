@@ -98,4 +98,35 @@ class ContaMovimentoController extends Controller
         $conta_movimento = ContaMovimento::find($id);
         return view("visual.view_movimento", compact("conta_movimento","id"));
     }
+
+    public function busca3( Request $request){
+        $criterio  = $request->criterio;
+        if( $request->criterio == "NFF"){
+            $criterio  = "Nota Fiscal";
+        }else if( $request->criterio == "REC"){
+            $criterio  = "Recibo";
+        }
+        $conta_movimento = ContaMovimento::where( 'Documento' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("busca_mov_conta", compact("conta_movimento","criterio")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+       
+        $conta_movimento = ContaMovimento::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("busca_mov_conta", compact("conta_movimento","criterio")); 
+    }
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        if( $request->criterio == "1"){
+            $criterio  = "Dinheiro";
+        }else if( $request->criterio == "2"){
+            $criterio  = "Cheque";
+        }
+        else if( $request->criterio == "3"){
+            $criterio  = "Cartão";
+        }
+        $conta_movimento = ContaMovimento::where( 'Especie' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("busca_mov_conta", compact("conta_movimento","criterio")); 
+    }
 }
