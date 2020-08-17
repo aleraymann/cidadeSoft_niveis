@@ -128,6 +128,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/duplicata","DuplicataController@listar");
     Route::get("/inventario_cont","InventarioContagemController@listar");
     Route::get("/inventario_item","InventarioItemController@listar");
+    Route::get("/comissao","ComissaoController@listar");
     
 
 });
@@ -537,4 +538,16 @@ Route::group(["prefix" => "InventarioItem",'middleware' => 'auth'], function () 
     Route::post("/busca2", "InventarioItemController@busca2");
     Route::post("/busca3", "InventarioItemController@busca3");
     Route::post("/busca4", "InventarioItemController@busca4");
+});
+
+//crud Comissao
+Route::group(["prefix" => "Comissao",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "ComissaoController@salvar");
+    Route::delete("/excluir/{id}", "ComissaoController@excluir");
+    Route::get("/editar/{id}", "ComissaoController@editar");
+    Route::get("/visualizar/{id}", "ComissaoController@visualizar");
+    Route::post("/busca", "ComissaoController@busca");
+    Route::post("/busca2", "ComissaoController@busca2");
+    Route::post("/busca3", "ComissaoController@busca3");
+    Route::post("/busca4", "ComissaoController@busca4");
 });

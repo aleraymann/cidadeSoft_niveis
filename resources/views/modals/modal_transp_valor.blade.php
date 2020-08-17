@@ -10,7 +10,7 @@
   });
 </script> 
 <!-- Modal body -->
-<h5>Add Valor</h5>
+
 <div class="modal-body">
   <form method="post" class="needs-validation" novalidate action="{{url("/Transportadora/valor/salvar")}}" onsubmit="return checkForm(this);">
   <div class="form-row">

@@ -9,7 +9,7 @@
 </script> 
 
 <!-- Modal body -->
-<h5>Add Destino</h5>
+
 <div class="modal-body">
   <form method="post" class="needs-validation" novalidate action="{{url("/Transportadora/destino/salvar")}}" onsubmit="return checkForm(this);">
   <div class="form-row">

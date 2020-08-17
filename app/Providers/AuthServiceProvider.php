@@ -48,6 +48,7 @@ use App\model\AjusteEstoque;
 use App\model\Duplicata;
 use App\model\InventarioContagem;
 use App\model\InventarioItem;
+use App\model\Comissao;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -403,6 +404,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $inventario_item->user_id;     
         }else
             return $user->adm == $inventario_item->user_id;     
+    });
+
+    //---------- Comissao ------------------------------------------------------------------------------------
+    Gate::define('view_comissao', function( User $user, Comissao $comissao){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $comissao->user_id;     
+        }else
+            return $user->adm == $comissao->user_id;     
     });
 
 

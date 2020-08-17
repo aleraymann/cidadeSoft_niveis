@@ -14,7 +14,7 @@
                 @can('insere_invent_item')
                 <button type="button" class="btn btn-success btn-rounded float-right mr-2" data-toggle="modal"
                         data-target="#myModal">
-                        <i class='fas fa-plus'></i> Item
+                        <i class='fas fa-plus'></i> Item no Inventário
                     </button>
                 @endcan
                 @include('modals.modal_inventario_item')

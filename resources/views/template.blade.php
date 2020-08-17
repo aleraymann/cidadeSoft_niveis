@@ -573,6 +573,7 @@
 								</ul>
 							</div>
 						</li>
+						
 						<li class="nav-item">
 							<a href="{{url('/Cadastro/equipamento')}}">
 								<i class="la la-archive"></i>
@@ -582,9 +583,15 @@
 						</li>
 						<li class="nav-item">
 							<a href="{{url('/Cadastro/fidelidade')}}">
-								<i class="la la-star"></i>
+								<i class="flaticon-star"></i>
 								<p>Fidelidade</p>
 								
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{url('/Cadastro/comissao')}}">
+								<i class="la la-money"></i>
+								<p>Comissão</p>
 							</a>
 						</li>
 						<li class="nav-item">

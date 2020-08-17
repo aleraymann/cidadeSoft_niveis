@@ -109,10 +109,10 @@
     @can('insere_transp')
     <ul class="nav nav-tabs ml-3" role="tablist">
         <li class="nav-item">
-            <a class="nav-link " href="#destino" role="tab" data-toggle="tab"><b> + Destino</b></a>
+            <a class="nav-link " href="#destino" role="tab" data-toggle="tab"><button class="btn btn-info btn-rounded"> + Destino</button></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#valor" role="tab" data-toggle="tab"> <b>+ Valor</b></a>
+            <a class="nav-link" href="#valor" role="tab" data-toggle="tab"> <button class="btn btn-info btn-rounded"> + Valor</button></a>
         </li>
     </ul>
 
