@@ -133,7 +133,7 @@
                                 <input type="text" class="form-control input-border-bottom" name="Historico"
                                     id="Historico" placeholder="" required minlength="3" maxlength="45">
                                 <div class="invalid-feedback">
-                                    Campo Obrigatório, Mínimo 4 caracteres!
+                                    Campo Obrigatório, Mínimo 3 caracteres!
                                 </div>
                                 <div class="valid-feedback">
                                     Tudo certo!

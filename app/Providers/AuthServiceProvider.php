@@ -49,6 +49,7 @@ use App\model\Duplicata;
 use App\model\InventarioContagem;
 use App\model\InventarioItem;
 use App\model\Comissao;
+use App\model\AjusteItem;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -412,6 +413,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $comissao->user_id;     
         }else
             return $user->adm == $comissao->user_id;     
+    });
+
+     //---------- Ajuste de Item ------------------------------------------------------------------------------------
+     Gate::define('view_ajuste_item', function( User $user, AjusteItem $ajuste_item){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $ajuste_item->user_id;     
+        }else
+            return $user->adm == $ajuste_item->user_id;     
     });
 
 

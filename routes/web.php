@@ -129,6 +129,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/inventario_cont","InventarioContagemController@listar");
     Route::get("/inventario_item","InventarioItemController@listar");
     Route::get("/comissao","ComissaoController@listar");
+    Route::get("/planoconta","PlanoContasController@listar");
     
 
 });
@@ -550,4 +551,27 @@ Route::group(["prefix" => "Comissao",'middleware' => 'auth'], function () {
     Route::post("/busca2", "ComissaoController@busca2");
     Route::post("/busca3", "ComissaoController@busca3");
     Route::post("/busca4", "ComissaoController@busca4");
+});
+
+//crud Ajuste Item
+Route::group(["prefix" => "AjusteItem",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "AjusteItemController@salvar");
+    Route::delete("/excluir/{id}", "AjusteItemController@excluir");
+    Route::get("/editar/{id}", "AjusteItemController@editar");
+    Route::get("/visualizar/{id}", "AjusteItemController@visualizar");
+    Route::post("/busca", "AjusteItemController@busca");
+    Route::post("/busca2", "AjusteItemController@busca2");
+    Route::post("/busca3", "AjusteItemController@busca3");
+    Route::post("/busca4", "AjusteItemController@busca4");
+});
+
+//crud Plano Contas
+Route::group(["prefix" => "PlanoContas",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "PlanoContasController@salvar");
+    Route::delete("/excluir/{id}", "PlanoContasController@excluir");
+    Route::get("/editar/{id}", "PlanoContasController@editar");
+    Route::post("/busca", "PlanoContasController@busca");
+    Route::post("/busca2", "PlanoContasController@busca2");
+    Route::post("/busca3", "PlanoContasController@busca3");
+    Route::post("/busca4", "PlanoContasController@busca4");
 });

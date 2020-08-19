@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">
+                <h4 class="card-title float-left mt-2">
                    Data: {{ $inventario->Data }}
                 </h4>
                 @can('insere_invent_item')
@@ -194,3 +194,28 @@
             }
         };
     </script>
+    <script>
+    // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
+    (function checkForm(form){
+        'use strict';
+        window.addEventListener('load', function () {
+            // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+            var forms = document.getElementsByClassName('needs-validation');
+            // Faz um loop neles e evita o envio
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                     // se validar desabilita o botao
+                     if (form.checkValidity() === true) {
+                        form.cadastrar.disabled = true;
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+</script>

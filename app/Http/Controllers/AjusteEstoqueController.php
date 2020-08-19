@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\model\AjusteEstoque;
+use App\model\AjusteItem;
 use App\model\CliFor;
 use App\model\Empresa;
 use App\User;
@@ -76,7 +77,8 @@ class AjusteEstoqueController extends Controller
          if(Gate::denies('view_ajuste_est', $ajuste_estoque)){
             return redirect()->back();
         }
-        return view("visual.view_ajuste_estoque", compact("ajuste_estoque","id"));
+        $ajuste_item = AjusteItem::all();
+        return view("visual.view_ajuste_estoque", compact("ajuste_estoque","id","ajuste_item"));
     }
 
     public function busca( Request $request){

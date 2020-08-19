@@ -34,15 +34,13 @@ class InventarioItemController extends Controller
                 $inventario_item->create($dadosFormulario->all());
             }
             
-            return redirect()
-            ->action("InventarioController@listar")
+            return redirect(url()->previous())
             ->with("toast_success", "Registro Gravado com sucesso");
         } 
         catch (\Illuminate\Database\QueryException $e) 
         {
             dd($e);
-            return redirect()
-            ->action("InventarioController@listar")
+            return redirect(url()->previous())
             ->with("toast_error", "Erro ao Gravar Registro");
         }
 
@@ -64,6 +62,11 @@ class InventarioItemController extends Controller
             return redirect()->back();
         }
         return view("visual.view_inventario_item", compact("id", "inventario_item"));
+    }
+    
+    public function excluir($Codigo, InventarioItem $inventario_item)
+    {
+        $inventario_item->destroy($Codigo);
     }
 
     public function busca3( Request $request){

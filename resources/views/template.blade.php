@@ -573,6 +573,27 @@
 								</ul>
 							</div>
 						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#planoconta">
+								<i class="la la-book"></i>
+								<p>Planbo de Contas</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="planoconta">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="">
+											<span class="sub-item">Categorias / Subcategorias</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{url('/Cadastro/planoconta')}}">
+											<span class="sub-item">Plano de Contas</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
 						
 						<li class="nav-item">
 							<a href="{{url('/Cadastro/equipamento')}}">
