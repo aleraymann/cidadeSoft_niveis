@@ -5,12 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script type="text/javascript">
     jQuery(function ($) {
-        $("#AliqIBPT").mask("9.99");
-        $("#AliqImp").mask("9.99");
-        $("#AliqEst").mask("9.99");
-        $("#AliqMun").mask("9.99");
-        $("#Ex").mask("99999");
-        $("#Tipo").mask("99");
+        $("#Conta").mask("999999999999999");
     });
 
 </script>
@@ -100,7 +95,7 @@
                                 <th class="">Descrição</th>
                                 <th class="">Credito/Debito</th>
                                 <th class="">Num de Classificação</th>
-                                <th class="">Tipo</th>
+                                <th class="">Tipo de Custo</th>
                                 <th class="">Cod Adm</th>
 
                             </tr>
@@ -113,9 +108,9 @@
                                     <td class=""> {{ $n->Codigo }} </td>
                                     <td class=""> {{ $n->CodPai }} </td>
                                     <td class=""> {{ $n->Descricao }} </td>
-                                    <td class=""> {{ $n->CD }} </td>
+                                    <td class=""> {{ $n->CD=="D"?"Débito":"Crédito" }} </td>
                                     <td class=""> {{ $n->Conta }} </td>
-                                    <td class=""> {{ $n->Tipo_Custo }} </td>
+                                    <td class=""> {{ $n->Tipo_Custo=="CV"?"Variável":"Fixo"  }} </td>
                                     <td class=""> {{ $n->user_id }} </td>
                                     <td class="">
                                         <div class="btn-group" role="group">

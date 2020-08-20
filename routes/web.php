@@ -570,8 +570,5 @@ Route::group(["prefix" => "PlanoContas",'middleware' => 'auth'], function () {
     Route::post("/salvar/{id?}", "PlanoContasController@salvar");
     Route::delete("/excluir/{id}", "PlanoContasController@excluir");
     Route::get("/editar/{id}", "PlanoContasController@editar");
-    Route::post("/busca", "PlanoContasController@busca");
-    Route::post("/busca2", "PlanoContasController@busca2");
-    Route::post("/busca3", "PlanoContasController@busca3");
-    Route::post("/busca4", "PlanoContasController@busca4");
+    Route::post("/pesquisa", "PlanoContasController@pesquisaSub");
 });
