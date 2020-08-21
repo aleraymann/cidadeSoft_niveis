@@ -73,7 +73,9 @@
                             <select class="form-control input-border-bottom" required id="CodPai" name="CodPai" onchange="defineSub()">
                                 <option value="">Selecione</option>
                                 @foreach ($cat_planocontas as $c)
+                                @can('view_cat_planocontas', $c)
                             <option value="{{$c->Codigo}}">{{$c->Descricao}}</option>
+                                @endcan
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">

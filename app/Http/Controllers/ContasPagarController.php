@@ -10,6 +10,8 @@ use App\model\Cond_Pag;
 use App\model\BoletoTitulo;
 use App\model\CentroCusto;
 use App\model\Empresa;
+use App\model\PlanoContas;
+use App\model\Recibo;
 use Gate;
 use Illuminate\Support\Facades\DB;
 
@@ -26,8 +28,10 @@ class ContasPagarController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $criterio = "";
-        return view("contas_pagar", compact("ctas_pagar","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio")); 
+        return view("contas_pagar", compact("ctas_pagar","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio","planocontas","recibos")); 
     }
     public function pesquisaAjax(Request $request){
         $numBoleto = $request['numBoleto'];
@@ -82,7 +86,9 @@ class ContasPagarController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
-        return view("edit.edit_contas_pagar", compact("ctas_pagar","id","clifor","f_pag","c_pag","boleto","c_cust","empresa"));
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
+        return view("edit.edit_contas_pagar", compact("ctas_pagar","id","clifor","f_pag","c_pag","boleto","c_cust","empresa","planocontas","recibos"));
     }
 
     public function destroy($Codigo,ContasPagar $ctas_pagar)
@@ -109,8 +115,10 @@ class ContasPagarController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $ctas_pagar = ContasPagar::whereBetween( 'Vencimento' , [$request->data_inicio , $request->data_fim] )->paginate(10);
-        return view("contas_pagar", compact("ctas_pagar","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio")); 
+        return view("contas_pagar", compact("ctas_pagar","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio","planocontas","recibos")); 
     }
 
     public function busca2( Request $request){
@@ -121,8 +129,10 @@ class ContasPagarController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $ctas_pagar = ContasPagar::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
-        return view("contas_pagar", compact("ctas_pagar","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio")); 
+        return view("contas_pagar", compact("ctas_pagar","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio","planocontas","recibos")); 
     }
 
 }

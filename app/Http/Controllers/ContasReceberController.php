@@ -10,6 +10,8 @@ use App\model\Cond_Pag;
 use App\model\BoletoTitulo;
 use App\model\CentroCusto;
 use App\model\Empresa;
+use App\model\PlanoContas;
+use App\model\Recibo;
 use Gate;
 use Illuminate\Support\Facades\DB;
 
@@ -25,8 +27,10 @@ class ContasReceberController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $criterio = "";
-        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa","criterio")); 
+        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa","criterio","planocontas","recibos")); 
     }
     public function pesquisaAjax(Request $request){
         $numBoleto = $request['numBoleto'];
@@ -81,7 +85,9 @@ class ContasReceberController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
-        return view("edit.edit_contas_receber", compact("ctas_receber","id","clifor","f_pag","c_pag","boleto","c_cust","empresa"));
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
+        return view("edit.edit_contas_receber", compact("ctas_receber","id","clifor","f_pag","c_pag","boleto","c_cust","empresa","planocontas","recibos"));
     }
 
     public function destroy($Codigo,ContasReceber $ctas_receber)
@@ -108,8 +114,10 @@ class ContasReceberController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $ctas_receber = ContasReceber::whereBetween( 'Vencimento' , [$request->data_inicio , $request->data_fim] )->paginate(10);
-        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio")); 
+        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio","planocontas","recibos")); 
     }
 
     public function busca2( Request $request){
@@ -120,8 +128,10 @@ class ContasReceberController extends Controller
         $boleto = BoletoTitulo::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $ctas_receber = ContasReceber::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
-        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio")); 
+        return view("contas_receber", compact("ctas_receber","clifor","f_pag","c_pag","boleto","c_cust","empresa", "criterio","planocontas","recibos")); 
     }
 
 }

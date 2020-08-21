@@ -582,7 +582,7 @@
 							<div class="collapse" id="planoconta">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="">
+										<a href="{{url('/Cadastro/cat_planoconta')}}">
 											<span class="sub-item">Categorias / Subcategorias</span>
 										</a>
 									</li>

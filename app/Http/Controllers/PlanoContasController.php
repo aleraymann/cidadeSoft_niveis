@@ -73,4 +73,46 @@ class PlanoContasController extends Controller
         }
         return view("edit.edit_planocontas", compact("planocontas","id","cat_planocontas","subcat_planocontas"));
     }
+
+    public function busca( Request $request){
+        $criterio  = $request->criterio;
+        $cat_planocontas = CatPlanocontas::all();
+        $subcat_planocontas = SubcatPlanocontas::all();
+        $criterio = "Cod do Pai: ". $request->criterio;
+        $planocontas =  PlanoContas::where( 'CodPai' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("planocontas", compact("planocontas","criterio","cat_planocontas","subcat_planocontas")); 
+    }
+
+    public function busca2( Request $request){
+        $criterio  = $request->criterio;
+        $cat_planocontas = CatPlanocontas::all();
+        $subcat_planocontas = SubcatPlanocontas::all();
+        $planocontas = PlanoContas::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
+        return view("planocontas", compact("planocontas","criterio","cat_planocontas","subcat_planocontas")); 
+    }
+
+    public function busca3( Request $request){
+        $criterio  = $request->criterio;
+        $cat_planocontas = CatPlanocontas::all();
+        $subcat_planocontas = SubcatPlanocontas::all();
+        if( $request->criterio == "CV"){
+            $criterio  = "Variável";
+        }else if( $request->criterio == "CF"){
+            $criterio  = "Fixo";
+        }
+        $planocontas = PlanoContas::where( 'Tipo_Custo' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("planocontas", compact("planocontas","criterio","cat_planocontas","subcat_planocontas")); 
+    }
+    public function busca4( Request $request){
+        $criterio  = $request->criterio;
+        $cat_planocontas = CatPlanocontas::all();
+        $subcat_planocontas = SubcatPlanocontas::all();
+        if( $request->criterio == "D"){
+            $criterio  = "Débito";
+        }else if( $request->criterio == "C"){
+            $criterio  = "Crédito";
+        }
+        $planocontas = PlanoContas::where( 'CD' , 'LIKE', '%'. $request->criterio .'%')->paginate(10);
+        return view("planocontas", compact("planocontas","criterio","cat_planocontas","subcat_planocontas")); 
+    }
 }

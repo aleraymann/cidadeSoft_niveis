@@ -358,7 +358,12 @@
                     <div class="form-group col-lg-4">
                             <b class="ls-label-text" for="Plano_Ctas">Plano de Contas:</b>
                             <select class="form-control input-border-bottom" name="Plano_Ctas" id="Plano_Ctas" required>
-                                <option value="0">Selecione</option>
+                                <option value="">Selecione</option>
+                                @foreach($planocontas as $c)
+                                    @can('view_planocontas', $c)
+                                        <option value="{{ $c->Codigo }}">{{ $c->Conta }}</option>
+                                    @endcan
+                                @endforeach
                             </select>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!

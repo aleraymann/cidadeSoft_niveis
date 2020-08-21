@@ -285,6 +285,11 @@
                             <b class="ls-label-text" for="Recibo">Recibo:</b>
                             <select class="form-control input-border-bottom" name="Recibo" id="Recibo" >
                                 <option value="0">Selecione</option>
+                                @foreach($recibos as $c)
+                                    @can('view_recibo', $c)
+                                        <option value="{{ $c->Codigo }}">{{ $c->Valor }}</option>
+                                    @endcan
+                                @endforeach
                             </select>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
@@ -297,6 +302,11 @@
                             <b class="ls-label-text" for="Plano_Ctas">Plano de Contas:</b>
                             <select class="form-control input-border-bottom" name="Plano_Ctas" id="Plano_Ctas" >
                                 <option value="0">Selecione</option>
+                                @foreach($planocontas as $c)
+                                    @can('view_planocontas', $c)
+                                        <option value="{{ $c->Codigo }}">{{ $c->Conta }}</option>
+                                    @endcan
+                                @endforeach
                             </select>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!

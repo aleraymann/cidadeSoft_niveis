@@ -130,6 +130,7 @@ Route::group(["prefix" => "Cadastro",'middleware' => 'auth'], function () {
     Route::get("/inventario_item","InventarioItemController@listar");
     Route::get("/comissao","ComissaoController@listar");
     Route::get("/planoconta","PlanoContasController@listar");
+    Route::get("/cat_planoconta","CatPlanoContasController@listar");
     
 
 });
@@ -571,4 +572,24 @@ Route::group(["prefix" => "PlanoContas",'middleware' => 'auth'], function () {
     Route::delete("/excluir/{id}", "PlanoContasController@excluir");
     Route::get("/editar/{id}", "PlanoContasController@editar");
     Route::post("/pesquisa", "PlanoContasController@pesquisaSub");
+    Route::post("/busca", "PlanoContasController@busca");
+    Route::post("/busca2", "PlanoContasController@busca2");
+    Route::post("/busca3", "PlanoContasController@busca3");
+    Route::post("/busca4", "PlanoContasController@busca4");
+});
+
+//crud Cat Plano Contas
+Route::group(["prefix" => "CatPlanoContas",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "CatPlanoContasController@salvar");
+    Route::delete("/excluir/{id}", "CatPlanoContasController@excluir");
+    Route::get("/editar/{id}", "CatPlanoContasController@editar");
+    Route::post("/pesquisa", "CatPlanoContasController@pesquisaSub");
+    Route::post("/busca", "CatPlanoContasController@busca");
+    Route::post("/busca2", "CatPlanoContasController@busca2");
+});
+
+//crud Cat Plano Contas
+Route::group(["prefix" => "SubcatPlanoContas",'middleware' => 'auth'], function () {
+    Route::post("/salvar/{id?}", "SubcatPlanoContasController@salvar");
+    Route::delete("/excluir/{id}", "SubcatPlanoContasController@excluir");
 });

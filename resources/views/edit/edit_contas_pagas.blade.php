@@ -298,7 +298,12 @@
                     <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Recibo">Recibo:</b>
                             <select class="form-control input-border-bottom" name="Recibo" id="Recibo" >
-                                <option value="0">Selecione</option>
+                            @foreach($recibos as $c)
+                                    @can('view_recibo', $c)
+                                    <option value="{{ $c->Codigo }}" {{ $ctas_pagas->Recibo == $c->Codigo ? "selected" : "" }}>
+                                    {{ $c->Valor }}</option>
+                                    @endcan
+                                @endforeach
                             </select>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!
@@ -310,7 +315,12 @@
                         <div class="form-group col-lg-3">
                             <b class="ls-label-text" for="Plano_Ctas">Plano de Contas:</b>
                             <select class="form-control input-border-bottom" name="Plano_Ctas" id="Plano_Ctas" >
-                                <option value="0">Selecione</option>
+                            @foreach($planocontas as $c)
+                                    @can('view_planocontas', $c)
+                                    <option value="{{ $c->Codigo }}" {{ $ctas_pagas->Plano_Ctas == $c->Codigo ? "selected" : "" }}>
+                                    {{ $c->Conta }}</option>
+                                    @endcan
+                                @endforeach
                             </select>
                             <div class="invalid-feedback">
                                 Por favor, Campo Obrigatório!

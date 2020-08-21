@@ -11,6 +11,8 @@ use App\model\Cond_Pag;
 use App\model\ContaCadastro;
 use App\model\CentroCusto;
 use App\model\Empresa;
+use App\model\PlanoContas;
+use App\model\Recibo;
 use Gate;
 use Illuminate\Support\Facades\DB;
 
@@ -26,8 +28,10 @@ class ContasRecebidasController extends Controller
         $conta = ContaCadastro::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $criterio = "";
-        return view("contas_recebidas", compact("ctas_recebidas","clifor","f_pag","c_pag","conta","c_cust","empresa","criterio")); 
+        return view("contas_recebidas", compact("ctas_recebidas","clifor","f_pag","c_pag","conta","c_cust","empresa","criterio","planocontas","recibos")); 
     }
 
     public function salvar(Request $dadosFormulario,ContasRecebidas $ctas_recebidas, $id = null)
@@ -77,7 +81,9 @@ class ContasRecebidasController extends Controller
         $conta = ContaCadastro::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
-        return view("edit.edit_contas_recebidas", compact("ctas_recebidas","id","clifor","f_pag","c_pag","conta","c_cust","empresa"));
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
+        return view("edit.edit_contas_recebidas", compact("ctas_recebidas","id","clifor","f_pag","c_pag","conta","c_cust","empresa","planocontas","recibos"));
     }
 
     public function visualizar(ContasRecebidas $ctas_recebidas, $id)
@@ -99,8 +105,10 @@ class ContasRecebidasController extends Controller
         $conta = ContaCadastro::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $ctas_recebidas = ContasRecebidas::whereBetween( 'Data_Pagto' , [$request->data_inicio , $request->data_fim] )->paginate(10);
-        return view("contas_recebidas", compact("ctas_recebidas","clifor","f_pag","c_pag","conta","c_cust","empresa", "criterio")); 
+        return view("contas_recebidas", compact("ctas_recebidas","clifor","f_pag","c_pag","conta","c_cust","empresa", "criterio","planocontas","recibos")); 
     }
 
     public function busca2( Request $request){
@@ -111,8 +119,10 @@ class ContasRecebidasController extends Controller
         $conta = ContaCadastro::all();
         $c_cust = CentroCusto::all();
         $empresa = Empresa::all();
+        $planocontas = PlanoContas::all();
+        $recibos = Recibo::all();
         $ctas_recebidas = ContasRecebidas::where( 'Codigo' , 'LIKE', '%'. $request->criterio .'%' )->paginate(10);
-        return view("contas_recebidas", compact("ctas_recebidas","clifor","f_pag","c_pag","conta","c_cust","empresa", "criterio")); 
+        return view("contas_recebidas", compact("ctas_recebidas","clifor","f_pag","c_pag","conta","c_cust","empresa", "criterio","planocontas","recibos")); 
     }
 
 }

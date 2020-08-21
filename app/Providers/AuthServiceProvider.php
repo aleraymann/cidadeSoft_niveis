@@ -50,6 +50,8 @@ use App\model\InventarioContagem;
 use App\model\InventarioItem;
 use App\model\Comissao;
 use App\model\AjusteItem;
+use App\model\PlanoContas;
+use App\model\CatPlanoContas;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -421,6 +423,22 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $ajuste_item->user_id;     
         }else
             return $user->adm == $ajuste_item->user_id;     
+    });
+
+    //---------- Plano de Contas ------------------------------------------------------------------------------------
+    Gate::define('view_planocontas', function( User $user, PlanoContas $planocontas){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $planocontas->user_id;     
+        }else
+            return $user->adm == $planocontas->user_id;     
+    });
+
+     //---------- Cat de Plano de Contas ------------------------------------------------------------------------------------
+     Gate::define('view_cat_planocontas', function( User $user, CatPlanoContas $cat_planocontas){//apenas visualizar
+        if( $user->hasAnyRoles('adm')){
+            return $user->id == $cat_planocontas->user_id;     
+        }else
+            return $user->adm == $cat_planocontas->user_id;     
     });
 
 
